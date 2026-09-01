@@ -221,13 +221,13 @@
     <div class="detour-actions-row">
       
       <!-- Button 1: Back to Home -->
-      <a href="index.html" class="detour-btn-solid">
+      <a href="index.html" onclick="handleHomeNav(event)" class="detour-btn-solid">
         <i class="fa-solid fa-house"></i>
         <span>Back to Home</span>
       </a>
 
       <!-- Button 2: Back to Form -->
-      <button type="button" onclick="if(window.history.length > 1) { window.history.back(); } else { window.location.href = 'index.html'; }" class="detour-btn-outline">
+      <button type="button" onclick="handleBackNav()" class="detour-btn-outline">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Back to Form</span>
       </button>
@@ -235,6 +235,26 @@
     </div>
 
   </main>
+
+  <script>
+    function handleHomeNav(e) {
+      if (e) e.preventDefault();
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      if (window.location.hostname.includes('github.io') && pathSegments.length > 0) {
+        window.location.href = window.location.origin + '/' + pathSegments[0] + '/index.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    function handleBackNav() {
+      if (window.history.length > 1 && document.referrer && document.referrer.includes(window.location.host)) {
+        window.history.back();
+      } else {
+        handleHomeNav();
+      }
+    }
+  </script>
 
 </body>
 </html>
