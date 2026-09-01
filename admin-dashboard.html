@@ -51,10 +51,10 @@
     </div>
   </header>
 
-  <div class="dashboard-layout" style="padding-top: var(--header-height); display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; width: 100%;">
+  <div class="dashboard-layout">
     
-    <!-- Sidebar Navigation -->
-    <aside class="dashboard-sidebar" style="background: rgba(12, 14, 20, 0.98); border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 2rem 1.4rem; position: sticky; top: var(--header-height); height: calc(100vh - var(--header-height)); overflow-y: auto; display: flex; flex-direction: column; gap: 1.8rem; width: 280px;">
+    <!-- Sidebar Navigation (Fixed on Left) -->
+    <aside class="dashboard-sidebar">
       
       <nav style="flex: 1;">
         <ul class="sidebar-nav" style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; padding: 0; margin: 0;">
@@ -129,8 +129,8 @@
 
     </aside>
 
-    <!-- Main Content Area with 8 Rich Sections -->
-    <main class="dashboard-main" style="padding: 2.2rem 3.5rem; display: flex; flex-direction: column; gap: 3rem; width: 100%; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+    <!-- Main Content Area (Scrolls independently) -->
+    <main class="dashboard-main">
       
       <!-- Top Dynamic User Greeting Bar -->
       <div class="dash-welcome-bar slide-up-reveal" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; background: linear-gradient(135deg, rgba(30, 26, 20, 0.7), rgba(18, 16, 12, 0.85)); border: 1px solid rgba(212, 169, 106, 0.2); border-radius: 18px; backdrop-filter: blur(14px); flex-wrap: wrap; gap: 1rem;">
