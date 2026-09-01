@@ -428,7 +428,7 @@ function initSkillTracker() {
     box.className = 'tracker-result-box';
     box.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-        <span style="font-family: var(--font-code); font-weight: 700; color: ${data.badgeColor}; font-size: 0.85rem;">✦ NODE FOUND: ${code}</span>
+        <span style="font-family: var(--font-code); font-weight: 700; color: ${data.badgeColor}; font-size: 0.85rem;"><i class="fa-solid fa-bolt" style="margin-right: 0.35rem;"></i> NODE FOUND: ${code}</span>
         <span style="font-size: 0.75rem; color: #10b981; display: flex; align-items: center; gap: 4px;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
           ${data.node}
@@ -520,7 +520,7 @@ class AssessmentEngine {
       <div class="sandbox-card-container tilt-interactive">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
           <span style="font-family: var(--font-code); font-size: 0.8rem; font-weight: 700; color: var(--cyan-light); background: rgba(6, 182, 212, 0.1); padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); border: 1px solid var(--border-cyan);">
-            ✦ ${q.discipline}
+             ${q.discipline}
           </span>
           <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
             Challenge ${this.currentIndex + 1} / ${this.questions.length}
@@ -1041,31 +1041,126 @@ function initSubnavScrollSpy() {
 }
 
 function initMobileNavDrawer() {
-  const toggleBtn = document.querySelector('.mobile-menu-toggle');
-  const drawer = document.querySelector('.mobile-nav-drawer');
-  const backdrop = document.querySelector('.mobile-nav-drawer-backdrop');
-  const closeBtn = document.querySelector('.mobile-nav-close');
+  const toggleBtns = document.querySelectorAll('.stackly-mobile-toggle, .mobile-menu-toggle, #mobileNavToggle');
+  let drawer = document.querySelector('.stackly-mobile-drawer, .mobile-nav-drawer, #mobileNavDrawer');
+  let backdrop = document.querySelector('.stackly-drawer-backdrop, .mobile-nav-drawer-backdrop, #mobileNavBackdrop');
+  
+  // If drawer does not exist on page, dynamically create it
+  if (!drawer && document.querySelector('.stackly-header')) {
+    const header = document.querySelector('.stackly-header');
+    drawer = document.createElement('div');
+    drawer.className = 'stackly-mobile-drawer';
+    drawer.id = 'mobileNavDrawer';
+    drawer.innerHTML = `
+      <div class="mobile-drawer-header">
+        <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 32px;" />
+        <button class="mobile-drawer-close" id="mobileNavClose" aria-label="Close Navigation Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="services.html" class="mobile-nav-link"><i class="fa-solid fa-cube"></i> Services &amp; Library</a></li>
+        <li><a href="blog.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-actions">
+        <a href="login.html" class="btn-mobile-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        <a href="signup.html" class="btn-mobile-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      </div>
+    `;
+    
+    backdrop = document.createElement('div');
+    backdrop.className = 'stackly-drawer-backdrop';
+    backdrop.id = 'mobileNavBackdrop';
+    
+    document.body.appendChild(drawer);
+    document.body.appendChild(backdrop);
+  }
 
-  if (!toggleBtn || !drawer) return;
+  // Also ensure mobile toggle button exists in header
+  const navContainers = document.querySelectorAll('.stackly-nav-container');
+  navContainers.forEach(container => {
+    if (!container.querySelector('.stackly-mobile-toggle, .mobile-menu-toggle')) {
+      const toggle = document.createElement('button');
+      toggle.className = 'stackly-mobile-toggle';
+      toggle.setAttribute('aria-label', 'Toggle Navigation Menu');
+      toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      container.appendChild(toggle);
+      toggle.addEventListener('click', openDrawer);
+    }
+  });
+
+  const closeBtns = document.querySelectorAll('.mobile-drawer-close, .mobile-nav-close, #mobileNavClose');
 
   function openDrawer() {
-    drawer.classList.add('open');
-    if (backdrop) backdrop.classList.add('open');
+    if (drawer) drawer.classList.add('active', 'open');
+    if (backdrop) backdrop.classList.add('active', 'open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
-    drawer.classList.remove('open');
-    if (backdrop) backdrop.classList.remove('open');
+    if (drawer) drawer.classList.remove('active', 'open');
+    if (backdrop) backdrop.classList.remove('active', 'open');
     document.body.style.overflow = '';
   }
 
-  toggleBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  toggleBtns.forEach(btn => btn.addEventListener('click', openDrawer));
+  closeBtns.forEach(btn => btn.addEventListener('click', closeDrawer));
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
-  const drawerLinks = drawer.querySelectorAll('a');
-  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+  if (drawer) {
+    const drawerLinks = drawer.querySelectorAll('a');
+    drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+  }
+
+  // Escape key support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+}
+
+function initDashboardSidebarToggle() {
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  if (!sidebar) return;
+
+  const header = document.querySelector('.stackly-header .stackly-nav-container');
+  if (header && !header.querySelector('.dashboard-sidebar-toggle')) {
+    const toggle = document.createElement('button');
+    toggle.className = 'dashboard-sidebar-toggle';
+    toggle.setAttribute('aria-label', 'Toggle Dashboard Sidebar');
+    toggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+    header.prepend(toggle);
+    
+    let backdrop = document.querySelector('.dashboard-sidebar-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'stackly-drawer-backdrop dashboard-sidebar-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    const toggleSidebar = () => {
+      sidebar.classList.toggle('active');
+      backdrop.classList.toggle('active');
+      document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    };
+
+    const closeSidebar = () => {
+      sidebar.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    toggle.addEventListener('click', toggleSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) closeSidebar();
+      });
+    });
+  }
 }
 
 function initSearchModal() {
@@ -1173,6 +1268,256 @@ function initTestimonialSlider() {
   });
 }
 
+function initGlobalPolicyModal() {
+  if (document.getElementById('stackly-policy-modal')) return;
+
+  const modalHtml = `
+    <div id="stackly-policy-modal" style="display: none; position: fixed; inset: 0; background: rgba(5, 7, 12, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 3000; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box;">
+      <div style="background: #0f1422; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 24px; width: 100%; max-width: 680px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.8);">
+        
+        <!-- Modal Header -->
+        <div style="padding: 1.5rem 1.8rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.25); display: flex; align-items: center; justify-content: center; color: #22d3ee; font-size: 1rem;">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <h3 id="policy-modal-title" style="margin: 0; color: #ffffff; font-size: 1.15rem; font-weight: 700;">STACKLY Legal &amp; Compliance</h3>
+              <p style="margin: 0.2rem 0 0; color: #94a3b8; font-size: 0.78rem;">Last Updated: September 2026 • Verified Security Standard</p>
+            </div>
+          </div>
+          <button id="close-policy-modal-btn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 1rem; cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Policy Navigation Tabs -->
+        <div style="display: flex; gap: 0.5rem; padding: 0.8rem 1.8rem; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto;">
+          <button class="policy-tab-btn" data-policy="privacy" style="background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.3); color: #22d3ee; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Privacy Policy</button>
+          <button class="policy-tab-btn" data-policy="terms" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Terms of Service</button>
+          <button class="policy-tab-btn" data-policy="cookies" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Cookie Policy</button>
+        </div>
+
+        <!-- Policy Content Body -->
+        <div id="policy-modal-content" style="padding: 1.8rem; overflow-y: auto; color: #cbd5e1; font-size: 0.92rem; line-height: 1.7; flex: 1;">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Modal Footer -->
+        <div style="padding: 1rem 1.8rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(255,255,255,0.02);">
+          <button id="accept-policy-modal-btn" class="sqs-btn-solid-white" style="padding: 0.6rem 1.8rem; font-size: 0.82rem; cursor: pointer;">
+            Understood &amp; Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const policyData = {
+    privacy: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Data Collection &amp; Zero-Leakage Architecture</h4>
+      <p>STACKLY Cloud employs zero-telemetry egress pipelines. Code executed within our WebAssembly containers and cloud sandboxes is isolated, never indexed for external model training, and cryptographically destroyed upon pod termination.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. Compliance Standards</h4>
+      <p>Our platform maintains ISO 27001, SOC 2 Type II, and GDPR compliance. Personal identity details and billing tokens are tokenized using AES-256 GCM encryption at rest and TLS 1.3 in transit.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">3. Learner Rights &amp; Data Deletion</h4>
+      <p>You retain 100% ownership over all software architectures, repositories, and learning notes created on STACKLY. You can request full data export or irrevocable account deletion at any time via Settings.</p>
+    `,
+    terms: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Sandbox Acceptable Use Policy</h4>
+      <p>STACKLY development environments and cloud clusters are provisioned exclusively for educational, development, and benchmarking workloads. Malicious payloads, automated scraping, or crypto-mining will result in instant pod suspension.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. Certificate &amp; Skill Verification Authenticity</h4>
+      <p>Certificates issued by STACKLY are tied to verified telemetry hashes. Sharing account access to spoof assessment completion violates our academic integrity code.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">3. Billing &amp; Subscriptions</h4>
+      <p>Subscriptions can be canceled at any time with zero penalties. Unused cloud compute credits roll over for up to 90 billing days.</p>
+    `,
+    cookies: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Minimal Essential Cookies</h4>
+      <p>STACKLY uses strictly essential session tokens and WebAssembly sandbox local storage caches to maintain learner authentication state and live code execution workspaces.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. No Third-Party Tracking</h4>
+      <p>We do NOT deploy invasive tracking pixels, ad networks, or cross-site fingerprinting scripts. Your browsing and learning history is private to your profile.</p>
+    `
+  };
+
+  const modal = document.getElementById('stackly-policy-modal');
+  const title = document.getElementById('policy-modal-title');
+  const content = document.getElementById('policy-modal-content');
+  const closeBtn = document.getElementById('close-policy-modal-btn');
+  const acceptBtn = document.getElementById('accept-policy-modal-btn');
+  const tabBtns = document.querySelectorAll('.policy-tab-btn');
+
+  function openPolicy(type) {
+    const key = (type === 'terms' || type === 'cookies') ? type : 'privacy';
+    tabBtns.forEach(btn => {
+      if (btn.getAttribute('data-policy') === key) {
+        btn.style.background = 'rgba(34, 211, 238, 0.12)';
+        btn.style.borderColor = 'rgba(34, 211, 238, 0.3)';
+        btn.style.color = '#22d3ee';
+      } else {
+        btn.style.background = 'rgba(255,255,255,0.04)';
+        btn.style.borderColor = 'rgba(255,255,255,0.08)';
+        btn.style.color = '#94a3b8';
+      }
+    });
+
+    const titles = {
+      privacy: 'STACKLY Privacy & Data Security Policy',
+      terms: 'STACKLY Terms of Service & Compute Agreement',
+      cookies: 'STACKLY Cookie Policy & Storage Directives'
+    };
+
+    title.textContent = titles[key];
+    content.innerHTML = policyData[key];
+    modal.style.display = 'flex';
+  }
+
+  window.openPolicyModal = openPolicy;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openPolicy(btn.getAttribute('data-policy'));
+    });
+  });
+
+  const closeModal = () => { modal.style.display = 'none'; };
+  closeBtn?.addEventListener('click', closeModal);
+  acceptBtn?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Global listener for policy links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const text = link.textContent.trim().toLowerCase();
+    if (text.includes('privacy policy')) {
+      e.preventDefault();
+      openPolicy('privacy');
+    } else if (text.includes('terms of service') || text.includes('terms and conditions')) {
+      e.preventDefault();
+      openPolicy('terms');
+    } else if (text.includes('cookie policy')) {
+      e.preventDefault();
+      openPolicy('cookies');
+    }
+  });
+}
+
+function initGlobalFormHandlers() {
+  document.querySelectorAll('form').forEach(form => {
+    if (form.getAttribute('data-handler-attached')) return;
+    form.setAttribute('data-handler-attached', 'true');
+
+    // Skip auth form or custom modal forms that already have action listeners
+    const formId = form.id;
+    if (formId === 'contact-form' || formId === 'login-form' || formId === 'signup-form' || formId === 'admin-course-form') return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      if (emailInput && !emailInput.value.includes('@')) {
+        window.showToast('Please enter a valid email address.', 'error');
+        return;
+      }
+      window.showToast('Request received! We have dispatched details to your email.', 'success');
+      form.reset();
+    });
+  });
+}
+
+function initSafeLinkEnforcer() {
+  // Ensure all external links have target="_blank" and rel="noopener noreferrer"
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+}
+
+function initTemplatePreviewModal() {
+  if (document.getElementById('template-preview-modal')) return;
+
+  const modalHtml = `
+    <div id="template-preview-modal" style="display: none; position: fixed; inset: 0; background: rgba(5, 7, 12, 0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); z-index: 3100; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box;">
+      <div style="background: #0f1422; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; width: 100%; max-width: 720px; overflow: hidden; box-shadow: 0 35px 90px rgba(0,0,0,0.85); display: flex; flex-direction: column; max-height: 90vh;">
+        
+        <!-- Header -->
+        <div style="padding: 1.2rem 1.6rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+          <div>
+            <span id="tpl-modal-category" style="font-size: 0.75rem; color: #22d3ee; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">ARTISANAL POTTERY &amp; WORKSHOP</span>
+            <h3 id="tpl-modal-title" style="margin: 0.2rem 0 0; color: #fff; font-size: 1.25rem; font-weight: 700;">Terra &amp; Form</h3>
+          </div>
+          <button id="close-tpl-modal-btn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 1rem; cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Preview Image Container -->
+        <div style="position: relative; height: 340px; background: #07090e; overflow: hidden;">
+          <img id="tpl-modal-img" src="images/sqs_template_ceramics.webp" alt="Template Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,20,34,0.95) 0%, transparent 60%);"></div>
+          <div style="position: absolute; bottom: 1.2rem; left: 1.6rem; right: 1.6rem; display: flex; justify-content: space-between; align-items: flex-end;">
+            <span style="font-size: 0.82rem; color: #cbd5e1; background: rgba(0,0,0,0.6); padding: 0.35rem 0.8rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+              <i class="fa-solid fa-layer-group" style="color: #d4a96a; margin-right: 0.4rem;"></i> Fully Responsive Architecture
+            </span>
+            <span style="font-size: 0.82rem; color: #10b981; font-weight: 700; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); padding: 0.35rem 0.8rem; border-radius: 6px;">
+              <i class="fa-solid fa-circle-check" style="margin-right: 0.3rem;"></i> Launch Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div style="padding: 1.2rem 1.6rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 0.8rem;">
+          <button id="close-tpl-modal-btn2" class="btn-outline-glass" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; cursor: pointer;">
+            Close Preview
+          </button>
+          <a href="signup.html" class="sqs-btn-solid-white" style="padding: 0.7rem 1.8rem; font-size: 0.85rem; text-decoration: none;">
+            Start Building with Template <i class="fa-solid fa-arrow-right" style="margin-left: 0.4rem;"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modal = document.getElementById('template-preview-modal');
+  const titleEl = document.getElementById('tpl-modal-title');
+  const catEl = document.getElementById('tpl-modal-category');
+  const imgEl = document.getElementById('tpl-modal-img');
+  const closeBtn1 = document.getElementById('close-tpl-modal-btn');
+  const closeBtn2 = document.getElementById('close-tpl-modal-btn2');
+
+  const closeModal = () => { modal.style.display = 'none'; };
+  closeBtn1?.addEventListener('click', closeModal);
+  closeBtn2?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.openTemplatePreview = (title, category, imgUrl) => {
+    if (titleEl) titleEl.textContent = title;
+    if (catEl) catEl.textContent = category;
+    if (imgEl) imgEl.src = imgUrl;
+    modal.style.display = 'flex';
+  };
+
+  document.querySelectorAll('.sqs-template-card').forEach(card => {
+    const btn = card.querySelector('.preview-template-btn');
+    if (!btn) return;
+    const title = card.querySelector('.sqs-template-title')?.textContent.trim() || 'Custom Template';
+    const category = card.querySelector('.sqs-template-category')?.textContent.trim() || 'Architecture';
+    const img = card.querySelector('img')?.getAttribute('src') || 'images/sqs_template_ceramics.webp';
+
+    btn.addEventListener('click', () => {
+      window.openTemplatePreview(title, category, img);
+    });
+  });
+}
+
 // Initialization on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   new ConstellationCanvas('constellation-canvas');
@@ -1192,7 +1537,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initSubnavScrollSpy();
   initBrandPersonalityWidget();
   initMobileNavDrawer();
+  initDashboardSidebarToggle();
   initSearchModal();
   initCourseFilterTabs();
   initTestimonialSlider();
+  initGlobalPolicyModal();
+  initGlobalFormHandlers();
+  initSafeLinkEnforcer();
+  initTemplatePreviewModal();
 });
