@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &amp; Capabilities - STACKLY Skill Cloud</title>
+  <meta name="description" content="Explore STACKLY's intelligent capabilities: Autonomous AI pathways, browser cloud sandboxes, 1-on-1 expert mentorship, and enterprise skill telemetry.">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       STACKLY FLASH SCREEN / INTRO PRELOADER
+       ========================================================================== -->
+  <div class="site-preloader" id="sitePreloader" aria-label="Loading STACKLY Platform">
+    <div class="preloader-glow-orb"></div>
+    <div class="preloader-grid-mesh"></div>
+    <div class="preloader-content">
+      <div class="preloader-icon-wrapper">
+        <div class="preloader-orbit-outer"></div>
+        <div class="preloader-orbit-inner"></div>
+        <div class="preloader-emblem">
+          <span class="preloader-emblem-glyph"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        </div>
+      </div>
+      <h2 class="preloader-brand-title">STACKLY <span style="color: #22d3ee;">SERVICES</span></h2>
+      <div class="preloader-page-status">
+        <span class="preloader-status-text">Deploying Dedicated VPC Clusters &amp; Sandboxes...</span>
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Ambient Multi-Color Aurora Mesh Orbs & Overlay -->
+  <div class="ambient-aurora-container">
+    <div class="aurora-orb aurora-orb-violet"></div>
+    <div class="aurora-orb aurora-orb-cyan"></div>
+    <div class="aurora-orb aurora-orb-coral"></div>
+  </div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Interactive Constellation Canvas -->
+  <canvas id="constellation-canvas"></canvas>
+
+  <!-- STACKLY Navigation Header -->
+  <header class="stackly-header">
+    <div class="stackly-nav-container">
+      <a href="index.html" class="stackly-brand">
+        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" />
+      </a>
+
+      <nav>
+        <ul class="stackly-nav-menu">
+          <li><a href="index.html" class="stackly-nav-link">Home</a></li>
+          <li><a href="about.html" class="stackly-nav-link">About</a></li>
+          <li><a href="services.html" class="stackly-nav-link active">Services</a></li>
+          <li><a href="blog.html" class="stackly-nav-link">Blog</a></li>
+          <li><a href="contact.html" class="stackly-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="stackly-auth-actions">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-height);">
+
+    <!-- ==========================================================================
+         SECTION 1: HERO SECTION WITH ANIMATED BACKGROUND IMAGE & FLOATING CARDS
+         ========================================================================== -->
+    <section class="sqs-stage-hero" id="builder">
+
+      <!-- Animated background image layer -->
+      <div class="sqs-hero-bg-layer" aria-hidden="true">
+        <img src="images/services_hero_bg.webp" alt="AI Curriculum &amp; Pathway Interface" class="sqs-hero-bg-img" />
+        <div class="sqs-hero-bg-overlay"></div>
+        <div class="sqs-hero-bg-sweep"></div>
+      </div>
+
+      <!-- Center Hero Typography -->
+      <div class="sqs-hero-center-content slide-up-reveal">
+
+        <div class="sqs-page-badge">
+          <span class="pulse-dot"></span>
+          <span>Enterprise &amp; Specialized Services</span>
+        </div>
+
+        <h1 class="sqs-hero-main-heading">
+          Intelligent capabilities for<br>
+          <em>modern engineering teams</em>
+        </h1>
+
+        <p class="sqs-hero-lead">
+          From autonomous skill pathways and zero-latency browser sandboxes to 1-on-1 code mentorship 
+          with Staff engineers — accelerate your technical trajectory with tailored enterprise services.
+        </p>
+
+        <!-- Floating Center Anchor Pill Nav -->
+        <div class="sqs-floating-nav-pill">
+          <a href="#offerings" class="sqs-floating-nav-link active">Offerings</a>
+          <a href="#mentorship" class="sqs-floating-nav-link">Mentorship</a>
+          <a href="#methodology" class="sqs-floating-nav-link">Methodology</a>
+          <a href="#pricing" class="sqs-floating-nav-link">Pricing</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 2: CORE OFFERINGS BENTO GRID
+         ========================================================================== -->
+    <section class="section-spacing" id="offerings" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #10b981;"></span>
+            <span>SECTION 2 • CLOUD CAPABILITIES</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.6vw, 3.2rem); color: #fff; margin-bottom: 0.8rem;">
+            End-to-End <span class="serif-italic" style="color: #d4a96a;">Skill Infrastructure</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Deploy fully managed learning pipelines engineered for high-velocity software and AI organizations.
+          </p>
+        </div>
+
+        <div class="values-grid">
+          
+          <!-- Service 1 -->
+          <div class="value-card tilt-interactive slide-left-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course-ai.webp" alt="Autonomous AI Skill Pathways" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(34,211,238,0.4); color: #22d3ee;">
+                  AUTONOMOUS AI
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-robot"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #22d3ee; background: rgba(34,211,238,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(34,211,238,0.25);">
+                  vLLM + LoRA
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Autonomous AI Skill Pathways
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                Custom curriculum synthesized on demand. Tailored tracks in LLM Fine-Tuning, LoRA Adaptation, vLLM continuous batching, and distributed model serving.
+              </p>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <span class="sqs-chip" style="font-size: 0.75rem;">#PyTorch</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#vLLM</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#CUDA</span>
+              </div>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Path Precision</span>
+              <span class="counter-animate" data-counter="99.8" data-decimals="1" data-suffix="%" style="font-weight: 700; color: #22d3ee; font-family: var(--font-code);">99.8%</span>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="value-card tilt-interactive slide-up-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course_devops_pipeline.webp" alt="Cloud Sandbox Workspaces" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(234,179,8,0.4); color: #eab308;">
+                  EPHEMERAL CLUSTERS
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-bolt"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #10b981; background: rgba(16,185,129,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(16,185,129,0.25);">
+                  GPU Mesh
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Cloud Sandbox Workspaces
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                Instant, browser-native container clusters equipped with isolated memory, high-bandwidth storage, and multi-node Kubernetes meshes with live telemetry.
+              </p>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <span class="sqs-chip" style="font-size: 0.75rem;">#Kubernetes</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#Docker</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#ArgoCD</span>
+              </div>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Cluster Spin-Up</span>
+              <span class="counter-animate" data-prefix="&lt; " data-counter="500" data-suffix="ms" style="font-weight: 700; color: #10b981; font-family: var(--font-code);">&lt; 500ms</span>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="value-card tilt-interactive slide-right-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course_data_science.webp" alt="Enterprise Telemetry & Verification" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(212,169,106,0.4); color: #d4a96a;">
+                  REAL-TIME TELEMETRY
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-chart-simple"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #d4a96a; background: rgba(212,169,106,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(212,169,106,0.25);">
+                  SLA 99.99%
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Enterprise Telemetry &amp; Verification
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                Real-time engineering competency dashboards for leadership. Measure code quality, algorithmic velocity, and test suite completeness across engineering pods.
+              </p>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <span class="sqs-chip" style="font-size: 0.75rem;">#Analytics</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#Benchmarks</span>
+                <span class="sqs-chip" style="font-size: 0.75rem;">#Telemetry</span>
+              </div>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Evaluated Sandboxes</span>
+              <span class="counter-animate" data-counter="2.4" data-decimals="1" data-suffix="M+" style="font-weight: 700; color: #d4a96a; font-family: var(--font-code);">2.4M+</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 3: 1-ON-1 EXPERT MENTORSHIP & CODE REVIEW
+         ========================================================================== -->
+    <section class="section-spacing" id="mentorship" style="background: #11100f;">
+      <div class="container">
+        
+        <div class="services-split-grid">
+          
+          <div class="slide-left-reveal">
+            <div class="tilt-interactive" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+              <img src="images/services_mentorship.webp" alt="Live Expert Mentorship Session" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            </div>
+          </div>
+
+          <div class="slide-right-reveal">
+            <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.8rem;">
+              Human Expertise
+            </p>
+            <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.8vw, 3.2rem); color: #fff; margin-bottom: 1.2rem; line-height: 1.15;">
+              1-on-1 Architectural <span class="serif-italic" style="color: #d4a96a;">Mentorship</span>
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              Pair directly with vetted Staff and Principal software engineers from leading Silicon Valley and European tech hubs. Receive synchronous code reviews, systems design teardowns, and tailored career trajectory coaching.
+            </p>
+
+            <ul class="services-feature-list">
+              <li class="services-feature-item">
+                <span class="services-feature-icon"><i class="fa-solid fa-check"></i></span>
+                <span><strong>Live Systems Teardown:</strong> Real-time diagramming and bottleneck analysis of production code.</span>
+              </li>
+              <li class="services-feature-item">
+                <span class="services-feature-icon"><i class="fa-solid fa-check"></i></span>
+                <span><strong>Tailored Milestone Tracking:</strong> Weekly objectives with automated telemetry verification.</span>
+              </li>
+              <li class="services-feature-item">
+                <span class="services-feature-icon"><i class="fa-solid fa-check"></i></span>
+                <span><strong>Direct Slack &amp; Video Access:</strong> Continuous asynchronous mentorship between live sessions.</span>
+              </li>
+            </ul>
+
+            <div style="margin-top: 2rem;">
+              <a href="signup.html" class="sqs-btn-solid-white" style="padding: 0.9rem 2.2rem; font-size: 0.85rem;">
+                Schedule Mentor Pairing <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 4: 4-STAGE MASTERY METHODOLOGY
+         ========================================================================== -->
+    <section class="section-spacing" id="methodology" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.6rem;">Proven Architecture</p>
+          <h2 class="serif-headline" style="font-size: 2.6rem; color: #fff; margin-bottom: 0.8rem;">
+            The 4-Stage <span class="serif-italic" style="color: #d4a96a;">Mastery Framework</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.1rem;">
+            Every specialization follows a rigorously benchmarked acceleration loop.
+          </p>
+        </div>
+
+        <div class="sqs-steps-grid">
+          
+          <!-- Step 1 -->
+          <div class="sqs-step-card tilt-interactive slide-up-reveal">
+            <div class="sqs-step-card-visual">
+              <img src="images/sqs_step1_workspace.webp" alt="Cognitive Diagnosis" />
+            </div>
+            <div class="sqs-step-number" style="background: var(--grad-sand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">01</div>
+            <h4 class="sqs-step-title">Cognitive Diagnostic</h4>
+            <p class="sqs-step-desc">
+              AI evaluates your baseline proficiency through micro-assessments, establishing targeted benchmarks.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="sqs-step-card tilt-interactive slide-up-reveal" style="animation-delay: 0.15s;">
+            <div class="sqs-step-card-visual">
+              <img src="images/sqs_step2_ai.webp" alt="Sandbox Immersion" />
+            </div>
+            <div class="sqs-step-number" style="background: var(--grad-sand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">02</div>
+            <h4 class="sqs-step-title">Sandbox Immersion</h4>
+            <p class="sqs-step-desc">
+              Execute complex production workloads inside instant, isolated browser cloud containers.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="sqs-step-card tilt-interactive slide-up-reveal" style="animation-delay: 0.3s;">
+            <div class="sqs-step-card-visual">
+              <img src="images/sqs_step3_palette.webp" alt="Telemetry Verification" />
+            </div>
+            <div class="sqs-step-number" style="background: var(--grad-sand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">03</div>
+            <h4 class="sqs-step-title">Telemetry Feedback</h4>
+            <p class="sqs-step-desc">
+              Receive line-by-line algorithmic feedback, latency optimization, and memory efficiency scoring.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="sqs-step-card tilt-interactive slide-up-reveal" style="animation-delay: 0.45s;">
+            <div class="sqs-step-card-visual">
+              <img src="images/sqs_step4_launch.webp" alt="Verified Certification" />
+            </div>
+            <div class="sqs-step-number" style="background: var(--grad-sand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">04</div>
+            <h4 class="sqs-step-title">Industry Certification</h4>
+            <p class="sqs-step-desc">
+              Graduate with cryptographically verified certificates and a public portfolio of deployed artifacts.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 5: FLEXIBLE SUBSCRIPTION & TIERED PRICING
+         ========================================================================== -->
+    <section class="section-spacing" id="pricing" style="background: #11100f;">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;" class="slide-up-reveal">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.6rem;">Transparent Plans</p>
+          <h2 class="serif-headline" style="font-size: 2.6rem; color: #fff; margin-bottom: 0.8rem;">
+            Investment in <span class="serif-italic" style="color: #d4a96a;">Mastery</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.1rem;">
+            Choose the plan that matches your learning pace or organizational scale.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          
+          <!-- Plan 1 -->
+          <div class="pricing-card tilt-interactive slide-left-reveal">
+            <div class="skill-tree-media" style="height: 110px; margin-bottom: 1.2rem; border-radius: 12px; overflow: hidden;">
+              <img src="images/course_mobile_dev.webp" alt="Learner Pro Tier" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Learner Pro</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">For ambitious developers &amp; creators</p>
+            <div class="pricing-price">$29 <span>/ month</span></div>
+            
+            <ul class="services-feature-list" style="margin: 1.5rem 0 2rem; flex: 1;">
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> 500+ Curated Pathways</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Unlimited Browser Sandboxes</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> AI Telemetry Diagnostics</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Verified Certificates</li>
+            </ul>
+
+            <a href="signup.html" class="btn-secondary" style="text-align: center; justify-content: center;">Start 14-Day Trial</a>
+          </div>
+
+          <!-- Plan 2: Featured -->
+          <div class="pricing-card featured tilt-interactive slide-up-reveal">
+            <div class="skill-tree-media" style="height: 110px; margin-bottom: 1.2rem; border-radius: 12px; overflow: hidden;">
+              <img src="images/services_mentorship.webp" alt="Engineering Pod Tier" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span class="pricing-badge">MOST POPULAR</span>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Engineering Pod</h3>
+            <p style="font-size: 0.88rem; color: #d4a96a;">For high-velocity software teams</p>
+            <div class="pricing-price">$79 <span>/ seat / mo</span></div>
+            
+            <ul class="services-feature-list" style="margin: 1.5rem 0 2rem; flex: 1;">
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> All Learner Pro Features</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> 2 Monthly 1-on-1 Mentor Sessions</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Team Telemetry &amp; Skill Dashboards</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Custom Blueprint Synthesis</li>
+            </ul>
+
+            <a href="signup.html" class="sqs-btn-solid-white" style="text-align: center; justify-content: center; width: 100%;">Get Started with Pod <i class="fa-solid fa-wand-magic-sparkles"></i></a>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="pricing-card tilt-interactive slide-right-reveal">
+            <div class="skill-tree-media" style="height: 110px; margin-bottom: 1.2rem; border-radius: 12px; overflow: hidden;">
+              <img src="images/course_blockchain.webp" alt="Enterprise Cloud Tier" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Enterprise Cloud</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">For global organizations &amp; universities</p>
+            <div class="pricing-price">Custom <span>/ SLA</span></div>
+            
+            <ul class="services-feature-list" style="margin: 1.5rem 0 2rem; flex: 1;">
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Dedicated Sandbox Cluster Hosting</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> SSO &amp; SAML Enterprise Auth</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> Custom Internal Curriculum Ingestion</li>
+              <li class="services-feature-item"><span class="services-feature-icon"><i class="fa-solid fa-check"></i></span> 24/7 Dedicated Solutions Architect</li>
+            </ul>
+
+            <a href="contact.html" class="btn-secondary" style="text-align: center; justify-content: center;">Contact Enterprise Team</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 6: ENTERPRISE TEAM PODS & CUSTOM VPC SANDBOX CLUSTERS
+         ========================================================================== -->
+    <section class="section-spacing" id="enterprise-vpc" style="background: #090a10; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div class="bento-asymmetric-grid">
+          
+          <div class="bento-card-large tilt-interactive">
+            <div>
+              <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+                <span class="pulse-dot" style="background: #22d3ee;"></span>
+                <span>SECTION 6 • ENTERPRISE VPC</span>
+              </div>
+              <h2 class="serif-headline" style="font-size: clamp(2rem, 3.2vw, 2.8rem); color: #fff; margin-bottom: 1rem;">
+                Private Cloud <span class="serif-italic" style="color: #d4a96a;">Sandbox Clusters</span>
+              </h2>
+              <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                Deploy dedicated GPU pods within your own AWS/GCP VPC. Complete isolation, corporate SSO governance, and zero egress data leakage.
+              </p>
+
+              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <div>
+                  <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: #22d3ee;">SOC 2 Type II</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Security Certified</div>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: #10b981;">100% Isolated</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Air-Gapped VPC Pods</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-card-media" style="height: 240px;">
+              <img src="images/hero-cloud.webp" alt="Enterprise VPC Infrastructure" />
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem; border-radius: 12px; overflow: hidden;">
+                <img src="images/blog_article_dev.webp" alt="Internal Repo Ingestion" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">FEATURE 01 • CUSTOM CURRICULUM</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">Internal Repo Ingestion</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Train new engineering hires directly against your private codebase architecture inside protected sandboxes.
+              </p>
+            </div>
+
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem; border-radius: 12px; overflow: hidden;">
+                <img src="images/course_uiux_design.webp" alt="Executive Skill Heatmaps" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">FEATURE 02 • TEAM TELEMETRY</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">Executive Skill Heatmaps</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Identify skill gaps across your engineering organization with real-time competency analytics.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 7: INTERACTIVE ROI & SKILL VELOCITY CAREER CALCULATOR
+         ========================================================================== -->
+    <section class="section-spacing" id="calculator" style="background: #0f1017; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #d4a96a;"></span>
+            <span>SECTION 7 • CAREER ACCELERATION</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; margin-bottom: 1rem;">
+            Interactive Career <span class="serif-italic" style="color: #d4a96a;">ROI Estimator</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Calculate your projected compensation acceleration and skill acquisition velocity on STACKLY.
+          </p>
+        </div>
+
+        <div style="background: rgba(22, 24, 34, 0.9); border: 1px solid rgba(212, 169, 106, 0.25); border-radius: 24px; padding: 3rem; max-width: 920px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+          
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; margin-bottom: 0.8rem;">
+                Target Engineering Discipline
+              </label>
+              <select class="form-select-custom" style="margin-bottom: 2rem; width: 100%;">
+                <option selected>AI &amp; Distributed Deep Learning (Avg. +$42,000)</option>
+                <option>Cloud Architecture &amp; Kubernetes (Avg. +$36,000)</option>
+                <option>High-Velocity WebGL Systems (Avg. +$30,000)</option>
+                <option>Cybersecurity &amp; Zero-Trust (Avg. +$38,000)</option>
+              </select>
+
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; margin-bottom: 0.8rem;">
+                Weekly Dedicated Study Commitment: <span style="color: #22d3ee; font-weight: 800;">6 Hours / Week</span>
+              </label>
+              <input type="range" min="2" max="20" value="6" style="width: 100%; accent-color: #22d3ee; margin-bottom: 1.5rem;" />
+              
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted);">
+                <span>2 hrs/wk (Casual)</span>
+                <span>10 hrs/wk (Accelerated)</span>
+                <span>20 hrs/wk (Immersive)</span>
+              </div>
+            </div>
+
+            <div style="background: rgba(10, 14, 24, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; text-align: center;">
+              <div style="font-size: 0.8rem; color: #d4a96a; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Projected Compensation Uplift</div>
+              <div style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem;">+$42,500</div>
+              <div style="font-size: 0.85rem; color: #10b981; font-weight: 700; margin-bottom: 1.5rem;">Estimated Mastery in 4.2 Months</div>
+              <a href="signup.html" class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.8rem;">Start Your Pathway <i class="fa-solid fa-wand-magic-sparkles"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 8: INDUSTRY ACCREDITATION & GLOBAL CERTIFICATIONS
+         ========================================================================== -->
+    <section class="section-spacing" id="certifications" style="background: #08090d; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 4rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #10b981;"></span>
+            <span>SECTION 8 • ACCREDITATIONS</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; margin-bottom: 1rem;">
+            Recognized by <span class="serif-italic" style="color: #d4a96a;">Industry Leaders</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            STACKLY micro-credentials and cryptographic sandbox certificates are accepted by hiring managers worldwide.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.8rem;">
+          
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2rem 1.4rem;">
+            <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem;">
+              <img src="images/hero-ai.webp" alt="PyTorch Foundations" />
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">PyTorch Foundations</h4>
+            <span style="font-size: 0.78rem; color: #22d3ee; font-weight: 700;">Linux Foundation Aligned</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2rem 1.4rem;">
+            <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem;">
+              <img src="images/hero-cloud.webp" alt="Kubernetes Mesh" />
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Kubernetes Mesh</h4>
+            <span style="font-size: 0.78rem; color: #d4a96a; font-weight: 700;">CNCF Standard Compatible</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2rem 1.4rem;">
+            <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem;">
+              <img src="images/course_quantum.webp" alt="FlashAttention CUDA" />
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">FlashAttention CUDA</h4>
+            <span style="font-size: 0.78rem; color: #818cf8; font-weight: 700;">NVIDIA TensorRT Verified</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2rem 1.4rem;">
+            <div class="skill-tree-media" style="height: 120px; margin-bottom: 1rem;">
+              <img src="images/hero-cyber.webp" alt="Zero-Trust Mesh" />
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Zero-Trust Mesh</h4>
+            <span style="font-size: 0.78rem; color: #fb7185; font-weight: 700;">NIST SP 800-207 Verified</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- STACKLY Modern 4-Column Footer -->
+  <footer class="stackly-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Column 1: Brand & Socials -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="footer-brand-logo">
+            <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 36px; display: block;" />
+          </a>
+          <p class="footer-brand-desc">
+            Smart library management for the modern world. Connecting readers with stories since 2014.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X Twitter">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="services.html">Library</a></li>
+            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact</a></li>
+            <li class="footer-link-item"><a href="contact.html#faq">Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Get In Touch -->
+        <div>
+          <h4 class="footer-col-title">GET IN TOUCH</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </span>
+              <span>123 Library Lane,<br>Salem, Tamilnadu 10001</span>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </span>
+              <a href="mailto:hello@stackly.com">hello@stackly.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </span>
+              <a href="tel:+917075550123">+91 (707) 555-0123</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </span>
+              <span>Mon–Fri: 9am – 6pm EST</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Stay in the Loop -->
+        <div>
+          <h4 class="footer-col-title">STAY IN THE LOOP</h4>
+          <p class="footer-newsletter-text">
+            Subscribe to our newsletter for library tips, book recommendations, and exclusive offers.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); window.showToast && window.showToast('Subscription active! Thank you for staying in the loop.', 'success'); this.reset();">
+            <div class="footer-subscribe-box">
+              <input type="email" required placeholder="Enter your email" class="footer-subscribe-input" />
+              <button type="submit" class="footer-subscribe-btn">
+                <span>Subscribe</span>
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+              </button>
+            </div>
+            <div class="footer-security-note">
+              <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i></span> <span>No spam, unsubscribe anytime.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Sub-Footer Legal -->
+      <div class="footer-bottom-bar">
+        <p>© 2026 <strong style="color: #eab308; font-weight: 700;">STACKLY</strong>. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/svg-icons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/gsap-animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

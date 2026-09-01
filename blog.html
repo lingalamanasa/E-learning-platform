@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &amp; Dispatches - STACKLY Skill Cloud</title>
+  <meta name="description" content="Technical research, engineering deep dives, and educational philosophy from STACKLY's research team and domain architects.">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+<body>
+
+  <!-- ==========================================================================
+       STACKLY FLASH SCREEN / INTRO PRELOADER
+       ========================================================================== -->
+  <div class="site-preloader" id="sitePreloader" aria-label="Loading STACKLY Platform">
+    <div class="preloader-glow-orb"></div>
+    <div class="preloader-grid-mesh"></div>
+    <div class="preloader-content">
+      <div class="preloader-icon-wrapper">
+        <div class="preloader-orbit-outer"></div>
+        <div class="preloader-orbit-inner"></div>
+        <div class="preloader-emblem">
+          <span class="preloader-emblem-glyph"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        </div>
+      </div>
+      <h2 class="preloader-brand-title">STACKLY <span style="color: #22d3ee;">JOURNAL</span></h2>
+      <div class="preloader-page-status">
+        <span class="preloader-status-text">Fetching Engineering Whitepapers &amp; Architectural Teardowns...</span>
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Ambient Multi-Color Aurora Mesh Orbs & Overlay -->
+  <div class="ambient-aurora-container">
+    <div class="aurora-orb aurora-orb-violet"></div>
+    <div class="aurora-orb aurora-orb-cyan"></div>
+    <div class="aurora-orb aurora-orb-coral"></div>
+  </div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Interactive Constellation Canvas -->
+  <canvas id="constellation-canvas"></canvas>
+
+  <!-- STACKLY Navigation Header -->
+  <header class="stackly-header">
+    <div class="stackly-nav-container">
+      <a href="index.html" class="stackly-brand">
+        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" />
+      </a>
+
+      <nav>
+        <ul class="stackly-nav-menu">
+          <li><a href="index.html" class="stackly-nav-link">Home</a></li>
+          <li><a href="about.html" class="stackly-nav-link">About</a></li>
+          <li><a href="services.html" class="stackly-nav-link">Services</a></li>
+          <li><a href="blog.html" class="stackly-nav-link active">Blog</a></li>
+          <li><a href="contact.html" class="stackly-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="stackly-auth-actions">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-height);">
+
+    <!-- ==========================================================================
+         SECTION 1: HERO SECTION WITH ANIMATED BACKGROUND IMAGE & FLOATING CARDS
+         ========================================================================== -->
+    <section class="sqs-stage-hero" id="builder">
+
+      <!-- Animated background image layer -->
+      <div class="sqs-hero-bg-layer" aria-hidden="true">
+        <img src="images/blog_hero_bg.webp" alt="Cinematic Creative Study" class="sqs-hero-bg-img" />
+        <div class="sqs-hero-bg-overlay"></div>
+        <div class="sqs-hero-bg-sweep"></div>
+      </div>
+
+      <!-- Center Hero Typography -->
+      <div class="sqs-hero-center-content slide-up-reveal">
+
+        <div class="sqs-page-badge">
+          <span class="pulse-dot"></span>
+          <span>Intelligence Dispatches &amp; Research</span>
+        </div>
+
+        <h1 class="sqs-hero-main-heading">
+          Perspectives on AI, engineering &amp;<br>
+          <em>the craft of learning</em>
+        </h1>
+
+        <p class="sqs-hero-lead">
+          Technical breakdowns, architectural post-mortems, and cognitive design principles 
+          penned by our research team and contributing domain architects.
+        </p>
+
+        <!-- Floating Center Anchor Pill Nav -->
+        <div class="sqs-floating-nav-pill">
+          <a href="#featured" class="sqs-floating-nav-link active">Featured</a>
+          <a href="#articles" class="sqs-floating-nav-link">Latest Articles</a>
+          <a href="#topics" class="sqs-floating-nav-link">Topic Explorer</a>
+          <a href="#newsletter" class="sqs-floating-nav-link">Dispatch Newsletter</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 2: FEATURED EDITORIAL BREAKDOWN
+         ========================================================================== -->
+    <section class="section-spacing" id="featured" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div style="margin-bottom: 2.5rem;" class="slide-up-reveal">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.5rem;">Editor's Pick</p>
+          <h2 class="serif-headline" style="font-size: 2.4rem; color: #fff;">
+            Featured <span class="serif-italic" style="color: #d4a96a;">Deep Dive</span>
+          </h2>
+        </div>
+
+        <div class="blog-featured-card tilt-interactive slide-up-reveal">
+          
+          <div class="blog-featured-img-wrap">
+            <img src="images/blog_article_ai.webp" alt="Synthetic Cognitive Architecture Breakdown" />
+          </div>
+
+          <div style="padding: 1rem 0;">
+            <span class="blog-tag">#NEURAL ARCHITECTURE • 8 MIN READ</span>
+            
+            <h3 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.5vw, 2.3rem); font-weight: 700; color: #ffffff; line-height: 1.25; margin-bottom: 1rem;">
+              Building Cognitive Architecture: How LLMs Shape Next-Gen Training Loops
+            </h3>
+            
+            <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.8rem;">
+              An exhaustive analysis of how autonomous transformer agents can diagnose individual coding misconceptions, synthesize personalized sandbox benchmarks, and compress mastery cycles from months to days.
+            </p>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem; flex-wrap: wrap; gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <div style="width: 38px; height: 38px; border-radius: 50%; background: #d4a96a; color: #121110; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
+                  SV
+                </div>
+                <div>
+                  <span style="display: block; font-size: 0.9rem; font-weight: 700; color: #fff;">Dr. Sarah Vance</span>
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Chief AI Architect • Aug 2026</span>
+                </div>
+              </div>
+
+              <a href="#newsletter" class="sqs-chip" style="font-size: 0.85rem; text-decoration: none; color: #e6e4dc;">
+                Read Article <i class="fa-solid fa-arrow-right" style="margin-left: 0.3rem;"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 3: LATEST DISPATCHES & ARTICLES GRID
+         ========================================================================== -->
+    <section class="section-spacing" id="articles" style="background: #11100f;">
+      <div class="container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;" class="slide-up-reveal">
+          <div>
+            <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.5rem;">Curated Dispatches</p>
+            <h2 class="serif-headline" style="font-size: 2.6rem; color: #fff;">
+              Latest <span class="serif-italic" style="color: #d4a96a;">Articles</span>
+            </h2>
+          </div>
+
+          <div class="filter-tabs" style="margin-bottom: 0;" id="blog-filter-bar">
+            <button class="tab-btn active" data-blog-filter="all">All Topics</button>
+            <button class="tab-btn" data-blog-filter="ai">AI &amp; ML</button>
+            <button class="tab-btn" data-blog-filter="devops">Cloud &amp; DevOps</button>
+            <button class="tab-btn" data-blog-filter="design">UI/UX Systems</button>
+          </div>
+        </div>
+
+        <div class="blog-grid" id="blog-articles-grid">
+          
+          <!-- Article 1 -->
+          <article class="blog-card tilt-interactive slide-left-reveal" data-category="devops">
+            <div class="blog-card-media">
+              <img src="images/blog_article_dev.webp" alt="Cloud Cluster Telemetry Workstation" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#CLOUD DEVOPS • 6 MIN</span>
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 0.8rem;">
+                High-Throughput Telemetry in Distributed Cloud Labs
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1.5rem; flex: 1;">
+                How we architected sub-millisecond logging and memory profiling inside ephemeral browser-based container pods.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                <span>By Alex Rivera</span>
+                <span style="color: #d4a96a; font-weight: 600;">Read Dispatch <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="blog-card tilt-interactive slide-up-reveal" data-category="design">
+            <div class="blog-card-media">
+              <img src="images/blog_article_design.webp" alt="Sensory Design System UI" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#DESIGN SYSTEMS • 5 MIN</span>
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 0.8rem;">
+                Designing Sensory UI/UX for High-Focus Skill Acquisition
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1.5rem; flex: 1;">
+                Applying dark luxury aesthetics, glassmorphic feedback cues, and spatial audio to reduce cognitive fatigue in code editors.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                <span>By Elena Chen</span>
+                <span style="color: #d4a96a; font-weight: 600;">Read Dispatch <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="blog-card tilt-interactive slide-right-reveal" data-category="ai">
+            <div class="blog-card-media">
+              <img src="images/course-ai.webp" alt="Deep Learning &amp; LoRA Adaptation" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#AI &amp; PYTORCH • 10 MIN</span>
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 0.8rem;">
+                Fine-Tuning 70B Parameter Models on Consumer Hardware
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1.5rem; flex: 1;">
+                A comprehensive guide to QLoRA 4-bit quantization, gradient checkpointing, and FlashAttention-2 memory optimizations.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                <span>By Marcus Thorne</span>
+                <span style="color: #d4a96a; font-weight: 600;">Read Dispatch <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 4: INTERACTIVE TOPIC EXPLORER
+         ========================================================================== -->
+    <section class="section-spacing" id="topics" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;" class="slide-up-reveal">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.6rem;">Explore Disciplines</p>
+          <h2 class="serif-headline" style="font-size: 2.6rem; color: #fff; margin-bottom: 0.8rem;">
+            Knowledge <span class="serif-italic" style="color: #d4a96a;">Taxonomy</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.1rem;">
+            Discover deep-dive research archives organized by foundational engineering disciplines.
+          </p>
+        </div>
+
+        <div class="elearn-topic-strip-inner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem;">
+          <div class="elearn-topic-card" style="--tc-color: #818cf8;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="elearn-tc-label">Generative AI</div>
+            <div class="elearn-tc-count">24 Articles</div>
+          </div>
+          <div class="elearn-topic-card" style="--tc-color: #22d3ee;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-bolt" style="font-size: 1.6rem; color: #f59e0b;"></i></div>
+            <div class="elearn-tc-label">WebAssembly</div>
+            <div class="elearn-tc-count">18 Articles</div>
+          </div>
+          <div class="elearn-topic-card" style="--tc-color: #fb7185;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-cloud"></i></div>
+            <div class="elearn-tc-label">Kubernetes Mesh</div>
+            <div class="elearn-tc-count">31 Articles</div>
+          </div>
+          <div class="elearn-topic-card" style="--tc-color: #f59e0b;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="elearn-tc-label">Telemetry Ops</div>
+            <div class="elearn-tc-count">15 Articles</div>
+          </div>
+          <div class="elearn-topic-card" style="--tc-color: #10b981;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-palette"></i></div>
+            <div class="elearn-tc-label">Sensory UI/UX</div>
+            <div class="elearn-tc-count">19 Articles</div>
+          </div>
+          <div class="elearn-topic-card" style="--tc-color: #c084fc;">
+            <div class="elearn-tc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="elearn-tc-label">Cyber SecOps</div>
+            <div class="elearn-tc-count">22 Articles</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 5: DISPATCH NEWSLETTER CTA
+         ========================================================================== -->
+    <section class="section-spacing" id="newsletter" style="background: #11100f;">
+      <div class="container slide-up-reveal">
+        <div class="sqs-bottom-cta-box" style="background: radial-gradient(ellipse at 50% 50%, rgba(212, 169, 106, 0.18) 0%, #191816 80%); border-color: rgba(255, 255, 255, 0.12);">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 1rem;">
+            Bi-Weekly Intelligence Dispatch
+          </p>
+          <h2 class="serif-headline" style="font-size: clamp(2.3rem, 4.5vw, 3.6rem); color: #fff; margin-bottom: 1.25rem;">
+            Architectural insights <span class="serif-italic" style="color: #d4a96a;">delivered to your inbox</span>
+          </h2>
+          <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.7;">
+            Join 45,000+ engineers who receive our bi-weekly deep dives, blueprint templates, and sandbox code walkthroughs. Zero spam, ever.
+          </p>
+
+          <form id="blog-newsletter-form" style="max-width: 520px; margin: 0 auto 2rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <input type="email" required placeholder="Enter your engineering email..." class="form-input-custom" style="flex: 1; min-width: 240px;" />
+            <button type="submit" class="sqs-btn-solid-white" style="padding: 0.95rem 1.8rem; font-size: 0.85rem;">
+              Subscribe <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+          </form>
+
+          <div class="sqs-cta-guarantee-pills">
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Bi-Weekly Delivery</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Curated Code Repos</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Unsubscribe Anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 6: INTERACTIVE ENGINEERING CASE STUDIES & BENCHMARKS
+         ========================================================================== -->
+    <section class="section-spacing" id="case-studies" style="background: #090a10; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div class="bento-asymmetric-grid">
+          
+          <div class="bento-card-large tilt-interactive">
+            <div>
+              <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+                <span class="pulse-dot" style="background: #22d3ee;"></span>
+                <span>SECTION 6 • ENGINEERING CASE STUDY</span>
+              </div>
+              <h2 class="serif-headline" style="font-size: clamp(2rem, 3.2vw, 2.8rem); color: #fff; margin-bottom: 1rem;">
+                Benchmarking 70B Models on <span class="serif-italic" style="color: #d4a96a;">Consumer GPUs</span>
+              </h2>
+              <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                How we achieved 68 tokens/second inference throughput using custom 4-bit AWQ tensor quantization and FlashInfer attention kernels.
+              </p>
+
+              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <div>
+                  <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: #22d3ee;">68 tok/s</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Inference Speed</div>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: #10b981;">-74% VRAM</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Memory Compression</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-card-media" style="height: 240px;">
+              <img src="images/blog_article_ai.webp" alt="AI Model Benchmarking" />
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">CASE STUDY 02 • KUBERNETES</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">Zero-Downtime Cluster Mesh</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                How a FinTech unicorn scaled 1,200 microservices across 3 cloud regions with zero packet drops.
+              </p>
+            </div>
+
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">CASE STUDY 03 • WEBGL</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">60 FPS 3D Shader Rendering</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Optimizing GLSL fragment shaders for ultra-smooth interactive visualizations in mobile browsers.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 7: STACKLY DEV AUDIO PODCASTS & MASTERCLASS REPLAYS
+         ========================================================================== -->
+    <section class="section-spacing" id="podcast" style="background: #0f1017; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #d4a96a;"></span>
+            <span>SECTION 7 • DEV PODCAST</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; margin-bottom: 1rem;">
+            The Intelligent <span class="serif-italic" style="color: #d4a96a;">Compiler Podcast</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Weekly engineering interviews with the minds building modern compilers, LLM runtimes, and distributed operating systems.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          
+          <div class="value-card tilt-interactive" style="padding: 2.2rem;">
+            <div class="skill-tree-media" style="height: 150px; margin-bottom: 1.2rem;">
+              <img src="images/blog-1.webp" alt="Custom CUDA Kernels Podcast Episode" />
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem;">EPISODE #46 • 44 MINS</span>
+              <div class="podcast-wave-box">
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+              </div>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem;">Writing Custom CUDA Kernels for Attention</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+              With Dr. Elena Rostova on memory coalescence, warp shuffles, and shared memory bank conflict elimination.
+            </p>
+            <a href="signup.html" class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.75rem; font-size: 0.85rem;">
+              <i class="fa-solid fa-play" style="margin-right: 0.4rem;"></i> Play Episode (44m)
+            </a>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 2.2rem;">
+            <div class="skill-tree-media" style="height: 150px; margin-bottom: 1.2rem;">
+              <img src="images/blog-2.webp" alt="Ephemeral Sandboxes Podcast Episode" />
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem;">EPISODE #47 • 38 MINS</span>
+              <div class="podcast-wave-box">
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+                <span class="podcast-wave-bar"></span>
+              </div>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem;">The Architecture of Ephemeral Sandboxes</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+              Kenji Takahashi breaks down microVM orchestration, Linux cgroups v2, and sub-second container booting.
+            </p>
+            <a href="signup.html" class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.75rem; font-size: 0.85rem;">
+              <i class="fa-solid fa-play" style="margin-right: 0.4rem;"></i> Play Episode (38m)
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 8: COMMUNITY RFCS & OPEN RESEARCH PROPOSALS
+         ========================================================================== -->
+    <section class="section-spacing" id="rfcs" style="background: #08090d; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #10b981;"></span>
+            <span>SECTION 8 • OPEN DISCUSSIONS</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; margin-bottom: 1rem;">
+            Community RFCs &amp; <span class="serif-italic" style="color: #d4a96a;">Research Proposals</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Participate in open architectural peer reviews and vote on upcoming curriculum tracks and cloud sandbox tools.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 900px; margin: 0 auto;">
+          
+          <div class="value-card tilt-interactive" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1.2rem; align-items: center;">
+              <div style="width: 50px; height: 50px; border-radius: 10px; overflow: hidden; flex-shrink: 0;">
+                <img src="images/course-fullstack.webp" alt="WebGPU Track" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem;">
+                  <span class="sqs-chip" style="font-size: 0.7rem; color: #10b981; border-color: rgba(16, 185, 129, 0.3);">RFC-104 • APPROVED</span>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Submitted by @alexp_dev</span>
+                </div>
+                <h4 style="font-size: 1.1rem; color: #fff; margin: 0;">Standardized WebGPU Shading Language (WGSL) Course Track</h4>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="font-family: var(--font-code); color: #d4a96a; font-weight: 700; font-size: 0.9rem;">▲ 342 Votes</span>
+              <a href="signup.html" class="btn-outline-glass" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;">Join Discussion</a>
+            </div>
+          </div>
+
+          <div class="value-card tilt-interactive" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1.2rem; align-items: center;">
+              <div style="width: 50px; height: 50px; border-radius: 10px; overflow: hidden; flex-shrink: 0;">
+                <img src="images/course-cyber.webp" alt="Cryptographic Git Verification" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem;">
+                  <span class="sqs-chip" style="font-size: 0.7rem; color: #22d3ee; border-color: rgba(34, 211, 238, 0.3);">RFC-105 • UNDER REVIEW</span>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Submitted by @marcus_vance</span>
+                </div>
+                <h4 style="font-size: 1.1rem; color: #fff; margin: 0;">Automated Cryptographic Verification Hashes for Lab Git Commits</h4>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="font-family: var(--font-code); color: #d4a96a; font-weight: 700; font-size: 0.9rem;">▲ 518 Votes</span>
+              <a href="signup.html" class="btn-outline-glass" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;">Join Discussion</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- STACKLY Modern 4-Column Footer -->
+  <footer class="stackly-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Column 1: Brand & Socials -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="footer-brand-logo">
+            <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 36px; display: block;" />
+          </a>
+          <p class="footer-brand-desc">
+            Smart library management for the modern world. Connecting readers with stories since 2014.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X Twitter">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="services.html">Library</a></li>
+            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact</a></li>
+            <li class="footer-link-item"><a href="contact.html#faq">Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Get In Touch -->
+        <div>
+          <h4 class="footer-col-title">GET IN TOUCH</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </span>
+              <span>123 Library Lane,<br>Salem, Tamilnadu 10001</span>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </span>
+              <a href="mailto:hello@stackly.com">hello@stackly.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </span>
+              <a href="tel:+917075550123">+91 (707) 555-0123</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </span>
+              <span>Mon–Fri: 9am – 6pm EST</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Stay in the Loop -->
+        <div>
+          <h4 class="footer-col-title">STAY IN THE LOOP</h4>
+          <p class="footer-newsletter-text">
+            Subscribe to our newsletter for library tips, book recommendations, and exclusive offers.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); window.showToast && window.showToast('Subscription active! Thank you for staying in the loop.', 'success'); this.reset();">
+            <div class="footer-subscribe-box">
+              <input type="email" required placeholder="Enter your email" class="footer-subscribe-input" />
+              <button type="submit" class="footer-subscribe-btn">
+                <span>Subscribe</span>
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+              </button>
+            </div>
+            <div class="footer-security-note">
+              <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i></span> <span>No spam, unsubscribe anytime.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Sub-Footer Legal -->
+      <div class="footer-bottom-bar">
+        <p>© 2026 <strong style="color: #eab308; font-weight: 700;">STACKLY</strong>. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/svg-icons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/gsap-animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Blog filtering
+      const blogBtns = document.querySelectorAll('#blog-filter-bar button');
+      const blogCards = document.querySelectorAll('#blog-articles-grid .blog-card');
+
+      blogBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          blogBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-blog-filter');
+
+          blogCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Newsletter
+      document.getElementById('blog-newsletter-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        window.showToast('Intelligence Dispatch Subscription Confirmed! Welcome aboard.', 'success');
+        e.target.reset();
+      });
+    });
+  </script>
+</body>
+</html>

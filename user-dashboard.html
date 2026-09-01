@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User &amp; Student Dashboard - STACKLY</title>
+  <meta name="description" content="Comprehensive 8-section learner intelligence portal featuring animated metric telemetry, interactive study velocity line charts, WebAssembly cloud sandboxes, and verified skill progression.">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="background: #080a10; color: #fff; min-height: 100vh; font-family: var(--font-sans);">
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Ambient Multi-Color Aurora Mesh Orbs & Overlay -->
+  <div class="ambient-aurora-container" style="opacity: 0.55;">
+    <div class="aurora-orb aurora-orb-violet"></div>
+    <div class="aurora-orb aurora-orb-cyan"></div>
+    <div class="aurora-orb aurora-orb-coral"></div>
+  </div>
+  <div class="cyber-grid-overlay" style="opacity: 0.4;"></div>
+
+  <!-- Interactive Constellation Canvas -->
+  <canvas id="constellation-canvas"></canvas>
+
+  <!-- STACKLY User Dashboard Header -->
+  <header class="stackly-header" style="background: rgba(10, 12, 18, 0.96); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 100; width: 100%;">
+    <div class="stackly-nav-container" style="max-width: 100%; width: 100%; padding: 0 2.5rem;">
+      <a href="index.html" class="stackly-brand">
+        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" style="height: 32px;" />
+        <span style="font-size: 0.7rem; background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 700; letter-spacing: 0.05em; margin-left: 0.6rem;">LEARNER PORTAL</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.82rem;">
+          <span style="color: #f59e0b;"><i class="fa-solid fa-fire"></i></span>
+          <span style="color: #e6e4dc; font-weight: 700;">14-Day Streak</span>
+        </div>
+      <!-- Direct Center Links -->
+      <nav>
+        <ul class="stackly-nav-menu">
+          <li><a href="index.html" class="stackly-nav-link">Home</a></li>
+          <li><a href="courses.html" class="stackly-nav-link">Courses</a></li>
+          <li><a href="instructors.html" class="stackly-nav-link">Instructors</a></li>
+          <li><a href="about.html" class="stackly-nav-link">About</a></li>
+          <li><a href="blog.html" class="stackly-nav-link">Blog</a></li>
+          <li><a href="contact.html" class="stackly-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span class="sqs-chip" style="font-size: 0.78rem; color: #22d3ee; border-color: rgba(34, 211, 238, 0.3);">
+          <i class="fa-solid fa-graduation-cap"></i> Student Portal
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout" style="padding-top: var(--header-height); display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; width: 100%;">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar" style="background: rgba(12, 14, 20, 0.98); border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 2rem 1.4rem; position: sticky; top: var(--header-height); height: calc(100vh - var(--header-height)); overflow-y: auto; display: flex; flex-direction: column; gap: 1.8rem; width: 280px;">
+      
+      <nav style="flex: 1;">
+        <ul class="sidebar-nav" style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; padding: 0; margin: 0;">
+          <li class="sidebar-nav-item active">
+            <a href="#sec-user-hero" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #fff; text-decoration: none; font-size: 0.88rem; font-weight: 600; background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.25);">
+              <i class="fa-solid fa-bullseye" style="width: 16px; color: #22d3ee;"></i>
+              <span>1. Daily Goal &amp; Hero</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-kpis" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-chart-simple" style="width: 16px; color: #22d3ee;"></i>
+              <span>2. Telemetry KPIs</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-velocity-chart" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-chart-line" style="width: 16px; color: #d4a96a;"></i>
+              <span>3. Study Velocity Chart</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-courses" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-book-bookmark" style="width: 16px; color: #10b981;"></i>
+              <span>4. Active Tracks (4)</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-sandbox" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-terminal" style="width: 16px; color: #22d3ee;"></i>
+              <span>5. Lab Sandbox Studio</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-matrix" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-brain" style="width: 16px; color: #818cf8;"></i>
+              <span>6. Skill Matrix Rings</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-mentorship" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-user-tie" style="width: 16px; color: #fb7185;"></i>
+              <span>7. 1-on-1 Mentorship</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-achievements" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-award" style="width: 16px; color: #d4a96a;"></i>
+              <span>8. Badges &amp; Rankings</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-radar" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-compass-drafting" style="width: 16px; color: #22d3ee;"></i>
+              <span>9. Cognitive Radar</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#sec-user-heatmap" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 10px; color: #94a3b8; text-decoration: none; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-fire" style="width: 16px; color: #f59e0b;"></i>
+              <span>10. Heatmap &amp; Growth</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
+            <a href="login.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; border-radius: 10px; color: #fb7185; text-decoration: none; font-size: 0.85rem; font-weight: 600; background: rgba(251, 113, 133, 0.08); border: 1px solid rgba(251, 113, 133, 0.2); transition: all 0.2s;">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </aside>
+
+    <!-- Main Content Area with 8 Rich Sections -->
+    <main class="dashboard-main" style="padding: 2.2rem 3.5rem; display: flex; flex-direction: column; gap: 3rem; width: 100%; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+      
+      <!-- Top Dynamic User Greeting Bar -->
+      <div class="dash-welcome-bar slide-up-reveal" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; background: linear-gradient(135deg, rgba(20, 26, 40, 0.75), rgba(12, 16, 26, 0.88)); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 18px; backdrop-filter: blur(14px); flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: #fff; margin: 0; font-weight: 700;">
+            Welcome back, <span id="user-greeting-name" style="color: #22d3ee; font-style: italic;">Alex Mercer</span> <i class="fa-solid fa-hand-wave" style="color: #f59e0b;"></i>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.25rem 0 0;">Learner Workspace • Continue your active track to maintain your 14-day streak</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 100px;">
+          <span class="pulse-dot" style="background: #22d3ee;"></span>
+          <span style="font-size: 0.82rem; color: #e6e4dc; font-family: var(--font-code);" id="user-time-ticker">Live Cloud Telemetry</span>
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           SECTION 1: HERO TELEMETRY HEADER & DAILY AI GOAL WIDGET
+           ========================================================================== -->
+      <section id="sec-user-hero" class="slide-up-reveal" style="background: linear-gradient(135deg, rgba(26, 32, 48, 0.85), rgba(15, 18, 28, 0.95)); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+        <div style="position: absolute; right: -50px; top: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.8rem;">
+              <span class="pulse-dot" style="background: #22d3ee;"></span>
+              <span>SECTION 1 • COGNITIVE WORKSPACE</span>
+            </div>
+            <h1 class="serif-headline" style="font-size: 2.5rem; color: #fff; margin-bottom: 0.4rem;">
+              Welcome back, <span class="serif-italic" style="color: #d4a96a;">Alex Mercer</span>
+            </h1>
+            <p style="color: var(--text-secondary); font-size: 1rem; max-width: 580px; line-height: 1.6; margin: 0;">
+              You have completed <strong>75%</strong> of your daily technical focus target. Keep your momentum going to unlock Level 5.
+            </p>
+          </div>
+
+          <!-- Daily Goal Progress Widget -->
+          <div style="background: rgba(10, 14, 24, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 1.4rem 1.8rem; min-width: 280px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Daily Study Target</span>
+              <span style="font-family: var(--font-code); color: #22d3ee; font-weight: 700; font-size: 0.9rem;">45 / 60 min</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem;">
+              <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #6366f1, #22d3ee); border-radius: 10px;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: #94a3b8;">
+              <span><i class="fa-solid fa-fire" style="color: #f59e0b;"></i> 14-Day Streak</span>
+              <span style="color: #10b981; font-weight: 600;">+150 XP pending</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 2: ANIMATED METRIC CARDS (4 KPIS)
+           ========================================================================== -->
+      <section id="sec-user-kpis">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 2 • METRICS</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0;">Performance Telemetry</h2>
+          </div>
+          <span style="font-size: 0.82rem; color: #10b981; font-weight: 600;">● Live Cloud Sync (0.4s ago)</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+          
+          <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Active Tracks</span>
+              <span style="font-size: 1.2rem; color: #818cf8;"><i class="fa-solid fa-book-open"></i></span>
+            </div>
+            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 800; color: #fff;" data-counter-target="4" data-counter-suffix=" Tracks">
+              0 Tracks
+            </div>
+            <span style="font-size: 0.78rem; color: #10b981; font-weight: 600;">+2 In Progress this week</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Study Hours Logged</span>
+              <span style="font-size: 1.2rem; color: #22d3ee;"><i class="fa-solid fa-clock"></i></span>
+            </div>
+            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 800; color: #22d3ee;" data-counter-target="148.5" data-counter-suffix=" hrs">
+              0 hrs
+            </div>
+            <span style="font-size: 0.78rem; color: #10b981; font-weight: 600;">+18.4% study velocity</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Skills Mastered</span>
+              <span style="font-size: 1.2rem; color: #ec4899;"><i class="fa-solid fa-brain"></i></span>
+            </div>
+            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 800; color: #d4a96a;" data-counter-target="24" data-counter-suffix=" Skills">
+              0 Skills
+            </div>
+            <span style="font-size: 0.78rem; color: #d4a96a; font-weight: 600;">Verified via Telemetry</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Global Leaderboard</span>
+              <span style="font-size: 1.2rem; color: #d4a96a;"><i class="fa-solid fa-trophy"></i></span>
+            </div>
+            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 800; color: #c084fc;" data-counter-target="42" data-counter-prefix="#" data-counter-suffix=" Rank">
+              #0 Rank
+            </div>
+            <span style="font-size: 0.78rem; color: #c084fc; font-weight: 600;">Top 2% of 120k learners</span>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 3: INTERACTIVE STUDY VELOCITY SVG LINE CHART
+           ========================================================================== -->
+      <section id="sec-user-velocity-chart" style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 24px; padding: 2.4rem; backdrop-filter: blur(14px);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 3 • ANALYTICS</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0 0 0.3rem;">Weekly Learning Velocity &amp; Focus Hours</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Interactive cubic spline chart with live day-by-day telemetry tooltips.</p>
+          </div>
+          <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <span style="display: inline-flex; align-items: center; gap: 0.4rem; color: #22d3ee; font-size: 0.82rem;">
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #22d3ee; display: inline-block;"></span>
+              Study Hours (Hours/Day)
+            </span>
+          </div>
+        </div>
+
+        <div id="user-velocity-chart" style="width: 100%; min-height: 260px;"></div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 4: ACTIVE ENGINEERING SPECIALIZATIONS (COURSES)
+           ========================================================================== -->
+      <section id="sec-user-courses">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 4 • CURRICULUM</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0;">Enrolled Engineering Tracks</h2>
+          </div>
+          <a href="services.html" class="btn-outline-glass" style="font-size: 0.82rem; padding: 0.4rem 1rem;">Explore All Tracks +</a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
+          
+          <div class="blog-card tilt-interactive">
+            <div class="blog-card-media">
+              <img src="images/course-ai.webp" alt="AI Mastery" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#AI • 85% COMPLETED</span>
+              <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">LLM Fine-Tuning &amp; LoRA Quantization</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">Module 08: FlashAttention-2 custom kernel optimization.</p>
+              <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem;">
+                <div style="width: 85%; height: 100%; background: linear-gradient(90deg, #6366f1, #22d3ee); border-radius: 10px;"></div>
+              </div>
+              <button class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.7rem; font-size: 0.85rem;" onclick="location.href='#sec-user-sandbox'">Resume Lab Sandbox <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <div class="blog-card tilt-interactive">
+            <div class="blog-card-media">
+              <img src="images/course-cloud.webp" alt="Cloud Mastery" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#CLOUD • 62% COMPLETED</span>
+              <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Kubernetes Mesh &amp; Cloud Telemetry</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">Module 05: ArgoCD GitOps continuous deployment pipelines.</p>
+              <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem;">
+                <div style="width: 62%; height: 100%; background: linear-gradient(90deg, #d4a96a, #f59e0b); border-radius: 10px;"></div>
+              </div>
+              <button class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.7rem; font-size: 0.85rem;" onclick="location.href='#sec-user-sandbox'">Resume Lab Sandbox <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <div class="blog-card tilt-interactive">
+            <div class="blog-card-media">
+              <img src="images/course-fullstack.webp" alt="Full-Stack Mastery" />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-tag">#FULLSTACK • 90% COMPLETED</span>
+              <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">WebGL Shaders &amp; High-Velocity UI</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">Module 12: Fragment shaders and post-processing passes.</p>
+              <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem;">
+                <div style="width: 90%; height: 100%; background: linear-gradient(90deg, #10b981, #22d3ee); border-radius: 10px;"></div>
+              </div>
+              <button class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.7rem; font-size: 0.85rem;" onclick="location.href='#sec-user-sandbox'">Resume Lab Sandbox <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 5: INTERACTIVE WEBASSEMBLY CLOUD LAB SANDBOX STUDIO
+           ========================================================================== -->
+      <section id="sec-user-sandbox" style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 24px; padding: 2.4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 5 • CLOUD IDE</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0 0 0.3rem;">Interactive Lab Sandbox Studio</h2>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Isolated browser-based PyTorch container runtime with instantaneous execution feedback.</p>
+          </div>
+          <button id="run-code-btn" class="sqs-btn-solid-white" style="padding: 0.75rem 1.6rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-play" style="margin-right: 0.4rem;"></i>Run Code in Sandbox
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem;">
+          
+          <!-- Code Editor -->
+          <div style="background: #11131a; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="background: #181b24; padding: 0.65rem 1.2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-family: var(--font-code); font-size: 0.82rem; color: #38bdf8;">quantize_lora_kernel.py</span>
+              <span style="font-size: 0.75rem; color: #10b981;">● Python 3.12 (WASM Virtual Node)</span>
+            </div>
+            <textarea id="sandbox-code-editor" style="width: 100%; height: 320px; background: transparent; border: none; color: #e2e8f0; font-family: var(--font-code); font-size: 0.88rem; line-height: 1.6; padding: 1.2rem; outline: none; resize: none;" spellcheck="false">
+import torch
+import torch.nn as nn
+
+class LoRAAdaptiveLayer(nn.Module):
+    def __init__(self, in_features: int, out_features: int, rank: int = 16):
+        super().__init__()
+        self.scaling = 2.0 / rank
+        self.lora_A = nn.Parameter(torch.randn(in_features, rank) * 0.02)
+        self.lora_B = nn.Parameter(torch.zeros(rank, out_features))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # High-throughput low-rank adaptation matrix product
+        adapter_output = (x @ self.lora_A) @ self.lora_B
+        return adapter_output * self.scaling
+
+print("[INIT] Initialized 16-rank LoRA adapter layer.")
+            </textarea>
+          </div>
+
+          <!-- Terminal Telemetry -->
+          <div style="background: #090a0f; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="background: #12141c; padding: 0.65rem 1.2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-family: var(--font-code); font-size: 0.82rem; color: #94a3b8;">Terminal Telemetry &amp; Logs</span>
+              <span style="font-size: 0.75rem; color: #64748b;">Memory: 41.2MB / 512MB</span>
+            </div>
+            <pre id="sandbox-terminal-output" style="flex: 1; padding: 1.2rem; margin: 0; font-family: var(--font-code); font-size: 0.85rem; line-height: 1.6; color: #cbd5e1; overflow-y: auto; white-space: pre-wrap;">
+<span style="color: #64748b;">Ready. Click "Run Code in Sandbox" to execute in your isolated container.</span>
+            </pre>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 6: MULTI-DIMENSIONAL SKILL MATRIX & COMPETENCY RINGS
+           ========================================================================== -->
+      <section id="sec-user-matrix">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 6 • COMPETENCY</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0;">Skill Competency Matrix</h2>
+          </div>
+          <span style="font-size: 0.82rem; color: #d4a96a; font-weight: 700;">4 Verified Proficiencies</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.8rem;">
+          
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2.2rem 1.5rem;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; border: 6px solid #22d3ee; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 800; color: #22d3ee; box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);">
+              88%
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">PyTorch &amp; AI</h3>
+            <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">● LEVEL 5 MASTER</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2.2rem 1.5rem;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; border: 6px solid #d4a96a; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 800; color: #d4a96a; box-shadow: 0 0 25px rgba(212, 169, 106, 0.3);">
+              74%
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Cloud Systems</h3>
+            <span style="font-size: 0.78rem; color: #d4a96a; font-weight: 700;">● LEVEL 4 PRACTITIONER</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2.2rem 1.5rem;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; border: 6px solid #818cf8; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 800; color: #818cf8; box-shadow: 0 0 25px rgba(129, 140, 248, 0.3);">
+              92%
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Full-Stack WebGL</h3>
+            <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">● LEVEL 6 SENIOR</span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="text-align: center; padding: 2.2rem 1.5rem;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; border: 6px solid #fb7185; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 800; color: #fb7185; box-shadow: 0 0 25px rgba(251, 113, 133, 0.3);">
+              65%
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Systems Security</h3>
+            <span style="font-size: 0.78rem; color: #fb7185; font-weight: 700;">● LEVEL 3 ASSOCIATE</span>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 7: 1-ON-1 EXPERT MENTORSHIP & LIVE CODE REVIEW SCHEDULE
+           ========================================================================== -->
+      <section id="sec-user-mentorship" style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 24px; padding: 2.4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 7 • MENTORSHIP</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0 0 0.3rem;">Upcoming 1-on-1 Code Reviews</h2>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Direct pairing with industry lead architects and technical mentors.</p>
+          </div>
+          <button class="btn-outline-glass" style="padding: 0.5rem 1.2rem; font-size: 0.82rem;" onclick="window.showToast('Opening mentor scheduler calendar...', 'info');">Book New Session +</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.8rem;">
+          
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.6rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+              <div>
+                <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.4rem;">TOMORROW • 3:00 PM EST</span>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff;">Distributed Systems Architecture Audit</h3>
+                <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0.4rem 0 0;">Mentor: <strong>Dr. Sarah Vance</strong> (Principal Architect)</p>
+              </div>
+              <span class="pulse-dot" style="background: #10b981;"></span>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.2rem;">
+              Agenda: Review low-rank tensor kernels and multi-node batch synchronization strategies.
+            </p>
+            <button class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 0.75rem; font-size: 0.85rem;" onclick="window.showToast('Connecting to encrypted WebRTC video room...', 'success');">
+              Join WebRTC Video Room <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.4rem;">NEXT WEEK • FRIDAY</span>
+              <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff;">Full-Stack WebGL Portfolio Critique</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0.4rem 0 0;">Mentor: <strong>Marcus Brody</strong> (Creative Technologist)</p>
+            </div>
+            <div style="display: flex; gap: 0.8rem; margin-top: 1.5rem;">
+              <button class="btn-outline-glass" style="flex: 1; padding: 0.6rem; font-size: 0.8rem;" onclick="window.showToast('Session rescheduled link sent to your email.', 'info');">Reschedule</button>
+              <button class="btn-outline-glass" style="flex: 1; padding: 0.6rem; font-size: 0.8rem; color: #22d3ee;" onclick="window.showToast('Preparing shared workspace snippet...', 'info');">Add Notes</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 8: CRYPTOGRAPHIC CERTIFICATES & GLOBAL LEADERBOARD
+           ========================================================================== -->
+      <section id="sec-user-achievements">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 8 • CREDENTIALS</div>
+            <h2 class="serif-headline" style="font-size: 1.8rem; color: #fff; margin: 0;">Verified Certificates &amp; Global Standings</h2>
+          </div>
+          <span style="font-size: 0.82rem; color: #10b981; font-weight: 700;">● Cryptographically Signed</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.8rem;">
+          
+          <!-- Certificates List -->
+          <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+            
+            <div class="value-card tilt-interactive" style="display: flex; gap: 1.2rem; align-items: center;">
+              <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(34, 211, 238, 0.15); border: 1px solid rgba(34, 211, 238, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #22d3ee; flex-shrink: 0;">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Certified LLM Fine-Tuner</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">ID: STK-8921-AI • Issued Aug 2026</p>
+                <a href="#" style="color: #22d3ee; font-size: 0.82rem; font-weight: 700; text-decoration: none;" onclick="window.showToast('Downloading verified certificate PDF...', 'success'); return false;">Download Certificate PDF <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.85em;"></i></a>
+              </div>
+            </div>
+
+            <div class="value-card tilt-interactive" style="display: flex; gap: 1.2rem; align-items: center;">
+              <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(212, 169, 106, 0.15); border: 1px solid rgba(212, 169, 106, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #d4a96a; flex-shrink: 0;">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Wasm Cloud Speedrunner</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Completed 50+ sandboxes without errors</p>
+                <span style="color: #d4a96a; font-size: 0.82rem; font-weight: 700;">Verified Badge Active <i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Leaderboard Table -->
+          <div style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 18px; padding: 1.5rem;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">Global Top 5 Engineers</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0.8rem; background: rgba(212, 169, 106, 0.1); border-radius: 8px;">
+                <span style="font-weight: 700; color: #d4a96a;"><i class="fa-solid fa-medal" style="color: #d4a96a; margin-right: 0.35rem;"></i>#1 Kenji Takahashi</span>
+                <span style="font-family: var(--font-code); color: #d4a96a; font-weight: 700;">5,420 XP</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0.8rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
+                <span style="color: #fff;"><i class="fa-solid fa-medal" style="color: #94a3b8; margin-right: 0.35rem;"></i>#2 Elena Rostova</span>
+                <span style="font-family: var(--font-code); color: #94a3b8;">4,120 XP</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0.8rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
+                <span style="color: #fff;"><i class="fa-solid fa-medal" style="color: #b45309; margin-right: 0.35rem;"></i>#3 Liam O'Connor</span>
+                <span style="font-family: var(--font-code); color: #94a3b8;">3,980 XP</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0.8rem; background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: 8px;">
+                <span style="font-weight: 700; color: #22d3ee;"><i class="fa-solid fa-arrow-right" style="color: #22d3ee; margin-right: 0.35rem;"></i>#42 Alex Mercer (You)</span>
+                <span style="font-family: var(--font-code); color: #22d3ee; font-weight: 700;">2,840 XP</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 9: COGNITIVE FOCUS RADAR & CODE QUALITY TELEMETRY
+           ========================================================================== -->
+      <section id="sec-user-radar" class="dashboard-section slide-up-reveal" style="background: rgba(15, 17, 26, 0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.2rem; display: flex; flex-direction: column; gap: 1.8rem;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.2rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; color: #22d3ee; border-color: rgba(34, 211, 238, 0.3);">SECTION 9 • COGNITIVE RADAR</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Real-Time AST Heuristics</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0;">Multi-Dimensional Competency Radar</h3>
+          </div>
+          <div style="display: flex; gap: 0.8rem;">
+            <span class="sqs-chip" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);">Top 4% Overall Accuracy</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem;" class="bento-asymmetric-grid">
+          
+          <!-- Interactive SVG Radar Chart -->
+          <div style="background: rgba(9, 10, 16, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 1.8rem; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+            <h4 style="font-size: 0.95rem; color: #94a3b8; font-weight: 700; margin-bottom: 1rem; text-align: center;">5-AXIS ARCHITECTURAL BALANCE</h4>
+            
+            <svg viewBox="0 0 300 300" style="width: 100%; max-width: 280px; height: auto;">
+              <!-- Background Concentric Polygons -->
+              <polygon points="150,30 264,113 220,247 80,247 36,113" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <polygon points="150,60 236,122 203,223 97,223 64,122" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <polygon points="150,90 207,131 185,198 115,198 93,131" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              
+              <!-- Axis lines -->
+              <line x1="150" y1="150" x2="150" y2="30" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+              <line x1="150" y1="150" x2="264" y2="113" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+              <line x1="150" y1="150" x2="220" y2="247" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+              <line x1="150" y1="150" x2="80" y2="247" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+              <line x1="150" y1="150" x2="36" y2="113" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+
+              <!-- User Radar Polygon (92%, 88%, 95%, 81%, 89%) -->
+              <polygon points="150,40 250,118 216,242 86,238 48,117" fill="rgba(34, 211, 238, 0.25)" stroke="#22d3ee" stroke-width="2.5" />
+              
+              <!-- Radar Vertex Dots -->
+              <circle cx="150" cy="40" r="4.5" fill="#22d3ee" />
+              <circle cx="250" cy="118" r="4.5" fill="#22d3ee" />
+              <circle cx="216" cy="242" r="4.5" fill="#22d3ee" />
+              <circle cx="86" cy="238" r="4.5" fill="#22d3ee" />
+              <circle cx="48" cy="117" r="4.5" fill="#22d3ee" />
+            </svg>
+
+            <!-- Axis Labels -->
+            <div style="display: flex; justify-content: space-around; width: 100%; font-size: 0.75rem; color: #94a3b8; font-family: var(--font-code); margin-top: 0.8rem;">
+              <span style="color: #22d3ee;">Algorithms: 92%</span>
+              <span style="color: #d4a96a;">Architecture: 88%</span>
+              <span style="color: #10b981;">Tests: 95%</span>
+            </div>
+          </div>
+
+          <!-- Code Quality Metrics & Live Counters -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: center;">
+            
+            <div class="value-card tilt-interactive" style="padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Peer Code Reviews</span>
+                <h4 style="font-size: 1.8rem; font-weight: 800; color: #22d3ee; margin: 0.2rem 0 0;" class="stat-number" data-target="142">142</h4>
+              </div>
+              <span style="font-size: 1.8rem; color: #22d3ee;"><i class="fa-solid fa-comments"></i></span>
+            </div>
+
+            <div class="value-card tilt-interactive" style="padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Unit Tests Passing</span>
+                <h4 style="font-size: 1.8rem; font-weight: 800; color: #10b981; margin: 0.2rem 0 0;" class="stat-number" data-target="1840">1,840</h4>
+              </div>
+              <span style="font-size: 1.8rem; color: #818cf8;"><i class="fa-solid fa-flask"></i></span>
+            </div>
+
+            <div class="value-card tilt-interactive" style="padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Avg Sandbox Boot Speed</span>
+                <h4 style="font-size: 1.8rem; font-weight: 800; color: #d4a96a; margin: 0.2rem 0 0;">482ms</h4>
+              </div>
+              <span style="font-size: 1.8rem; color: #f59e0b;"><i class="fa-solid fa-bolt"></i></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==========================================================================
+           SECTION 10: 12-WEEK STUDY VELOCITY HEATMAP & REAL-TIME XP GROWTH
+           ========================================================================== -->
+      <section id="sec-user-heatmap" class="dashboard-section slide-up-reveal" style="background: rgba(15, 17, 26, 0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.2rem; display: flex; flex-direction: column; gap: 1.8rem;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.2rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">SECTION 10 • XP GROWTH</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Continuous Learning Trajectory</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0;">12-Week Study Heatmap &amp; XP Progression</h3>
+          </div>
+          <span style="font-family: var(--font-code); color: #d4a96a; font-weight: 700; font-size: 0.9rem;">+2,840 XP Gained This Month</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="bento-asymmetric-grid">
+          
+          <!-- Activity Heatmap Matrix -->
+          <div style="background: rgba(9, 10, 16, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 1.6rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+              <h4 style="font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0;">84-Day Activity Matrix</h4>
+              <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: #94a3b8;">
+                <span>Less</span>
+                <span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(255,255,255,0.08);"></span>
+                <span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(34,211,238,0.3);"></span>
+                <span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(34,211,238,0.7);"></span>
+                <span style="width: 10px; height: 10px; border-radius: 2px; background: #22d3ee;"></span>
+                <span>More</span>
+              </div>
+            </div>
+
+            <!-- Heatmap Grid (7 rows x 12 cols = 84 days) -->
+            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px;">
+              <!-- 84 generated dynamic cells with varied intensity -->
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.3);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.7);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.5);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(255,255,255,0.08);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.8);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.4);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.9);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.8);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.6);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.9);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(255,255,255,0.08);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.5);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.7);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.4);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.7);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.4);"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.8);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(255,255,255,0.08);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+              <div style="height: 16px; border-radius: 3px; background: rgba(34,211,238,0.6);"></div>
+              <div style="height: 16px; border-radius: 3px; background: #22d3ee;"></div>
+            </div>
+
+            <div style="margin-top: 1rem; font-size: 0.8rem; color: #10b981; font-weight: 600;">
+              <i class="fa-solid fa-bolt" style="color: #f59e0b; margin-right: 0.3rem;"></i> 14-day unbroken study streak active
+            </div>
+          </div>
+
+          <!-- Interactive XP Area Spline Chart -->
+          <div style="background: rgba(9, 10, 16, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4 style="font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0;">Monthly XP Area Curve</h4>
+              <span style="font-size: 0.78rem; color: #d4a96a; font-family: var(--font-code);">Level 4 <i class="fa-solid fa-arrow-right-long"></i> Level 5 in 160 XP</span>
+            </div>
+
+            <svg viewBox="0 0 400 160" style="width: 100%; height: 120px; overflow: visible;">
+              <defs>
+                <linearGradient id="xpAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a96a" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#d4a96a" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+              <!-- Grid Lines -->
+              <line x1="0" y1="140" x2="400" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              
+              <!-- Area Fill -->
+              <polygon points="0,140 0,120 70,110 140,85 210,95 280,50 350,30 400,15 400,140" fill="url(#xpAreaGrad)" />
+              
+              <!-- Curve Stroke -->
+              <polyline points="0,120 70,110 140,85 210,95 280,50 350,30 400,15" fill="none" stroke="#d4a96a" stroke-width="3" stroke-linecap="round" />
+              
+              <!-- Vertex Points -->
+              <circle cx="70" cy="110" r="4" fill="#d4a96a" />
+              <circle cx="140" cy="85" r="4" fill="#d4a96a" />
+              <circle cx="210" cy="95" r="4" fill="#d4a96a" />
+              <circle cx="280" cy="50" r="4" fill="#d4a96a" />
+              <circle cx="350" cy="30" r="4" fill="#d4a96a" />
+              <circle cx="400" cy="15" r="5" fill="#fff" stroke="#d4a96a" stroke-width="2" />
+            </svg>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; font-family: var(--font-code); margin-top: 0.5rem;">
+              <span>Week 1</span>
+              <span>Week 2</span>
+              <span>Week 3</span>
+              <span>Week 4 (Current)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/svg-icons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/gsap-animations.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

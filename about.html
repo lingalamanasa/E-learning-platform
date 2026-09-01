@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About STACKLY - Intelligent Skill &amp; E-Learning Cloud</title>
+  <meta name="description" content="Discover STACKLY's mission, founding story, core innovation pillars, and global impact in AI-driven skill acquisition.">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+<body>
+
+  <!-- ==========================================================================
+       STACKLY FLASH SCREEN / INTRO PRELOADER
+       ========================================================================== -->
+  <div class="site-preloader" id="sitePreloader" aria-label="Loading STACKLY Platform">
+    <div class="preloader-glow-orb"></div>
+    <div class="preloader-grid-mesh"></div>
+    <div class="preloader-content">
+      <div class="preloader-icon-wrapper">
+        <div class="preloader-orbit-outer"></div>
+        <div class="preloader-orbit-inner"></div>
+        <div class="preloader-emblem">
+          <span class="preloader-emblem-glyph"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        </div>
+      </div>
+      <h2 class="preloader-brand-title">STACKLY <span style="color: #22d3ee;">ABOUT</span></h2>
+      <div class="preloader-page-status">
+        <span class="preloader-status-text">Loading Academic Faculty &amp; Research Foundations...</span>
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Ambient Multi-Color Aurora Mesh Orbs & Overlay -->
+  <div class="ambient-aurora-container">
+    <div class="aurora-orb aurora-orb-violet"></div>
+    <div class="aurora-orb aurora-orb-cyan"></div>
+    <div class="aurora-orb aurora-orb-coral"></div>
+  </div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Interactive Constellation Canvas -->
+  <canvas id="constellation-canvas"></canvas>
+
+  <!-- STACKLY Navigation Header -->
+  <header class="stackly-header">
+    <div class="stackly-nav-container">
+      <a href="index.html" class="stackly-brand">
+        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" />
+      </a>
+
+      <nav>
+        <ul class="stackly-nav-menu">
+          <li><a href="index.html" class="stackly-nav-link">Home</a></li>
+          <li><a href="about.html" class="stackly-nav-link active">About</a></li>
+          <li><a href="services.html" class="stackly-nav-link">Services</a></li>
+          <li><a href="blog.html" class="stackly-nav-link">Blog</a></li>
+          <li><a href="contact.html" class="stackly-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="stackly-auth-actions">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-height);">
+
+    <!-- ==========================================================================
+         SECTION 1: HERO SECTION WITH ANIMATED BACKGROUND IMAGE & FLOATING CARDS
+         ========================================================================== -->
+    <section class="sqs-stage-hero" id="builder">
+
+      <!-- Animated background image layer -->
+      <div class="sqs-hero-bg-layer" aria-hidden="true">
+        <img src="images/about_hero_bg.webp" alt="STACKLY Future Learning Studio" class="sqs-hero-bg-img" />
+        <div class="sqs-hero-bg-overlay"></div>
+        <div class="sqs-hero-bg-sweep"></div>
+      </div>
+
+      <!-- Center Hero Typography -->
+      <div class="sqs-hero-center-content slide-up-reveal">
+
+        <div class="sqs-page-badge">
+          <span class="pulse-dot"></span>
+          <span>Architecting Next-Gen Education</span>
+        </div>
+
+        <h1 class="sqs-hero-main-heading">
+          Shaping the future of<br>
+          <em>intelligent learning</em>
+        </h1>
+
+        <p class="sqs-hero-lead">
+          We believe mastering complex technologies should not depend on static lectures. 
+          STACKLY unites generative AI, real-time sandboxes, and world-class domain architects 
+          into one seamless cognitive acceleration cloud.
+        </p>
+
+        <!-- Floating Center Anchor Pill Nav -->
+        <div class="sqs-floating-nav-pill">
+          <a href="#story" class="sqs-floating-nav-link active">Our Story</a>
+          <a href="#values" class="sqs-floating-nav-link">Pillars &amp; Values</a>
+          <a href="#timeline" class="sqs-floating-nav-link">Journey</a>
+          <a href="#impact" class="sqs-floating-nav-link">Global Impact</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 2: OUR STORY & DESIGN PHILOSOPHY
+         ========================================================================== -->
+    <section class="section-spacing" id="story" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div class="services-split-grid">
+          
+          <div class="slide-left-reveal">
+            <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.8rem;">
+              The Genesis
+            </p>
+            <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.8vw, 3.2rem); color: #fff; margin-bottom: 1.2rem; line-height: 1.15;">
+              Built by Engineers, <span class="serif-italic" style="color: #d4a96a;">Refined by Science</span>
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              Founded in 2022 by senior distributed systems architects and machine learning researchers, STACKLY started with a single conviction: traditional education produces passive consumers of theory, while modern engineering demands intuitive, hands-on muscle memory.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem;">
+              Today, over 120,000 learners across 84 countries use STACKLY to simulate real-world cloud architectures, fine-tune neural models in browser sandboxes, and secure verified credentials evaluated by automated telemetry.
+            </p>
+
+            <div style="display: flex; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;">
+              <div>
+                <span class="counter-animate" data-counter="120" data-suffix="k+" style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #d4a96a; display: block;">120k+</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Active Learners</span>
+              </div>
+              <div>
+                <span class="counter-animate" data-counter="98.4" data-decimals="1" data-suffix="%" style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #d4a96a; display: block;">98.4%</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Completion Rate</span>
+              </div>
+              <div>
+                <span class="counter-animate" data-counter="84" data-suffix="+" style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #d4a96a; display: block;">84+</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Countries</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide-right-reveal">
+            <div class="tilt-interactive" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+              <img src="images/about_journey_founding.webp" alt="STACKLY Founders Brainstorming in Studio" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 3: CORE INNOVATION PILLARS & VALUES
+         ========================================================================== -->
+    <section class="section-spacing" id="values" style="background: #11100f;">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #22d3ee;"></span>
+            <span>SECTION 3 • ARCHITECTURAL PILLARS</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.6vw, 3.2rem); color: #fff; margin-bottom: 0.8rem;">
+            Our Guiding <span class="serif-italic" style="color: #d4a96a;">Principles</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Every algorithm, sandbox lab, and curriculum pathway is engineered according to three immutable standards.
+          </p>
+        </div>
+
+        <div class="values-grid">
+          
+          <!-- Pillar 1 -->
+          <div class="value-card tilt-interactive slide-left-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course_quantum.webp" alt="Adaptive Cognitive Synthesis" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(34,211,238,0.4); color: #22d3ee;">
+                  COGNITIVE AI
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #d4a96a; background: rgba(212,169,106,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(212,169,106,0.25);">
+                  Live Synthesis
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Adaptive Cognitive Synthesis
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                No two minds learn identically. Our AI engine dynamically assesses your telemetry, refines curriculum density, and introduces targeted challenges when you're ready for breakthrough velocity.
+              </p>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Optimization Rate</span>
+              <span class="counter-animate" data-counter="99.4" data-decimals="1" data-suffix="%" style="font-weight: 700; color: #22d3ee; font-family: var(--font-code);">99.4%</span>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="value-card tilt-interactive slide-up-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course_devops_pipeline.webp" alt="Zero-Friction Sandboxing" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(234,179,8,0.4); color: #eab308;">
+                  VIRTUAL INFRA
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-bolt"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #10b981; background: rgba(16,185,129,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(16,185,129,0.25);">
+                  Instant VPC
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Zero-Friction Sandboxing
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                True mastery demands execution. Instant multi-GPU clusters, Kubernetes clusters, and reactive canvas workstations launch in 800ms directly inside your browser.
+              </p>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Spin-Up Latency</span>
+              <span class="counter-animate" data-prefix="&lt; " data-counter="800" data-suffix="ms" style="font-weight: 700; color: #10b981; font-family: var(--font-code);">&lt; 800ms</span>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="value-card tilt-interactive slide-right-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="skill-tree-media" style="height: 175px; position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;">
+                <img src="images/course_blockchain.webp" alt="Cryptographic Credentialing" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
+                <span class="sqs-chip" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; background: rgba(10,14,24,0.85); backdrop-filter: blur(8px); border-color: rgba(99,102,241,0.4); color: #818cf8;">
+                  CRYPTOGRAPHY
+                </span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div class="value-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-shield-halved"></i></div>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: #818cf8; background: rgba(99,102,241,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(99,102,241,0.25);">
+                  zk-SNARKs
+                </span>
+              </div>
+              <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem;">
+                Cryptographic Credentialing
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                Every certification awarded is backed by automated code evaluation logs, benchmark telemetry, and tamper-proof verification trusted by global engineering leaders.
+              </p>
+            </div>
+            <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">Evaluation Accuracy</span>
+              <span class="counter-animate" data-counter="100" data-suffix="%" style="font-weight: 700; color: #d4a96a; font-family: var(--font-code);">100%</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 4: TIMELINE STORY & FOUNDER MILESTONES
+         ========================================================================== -->
+    <section class="section-spacing" id="timeline" style="background: #141311; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 1.5rem;" class="slide-up-reveal">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 0.6rem;">The Trajectory</p>
+          <h2 class="serif-headline" style="font-size: 2.6rem; color: #fff; margin-bottom: 0.8rem;">
+            Milestones of <span class="serif-italic" style="color: #d4a96a;">Innovation</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.1rem;">
+            How an ambitious research project evolved into a globally distributed skill platform.
+          </p>
+        </div>
+
+        <div class="story-timeline-wrap">
+          
+          <!-- Step 1 -->
+          <div class="timeline-step slide-up-reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div>
+                <span class="timeline-year">2022 • GENESIS</span>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">
+                  The Automated Sandbox Prototype
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                  Two engineers in San Francisco launch the first ephemeral WebAssembly container capable of compiling distributed algorithms with sub-second latency directly in client browsers.
+                </p>
+              </div>
+              <div class="timeline-media">
+                <img src="images/sqs_step1_workspace.webp" alt="Genesis Research Lab" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step slide-up-reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div>
+                <span class="timeline-year">2024 • EXPANSION</span>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">
+                  100k Active Learners &amp; Cloud Telemetry
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                  STACKLY scales globally across 84 countries, rolling out 500+ curated pathways and enterprise talent intelligence portals for Fortune 500 engineering teams.
+                </p>
+              </div>
+              <div class="timeline-media">
+                <img src="images/sqs_step2_ai.webp" alt="Global Expansion Hub" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step slide-up-reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div>
+                <span class="timeline-year">2025 • ECOSYSTEM</span>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">
+                  Global 1-on-1 Mentor Network
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                  Integration of live mentor telemetry matching — pairing learners with verified Staff and Principal engineers from world-leading tech hubs for live architectural reviews.
+                </p>
+              </div>
+              <div class="timeline-media">
+                <img src="images/services_mentorship.webp" alt="Global Mentorship Network" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step slide-up-reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div>
+                <span class="timeline-year">2026 • THE FUTURE</span>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">
+                  120,000+ Verified Learners
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                  STACKLY reaches 120k active subscribers globally, powering autonomous training programs for Fortune 500 engineering organizations and ambitious independent developers.
+                </p>
+              </div>
+              <div class="timeline-media">
+                <img src="images/sqs_step4_launch.webp" alt="Global Launch & Mastery" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 5: GLOBAL IMPACT & ENROLLMENT CTA
+         ========================================================================== -->
+    <section class="section-spacing" id="impact" style="background: #11100f;">
+      <div class="container slide-up-reveal">
+        <div class="sqs-bottom-cta-box" style="background: radial-gradient(ellipse at 50% 50%, rgba(212, 169, 106, 0.18) 0%, #191816 80%); border-color: rgba(255, 255, 255, 0.12);">
+          <p style="font-family: var(--font-serif); font-style: italic; color: #c8c5bc; font-size: 1.1rem; margin-bottom: 1rem;">
+            Join Our Global Movement
+          </p>
+          <h2 class="serif-headline" style="font-size: clamp(2.3rem, 4.5vw, 3.6rem); color: #fff; margin-bottom: 1.25rem;">
+            Ready to experience the <span class="serif-italic" style="color: #d4a96a;">future of learning?</span>
+          </h2>
+          <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.7;">
+            Step into the intelligent skill cloud. Start your 14-day free trial today with instant access to 500+ curated pathways and sandbox environments.
+          </p>
+
+          <div style="margin-bottom: 2rem;">
+            <a href="signup.html" class="sqs-btn-solid-white">
+              GET STARTED FREE
+            </a>
+          </div>
+
+          <div class="sqs-cta-guarantee-pills">
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> 14-Day Free Access</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> No Credit Card Required</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Cancel Anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: GLOBAL ACADEMIC & TECHNICAL ADVISORY BOARD
+         ========================================================================== -->
+    <section class="section-spacing" id="advisors" style="background: #090a10; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 4rem;" class="slide-up-reveal">
+          <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+            <span class="pulse-dot" style="background: #22d3ee;"></span>
+            <span>SECTION 6 • RESEARCH FACULTY</span>
+          </div>
+          <h2 class="serif-headline" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; margin-bottom: 1rem;">
+            Global Academic &amp; <span class="serif-italic" style="color: #d4a96a;">Research Fellows</span>
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">
+            Our curriculum is designed alongside world-renowned computer scientists and lead systems architects from top AI labs.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          
+          <div class="value-card tilt-interactive" style="padding: 2.2rem;">
+            <div class="skill-tree-media" style="height: 140px; margin-bottom: 1.2rem;">
+              <img src="images/sqs_template_studio.webp" alt="Dr. Elena Rostova Lab" />
+            </div>
+            <div style="display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.2rem;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #d4a96a, #806040); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 800; color: #fff;">
+                DR
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Dr. Elena Rostova</h3>
+                <p style="font-size: 0.8rem; color: #22d3ee; font-family: var(--font-code); margin: 0;">CHAIR OF DISTRIBUTED ML</p>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+              Former Stanford AI Lab lead specializing in high-throughput tensor parallelism and FlashAttention CUDA kernel compilation.
+            </p>
+            <span style="font-size: 0.78rem; color: #d4a96a; font-weight: 700;">14 Nature &amp; NeurIPS Publications <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.85em;"></i></span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 2.2rem;">
+            <div class="skill-tree-media" style="height: 140px; margin-bottom: 1.2rem;">
+              <img src="images/sqs_step1_workspace.webp" alt="Kenji Takahashi Lab" />
+            </div>
+            <div style="display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.2rem;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #22d3ee); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 800; color: #fff;">
+                KT
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Kenji Takahashi</h3>
+                <p style="font-size: 0.8rem; color: #10b981; font-family: var(--font-code); margin: 0;">DISTRIBUTED SYSTEMS FELLOW</p>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+              Pioneered zero-latency container mesh topologies and ephemeral WebAssembly sandboxing for cloud operating systems.
+            </p>
+            <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">ACM Fellow &amp; Core Kubernetes Contributor <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.85em;"></i></span>
+          </div>
+
+          <div class="value-card tilt-interactive" style="padding: 2.2rem;">
+            <div class="skill-tree-media" style="height: 140px; margin-bottom: 1.2rem;">
+              <img src="images/sqs_step2_ai.webp" alt="Dr. Sarah Vance Lab" />
+            </div>
+            <div style="display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.2rem;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #fb7185, #f43f5e); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 800; color: #fff;">
+                SV
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Dr. Sarah Vance</h3>
+                <p style="font-size: 0.8rem; color: #fb7185; font-family: var(--font-code); margin: 0;">HEAD OF COGNITIVE PEDAGOGY</p>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
+              Directs active knowledge retrieval systems and automated pair-programming feedback heuristics across STACKLY labs.
+            </p>
+            <span style="font-size: 0.78rem; color: #fb7185; font-weight: 700;">IEEE Educational Innovation Award <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.85em;"></i></span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 7: ARCHITECTURAL PRINCIPLES & ZERO-TRUST PEDAGOGY
+         ========================================================================== -->
+    <section class="section-spacing" id="tenets" style="background: #0f1017; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div class="bento-asymmetric-grid">
+          
+          <div class="bento-card-large tilt-interactive">
+            <div>
+              <div class="sqs-page-badge" style="margin-bottom: 1rem;">
+                <span class="pulse-dot" style="background: #d4a96a;"></span>
+                <span>SECTION 7 • CORE PEDAGOGY</span>
+              </div>
+              <h2 class="serif-headline" style="font-size: clamp(2rem, 3.2vw, 2.8rem); color: #fff; margin-bottom: 1rem;">
+                Zero-Trust <span class="serif-italic" style="color: #d4a96a;">Code Execution</span>
+              </h2>
+              <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                We reject passive video-watching. Every engineering concept on STACKLY requires real code commits in isolated multi-GPU sandboxes with automated AST test suites.
+              </p>
+            </div>
+
+            <div class="bento-card-media" style="height: 240px;">
+              <img src="images/about_journey_founding.webp" alt="Founding Pedagogy" />
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">TENET 01 • ACTIVE RETRIEVAL</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">Spaced Repetition in Code</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Algorithms re-test complex syntax and system architecture edge cases right before cognitive decay occurs.
+              </p>
+            </div>
+
+            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+              <span class="sqs-chip" style="font-size: 0.72rem; margin-bottom: 0.8rem;">TENET 02 • PROOF OF MASTERY</span>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">Cryptographic Skill Hashes</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                Earn immutable verifiable credentials tied to the exact Git commit hashes of your completed cloud labs.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SECTION 8: OPEN-SOURCE ECOSYSTEM & COMMUNITY GRANTS
+         ========================================================================== -->
+    <section class="section-spacing" id="grants" style="background: #08090d; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+        
+        <div style="background: linear-gradient(135deg, rgba(30, 26, 20, 0.9), rgba(16, 15, 12, 0.95)); border: 1px solid rgba(212, 169, 106, 0.25); border-radius: 24px; padding: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+          <div style="max-width: 650px;">
+            <div class="sqs-page-badge" style="margin-bottom: 0.8rem;">
+              <span class="pulse-dot" style="background: #10b981;"></span>
+              <span>SECTION 8 • COMMUNITY IMPACT</span>
+            </div>
+            <h2 class="serif-headline" style="font-size: clamp(2rem, 3.2vw, 2.8rem); color: #fff; margin-bottom: 0.8rem;">
+              $2.4M in Open-Source <span class="serif-italic" style="color: #d4a96a;">Research Grants</span>
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin: 0;">
+              STACKLY funds academic researchers, independent compiler engineers, and students building next-generation AI infrastructure tools worldwide.
+            </p>
+          </div>
+
+          <div>
+            <a href="signup.html" class="sqs-btn-solid-white" style="padding: 0.9rem 2rem; font-size: 0.9rem;">
+              Apply for Fellowship Grant <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- STACKLY Modern 4-Column Footer -->
+  <footer class="stackly-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Column 1: Brand & Socials -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="footer-brand-logo">
+            <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 36px; display: block;" />
+          </a>
+          <p class="footer-brand-desc">
+            Smart library management for the modern world. Connecting readers with stories since 2014.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X Twitter">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="services.html">Library</a></li>
+            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact</a></li>
+            <li class="footer-link-item"><a href="contact.html#faq">Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Get In Touch -->
+        <div>
+          <h4 class="footer-col-title">GET IN TOUCH</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </span>
+              <span>123 Library Lane,<br>Salem, Tamilnadu 10001</span>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </span>
+              <a href="mailto:hello@stackly.com">hello@stackly.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </span>
+              <a href="tel:+917075550123">+91 (707) 555-0123</a>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </span>
+              <span>Mon–Fri: 9am – 6pm EST</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Stay in the Loop -->
+        <div>
+          <h4 class="footer-col-title">STAY IN THE LOOP</h4>
+          <p class="footer-newsletter-text">
+            Subscribe to our newsletter for library tips, book recommendations, and exclusive offers.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); window.showToast && window.showToast('Subscription active! Thank you for staying in the loop.', 'success'); this.reset();">
+            <div class="footer-subscribe-box">
+              <input type="email" required placeholder="Enter your email" class="footer-subscribe-input" />
+              <button type="submit" class="footer-subscribe-btn">
+                <span>Subscribe</span>
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+              </button>
+            </div>
+            <div class="footer-security-note">
+              <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i></span> <span>No spam, unsubscribe anytime.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Sub-Footer Legal -->
+      <div class="footer-bottom-bar">
+        <p>© 2026 <strong style="color: #eab308; font-weight: 700;">STACKLY</strong>. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/svg-icons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/gsap-animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
