@@ -3,138 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Off Campus Syllabus | STACKLY</title>
-  <meta name="description" content="Oops! You've wandered off the campus syllabus. Let's get you back on track to your courses.">
+  <title>404 - Page Not Found | STACKLY</title>
+  <meta name="description" content="Oops! You took a detour. The page you're looking for doesn't seem to be here. Let's get you back on a familiar path.">
+
+  <!-- Google Fonts Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome 6.5.1 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      width: 100%;
+      background: #fbfdfe;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Ambient Soft Radial Glows matching screenshot */
+    .glow-top-left {
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: clamp(350px, 45vw, 650px);
+      height: clamp(350px, 45vw, 650px);
+      background: radial-gradient(circle, rgba(162, 214, 203, 0.55) 0%, rgba(200, 235, 228, 0.25) 45%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-bottom-right {
+      position: fixed;
+      bottom: -10%;
+      right: -10%;
+      width: clamp(350px, 45vw, 650px);
+      height: clamp(350px, 45vw, 650px);
+      background: radial-gradient(circle, rgba(254, 215, 200, 0.55) 0%, rgba(255, 236, 228, 0.25) 45%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Main Container */
+    .detour-container {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInDetour 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInDetour {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Big 404 Digit Text */
+    .detour-code {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: clamp(6.5rem, 14vw, 10.5rem);
+      font-weight: 900;
+      color: #24756d;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+      user-select: none;
+      text-shadow: 0 4px 20px rgba(36, 117, 109, 0.12);
+    }
+
+    /* Headline */
+    .detour-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+      font-weight: 800;
+      color: #1a2233;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* Subtext */
+    .detour-subtext {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      color: #64748b;
+      max-width: 560px;
+      line-height: 1.65;
+      margin: 0 auto 2.8rem;
+      font-weight: 400;
+    }
+
+    /* Actions Row */
+    .detour-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* Solid Teal Button */
+    .detour-btn-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: #24756d;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 2.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid #24756d;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(36, 117, 109, 0.25);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .detour-btn-solid:hover {
+      background: #1b5e57;
+      border-color: #1b5e57;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(36, 117, 109, 0.35);
+    }
+
+    /* Outline Teal Button */
+    .detour-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: #24756d;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 2.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid #24756d;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .detour-btn-outline:hover {
+      background: rgba(36, 117, 109, 0.08);
+      color: #1b5e57;
+      border-color: #1b5e57;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 480px) {
+      .detour-actions-row {
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .detour-btn-solid,
+      .detour-btn-outline {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
 </head>
-<body class="editorial-theme">
+<body>
 
-  <!-- Background Ambience & Canvas Particles -->
-  <div class="aurora-ambient-glow" style="opacity: 0.65;">
-    <div class="aurora-orb aurora-orb-violet"></div>
-    <div class="aurora-orb aurora-orb-cyan"></div>
-    <div class="aurora-orb aurora-orb-coral"></div>
-  </div>
-  <div class="cyber-grid-overlay" style="opacity: 0.4;"></div>
+  <!-- Top-Left Mint Glow -->
+  <div class="glow-top-left" aria-hidden="true"></div>
 
-  <!-- Interactive 3-Color Constellation Canvas -->
-  <canvas id="constellation-canvas"></canvas>
+  <!-- Bottom-Right Peach Glow -->
+  <div class="glow-bottom-right" aria-hidden="true"></div>
 
-  <div class="err-page-wrapper">
+  <!-- Central Detour Container -->
+  <main class="detour-container">
     
-    <!-- Floating Math & Code Background Telemetry -->
-    <div class="err-floating-math" style="top: 15%; left: 8%; font-size: 1.2rem;">
-      E = mc²
-    </div>
-    <div class="err-floating-math" style="top: 25%; right: 10%; font-size: 1.3rem; animation-delay: 2s;">
-      √x &infin;
-    </div>
-    <div class="err-floating-math" style="bottom: 22%; left: 6%; font-size: 1rem; animation-delay: 4s;">
-      &lt;/&gt; &lt;404: Not Found /&gt;
-    </div>
-    <div class="err-floating-math" style="bottom: 20%; right: 7%; font-size: 1.1rem; animation-delay: 1.5s;">
-      <i class="fa-solid fa-hourglass-half" style="margin-right: 0.3rem;"></i> 2πr
-    </div>
+    <!-- 404 Big Teal Text -->
+    <h1 class="detour-code">404</h1>
 
-    <!-- Brand Logo -->
-    <a href="index.html" class="err-brand-logo">
-      <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 38px; display: block;" />
-    </a>
+    <!-- Headline -->
+    <h2 class="detour-title">Oops! You Took a Detour.</h2>
 
-    <!-- Error Pill Badge -->
-    <div class="err-page-badge slide-up-reveal">
-      <i class="fa-solid fa-graduation-cap"></i>
-      <span>SYLLABUS CODE: ERR-404 • PAGE DISMISSED</span>
-    </div>
-
-    <!-- Central 404 Visual Stage -->
-    <div class="err-404-stage tilt-interactive slide-up-reveal">
-      
-      <!-- Digit 4 Left -->
-      <div class="err-num-digit">4</div>
-
-      <!-- Orbiting Center Portal -->
-      <div class="err-orbit-portal">
-        <div class="err-orbit-ring-outer"></div>
-        <div class="err-orbit-ring-inner"></div>
-        
-        <!-- Floating Satellite Academic Nodes -->
-        <div class="err-satellite-node err-sat-flask" title="Laboratory Diagnostics">
-          <i class="fa-solid fa-flask"></i>
-        </div>
-        <div class="err-satellite-node err-sat-gear" title="Compiler Core">
-          <i class="fa-solid fa-gear"></i>
-        </div>
-        <div class="err-satellite-node err-sat-book" title="Syllabus Library">
-          <i class="fa-solid fa-book-open"></i>
-        </div>
-
-        <!-- Center Glowing Disc with Cap -->
-        <div class="err-cap-disc">
-          <div class="err-cap-icon">
-            <i class="fa-solid fa-graduation-cap"></i>
-          </div>
-          <span class="err-lost-badge">LOST ON CAMPUS</span>
-        </div>
-      </div>
-
-      <!-- Digit 4 Right -->
-      <div class="err-num-digit">4</div>
-
-    </div>
-
-    <!-- Heading & Explanatory Text -->
-    <h1 class="err-heading slide-up-reveal">
-      Oops! You've Wandered <span class="err-text-orange">Off Campus Syllabus</span>
-    </h1>
-
-    <p class="err-subtext slide-up-reveal">
-      The lecture hall has moved, the degree catalog has been updated, or this link never existed in the semester schedule. Don't worry, let's get you back on track!
+    <!-- Subtitle -->
+    <p class="detour-subtext">
+      The page you're looking for doesn't seem to be here. Let's get you back on a familiar path.
     </p>
 
     <!-- Action Buttons -->
-    <div class="err-actions-row slide-up-reveal">
-      <a href="index.html" class="btn-err-primary">
+    <div class="detour-actions-row">
+      
+      <!-- Button 1: Back to Home -->
+      <a href="index.html" class="detour-btn-solid">
         <i class="fa-solid fa-house"></i>
         <span>Back to Home</span>
       </a>
-      <button onclick="window.history.back()" class="btn-err-secondary" type="button">
-        <i class="fa-solid fa-rotate-left"></i>
-        <span>Back to Previous</span>
+
+      <!-- Button 2: Back to Form -->
+      <button type="button" onclick="if(window.history.length > 1) { window.history.back(); } else { window.location.href = 'index.html'; }" class="detour-btn-outline">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Form</span>
       </button>
+
     </div>
 
-    <!-- Quick Shortcuts -->
-    <div class="err-campus-links slide-up-reveal">
-      <span style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em;">Quick Shortcuts:</span>
-      <a href="index.html#builder" class="err-campus-link">
-        <i class="fa-solid fa-compass"></i>
-        <span>Explore Courses</span>
-      </a>
-      <a href="about.html" class="err-campus-link">
-        <i class="fa-solid fa-landmark"></i>
-        <span>About Faculty</span>
-      </a>
-      <a href="services.html" class="err-campus-link">
-        <i class="fa-solid fa-server"></i>
-        <span>Cloud Sandboxes</span>
-      </a>
-      <a href="contact.html" class="err-campus-link">
-        <i class="fa-solid fa-headset"></i>
-        <span>Support Desk</span>
-      </a>
-    </div>
+  </main>
 
-  </div>
-
-  <!-- Scripts -->
-  <script src="js/app.js"></script>
 </body>
 </html>
