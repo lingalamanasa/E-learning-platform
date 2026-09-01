@@ -1210,19 +1210,21 @@
   filter: blur(100px);
 }
 
-/* SQS Floating Hero Stage */
+/* SQS Floating Hero Stage — Centered & Anti-Overflow */
 .sqs-stage-hero {
   position: relative;
-  min-height: 90vh;
+  min-height: clamp(520px, 75vh, 760px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1.5rem 6rem;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2.5rem);
   overflow: hidden;
-  /* Dark warm mahogany — derived from lamp image dominant color */
   background: #1a0e06;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* ── Animated background image layer ── */
@@ -1256,17 +1258,15 @@
   position: absolute;
   inset: 0;
   background:
-    /* Vertical fade — warm dark tones from lamp (deep amber) to chair (sandy taupe) */
     linear-gradient(to bottom,
-      rgba(26,14,6,0.48)  0%,       /* lamp deep mahogany */
-      rgba(26,14,6,0.22)  28%,      /* mid — let image show */
-      rgba(40,22,10,0.55) 68%,      /* warm amber shadow */
-      rgba(26,14,6,0.96)  100%),    /* near-solid base */
-    /* Diagonal tint — sandy taupe (chair) left, amber (lamp) right */
+      rgba(26,14,6,0.48)  0%,
+      rgba(26,14,6,0.22)  28%,
+      rgba(40,22,10,0.55) 68%,
+      rgba(26,14,6,0.96)  100%),
     linear-gradient(135deg,
-      rgba(160,128,96,0.18) 0%,     /* chair: sandy taupe */
+      rgba(160,128,96,0.18) 0%,
       transparent           45%,
-      rgba(128,80,32,0.14)  100%);  /* lamp: warm amber */
+      rgba(128,80,32,0.14)  100%);
 }
 
 .sqs-hero-bg-sweep {
@@ -1292,8 +1292,15 @@
 .sqs-hero-center-content {
   position: relative;
   z-index: 10;
-  max-width: 960px;
+  max-width: 860px;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .sqs-hero-eyebrow {
@@ -1303,22 +1310,26 @@
   margin-bottom: 1.5rem;
   font-style: italic;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .sqs-hero-main-heading {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.2vw, 5.2rem);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.14;
   letter-spacing: -0.02em;
   color: #ffffff;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
+  text-align: center;
   text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .sqs-hero-main-heading em {
   font-style: italic;
-  /* Gradient derived from image palette: sandy taupe → warm gold → amber */
   background: linear-gradient(135deg, #d4a96a 0%, #f0c580 45%, #c08040 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1335,12 +1346,15 @@
 
 .sqs-hero-lead {
   font-family: var(--font-sans);
-  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
-  line-height: 1.78;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.75;
   color: rgba(200,197,188,0.85);
-  max-width: 580px;
-  margin: 0 auto 2rem;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto 1.8rem;
+  text-align: center;
   font-weight: 400;
+  box-sizing: border-box;
 }
 
 .sqs-btn-solid-white {
@@ -1358,6 +1372,7 @@
   text-decoration: none;
   transition: all 0.25s ease;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.2);
+  margin: 0 auto;
 }
 
 .sqs-btn-solid-white:hover {
@@ -1366,118 +1381,23 @@
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
-/* SQS Floating Visual Cards Around Hero */
-.sqs-float-card {
-  position: absolute;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.4s ease;
-  z-index: 5;
-}
-
-.sqs-float-top-left {
-  top: 6%;
-  left: 2%;
-  width: 240px;
-  height: 260px;
-}
-
-.sqs-float-top-right {
-  top: 4%;
-  right: 2%;
-  width: 320px;
-  height: 180px;
-}
-
-.sqs-float-bottom-right {
-  bottom: 8%;
-  right: 3%;
-  width: 280px;
-  background: rgba(28, 27, 24, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 1.5rem;
-}
-
-@media (max-width: 1200px) {
-  .sqs-float-card {
-    display: none;
-  }
-}
-
-/* Palette Swatch Capsule */
-.sqs-palette-capsule {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  background: rgba(28, 27, 24, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  padding: 8px;
-  display: flex;
-  gap: 6px;
-}
-
-.sqs-swatch {
-  flex: 1;
-  height: 32px;
-  border-radius: 4px;
-}
-
-/* Brand Personality Widget */
-.sqs-personality-header {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.sqs-personality-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-}
-
-.sqs-personality-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  padding: 0.6rem 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sqs-personality-pill:hover,
-.sqs-personality-pill.active {
-  background: #ffffff;
-  color: #121110;
-  border-color: #ffffff;
-  font-weight: 700;
-}
-
-/* Floating Center Subnav Pill */
+/* Floating Center Subnav Pill — Responsive & Centered */
 .sqs-floating-nav-pill {
   display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  background: rgba(26, 25, 22, 0.9);
+  gap: clamp(0.5rem, 1.5vw, 1.2rem);
+  background: rgba(26, 25, 22, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 0.6rem 1.6rem;
+  padding: 0.5rem 1.2rem;
   border-radius: var(--radius-pill);
-  margin-top: 3.5rem;
+  margin: 2rem auto 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sqs-floating-nav-link {
@@ -1485,9 +1405,17 @@
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
-  padding: 0.35rem 0.6rem;
+  transition: all 0.2s ease;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.sqs-floating-nav-link:hover,
+.sqs-floating-nav-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
 }
 
 .sqs-floating-nav-link:hover,

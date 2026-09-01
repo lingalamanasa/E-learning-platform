@@ -1088,6 +1088,56 @@ img, video, canvas, svg {
    BREAKPOINTS: LAPTOPS, TABLETS & PHONES
    ========================================================================== */
 
+/* Dashboard Centered Architecture & Anti-Overflow */
+.dashboard-layout {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+.dashboard-main > section,
+.dashboard-main > div {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Auth Page Centered Layout & Anti-Overflow */
+.auth-page-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+}
+
+.auth-split-card {
+  width: 100%;
+  max-width: 1040px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
 @media (max-width: 1024px) {
   .stackly-nav-menu,
   .stackly-auth-actions {
@@ -1146,6 +1196,7 @@ img, video, canvas, svg {
 
   .auth-split-card {
     grid-template-columns: 1fr !important;
+    margin: 1rem auto !important;
   }
 
   .auth-visual-side {
