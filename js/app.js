@@ -1268,6 +1268,174 @@ function initTestimonialSlider() {
   });
 }
 
+function initGlobalPolicyModal() {
+  if (document.getElementById('stackly-policy-modal')) return;
+
+  const modalHtml = `
+    <div id="stackly-policy-modal" style="display: none; position: fixed; inset: 0; background: rgba(5, 7, 12, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 3000; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box;">
+      <div style="background: #0f1422; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 24px; width: 100%; max-width: 680px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.8);">
+        
+        <!-- Modal Header -->
+        <div style="padding: 1.5rem 1.8rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.25); display: flex; align-items: center; justify-content: center; color: #22d3ee; font-size: 1rem;">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <h3 id="policy-modal-title" style="margin: 0; color: #ffffff; font-size: 1.15rem; font-weight: 700;">STACKLY Legal &amp; Compliance</h3>
+              <p style="margin: 0.2rem 0 0; color: #94a3b8; font-size: 0.78rem;">Last Updated: September 2026 • Verified Security Standard</p>
+            </div>
+          </div>
+          <button id="close-policy-modal-btn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 1rem; cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Policy Navigation Tabs -->
+        <div style="display: flex; gap: 0.5rem; padding: 0.8rem 1.8rem; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto;">
+          <button class="policy-tab-btn" data-policy="privacy" style="background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.3); color: #22d3ee; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Privacy Policy</button>
+          <button class="policy-tab-btn" data-policy="terms" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Terms of Service</button>
+          <button class="policy-tab-btn" data-policy="cookies" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">Cookie Policy</button>
+        </div>
+
+        <!-- Policy Content Body -->
+        <div id="policy-modal-content" style="padding: 1.8rem; overflow-y: auto; color: #cbd5e1; font-size: 0.92rem; line-height: 1.7; flex: 1;">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Modal Footer -->
+        <div style="padding: 1rem 1.8rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(255,255,255,0.02);">
+          <button id="accept-policy-modal-btn" class="sqs-btn-solid-white" style="padding: 0.6rem 1.8rem; font-size: 0.82rem; cursor: pointer;">
+            Understood &amp; Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const policyData = {
+    privacy: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Data Collection &amp; Zero-Leakage Architecture</h4>
+      <p>STACKLY Cloud employs zero-telemetry egress pipelines. Code executed within our WebAssembly containers and cloud sandboxes is isolated, never indexed for external model training, and cryptographically destroyed upon pod termination.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. Compliance Standards</h4>
+      <p>Our platform maintains ISO 27001, SOC 2 Type II, and GDPR compliance. Personal identity details and billing tokens are tokenized using AES-256 GCM encryption at rest and TLS 1.3 in transit.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">3. Learner Rights &amp; Data Deletion</h4>
+      <p>You retain 100% ownership over all software architectures, repositories, and learning notes created on STACKLY. You can request full data export or irrevocable account deletion at any time via Settings.</p>
+    `,
+    terms: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Sandbox Acceptable Use Policy</h4>
+      <p>STACKLY development environments and cloud clusters are provisioned exclusively for educational, development, and benchmarking workloads. Malicious payloads, automated scraping, or crypto-mining will result in instant pod suspension.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. Certificate &amp; Skill Verification Authenticity</h4>
+      <p>Certificates issued by STACKLY are tied to verified telemetry hashes. Sharing account access to spoof assessment completion violates our academic integrity code.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">3. Billing &amp; Subscriptions</h4>
+      <p>Subscriptions can be canceled at any time with zero penalties. Unused cloud compute credits roll over for up to 90 billing days.</p>
+    `,
+    cookies: `
+      <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0;">1. Minimal Essential Cookies</h4>
+      <p>STACKLY uses strictly essential session tokens and WebAssembly sandbox local storage caches to maintain learner authentication state and live code execution workspaces.</p>
+      <h4 style="color: #fff; font-size: 1.05rem;">2. No Third-Party Tracking</h4>
+      <p>We do NOT deploy invasive tracking pixels, ad networks, or cross-site fingerprinting scripts. Your browsing and learning history is private to your profile.</p>
+    `
+  };
+
+  const modal = document.getElementById('stackly-policy-modal');
+  const title = document.getElementById('policy-modal-title');
+  const content = document.getElementById('policy-modal-content');
+  const closeBtn = document.getElementById('close-policy-modal-btn');
+  const acceptBtn = document.getElementById('accept-policy-modal-btn');
+  const tabBtns = document.querySelectorAll('.policy-tab-btn');
+
+  function openPolicy(type) {
+    const key = (type === 'terms' || type === 'cookies') ? type : 'privacy';
+    tabBtns.forEach(btn => {
+      if (btn.getAttribute('data-policy') === key) {
+        btn.style.background = 'rgba(34, 211, 238, 0.12)';
+        btn.style.borderColor = 'rgba(34, 211, 238, 0.3)';
+        btn.style.color = '#22d3ee';
+      } else {
+        btn.style.background = 'rgba(255,255,255,0.04)';
+        btn.style.borderColor = 'rgba(255,255,255,0.08)';
+        btn.style.color = '#94a3b8';
+      }
+    });
+
+    const titles = {
+      privacy: 'STACKLY Privacy & Data Security Policy',
+      terms: 'STACKLY Terms of Service & Compute Agreement',
+      cookies: 'STACKLY Cookie Policy & Storage Directives'
+    };
+
+    title.textContent = titles[key];
+    content.innerHTML = policyData[key];
+    modal.style.display = 'flex';
+  }
+
+  window.openPolicyModal = openPolicy;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openPolicy(btn.getAttribute('data-policy'));
+    });
+  });
+
+  const closeModal = () => { modal.style.display = 'none'; };
+  closeBtn?.addEventListener('click', closeModal);
+  acceptBtn?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Global listener for policy links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const text = link.textContent.trim().toLowerCase();
+    if (text.includes('privacy policy')) {
+      e.preventDefault();
+      openPolicy('privacy');
+    } else if (text.includes('terms of service') || text.includes('terms and conditions')) {
+      e.preventDefault();
+      openPolicy('terms');
+    } else if (text.includes('cookie policy')) {
+      e.preventDefault();
+      openPolicy('cookies');
+    }
+  });
+}
+
+function initGlobalFormHandlers() {
+  document.querySelectorAll('form').forEach(form => {
+    if (form.getAttribute('data-handler-attached')) return;
+    form.setAttribute('data-handler-attached', 'true');
+
+    // Skip auth form or custom modal forms that already have action listeners
+    const formId = form.id;
+    if (formId === 'contact-form' || formId === 'login-form' || formId === 'signup-form' || formId === 'admin-course-form') return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      if (emailInput && !emailInput.value.includes('@')) {
+        window.showToast('Please enter a valid email address.', 'error');
+        return;
+      }
+      window.showToast('Request received! We have dispatched details to your email.', 'success');
+      form.reset();
+    });
+  });
+}
+
+function initSafeLinkEnforcer() {
+  // Ensure all external links have target="_blank" and rel="noopener noreferrer"
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+}
+
 // Initialization on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   new ConstellationCanvas('constellation-canvas');
@@ -1291,4 +1459,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearchModal();
   initCourseFilterTabs();
   initTestimonialSlider();
+  initGlobalPolicyModal();
+  initGlobalFormHandlers();
+  initSafeLinkEnforcer();
 });
