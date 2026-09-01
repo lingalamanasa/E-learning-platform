@@ -428,7 +428,7 @@ function initSkillTracker() {
     box.className = 'tracker-result-box';
     box.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-        <span style="font-family: var(--font-code); font-weight: 700; color: ${data.badgeColor}; font-size: 0.85rem;">✦ NODE FOUND: ${code}</span>
+        <span style="font-family: var(--font-code); font-weight: 700; color: ${data.badgeColor}; font-size: 0.85rem;"><i class="fa-solid fa-bolt" style="margin-right: 0.35rem;"></i> NODE FOUND: ${code}</span>
         <span style="font-size: 0.75rem; color: #10b981; display: flex; align-items: center; gap: 4px;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
           ${data.node}
@@ -520,7 +520,7 @@ class AssessmentEngine {
       <div class="sandbox-card-container tilt-interactive">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
           <span style="font-family: var(--font-code); font-size: 0.8rem; font-weight: 700; color: var(--cyan-light); background: rgba(6, 182, 212, 0.1); padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); border: 1px solid var(--border-cyan);">
-            ✦ ${q.discipline}
+             ${q.discipline}
           </span>
           <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
             Challenge ${this.currentIndex + 1} / ${this.questions.length}
@@ -1436,6 +1436,88 @@ function initSafeLinkEnforcer() {
   });
 }
 
+function initTemplatePreviewModal() {
+  if (document.getElementById('template-preview-modal')) return;
+
+  const modalHtml = `
+    <div id="template-preview-modal" style="display: none; position: fixed; inset: 0; background: rgba(5, 7, 12, 0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); z-index: 3100; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box;">
+      <div style="background: #0f1422; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; width: 100%; max-width: 720px; overflow: hidden; box-shadow: 0 35px 90px rgba(0,0,0,0.85); display: flex; flex-direction: column; max-height: 90vh;">
+        
+        <!-- Header -->
+        <div style="padding: 1.2rem 1.6rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+          <div>
+            <span id="tpl-modal-category" style="font-size: 0.75rem; color: #22d3ee; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">ARTISANAL POTTERY &amp; WORKSHOP</span>
+            <h3 id="tpl-modal-title" style="margin: 0.2rem 0 0; color: #fff; font-size: 1.25rem; font-weight: 700;">Terra &amp; Form</h3>
+          </div>
+          <button id="close-tpl-modal-btn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 1rem; cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Preview Image Container -->
+        <div style="position: relative; height: 340px; background: #07090e; overflow: hidden;">
+          <img id="tpl-modal-img" src="images/sqs_template_ceramics.webp" alt="Template Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,20,34,0.95) 0%, transparent 60%);"></div>
+          <div style="position: absolute; bottom: 1.2rem; left: 1.6rem; right: 1.6rem; display: flex; justify-content: space-between; align-items: flex-end;">
+            <span style="font-size: 0.82rem; color: #cbd5e1; background: rgba(0,0,0,0.6); padding: 0.35rem 0.8rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+              <i class="fa-solid fa-layer-group" style="color: #d4a96a; margin-right: 0.4rem;"></i> Fully Responsive Architecture
+            </span>
+            <span style="font-size: 0.82rem; color: #10b981; font-weight: 700; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); padding: 0.35rem 0.8rem; border-radius: 6px;">
+              <i class="fa-solid fa-circle-check" style="margin-right: 0.3rem;"></i> Launch Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div style="padding: 1.2rem 1.6rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 0.8rem;">
+          <button id="close-tpl-modal-btn2" class="btn-outline-glass" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; cursor: pointer;">
+            Close Preview
+          </button>
+          <a href="signup.html" class="sqs-btn-solid-white" style="padding: 0.7rem 1.8rem; font-size: 0.85rem; text-decoration: none;">
+            Start Building with Template <i class="fa-solid fa-arrow-right" style="margin-left: 0.4rem;"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modal = document.getElementById('template-preview-modal');
+  const titleEl = document.getElementById('tpl-modal-title');
+  const catEl = document.getElementById('tpl-modal-category');
+  const imgEl = document.getElementById('tpl-modal-img');
+  const closeBtn1 = document.getElementById('close-tpl-modal-btn');
+  const closeBtn2 = document.getElementById('close-tpl-modal-btn2');
+
+  const closeModal = () => { modal.style.display = 'none'; };
+  closeBtn1?.addEventListener('click', closeModal);
+  closeBtn2?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.openTemplatePreview = (title, category, imgUrl) => {
+    if (titleEl) titleEl.textContent = title;
+    if (catEl) catEl.textContent = category;
+    if (imgEl) imgEl.src = imgUrl;
+    modal.style.display = 'flex';
+  };
+
+  document.querySelectorAll('.sqs-template-card').forEach(card => {
+    const btn = card.querySelector('.preview-template-btn');
+    if (!btn) return;
+    const title = card.querySelector('.sqs-template-title')?.textContent.trim() || 'Custom Template';
+    const category = card.querySelector('.sqs-template-category')?.textContent.trim() || 'Architecture';
+    const img = card.querySelector('img')?.getAttribute('src') || 'images/sqs_template_ceramics.webp';
+
+    btn.addEventListener('click', () => {
+      window.openTemplatePreview(title, category, img);
+    });
+  });
+}
+
 // Initialization on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   new ConstellationCanvas('constellation-canvas');
@@ -1462,4 +1544,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobalPolicyModal();
   initGlobalFormHandlers();
   initSafeLinkEnforcer();
+  initTemplatePreviewModal();
 });
