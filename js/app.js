@@ -1041,31 +1041,126 @@ function initSubnavScrollSpy() {
 }
 
 function initMobileNavDrawer() {
-  const toggleBtn = document.querySelector('.mobile-menu-toggle');
-  const drawer = document.querySelector('.mobile-nav-drawer');
-  const backdrop = document.querySelector('.mobile-nav-drawer-backdrop');
-  const closeBtn = document.querySelector('.mobile-nav-close');
+  const toggleBtns = document.querySelectorAll('.stackly-mobile-toggle, .mobile-menu-toggle, #mobileNavToggle');
+  let drawer = document.querySelector('.stackly-mobile-drawer, .mobile-nav-drawer, #mobileNavDrawer');
+  let backdrop = document.querySelector('.stackly-drawer-backdrop, .mobile-nav-drawer-backdrop, #mobileNavBackdrop');
+  
+  // If drawer does not exist on page, dynamically create it
+  if (!drawer && document.querySelector('.stackly-header')) {
+    const header = document.querySelector('.stackly-header');
+    drawer = document.createElement('div');
+    drawer.className = 'stackly-mobile-drawer';
+    drawer.id = 'mobileNavDrawer';
+    drawer.innerHTML = `
+      <div class="mobile-drawer-header">
+        <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 32px;" />
+        <button class="mobile-drawer-close" id="mobileNavClose" aria-label="Close Navigation Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="services.html" class="mobile-nav-link"><i class="fa-solid fa-cube"></i> Services &amp; Library</a></li>
+        <li><a href="blog.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-actions">
+        <a href="login.html" class="btn-mobile-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        <a href="signup.html" class="btn-mobile-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      </div>
+    `;
+    
+    backdrop = document.createElement('div');
+    backdrop.className = 'stackly-drawer-backdrop';
+    backdrop.id = 'mobileNavBackdrop';
+    
+    document.body.appendChild(drawer);
+    document.body.appendChild(backdrop);
+  }
 
-  if (!toggleBtn || !drawer) return;
+  // Also ensure mobile toggle button exists in header
+  const navContainers = document.querySelectorAll('.stackly-nav-container');
+  navContainers.forEach(container => {
+    if (!container.querySelector('.stackly-mobile-toggle, .mobile-menu-toggle')) {
+      const toggle = document.createElement('button');
+      toggle.className = 'stackly-mobile-toggle';
+      toggle.setAttribute('aria-label', 'Toggle Navigation Menu');
+      toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      container.appendChild(toggle);
+      toggle.addEventListener('click', openDrawer);
+    }
+  });
+
+  const closeBtns = document.querySelectorAll('.mobile-drawer-close, .mobile-nav-close, #mobileNavClose');
 
   function openDrawer() {
-    drawer.classList.add('open');
-    if (backdrop) backdrop.classList.add('open');
+    if (drawer) drawer.classList.add('active', 'open');
+    if (backdrop) backdrop.classList.add('active', 'open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
-    drawer.classList.remove('open');
-    if (backdrop) backdrop.classList.remove('open');
+    if (drawer) drawer.classList.remove('active', 'open');
+    if (backdrop) backdrop.classList.remove('active', 'open');
     document.body.style.overflow = '';
   }
 
-  toggleBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  toggleBtns.forEach(btn => btn.addEventListener('click', openDrawer));
+  closeBtns.forEach(btn => btn.addEventListener('click', closeDrawer));
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
-  const drawerLinks = drawer.querySelectorAll('a');
-  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+  if (drawer) {
+    const drawerLinks = drawer.querySelectorAll('a');
+    drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+  }
+
+  // Escape key support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+}
+
+function initDashboardSidebarToggle() {
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  if (!sidebar) return;
+
+  const header = document.querySelector('.stackly-header .stackly-nav-container');
+  if (header && !header.querySelector('.dashboard-sidebar-toggle')) {
+    const toggle = document.createElement('button');
+    toggle.className = 'dashboard-sidebar-toggle';
+    toggle.setAttribute('aria-label', 'Toggle Dashboard Sidebar');
+    toggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+    header.prepend(toggle);
+    
+    let backdrop = document.querySelector('.dashboard-sidebar-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'stackly-drawer-backdrop dashboard-sidebar-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    const toggleSidebar = () => {
+      sidebar.classList.toggle('active');
+      backdrop.classList.toggle('active');
+      document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    };
+
+    const closeSidebar = () => {
+      sidebar.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    toggle.addEventListener('click', toggleSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) closeSidebar();
+      });
+    });
+  }
 }
 
 function initSearchModal() {
@@ -1192,6 +1287,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSubnavScrollSpy();
   initBrandPersonalityWidget();
   initMobileNavDrawer();
+  initDashboardSidebarToggle();
   initSearchModal();
   initCourseFilterTabs();
   initTestimonialSlider();

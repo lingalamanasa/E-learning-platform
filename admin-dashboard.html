@@ -280,8 +280,8 @@
           </button>
         </div>
 
-        <div style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 20px; overflow: hidden;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <div class="responsive-table-wrapper" style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 20px; overflow-x: auto;">
+          <table style="width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
             <thead>
               <tr style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">
                 <th style="padding: 1.2rem 1.5rem;">Track Name</th>
@@ -448,8 +448,8 @@
           <button class="btn-outline-glass" style="font-size: 0.82rem; padding: 0.4rem 1rem;" onclick="window.showToast('Exporting user roster CSV...', 'success');">Export CSV <i class="fa-solid fa-download" style="margin-left: 0.3rem;"></i></button>
         </div>
 
-        <div style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 20px; overflow: hidden;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <div class="responsive-table-wrapper" style="background: rgba(18, 21, 32, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 20px; overflow-x: auto;">
+          <table style="width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
             <thead>
               <tr style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">
                 <th style="padding: 1.2rem 1.5rem;">Learner</th>
@@ -665,10 +665,10 @@
         <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem;" class="bento-asymmetric-grid">
           
           <!-- Cohort Retention Table -->
-          <div style="background: rgba(10, 9, 8, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 1.6rem; overflow-x: auto;">
+          <div class="responsive-table-wrapper" style="background: rgba(10, 9, 8, 0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 1.6rem; overflow-x: auto;">
             <h4 style="font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0 0 1rem 0;">Monthly Cohort Longevity</h4>
             
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: center;">
+            <table style="width: 100%; min-width: 480px; border-collapse: collapse; font-size: 0.82rem; text-align: center;">
               <thead>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-muted);">
                   <th style="text-align: left; padding: 0.6rem;">Cohort</th>
