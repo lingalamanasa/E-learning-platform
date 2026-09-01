@@ -1429,18 +1429,10 @@ function initGlobalFormHandlers() {
 }
 
 function initSafeLinkEnforcer() {
-  // Ensure all external and social links open in a new tab safely without navigating the current page
-  document.querySelectorAll('a[href^="http"], .footer-social-btn, .auth-github-footer').forEach(link => {
+  // Ensure all standard external http links open in a new tab
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener noreferrer');
-
-    link.addEventListener('click', (e) => {
-      const url = link.getAttribute('href');
-      if (url && url.startsWith('http')) {
-        e.preventDefault();
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
-    });
   });
 }
 
