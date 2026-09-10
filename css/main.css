@@ -607,7 +607,7 @@ h1, h2, h3, h4, h5, h6 {
 .stackly-footer {
   background: #06070a;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 4.5rem 0 2rem;
+  padding: 6.5rem 0 3.5rem;
   position: relative;
   z-index: 10;
   color: #c8c5bc;
@@ -616,8 +616,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer-main-grid {
   display: grid;
   grid-template-columns: 1.3fr 0.9fr 1.2fr 1.6fr;
-  gap: 3.5rem;
-  margin-bottom: 3.5rem;
+  gap: 4.5rem;
+  margin-bottom: 4.5rem;
 }
 
 /* Column 1: Brand & Socials */
