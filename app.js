@@ -649,13 +649,57 @@ function initHeaderScroll() {
   const header = document.querySelector('.stackly-header');
   if (!header) return;
 
+  const isHomePill = document.body.classList.contains('home-page-has-pill');
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
+    if (isHomePill) {
+      if (window.scrollY > 450) {
+        header.classList.add('header-visible', 'scrolled');
+      } else {
+        header.classList.remove('header-visible', 'scrolled');
+      }
     } else {
-      header.classList.remove('scrolled');
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     }
   }, { passive: true });
+}
+
+// 10b. Flagship Luxury Booking Capsule Handler
+function initLuxuryBookingCapsule() {
+  const btn = document.getElementById('askAvailabilityBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const carType = document.getElementById('carTypeSelect')?.value || 'Luxury SUV';
+    const pickupDate = document.getElementById('pickupDateInput')?.value || '11-09-2026';
+    const location = document.getElementById('pickupLocationSelect')?.value || 'Silicon Valley Airport (SJC)';
+    const email = document.getElementById('bookingEmailInput')?.value || '';
+
+    const origText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking Fleet...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Fleet Available!';
+      btn.style.background = '#10b981';
+
+      if (window.showToast) {
+        window.showToast(`✨ Availability Confirmed for ${carType} on ${pickupDate} at ${location}!`, 'success');
+      } else {
+        alert(`✨ Availability Confirmed for ${carType} on ${pickupDate} at ${location}! We'll contact ${email || 'you'} shortly.`);
+      }
+
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    }, 900);
+  });
 }
 
 // 11. 1-Click Demo Logins
@@ -1549,4 +1593,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobalFormHandlers();
   initSafeLinkEnforcer();
   initTemplatePreviewModal();
+  initLuxuryBookingCapsule();
 });

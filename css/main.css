@@ -81,7 +81,7 @@
   --shadow-cyan: 0 0 35px var(--cyan-glow);
   --shadow-coral: 0 0 35px var(--coral-glow);
 
-  --max-width: 1480px;
+  --max-width: 1560px;
   --header-height: 88px;
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -232,8 +232,9 @@ p {
 /* Container & Layout */
 .container {
   max-width: var(--max-width);
+  width: 94%;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
   position: relative;
   z-index: 2;
 }
@@ -295,6 +296,10 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(7, 9, 19, 0.94);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.08);
   border-bottom-color: rgba(99, 102, 241, 0.25);
+}
+
+body.home-page-has-pill .stackly-header {
+  display: none !important;
 }
 
 .stackly-nav-container {
@@ -1290,5 +1295,363 @@ img, video, canvas, svg {
 
   .ed-hero-content {
     padding: 0 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   STACKLY LUXURY MOBILITY & CAR RENTAL FLAGSHIP HERO SYSTEM
+   ========================================================================== */
+.stackly-luxury-hero {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 20%, #ffd018 0%, #ffc700 65%, #f5b800 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+  z-index: 10;
+}
+
+/* Subtle chevron graphic watermark matching mockup */
+.hero-chevron-pattern {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(217, 119, 6, 0.12) 0%, transparent 75%),
+    repeating-linear-gradient(45deg, rgba(234, 88, 12, 0.08) 0, rgba(234, 88, 12, 0.08) 12px, transparent 12px, transparent 28px),
+    repeating-linear-gradient(-45deg, rgba(234, 88, 12, 0.08) 0, rgba(234, 88, 12, 0.08) 12px, transparent 12px, transparent 28px);
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* Floating White Rounded Capsule Header */
+.stackly-pill-header {
+  position: relative;
+  width: 100%;
+  z-index: 50;
+  padding: 0 1.5rem;
+}
+
+.stackly-pill-nav {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 0.65rem 1.4rem 0.65rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.stackly-pill-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.stackly-pill-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.stackly-pill-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  padding: 0;
+  margin: 0;
+}
+
+.stackly-pill-link {
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #475569;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.stackly-pill-link:hover {
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.stackly-pill-link.active {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.stackly-pill-btn-login {
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.72rem 1.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stackly-pill-btn-login:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.45);
+}
+
+.btn-arrow-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  transition: transform 0.2s ease;
+}
+
+.stackly-pill-btn-login:hover .btn-arrow-circle {
+  transform: translate(2px, -2px);
+}
+
+/* Hero Content Area */
+.stackly-hero-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 1540px;
+  width: 94%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+
+.stackly-hero-headline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 auto 1.25rem;
+  max-width: 1150px;
+}
+
+.stackly-hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 1.8vw, 1.38rem);
+  color: #334155;
+  max-width: 840px;
+  line-height: 1.65;
+  margin: 0 auto 2.6rem;
+  font-weight: 500;
+}
+
+/* Floating Filter Capsule Bar */
+.stackly-booking-capsule {
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 0.65rem 0.85rem 0.65rem 1.8rem;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.14), 0 4px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto 2.2rem;
+  gap: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.booking-field {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: left;
+  flex: 1;
+}
+
+.booking-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.booking-field-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+}
+
+.required-star {
+  color: #ef4444;
+  font-weight: 800;
+}
+
+.booking-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.booking-select {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #64748b;
+  cursor: pointer;
+  padding-right: 0.35rem;
+  font-weight: 500;
+}
+
+.select-chevron {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.booking-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.booking-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #64748b;
+  width: 100%;
+  font-weight: 500;
+}
+
+.input-calendar-icon {
+  color: #64748b;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.booking-divider {
+  width: 1px;
+  height: 44px;
+  background: #e2e8f0;
+  flex-shrink: 0;
+}
+
+.booking-submit-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 1.05rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.booking-submit-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45);
+}
+
+/* Luxury Fleet Display */
+.stackly-hero-fleet-wrap {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  max-width: 1380px;
+  margin: 1.2rem auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.stackly-hero-fleet-img {
+  width: 100%;
+  height: auto;
+  max-height: 290px;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, 0.12));
+}
+
+@media (max-width: 1080px) {
+  .stackly-booking-capsule {
+    flex-wrap: wrap;
+    border-radius: 24px;
+    padding: 1.4rem;
+    gap: 1.2rem;
+  }
+  .booking-divider {
+    display: none;
+  }
+  .booking-field {
+    min-width: calc(50% - 1rem);
+  }
+  .booking-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .stackly-pill-menu {
+    display: none;
+  }
+  .booking-field {
+    min-width: 100%;
+  }
+  .stackly-hero-headline {
+    font-size: 2.4rem;
+  }
+  .stackly-hero-fleet-img {
+    max-height: 200px;
   }
 }

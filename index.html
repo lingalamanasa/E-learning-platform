@@ -7,12 +7,12 @@
   <meta name="description" content="Next-generation intelligent e-learning platform and skill cloud with AI-driven learning pathways, real-time telemetry, and certified curriculum.">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/main.css?v=luxury2.5">
+  <link rel="stylesheet" href="css/animations.css?v=luxury2.5">
+  <link rel="stylesheet" href="css/components.css?v=luxury2.5">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="editorial-theme">
+<body class="editorial-theme home-page-has-pill">
 
   <!-- ==========================================================================
        STACKLY FLASH SCREEN / INTRO PRELOADER
@@ -73,7 +73,122 @@
     </div>
   </header>
 
-  <main style="padding-top: var(--header-height);">
+  <main style="padding-top: 0;">
+
+    <!-- ==========================================================================
+         FLAGSHIP HERO: LUXURY MOBILITY & CONVENIENCE WITH STACKLY
+         ========================================================================== -->
+    <section class="stackly-luxury-hero" id="home">
+      <!-- Subtle Chevron Graphic Pattern Background -->
+      <div class="hero-chevron-pattern"></div>
+
+      <!-- Floating White Rounded Capsule Header (Mockup Design) -->
+      <header class="stackly-pill-header">
+        <div class="stackly-pill-nav">
+          <a href="index.html" class="stackly-pill-brand">
+            <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-pill-logo" />
+          </a>
+
+          <nav class="stackly-pill-menu-wrap">
+            <ul class="stackly-pill-menu">
+              <li><a href="index.html" class="stackly-pill-link active">Home</a></li>
+              <li><a href="about.html" class="stackly-pill-link">About Us</a></li>
+              <li><a href="services.html" class="stackly-pill-link">Service</a></li>
+              <li><a href="blog.html" class="stackly-pill-link">Blogs</a></li>
+              <li><a href="contact.html" class="stackly-pill-link">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="stackly-pill-actions">
+            <a href="login.html" class="stackly-pill-btn-login">
+              <span>Login</span>
+              <span class="btn-arrow-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Content -->
+      <div class="stackly-hero-inner">
+        <h1 class="stackly-hero-headline">
+          Luxury Meets Convenience Rent<br>with STACKLY.
+        </h1>
+
+        <p class="stackly-hero-subtitle">
+          Experience the freedom seamless travel with STACKLY. Whether you're planning a weekend getaway, a business trip extended adventure.
+        </p>
+
+        <!-- Floating Availability Booking Capsule Bar -->
+        <div class="stackly-booking-capsule">
+          <div class="booking-field">
+            <div class="booking-icon-circle"><i class="fa-solid fa-car-side"></i></div>
+            <div class="booking-field-content">
+              <label class="booking-label">Car Type <span class="required-star">*</span></label>
+              <div class="booking-select-wrap">
+                <select class="booking-select" id="carTypeSelect">
+                  <option>Select type</option>
+                  <option>Luxury SUV</option>
+                  <option>Executive Sedan</option>
+                  <option>Sports &amp; Exotic</option>
+                  <option>Electric Prestige</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-divider"></div>
+
+          <div class="booking-field">
+            <div class="booking-icon-circle"><i class="fa-regular fa-calendar-days"></i></div>
+            <div class="booking-field-content">
+              <label class="booking-label">Pickup Date <span class="required-star">*</span></label>
+              <div class="booking-input-wrap">
+                <input type="text" class="booking-input" value="11-09-2026" id="pickupDateInput" />
+                <i class="fa-regular fa-calendar input-calendar-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-divider"></div>
+
+          <div class="booking-field">
+            <div class="booking-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="booking-field-content">
+              <label class="booking-label">Pickup Location <span class="required-star">*</span></label>
+              <div class="booking-select-wrap">
+                <select class="booking-select" id="pickupLocationSelect">
+                  <option>Select type</option>
+                  <option>Silicon Valley Airport (SJC)</option>
+                  <option>San Francisco Downtown (SFO)</option>
+                  <option>Los Angeles Beverly Hills (LAX)</option>
+                  <option>New York Manhattan (JFK)</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-divider"></div>
+
+          <div class="booking-field booking-field-email">
+            <div class="booking-field-content">
+              <label class="booking-label">Email Address <span class="required-star">*</span></label>
+              <input type="email" class="booking-input" placeholder="Enter your email ..." id="bookingEmailInput" />
+            </div>
+          </div>
+
+          <button type="button" class="booking-submit-btn" id="askAvailabilityBtn">
+            Ask For Availability
+          </button>
+        </div>
+
+        <!-- Luxury Fleet of Cars Display -->
+        <div class="stackly-hero-fleet-wrap">
+          <img src="images/luxury_car_fleet.webp" alt="STACKLY Luxury Car Fleet - Porsche, Mercedes, Range Rover, BMW, Audi" class="stackly-hero-fleet-img" />
+        </div>
+      </div>
+    </section>
 
     <!-- ==========================================================================
          HERO SECTION: EDITORIAL — DYNAMIC MULTI-IMAGE ANIMATED BACKGROUND & TELEMETRY
