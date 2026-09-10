@@ -322,16 +322,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stackly-brand-img {
-  height: 44px;
+  height: 58px;
   width: auto;
+  max-width: 210px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 14px rgba(124, 113, 246, 0.5));
-  transition: filter 0.3s ease;
+  filter: drop-shadow(0 0 16px rgba(124, 113, 246, 0.6));
+  transition: transform 0.25s ease, filter 0.3s ease;
 }
 
 .stackly-brand:hover .stackly-brand-img {
-  filter: drop-shadow(0 0 20px rgba(124, 113, 246, 0.85)) drop-shadow(0 0 35px rgba(6, 182, 212, 0.4));
+  filter: drop-shadow(0 0 24px rgba(124, 113, 246, 0.95)) drop-shadow(0 0 38px rgba(6, 182, 212, 0.5));
+  transform: scale(1.05);
 }
 
 .stackly-logo-svg {
@@ -633,6 +635,24 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.footer-brand-logo img,
+.footer-brand-img {
+  height: 54px !important;
+  width: auto !important;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 16px rgba(124, 113, 246, 0.55));
+  transition: transform 0.25s ease, filter 0.3s ease;
+}
+
+.footer-brand-logo:hover img,
+.footer-brand-logo:hover .footer-brand-img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 24px rgba(124, 113, 246, 0.9)) drop-shadow(0 0 36px rgba(6, 182, 212, 0.45));
 }
 
 .footer-brand-name {
@@ -1276,6 +1296,15 @@ img, video, canvas, svg {
 
   .auth-form-side {
     padding: 2.2rem 1.5rem !important;
+  }
+
+  .stackly-brand-img {
+    height: 48px;
+  }
+
+  .footer-brand-logo img,
+  .footer-brand-img {
+    height: 46px !important;
   }
 }
 
