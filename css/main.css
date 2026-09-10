@@ -1193,7 +1193,7 @@ img, video, canvas, svg {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  gap: 3rem !important;
+  gap: 0 !important;
   box-sizing: border-box !important;
   overflow-y: visible !important;
   overflow-x: hidden !important;
@@ -1205,6 +1205,8 @@ img, video, canvas, svg {
   max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   box-sizing: border-box;
 }
 
