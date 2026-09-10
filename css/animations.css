@@ -1,266 +1,588 @@
 /* ==========================================================================
-   STACKLY - Comprehensive 3-Color Dynamic Animation Engine
-   Aurora Orbs, Floating Particles, Hanging Pendulums, 3D Tilts, Shimmers
+   STACKLY — Complete 20-Animation CSS Engine
+   Fade · Slide · Zoom · Scale · Wobble · Spring · Stagger · Hover Lift
+   Float · Parallax · Scroll Reveal · Counter · Tilt · Image Reveal
+   Typewriter · Bounce · Rotate · Accordion · Sticky Scroll · Smooth Transition
    ========================================================================== */
 
-/* 1. Ambient Background Aurora Mesh Orbs Keyframes */
-@keyframes floatOrbViolet {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(80px, 60px) scale(1.18);
-  }
-  100% {
-    transform: translate(-50px, -40px) scale(0.92);
-  }
+/* ─────────────────────────────────────────────
+   1. FADE IN / FADE UP
+───────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-fade-in   { animation: fadeIn  0.75s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-up   { animation: fadeUp  0.75s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-down { animation: fadeDown 0.75s cubic-bezier(0.16,1,0.3,1) both; }
 
-@keyframes floatOrbCyan {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-90px, 80px) scale(1.15);
-  }
-  100% {
-    transform: translate(40px, -60px) scale(0.95);
-  }
+/* ─────────────────────────────────────────────
+   2. SLIDE IN (Left · Right · Up · Down)
+───────────────────────────────────────────── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-slide-left  { animation: slideInLeft  0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-slide-right { animation: slideInRight 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-slide-up    { animation: slideInUp    0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-slide-down  { animation: slideInDown  0.8s cubic-bezier(0.16,1,0.3,1) both; }
 
-@keyframes floatOrbCoral {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(60px, -70px) scale(1.22);
-  }
-  100% {
-    transform: translate(-70px, 50px) scale(0.9);
-  }
-}
-
-/* 2. Multi-Color Beacon Pulse */
-@keyframes beaconPulseMulti {
-  0% {
-    transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.8), 0 0 10px rgba(6, 182, 212, 0.6);
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.35), 0 0 15px rgba(244, 63, 94, 0.4);
-  }
-  100% {
-    transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
-  }
-}
-
-/* 3. Fluid Gradient Shimmer */
-@keyframes gradientShimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* 4. Logo Glow Pulse */
-@keyframes logoPulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
-  }
-  50% {
-    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8)) drop-shadow(0 0 30px rgba(244, 63, 94, 0.4));
-  }
-}
-
-/* 5. Hanging Pendulum Swings */
-@keyframes hangingSwing {
-  0%, 100% {
-    transform: rotate(0deg);
-    transform-origin: top center;
-  }
-  25% {
-    transform: rotate(3.5deg);
-    transform-origin: top center;
-  }
-  75% {
-    transform: rotate(-3.5deg);
-    transform-origin: top center;
-  }
-}
-
-/* 6. Floating Physics Keyframes */
-@keyframes sqsFloatSlow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-12px) rotate(0.8deg);
-  }
-}
-
-@keyframes sqsFloatReverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(10px) rotate(-0.6deg);
-  }
-}
-
-@keyframes sqsFloatBob {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.01);
-  }
-}
-
-.anim-floating {
-  animation: sqsFloatSlow 7s ease-in-out infinite;
-}
-
-.anim-floating-reverse {
-  animation: sqsFloatReverse 8.5s ease-in-out infinite;
-}
-
-.anim-floating-bob {
-  animation: sqsFloatBob 6.5s ease-in-out infinite;
-}
-
-.anim-hanging:hover {
-  animation-duration: 2.2s;
-}
-
-/* 6. Floating Levitation for 3D Cards & Badges */
-@keyframes floatingContinuous {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(1deg);
-  }
-}
-
-@keyframes floatingReverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(12px) rotate(-1deg);
-  }
-}
-
-@keyframes floatingBob {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.anim-floating {
-  animation: floatingContinuous 5.5s ease-in-out infinite;
-}
-
-.anim-floating-reverse {
-  animation: floatingReverse 6.5s ease-in-out infinite;
-}
-
-.anim-floating-bob {
-  animation: floatingBob 3.5s ease-in-out infinite;
-}
-
-/* 7. Floating 3D Hero Tech Chips */
-.hero-floating-chip {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.1rem;
-  background: rgba(13, 18, 36, 0.85);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  font-size: 0.8rem;
-  font-weight: 700;
-  z-index: 10;
-  pointer-events: auto;
-  transition: all 0.3s ease;
-}
-
-.hero-floating-chip:hover {
-  transform: scale(1.08) !important;
-  border-color: var(--cyan-primary);
-  box-shadow: 0 12px 35px var(--cyan-glow);
-}
-
-.hero-chip-violet {
-  border-color: var(--border-highlight);
-  color: #c7d2fe;
-}
-.hero-chip-cyan {
-  border-color: var(--border-cyan);
-  color: #a5f3fc;
-}
-.hero-chip-coral {
-  border-color: var(--border-coral);
-  color: #fecdd3;
-}
-
-@media (max-width: 1024px) {
-  .hero-floating-chip {
-    display: none !important;
-  }
-}
-
-/* 8. Directional & Scroll-Driven Reveal Classes */
-.slide-left-reveal {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.slide-right-reveal {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.slide-up-reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
+/* Scroll-reveal base classes */
+.slide-left-reveal,
+.slide-right-reveal,
+.slide-up-reveal,
 .zoom-reveal {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
 }
+.slide-left-reveal  { transform: translateX(-40px); }
+.slide-right-reveal { transform: translateX(40px); }
+.slide-up-reveal    { transform: translateY(35px); }
+.zoom-reveal        { transform: scale(0.94); }
 
 .slide-left-reveal.active,
 .slide-right-reveal.active,
 .slide-up-reveal.active,
 .zoom-reveal.active {
   opacity: 1 !important;
-  transform: translate(0, 0) scale(1) !important;
+  transform: translate(0,0) scale(1) !important;
 }
 
-/* 8.1 GSAP-Active Synchronized Engine: Removes CSS transition interference on GSAP animated elements */
+/* ─────────────────────────────────────────────
+   3. ZOOM IN / ZOOM OUT
+───────────────────────────────────────────── */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes zoomOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.7); }
+}
+@keyframes zoomInSoft {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.anim-zoom-in      { animation: zoomIn     0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
+.anim-zoom-out     { animation: zoomOut    0.7s ease-in both; }
+.anim-zoom-in-soft { animation: zoomInSoft 0.75s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ─────────────────────────────────────────────
+   4. SCALE IN
+───────────────────────────────────────────── */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  to   { opacity: 1; transform: scale(1)   rotate(0deg); }
+}
+@keyframes scaleInPop {
+  0%   { opacity: 0; transform: scale(0.6); }
+  70%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.anim-scale-in     { animation: scaleIn    0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+.anim-scale-in-pop { animation: scaleInPop 0.55s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+/* ─────────────────────────────────────────────
+   5. WOBBLE CARD ANIMATION
+───────────────────────────────────────────── */
+@keyframes wobble {
+  0%,100% { transform: rotate(0deg)     translateX(0); }
+  15%     { transform: rotate(-6deg)    translateX(-10px); }
+  30%     { transform: rotate(5deg)     translateX(8px); }
+  45%     { transform: rotate(-4deg)    translateX(-6px); }
+  60%     { transform: rotate(3deg)     translateX(5px); }
+  75%     { transform: rotate(-2deg)    translateX(-3px); }
+}
+@keyframes wobbleCard {
+  0%,100% { transform: skewX(0deg)  skewY(0deg); }
+  20%     { transform: skewX(-3deg) skewY(1deg); }
+  40%     { transform: skewX(3deg)  skewY(-1deg); }
+  60%     { transform: skewX(-2deg) skewY(0.5deg); }
+  80%     { transform: skewX(1deg)  skewY(-0.5deg); }
+}
+.anim-wobble      { animation: wobble     0.9s ease-in-out; }
+.anim-wobble-card { animation: wobbleCard 0.7s ease-in-out; }
+.anim-wobble:hover      { animation: wobble     0.9s ease-in-out; }
+.anim-wobble-card:hover { animation: wobbleCard 0.7s ease-in-out; }
+
+/* ─────────────────────────────────────────────
+   6. SPRING / SPRINGBOARD ANIMATION
+───────────────────────────────────────────── */
+@keyframes springBounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(0.88); }
+  55%  { transform: scale(1.12); }
+  72%  { transform: scale(0.96); }
+  85%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes springIn {
+  0%   { opacity: 0; transform: scale(0.3) translateY(60px); }
+  60%  { opacity: 1; transform: scale(1.1)  translateY(-10px); }
+  80%  { transform: scale(0.95) translateY(5px); }
+  100% { transform: scale(1)    translateY(0); }
+}
+.anim-spring        { animation: springBounce 0.7s cubic-bezier(0.34,1.56,0.64,1); }
+.anim-spring-in     { animation: springIn     0.9s cubic-bezier(0.34,1.56,0.64,1) both; }
+.anim-spring:hover  { animation: springBounce 0.7s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* ─────────────────────────────────────────────
+   7. STAGGERED ANIMATION
+───────────────────────────────────────────── */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+              transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.stagger-children.active > *:nth-child(1)  { transition-delay: 0.05s; }
+.stagger-children.active > *:nth-child(2)  { transition-delay: 0.12s; }
+.stagger-children.active > *:nth-child(3)  { transition-delay: 0.19s; }
+.stagger-children.active > *:nth-child(4)  { transition-delay: 0.26s; }
+.stagger-children.active > *:nth-child(5)  { transition-delay: 0.33s; }
+.stagger-children.active > *:nth-child(6)  { transition-delay: 0.40s; }
+.stagger-children.active > *:nth-child(7)  { transition-delay: 0.47s; }
+.stagger-children.active > *:nth-child(8)  { transition-delay: 0.54s; }
+.stagger-children.active > *:nth-child(n+9){ transition-delay: 0.60s; }
+.stagger-children.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   8. HOVER LIFT
+───────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+}
+.hover-lift-sm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.hover-lift-lg:hover {
+  transform: translateY(-14px) scale(1.03);
+  box-shadow: 0 32px 60px rgba(0,0,0,0.45);
+}
+
+/* ─────────────────────────────────────────────
+   9. FLOATING ANIMATION
+───────────────────────────────────────────── */
+@keyframes floatOrbViolet {
+  0%   { transform: translate(0,0)       scale(1); }
+  50%  { transform: translate(80px,60px) scale(1.18); }
+  100% { transform: translate(-50px,-40px) scale(0.92); }
+}
+@keyframes floatOrbCyan {
+  0%   { transform: translate(0,0)        scale(1); }
+  50%  { transform: translate(-90px,80px) scale(1.15); }
+  100% { transform: translate(40px,-60px) scale(0.95); }
+}
+@keyframes floatOrbCoral {
+  0%   { transform: translate(0,0)       scale(1); }
+  50%  { transform: translate(60px,-70px) scale(1.22); }
+  100% { transform: translate(-70px,50px) scale(0.9); }
+}
+@keyframes floatingContinuous {
+  0%,100% { transform: translateY(0)    rotate(0deg); }
+  50%     { transform: translateY(-14px) rotate(1deg); }
+}
+@keyframes floatingReverse {
+  0%,100% { transform: translateY(0)   rotate(0deg); }
+  50%     { transform: translateY(12px) rotate(-1deg); }
+}
+@keyframes floatingBob {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+@keyframes sqsFloatSlow {
+  0%,100% { transform: translateY(0)    rotate(0deg); }
+  50%     { transform: translateY(-12px) rotate(0.8deg); }
+}
+.anim-floating         { animation: floatingContinuous 5.5s ease-in-out infinite; }
+.anim-floating-reverse { animation: floatingReverse    6.5s ease-in-out infinite; }
+.anim-floating-bob     { animation: floatingBob        3.5s ease-in-out infinite; }
+.anim-float-slow       { animation: sqsFloatSlow       7s   ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────
+   10. PARALLAX SCROLLING (CSS layer — JS enhances)
+───────────────────────────────────────────── */
+.parallax-layer {
+  will-change: transform;
+  transform: translateZ(0);
+}
+.parallax-slow   { --parallax-speed: 0.3; }
+.parallax-medium { --parallax-speed: 0.5; }
+.parallax-fast   { --parallax-speed: 0.8; }
+
+/* ─────────────────────────────────────────────
+   11. SCROLL REVEAL (IntersectionObserver driven)
+───────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
+}
+[data-reveal="fade"]         { transform: none; }
+[data-reveal="up"]           { transform: translateY(40px); }
+[data-reveal="down"]         { transform: translateY(-40px); }
+[data-reveal="left"]         { transform: translateX(-50px); }
+[data-reveal="right"]        { transform: translateX(50px); }
+[data-reveal="zoom"]         { transform: scale(0.85); }
+[data-reveal="zoom-out"]     { transform: scale(1.15); }
+[data-reveal="flip"]         { transform: rotateX(90deg); transform-origin: top; }
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   12. COUNTER ANIMATION (JS-driven, CSS handles display)
+───────────────────────────────────────────── */
+.counter-value {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-variant-numeric: tabular-nums;
+}
+.counter-tick {
+  animation: counterTick 0.12s ease-out;
+}
+@keyframes counterTick {
+  0%   { transform: translateY(-6px); opacity: 0.6; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   13. CARD TILT / 3D TILT
+───────────────────────────────────────────── */
+.tilt-interactive {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.2s cubic-bezier(0.25,1,0.5,1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  position: relative;
+}
+.tilt-interactive .spotlight-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),
+              rgba(99,102,241,0.18), transparent 40%);
+  z-index: 1;
+}
+.tilt-interactive:hover .spotlight-glow { opacity: 1; }
+
+/* 3D tilt depth child layer */
+.tilt-depth {
+  transform: translateZ(20px);
+  transition: transform 0.2s ease;
+}
+
+/* ─────────────────────────────────────────────
+   14. IMAGE REVEAL
+───────────────────────────────────────────── */
+.img-reveal-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.img-reveal-wrap img {
+  transform: scale(1.12);
+  transition: transform 1.1s cubic-bezier(0.16,1,0.3,1);
+  display: block;
+  width: 100%;
+}
+.img-reveal-wrap.revealed img {
+  transform: scale(1);
+}
+/* Curtain wipe reveal */
+.img-reveal-curtain {
+  overflow: hidden;
+  position: relative;
+}
+.img-reveal-curtain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #22d3ee;
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.77,0,0.18,1);
+}
+.img-reveal-curtain.revealed::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* ─────────────────────────────────────────────
+   15. TEXT REVEAL / TYPEWRITER
+───────────────────────────────────────────── */
+/* Typewriter */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #22d3ee;
+  white-space: nowrap;
+  animation: typingCursor 0.75s step-end infinite;
+}
+@keyframes typingCursor {
+  0%,100% { border-color: #22d3ee; }
+  50%     { border-color: transparent; }
+}
+
+/* Word-by-word clip reveal */
+.text-reveal-word {
+  display: inline-block;
+  overflow: hidden;
+}
+.text-reveal-word span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.text-reveal-word.revealed span {
+  transform: translateY(0);
+}
+
+/* Char-by-char stagger */
+.text-char-reveal .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) rotate(3deg);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.text-char-reveal.revealed .char { opacity: 1; transform: none; }
+.text-char-reveal.revealed .char:nth-child(1)  { transition-delay: 0.02s; }
+.text-char-reveal.revealed .char:nth-child(2)  { transition-delay: 0.04s; }
+.text-char-reveal.revealed .char:nth-child(3)  { transition-delay: 0.06s; }
+.text-char-reveal.revealed .char:nth-child(4)  { transition-delay: 0.08s; }
+.text-char-reveal.revealed .char:nth-child(5)  { transition-delay: 0.10s; }
+.text-char-reveal.revealed .char:nth-child(n+6){ transition-delay: 0.12s; }
+
+/* ─────────────────────────────────────────────
+   16. BOUNCE ANIMATION
+───────────────────────────────────────────── */
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3) translateY(-80px); }
+  50%  { opacity: 1; transform: scale(1.08) translateY(6px); }
+  70%  { transform: scale(0.96) translateY(-4px); }
+  85%  { transform: scale(1.03) translateY(2px); }
+  100% { transform: scale(1)    translateY(0); }
+}
+@keyframes bounceLoop {
+  0%,20%,53%,80%,100% { transform: translateY(0); }
+  40%,43%             { transform: translateY(-22px); }
+  70%                 { transform: translateY(-10px); }
+  90%                 { transform: translateY(-4px); }
+}
+@keyframes beaconPulseMulti {
+  0%   { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(6,182,212,0.8); }
+  50%  { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(99,102,241,0.35); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(6,182,212,0); }
+}
+.anim-bounce-in   { animation: bounceIn   0.9s cubic-bezier(0.34,1.56,0.64,1) both; }
+.anim-bounce-loop { animation: bounceLoop 1.4s ease infinite; }
+.anim-beacon      { animation: beaconPulseMulti 2s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────
+   17. ROTATE ANIMATION
+───────────────────────────────────────────── */
+@keyframes rotateIn {
+  from { opacity: 0; transform: rotate(-200deg) scale(0.5); }
+  to   { opacity: 1; transform: rotate(0deg)    scale(1); }
+}
+@keyframes rotateSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes rotateWobble {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(8deg); }
+  75%     { transform: rotate(-8deg); }
+}
+@keyframes hangingSwing {
+  0%,100% { transform: rotate(0deg);    transform-origin: top center; }
+  25%     { transform: rotate(3.5deg);  transform-origin: top center; }
+  75%     { transform: rotate(-3.5deg); transform-origin: top center; }
+}
+.anim-rotate-in     { animation: rotateIn     0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
+.anim-spin          { animation: rotateSpin   1.2s linear infinite; }
+.anim-rotate-wobble { animation: rotateWobble 2.5s ease-in-out infinite; }
+.anim-hanging       { animation: hangingSwing 4s  ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────
+   18. ACCORDION / EXPAND-COLLAPSE
+───────────────────────────────────────────── */
+.accordion-item {
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+  overflow: hidden;
+}
+.accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+.accordion-trigger:hover { color: #22d3ee; }
+.accordion-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+              border-color 0.25s ease,
+              background 0.25s ease;
+  font-size: 0.85rem;
+}
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+  transform: rotate(45deg);
+  border-color: #22d3ee;
+  background: rgba(34,211,238,0.12);
+  color: #22d3ee;
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1),
+              padding 0.3s ease;
+}
+.accordion-body.open {
+  max-height: 600px;
+}
+.accordion-body-inner {
+  padding: 0 0 1.2rem;
+  color: #94a3b8;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────
+   19. STICKY SCROLL ANIMATION
+───────────────────────────────────────────── */
+.sticky-scroll-section {
+  position: relative;
+}
+.sticky-scroll-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sticky-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #22d3ee, #d4a96a);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+#scroll-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #22d3ee, #d4a96a);
+  width: 0%;
+  z-index: 9999;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ─────────────────────────────────────────────
+   20. SMOOTH SECTION TRANSITION
+───────────────────────────────────────────── */
+.section-transition {
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.section-transition.exiting {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.section-transition.entering {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.section-transition.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page-level smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─────────────────────────────────────────────
+   ANIMATION DELAYS — Utility Classes
+───────────────────────────────────────────── */
+.anim-delay-100 { animation-delay: 0.1s !important; }
+.anim-delay-200 { animation-delay: 0.2s !important; }
+.anim-delay-300 { animation-delay: 0.3s !important; }
+.anim-delay-400 { animation-delay: 0.4s !important; }
+.anim-delay-500 { animation-delay: 0.5s !important; }
+.anim-delay-600 { animation-delay: 0.6s !important; }
+.anim-delay-700 { animation-delay: 0.7s !important; }
+.anim-delay-800 { animation-delay: 0.8s !important; }
+
+/* ─────────────────────────────────────────────
+   ANIMATION DURATIONS — Utility Classes
+───────────────────────────────────────────── */
+.anim-dur-300 { animation-duration: 0.3s !important; }
+.anim-dur-500 { animation-duration: 0.5s !important; }
+.anim-dur-700 { animation-duration: 0.7s !important; }
+.anim-dur-900 { animation-duration: 0.9s !important; }
+.anim-dur-1s  { animation-duration: 1s !important; }
+.anim-dur-1_5s{ animation-duration: 1.5s !important; }
+
+/* ─────────────────────────────────────────────
+   GSAP SYNC — Remove CSS transition conflicts on GSAP elements
+───────────────────────────────────────────── */
 body.gsap-active .slide-left-reveal,
 body.gsap-active .slide-right-reveal,
 body.gsap-active .slide-up-reveal,
@@ -268,155 +590,109 @@ body.gsap-active .zoom-reveal,
 body.gsap-active .sqs-bento-card {
   transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
-
 body.gsap-active .sqs-bento-grid {
   perspective: 1200px;
   transform-style: preserve-3d;
 }
-
 body.gsap-active .sqs-bento-card {
   will-change: transform, opacity;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 
-
-/* 9. Interactive 3D Card Tilt with Dynamic Spotlight Glow */
-.tilt-interactive {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative;
+/* ─────────────────────────────────────────────
+   MISC SHARED ANIMATIONS
+───────────────────────────────────────────── */
+@keyframes gradientShimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
-
-.tilt-interactive .spotlight-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.18), transparent 40%);
-  z-index: 1;
+@keyframes logoPulse {
+  0%,100% { filter: drop-shadow(0 0 10px rgba(99,102,241,0.5)); }
+  50%     { filter: drop-shadow(0 0 20px rgba(6,182,212,0.8))
+                    drop-shadow(0 0 30px rgba(244,63,94,0.4)); }
 }
-
-.tilt-interactive:hover .spotlight-glow {
-  opacity: 1;
+@keyframes toastSlideIn {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
 }
-
-/* 10. Carousel Slider Transitions */
-.stackly-carousel-viewport {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
+@keyframes correctGlow {
+  0%   { box-shadow: 0 0 0 0   rgba(16,185,129,0.7); }
+  70%  { box-shadow: 0 0 0 14px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0   rgba(16,185,129,0); }
 }
-
-.stackly-carousel-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  width: 100%;
+@keyframes shakeWrong {
+  0%,100% { transform: translateX(0); }
+  20%,60% { transform: translateX(-8px); }
+  40%,80% { transform: translateX(8px); }
 }
+.anim-correct { animation: correctGlow 1.2s ease-out; }
+.anim-wrong   { animation: shakeWrong  0.5s ease-in-out; }
 
-.stackly-carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
-}
-
-/* Dash Indicators */
-.carousel-dash-indicators {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.carousel-dash {
-  width: 20px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-
-.carousel-dash.active {
-  background: var(--grad-tri-color-horizontal);
-  width: 36px;
-  box-shadow: 0 0 12px var(--cyan-glow);
-}
-
-/* Carousel Prev/Next Navigation */
-.carousel-circle-btn {
-  width: 44px;
-  height: 44px;
+/* Pulse dot */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(13, 18, 36, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(12px);
-  transition: all 0.25s ease;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
+  display: inline-block;
+  animation: beaconPulseMulti 2s ease-in-out infinite;
 }
 
+/* Floating Hero Chips */
+.hero-floating-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  background: rgba(13,18,36,0.85);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 10;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+.hero-floating-chip:hover {
+  transform: scale(1.08) !important;
+  border-color: #22d3ee;
+  box-shadow: 0 12px 35px rgba(34,211,238,0.3);
+}
+@media (max-width: 1024px) {
+  .hero-floating-chip { display: none !important; }
+}
+
+/* Carousel */
+.stackly-carousel-viewport { position: relative; overflow: hidden; border-radius: 16px; }
+.stackly-carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); width: 100%; }
+.stackly-carousel-slide { min-width: 100%; flex-shrink: 0; }
+.carousel-dash-indicators { display: flex; gap: 6px; align-items: center; }
+.carousel-dash { width: 20px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.2); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); cursor: pointer; }
+.carousel-dash.active { background: #22d3ee; width: 36px; box-shadow: 0 0 12px rgba(34,211,238,0.5); }
+.carousel-circle-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(13,18,36,0.85); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; backdrop-filter: blur(12px); transition: all 0.25s ease;
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
+}
 .carousel-circle-btn:hover {
-  background: var(--violet-primary);
-  border-color: var(--cyan-light);
-  box-shadow: 0 0 20px var(--violet-glow), 0 0 30px var(--cyan-glow);
+  background: #6366f1; border-color: #22d3ee;
+  box-shadow: 0 0 20px rgba(99,102,241,0.5);
   transform: translateY(-50%) scale(1.12);
 }
+.carousel-circle-btn.prev { left: 14px; }
+.carousel-circle-btn.next { right: 14px; }
 
-.carousel-circle-btn.prev {
-  left: 14px;
-}
-
-.carousel-circle-btn.next {
-  right: 14px;
-}
-
-/* 11. Interactive Toast Animation */
-@keyframes toastSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
+/* Accessibility — respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* 12. Assessment Success Pulse */
-@keyframes correctGlow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-  }
-}
-
-@keyframes shakeWrong {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
-}
-
-.anim-correct {
-  animation: correctGlow 1.2s ease-out;
-}
-
-.anim-wrong {
-  animation: shakeWrong 0.5s ease-in-out;
 }
