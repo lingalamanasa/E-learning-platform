@@ -1493,38 +1493,14 @@
   transform: scale(1.05) translateY(-6px);
 }
 
-/* 10. Dashboard Layout, Sidebar & Navigation */
-.dashboard-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  z-index: 2;
-}
+/* 10. Dashboard Layout, Sidebar & Navigation
+   NOTE: The actual fixed-sidebar layout is controlled by main.css.
+   These component-level styles only handle sub-elements like
+   user-profile-badge, sidebar-nav, user-avatar etc.
+   Do NOT redefine dashboard-layout, dashboard-sidebar, or dashboard-main
+   display/position here as that will override main.css fixed layout. */
 
-@media (max-width: 960px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-.dashboard-sidebar {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  height: fit-content;
-  backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-md);
-}
-
+/* Component-level sidebar sub-elements (non-layout) */
 .user-profile-badge {
   display: flex;
   align-items: center;
@@ -1578,12 +1554,6 @@
   border-color: var(--border-highlight);
   color: #fff;
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
-}
-
-.dashboard-main {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
 
 .dashboard-header {
