@@ -1416,13 +1416,6 @@
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
 }
-}
-
-.sqs-floating-nav-link:hover,
-.sqs-floating-nav-link.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-}
 
 /* ==========================================================================
    SQUARESPACE BENTO GRID - SCREENSHOT 2 & 3
