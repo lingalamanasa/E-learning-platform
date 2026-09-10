@@ -1567,8 +1567,8 @@ function initTemplatePreviewModal() {
     const category = card.querySelector('.sqs-template-category')?.textContent.trim() || 'Architecture';
     const img = card.querySelector('img')?.getAttribute('src') || 'images/sqs_template_ceramics.webp';
 
-    btn.addEventListener('click', () => {
-      window.openTemplatePreview(title, category, img);
+    btn.addEventListener('click', (e) => {
+      window.location.href = '404.html';
     });
   });
 }
