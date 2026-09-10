@@ -1428,7 +1428,7 @@
    SQUARESPACE BENTO GRID - SCREENSHOT 2 & 3
    ========================================================================== */
 .sqs-bento-section {
-  padding: 5rem 0 6rem;
+  padding: 6.5rem 0 8rem;
   background: #141311;
   position: relative;
 }
@@ -1436,7 +1436,7 @@
 .sqs-bento-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 1.5rem;
+  gap: 2.25rem;
 }
 
 @media (max-width: 1024px) {
@@ -1448,7 +1448,7 @@
 .sqs-bento-card {
   background: #1c1b18;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -1464,35 +1464,35 @@
 
 /* Card 1: Kettlebell Name Input */
 .sqs-bento-kettlebell-card {
-  min-height: 420px;
+  min-height: 490px;
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
   align-items: flex-start;
-  padding: 2.5rem;
+  padding: 3.25rem;
 }
 
 .sqs-frosted-prompt-capsule {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  background: rgba(28, 27, 24, 0.85);
+  gap: 1.1rem;
+  background: rgba(28, 27, 24, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 1rem 1.75rem;
+  padding: 1.25rem 2.25rem;
   border-radius: var(--radius-pill);
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.38rem;
   font-weight: 500;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .sqs-typing-caret {
   display: inline-block;
-  width: 2px;
-  height: 1.3rem;
+  width: 2.5px;
+  height: 1.5rem;
   background: #38bdf8;
   animation: blinkCaret 1s infinite;
   vertical-align: middle;
@@ -1505,36 +1505,37 @@
 
 /* Card 2: Design Recommendations & Checkbox Pages */
 .sqs-bento-pages-card {
-  padding: 2.75rem;
+  padding: 3.25rem;
   background: #1b1a17;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
+  min-height: 490px;
 }
 
 .sqs-pages-widget-box {
   background: rgba(28, 27, 24, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(20px);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
+  border-radius: 14px;
+  padding: 1.85rem;
+  margin-top: 1.85rem;
 }
 
 .sqs-checkbox-row {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1.1rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-pill);
-  padding: 0.8rem 1.25rem;
-  margin-bottom: 0.75rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.95rem;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 52px;
   transition: all 0.2s ease;
 }
 
@@ -1543,25 +1544,27 @@
 }
 
 .sqs-checkbox-icon {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #38bdf8;
   color: #121110;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 /* Card 3: Custom Content Instantly (Sculpt) */
 .sqs-bento-custom-card {
-  padding: 2.75rem;
+  padding: 3.25rem;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
+  min-height: 490px;
 }
 
 @media (max-width: 768px) {
@@ -1571,7 +1574,7 @@
 }
 
 .sqs-sculpt-preview-thumb {
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -1586,24 +1589,25 @@
 
 /* Card 4: Designed for quality (Solira Luxury Showcase) */
 .sqs-bento-quality-card {
-  padding: 2.75rem;
+  padding: 3.25rem;
   display: flex;
   flex-direction: column;
+  min-height: 490px;
 }
 
 .sqs-solira-mockup-frame {
   background: #000000;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  margin-top: 1.75rem;
+  margin-top: 2rem;
   position: relative;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 .sqs-solira-mockup-frame img {
   width: 100%;
-  height: 240px;
+  height: 290px;
   object-fit: cover;
   display: block;
 }
@@ -1618,7 +1622,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 /* ==========================================================================

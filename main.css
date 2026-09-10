@@ -81,8 +81,8 @@
   --shadow-cyan: 0 0 35px var(--cyan-glow);
   --shadow-coral: 0 0 35px var(--coral-glow);
 
-  --max-width: 1360px;
-  --header-height: 80px;
+  --max-width: 1480px;
+  --header-height: 88px;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
@@ -97,14 +97,32 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.65;
+  line-height: 1.7;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
@@ -291,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stackly-brand-img {
-  height: 38px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -318,18 +336,18 @@ h1, h2, h3, h4, h5, h6 {
 .stackly-nav-menu {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: 2.85rem;
   list-style: none;
 }
 
 .stackly-nav-link {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
   transition: all 0.25s ease;
   position: relative;
-  padding: 0.4rem 0;
+  padding: 0.5rem 0.2rem;
 }
 
 .stackly-nav-link::after {
@@ -338,7 +356,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 0;
   width: 0%;
-  height: 2px;
+  height: 2.5px;
   background: var(--grad-tri-color);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 2px;
@@ -357,15 +375,15 @@ h1, h2, h3, h4, h5, h6 {
 .stackly-auth-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .btn-nav-login {
   color: var(--text-primary);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  padding: 0.55rem 1.25rem;
+  padding: 0.68rem 1.5rem;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
@@ -384,9 +402,9 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 200% auto;
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  padding: 0.55rem 1.4rem;
+  padding: 0.68rem 1.65rem;
   border-radius: var(--radius-sm);
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
