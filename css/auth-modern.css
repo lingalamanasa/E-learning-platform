@@ -69,23 +69,24 @@ body.auth-page-body {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.5rem 1.2rem;
+  padding: 0.55rem 1.4rem;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 0.22);
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.45);
   text-decoration: none;
   transition: all 0.25s ease;
 }
 
 .auth-brand-pill:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.4);
   transform: translateY(-1px);
 }
 
 .auth-pill-logo {
-  height: 24px;
+  height: 38px;
   width: auto;
+  max-width: 170px;
   object-fit: contain;
   display: block;
 }

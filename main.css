@@ -322,12 +322,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stackly-brand-img {
-  height: 58px;
+  height: 72px;
   width: auto;
-  max-width: 210px;
+  max-width: 250px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 16px rgba(124, 113, 246, 0.6));
+  filter: drop-shadow(0 0 18px rgba(124, 113, 246, 0.65));
   transition: transform 0.25s ease, filter 0.3s ease;
 }
 
@@ -650,12 +650,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-brand-logo img,
 .footer-brand-img {
-  height: 54px !important;
+  height: 70px !important;
   width: auto !important;
-  max-width: 220px;
+  max-width: 250px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 16px rgba(124, 113, 246, 0.55));
+  filter: drop-shadow(0 0 18px rgba(124, 113, 246, 0.6));
   transition: transform 0.25s ease, filter 0.3s ease;
 }
 
@@ -1320,12 +1320,12 @@ img, video, canvas, svg {
   }
 
   .stackly-brand-img {
-    height: 48px;
+    height: 56px;
   }
 
   .footer-brand-logo img,
   .footer-brand-img {
-    height: 46px !important;
+    height: 56px !important;
   }
 }
 
