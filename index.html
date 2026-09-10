@@ -7,9 +7,9 @@
   <meta name="description" content="Next-generation intelligent e-learning platform and skill cloud with AI-driven learning pathways, real-time telemetry, and certified curriculum.">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=gravity1.0">
-  <link rel="stylesheet" href="css/animations.css?v=gravity1.0">
-  <link rel="stylesheet" href="css/components.css?v=gravity1.0">
+  <link rel="stylesheet" href="css/main.css?v=rich1.0">
+  <link rel="stylesheet" href="css/animations.css?v=rich1.0">
+  <link rel="stylesheet" href="css/components.css?v=rich1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="editorial-theme">
@@ -127,44 +127,173 @@
 
         <p class="ed-eyebrow">
           <span class="ed-eyebrow-line"></span>
+          <span class="pulse-dot" style="background: #22d3ee; margin-right: 0.25rem;"></span>
           Intelligence · Curiosity · Mastery
           <span class="ed-eyebrow-line"></span>
         </p>
 
         <h1 class="ed-hero-title">
           Where Knowledge<br>
-          <em>Meets Ambition</em>
+          <em>Meets Ambition.</em>
         </h1>
 
         <p class="ed-hero-body">
-          Immerse yourself in world-class learning — powered by AI, guided by
-          industry experts, and shaped around the way you think. From foundational
-          concepts to cutting-edge specializations, every path is yours to own.
+          Immerse yourself in next-generation AI and distributed systems engineering — powered by autonomous cloud sandboxes,
+          mentored by leading architects, and certified for global enterprise impact.
         </p>
 
-        <div class="ed-divider">
-          <span class="ed-divider-line"></span>
-          <span class="ed-divider-diamond"><i class="fa-solid fa-gem"></i></span>
-          <span class="ed-divider-line"></span>
+        <!-- Floating Interactive Pathway Discovery Capsule Bar (Mockup Proportions) -->
+        <div class="ed-pathway-capsule">
+          <div class="pathway-field">
+            <div class="pathway-icon-circle"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="pathway-field-content">
+              <label class="pathway-label">Domain Track <span class="required-star">*</span></label>
+              <div class="pathway-select-wrap">
+                <select class="pathway-select" id="pathwayTrackSelect">
+                  <option value="ai">AI &amp; Deep Learning</option>
+                  <option value="cloud">Cloud &amp; Kubernetes Mesh</option>
+                  <option value="systems">Full-Stack &amp; Systems</option>
+                  <option value="cyber">Zero-Trust Security</option>
+                  <option value="quantum">Quantum Computing</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-divider"></div>
+
+          <div class="pathway-field">
+            <div class="pathway-icon-circle"><i class="fa-solid fa-signal"></i></div>
+            <div class="pathway-field-content">
+              <label class="pathway-label">Skill Level <span class="required-star">*</span></label>
+              <div class="pathway-select-wrap">
+                <select class="pathway-select" id="pathwayLevelSelect">
+                  <option value="all">All Levels (Foundational to Pro)</option>
+                  <option value="foundation">Foundational Engineer</option>
+                  <option value="intermediate">Intermediate Practitioner</option>
+                  <option value="architect">Principal / Staff Architect</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-divider"></div>
+
+          <div class="pathway-field">
+            <div class="pathway-icon-circle"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="pathway-field-content">
+              <label class="pathway-label">Career Target <span class="required-star">*</span></label>
+              <div class="pathway-select-wrap">
+                <select class="pathway-select" id="pathwayTargetSelect">
+                  <option value="cert">Enterprise Certification</option>
+                  <option value="sandbox">Hands-on Sandbox Labs</option>
+                  <option value="career">Career Role Transition</option>
+                  <option value="research">Top-Tier AI Lab Research</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="pathway-submit-btn" id="launchPathwayBtn">
+            <span>Launch Pathway</span>
+            <i class="fa-solid fa-bolt"></i>
+          </button>
         </div>
 
+        <!-- Dual Action Buttons -->
+        <div class="ed-hero-actions-row">
+          <a href="signup.html" class="ed-btn-primary">
+            <span>Start Learning Free</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#curriculum-showcase" class="ed-btn-secondary">
+            <i class="fa-solid fa-compass"></i>
+            <span>Explore Curriculum</span>
+          </a>
+        </div>
+
+        <!-- Live Meta Stats Row -->
         <div class="ed-meta-row">
           <span class="ed-meta-item">
             <span class="ed-meta-num" data-counter="500" data-suffix="+">500+</span>
-            <span class="ed-meta-label">Expert Courses</span>
+            <span class="ed-meta-label">Expert Masterclasses</span>
           </span>
           <span class="ed-meta-sep">·</span>
           <span class="ed-meta-item">
             <span class="ed-meta-num" data-counter="120" data-suffix="k">120k</span>
-            <span class="ed-meta-label">Global Learners</span>
+            <span class="ed-meta-label">Active Engineers</span>
           </span>
           <span class="ed-meta-sep">·</span>
           <span class="ed-meta-item">
             <span class="ed-meta-num" data-counter="98" data-suffix="%">98%</span>
-            <span class="ed-meta-label">Satisfaction Rate</span>
+            <span class="ed-meta-label">Certification Pass Rate</span>
           </span>
         </div>
 
+      </div>
+
+      <!-- Live Platform Environments Showcase Deck (Anchored at base like reference design) -->
+      <div class="ed-hero-deck-wrap">
+        <div class="ed-deck-header">
+          <span class="ed-deck-badge"><i class="fa-solid fa-circle-play"></i> LIVE PLATFORM ENVIRONMENTS</span>
+          <span class="ed-deck-meta"><i class="fa-solid fa-bolt" style="color: #22d3ee;"></i> 500+ Labs Active Now</span>
+        </div>
+        <div class="ed-deck-grid">
+          <!-- Lab 1: Distributed GPU Cluster -->
+          <a href="services.html#sandboxes" class="ed-deck-card tilt-interactive">
+            <div class="deck-card-visual">
+              <img src="images/course-ai.webp" alt="Distributed GPU Cluster" />
+              <span class="deck-tag tag-ai"><i class="fa-solid fa-bolt"></i> PyTorch FSDP</span>
+            </div>
+            <div class="deck-card-info">
+              <div class="deck-status"><span class="pulse-dot-sm" style="background: #22d3ee;"></span> 8x H100 Node Online</div>
+              <h4 class="deck-title">Distributed GPU Clusters</h4>
+              <p class="deck-desc">Multi-node gradient sync &amp; FlashAttention kernel compile</p>
+            </div>
+          </a>
+
+          <!-- Lab 2: Multi-Cluster Kubernetes -->
+          <a href="services.html#sandboxes" class="ed-deck-card tilt-interactive">
+            <div class="deck-card-visual">
+              <img src="images/course-cloud.webp" alt="Multi-Cluster Kubernetes" />
+              <span class="deck-tag tag-cloud"><i class="fa-solid fa-cloud"></i> K8s 1.30</span>
+            </div>
+            <div class="deck-card-info">
+              <div class="deck-status"><span class="pulse-dot-sm" style="background: #10b981;"></span> Zero-Downtime Mesh</div>
+              <h4 class="deck-title">Kubernetes Service Mesh</h4>
+              <p class="deck-desc">Canary traffic routing, ArgoCD GitOps, &amp; Cilium eBPF</p>
+            </div>
+          </a>
+
+          <!-- Lab 3: Cryptographic Sandbox -->
+          <a href="services.html#sandboxes" class="ed-deck-card tilt-interactive">
+            <div class="deck-card-visual">
+              <img src="images/course-cyber.webp" alt="Zero-Trust Cryptography" />
+              <span class="deck-tag tag-cyber"><i class="fa-solid fa-shield-halved"></i> Zero-Trust</span>
+            </div>
+            <div class="deck-card-info">
+              <div class="deck-status"><span class="pulse-dot-sm" style="background: #fb7185;"></span> SOC 2 Type II VPC</div>
+              <h4 class="deck-title">Zero-Trust Cryptography</h4>
+              <p class="deck-desc">Post-quantum key exchange &amp; ephemeral WASM enclaves</p>
+            </div>
+          </a>
+
+          <!-- Lab 4: Autonomous Agent Swarm -->
+          <a href="services.html#sandboxes" class="ed-deck-card tilt-interactive">
+            <div class="deck-card-visual">
+              <img src="images/hero-ai.webp" alt="Autonomous Agent Mesh" />
+              <span class="deck-tag tag-quantum"><i class="fa-solid fa-brain"></i> Agent Swarm</span>
+            </div>
+            <div class="deck-card-info">
+              <div class="deck-status"><span class="pulse-dot-sm" style="background: #d4a96a;"></span> 24 Agents Co-Operating</div>
+              <h4 class="deck-title">Autonomous Agent Mesh</h4>
+              <p class="deck-desc">Vector memory graphs &amp; self-correcting tool calls</p>
+            </div>
+          </a>
+        </div>
       </div>
 
       <!-- Scroll cue -->
@@ -1200,7 +1329,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/gsap-animations.js?v=gravity1.0"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=rich1.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Course Filtering
