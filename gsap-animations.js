@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGsapCtaBoxAnimations();
   initGsapBentoParallax();
   initGsapMagneticButtons();
+  initGsapGravityCardDropAnimations();
 
   window.addEventListener('load', () => {
     if (typeof ScrollTrigger !== 'undefined') {
@@ -330,8 +331,10 @@ function initGsapUniversalSideSlideAnimations() {
     );
   });
 
-  // Animate elements with .slide-up-reveal (excluding bento section elements)
-  const upElements = document.querySelectorAll('.slide-up-reveal:not(#intelligence *):not(.sqs-bento-section *)');
+  // Animate elements with .slide-up-reveal (excluding cards and bento section elements handled by dedicated gravity drop)
+  const upElements = document.querySelectorAll(
+    '.slide-up-reveal:not(#intelligence *):not(.sqs-bento-section *):not(.sqs-step-card):not(.value-card):not(.skill-tree-node):not(.pricing-card):not(.bento-card-large):not(.sla-tier-card):not(.blog-card):not(.channel-card):not(.blog-featured-card):not(.dynamic-course-card)'
+  );
   upElements.forEach(el => {
     gsap.fromTo(el,
       { y: 40, opacity: 0 },
@@ -351,37 +354,13 @@ function initGsapUniversalSideSlideAnimations() {
 }
 
 /* ==========================================================================
-   4. SECTION 6: DYNAMIC COGNITIVE SKILL TREES (GSAP STAGGER & CONNECTORS)
+   4. SECTION 6: DYNAMIC COGNITIVE SKILL TREES (GSAP 3D TILT TRACKING)
    ========================================================================== */
 function initGsapSkillTreeAnimations() {
   const skillSection = document.querySelector('.skill-tree-container');
   if (!skillSection) return;
 
   const nodes = skillSection.querySelectorAll('.skill-tree-node');
-
-  // Staggered node entrance with 3D rotation using fromTo to guarantee visibility
-  if (typeof gsap !== 'undefined') {
-    if (typeof ScrollTrigger !== 'undefined') {
-      gsap.fromTo(nodes, 
-        { y: 50, opacity: 0, scale: 0.94 },
-        {
-          scrollTrigger: {
-            trigger: skillSection,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          },
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          stagger: 0.15,
-          duration: 0.9,
-          ease: 'power3.out'
-        }
-      );
-    } else {
-      gsap.to(nodes, { opacity: 1, y: 0, duration: 0.5 });
-    }
-  }
 
   // Interactive mouse cursor 3D tilt tracking on each node
   nodes.forEach(node => {
@@ -448,25 +427,11 @@ function initGsapCtaBoxAnimations() {
 }
 
 /* ==========================================================================
-   6. ASYMMETRIC BENTO GRIDS & SCROLL PARALLAX
+   6. ASYMMETRIC BENTO GRIDS & SCROLL PARALLAX (MANAGED BY GRAVITY ENGINE)
    ========================================================================== */
 function initGsapBentoParallax() {
-  if (typeof ScrollTrigger === 'undefined') return;
-
-  const bentoCards = document.querySelectorAll('.bento-card-large, .value-card, .sla-tier-card');
-  bentoCards.forEach(card => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 88%',
-        toggleActions: 'play none none none'
-      },
-      y: 40,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'power2.out'
-    });
-  });
+  // Parallax and scroll drops for bento and value cards are seamlessly managed
+  // by initGsapGravityCardDropAnimations() with realistic gravity bounce physics.
 }
 
 /* ==========================================================================
@@ -488,3 +453,115 @@ function initGsapMagneticButtons() {
     });
   });
 }
+
+/* ==========================================================================
+   8. UNIVERSAL GRAVITY CARD DROP ANIMATION ENGINE
+   Applies authentic physical gravity drop entrance animations with bounce landing
+   and interactive gravity lift/re-drop across every card section in the website.
+   ========================================================================== */
+function initGsapGravityCardDropAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  // Select all card elements across the entire website
+  const cardSelectors = [
+    '.sqs-step-card',
+    '.value-card',
+    '.skill-tree-node',
+    '.bento-card-large',
+    '.pricing-card',
+    '.blog-card',
+    '.channel-card',
+    '.sla-tier-card',
+    '.blog-featured-card',
+    '.dynamic-course-card',
+    '.elearn-topic-card'
+  ];
+
+  const allCards = Array.from(document.querySelectorAll(cardSelectors.join(', ')));
+  if (!allCards.length) return;
+
+  // Group cards by their parent container / section
+  const groupMap = new Map();
+
+  allCards.forEach(card => {
+    // Skip bento cards in #intelligence which have dedicated custom left/right slide animations
+    if (card.closest('#intelligence') || card.closest('.sqs-bento-section')) {
+      return;
+    }
+
+    // Find the most appropriate parent grid or section container
+    const container = card.closest(
+      '.sqs-steps-grid, .skill-tree-grid, .bento-asymmetric-grid, .values-grid, .pricing-grid, [style*="grid"], [class*="grid"]'
+    ) || card.parentElement;
+
+    if (!container) return;
+
+    if (!groupMap.has(container)) {
+      groupMap.set(container, []);
+    }
+    groupMap.get(container).push(card);
+  });
+
+  // Apply Gravity Drop to each card container group
+  groupMap.forEach((cards, container) => {
+    if (!cards || !cards.length) return;
+
+    // Set 3D perspective on container for depth
+    gsap.set(container, { perspective: 1200, transformStyle: 'preserve-3d' });
+
+    // Initial state: freefalling from the sky
+    gsap.fromTo(cards,
+      {
+        opacity: 0,
+        y: -150, // Elevated drop position
+        scale: 0.92,
+        rotationX: 18, // Forward tilt as if falling under gravity
+        rotationZ: (index) => (index % 2 === 0 ? -3 : 3) * Math.min(index + 1, 2.5), // slight air wobble
+        transformOrigin: '50% 0%'
+      },
+      {
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 83%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        rotationX: 0,
+        rotationZ: 0,
+        duration: 1.18,
+        ease: 'bounce.out', // Authentic physical gravitational bounce impact!
+        stagger: 0.14,      // Cascading card drop sequence
+        onComplete: () => {
+          // Clear GSAP inline transforms so subsequent tilt and hover handlers work cleanly
+          gsap.set(cards, { clearProps: 'transform,opacity' });
+        }
+      }
+    );
+
+    // Interactive Gravitational Hover: Lift against gravity, drop with bounce on mouseleave
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -14,
+          scale: 1.025,
+          duration: 0.28,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: 'bounce.out', // Mini physical gravity drop back into place!
+          overwrite: 'auto'
+        });
+      });
+    });
+  });
+}
+

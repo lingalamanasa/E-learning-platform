@@ -2327,6 +2327,61 @@
   line-height: 1.72;
 }
 
+/* ==========================================================================
+   GRAVITY CARD DROP ANIMATION SYSTEM
+   Simulates physical gravitational freefall and bounce landing across all card sections
+   ========================================================================== */
+.gravity-card-container,
+.sqs-steps-grid,
+.skill-tree-grid,
+.bento-asymmetric-grid {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+body.gsap-active .sqs-step-card,
+body.gsap-active .value-card,
+body.gsap-active .skill-tree-node,
+body.gsap-active .bento-card-large,
+body.gsap-active .pricing-card,
+body.gsap-active .blog-card,
+body.gsap-active .channel-card,
+body.gsap-active .sla-tier-card,
+body.gsap-active .dynamic-course-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-origin: 50% 0%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease !important;
+}
+
+/* Enhanced physical shadow impact during gravity interaction */
+.sqs-step-card:hover,
+.value-card:hover,
+.skill-tree-node:hover,
+.bento-card-large:hover,
+.pricing-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(34, 211, 238, 0.15) !important;
+}
+
+/* Fallback CSS gravity drop animation */
+@keyframes gravityCardDropAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-140px) rotateX(16deg) scale(0.92);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(14px) rotateX(-2deg) scale(1.015);
+  }
+  82% {
+    transform: translateY(-6px) rotateX(1deg) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+  }
+}
+
 /* SECTION: FAQ ACCORDION */
 .sqs-faq-wrap {
   max-width: 860px;
