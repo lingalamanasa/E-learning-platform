@@ -617,14 +617,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stackly-footer .container {
-  max-width: 1480px;
-  width: 95%;
+  max-width: 100%;
+  width: 100%;
+  padding-left: clamp(1.5rem, 3.5vw, 3rem);
+  padding-right: clamp(1.5rem, 3.5vw, 3rem);
+  box-sizing: border-box;
 }
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.25fr max-content minmax(260px, max-content) 1.4fr;
-  gap: clamp(5rem, 7.5vw, 9rem);
+  grid-template-columns: 1.3fr max-content minmax(260px, max-content) 1.4fr;
+  justify-content: space-between;
+  gap: clamp(3.5rem, 6vw, 8rem);
   align-items: start;
   margin-bottom: 4.5rem;
 }
