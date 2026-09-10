@@ -618,8 +618,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.9fr 1.2fr 1.6fr;
-  gap: 7rem;
+  grid-template-columns: 1.2fr max-content minmax(260px, 1.2fr) 1.5fr;
+  gap: clamp(2rem, 3.2vw, 3.8rem);
+  align-items: start;
   margin-bottom: 4.5rem;
 }
 
@@ -701,16 +702,17 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
 }
 
-/* Headings with yellow underline accent */
+/* Headings with yellow underline accent - strictly single line */
 .footer-col-title {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.8rem;
   position: relative;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .footer-col-title::after {
@@ -718,18 +720,18 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 32px;
+  width: 36px;
   height: 2.5px;
   background: #eab308;
   border-radius: 2px;
 }
 
-/* Column 2: Quick Links */
+/* Column 2: Quick Links - strictly single line */
 .footer-links-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
   padding: 0;
   margin: 0;
 }
@@ -737,10 +739,11 @@ h1, h2, h3, h4, h5, h6 {
 .footer-link-item a {
   color: #b8b5ab;
   text-decoration: none;
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   line-height: 1.8;
   transition: all 0.2s ease;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .footer-link-item a:hover {
@@ -748,12 +751,12 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(4px);
 }
 
-/* Column 3: Contact Details */
+/* Column 3: Contact Details - strictly single line for phone and hours */
 .footer-contact-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.3rem;
   padding: 0;
   margin: 0;
 }
@@ -765,6 +768,11 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.12rem;
   line-height: 1.65;
   color: #b8b5ab;
+}
+
+.footer-contact-item a,
+.footer-contact-item span {
+  white-space: nowrap;
 }
 
 .footer-contact-icon {
@@ -885,7 +893,6 @@ h1, h2, h3, h4, h5, h6 {
 .footer-legal-links a:hover {
   color: #ffffff;
 }
-}
 
 /* Responsive Footer Breakpoints */
 @media (max-width: 1100px) {
@@ -899,6 +906,9 @@ h1, h2, h3, h4, h5, h6 {
   .footer-main-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+  .footer-col-title {
+    font-size: 1.1rem;
   }
   .footer-subscribe-box {
     flex-direction: column;
