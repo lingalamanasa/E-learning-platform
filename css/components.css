@@ -6048,7 +6048,104 @@ body.gsap-active .dynamic-course-card {
 }
 
 
+/* ==========================================================================
+   4-STEP WORKFLOW SECTION — Step Cards Grid
+   ========================================================================== */
 
+.sqs-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.25rem;
+  width: 100%;
+}
+
+.sqs-step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  padding: 2.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sqs-step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 169, 106, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.sqs-step-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 169, 106, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(212, 169, 106, 0.08);
+}
+
+.sqs-step-card-visual {
+  width: 100%;
+  height: 175px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sqs-step-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.sqs-step-card:hover .sqs-step-card-visual img {
+  transform: scale(1.05);
+}
+
+.sqs-step-number {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(135deg, #d4a96a, #f4d03f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sqs-step-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+  line-height: 1.35;
+}
+
+.sqs-step-desc {
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: #b8b5ab;
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 1100px) {
+  .sqs-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sqs-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
