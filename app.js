@@ -168,6 +168,10 @@ function initScrollProgressBar() {
 
 // 3. Directional Scroll Reveal Observer
 function initDirectionalScrollReveals() {
+  // If GSAP and ScrollTrigger are loaded, let the GSAP animation engine handle directional side slides
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    return;
+  }
   const reveals = document.querySelectorAll('.slide-left-reveal, .slide-right-reveal, .slide-up-reveal, .zoom-reveal');
   if (!reveals.length) return;
 

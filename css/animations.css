@@ -260,6 +260,27 @@
   transform: translate(0, 0) scale(1) !important;
 }
 
+/* 8.1 GSAP-Active Synchronized Engine: Removes CSS transition interference on GSAP animated elements */
+body.gsap-active .slide-left-reveal,
+body.gsap-active .slide-right-reveal,
+body.gsap-active .slide-up-reveal,
+body.gsap-active .zoom-reveal,
+body.gsap-active .sqs-bento-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+body.gsap-active .sqs-bento-grid {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+body.gsap-active .sqs-bento-card {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+
 /* 9. Interactive 3D Card Tilt with Dynamic Spotlight Glow */
 .tilt-interactive {
   transform-style: preserve-3d;

@@ -1453,7 +1453,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sqs-bento-card:hover {
