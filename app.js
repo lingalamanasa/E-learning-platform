@@ -682,39 +682,9 @@ function initPathwayDiscoveryCapsule() {
   const launchBtn = document.getElementById('launchPathwayBtn');
   if (!launchBtn) return;
 
-  launchBtn.addEventListener('click', () => {
-    const trackSelect = document.getElementById('pathwayTrackSelect');
-    const levelSelect = document.getElementById('pathwayLevelSelect');
-    const targetSelect = document.getElementById('pathwayTargetSelect');
-
-    const trackName = trackSelect?.options[trackSelect.selectedIndex]?.text || 'AI & Deep Learning';
-    const levelName = levelSelect?.options[levelSelect.selectedIndex]?.text || 'All Levels';
-    const targetName = targetSelect?.options[targetSelect.selectedIndex]?.text || 'Hands-on Labs';
-
-    const origHtml = launchBtn.innerHTML;
-    launchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Provisioning...';
-    launchBtn.disabled = true;
-
-    setTimeout(() => {
-      launchBtn.innerHTML = '<i class="fa-solid fa-check"></i> Pathway Ready!';
-      launchBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-
-      if (window.showToast) {
-        window.showToast(`🚀 Pathway Activated: ${trackName} (${levelName} • ${targetName})!`, 'success');
-      }
-
-      // Smooth scroll to curriculum or sandboxes
-      const targetSec = document.getElementById('curriculum-showcase') || document.getElementById('how-it-works');
-      if (targetSec) {
-        targetSec.scrollIntoView({ behavior: 'smooth' });
-      }
-
-      setTimeout(() => {
-        launchBtn.innerHTML = origHtml;
-        launchBtn.style.background = '';
-        launchBtn.disabled = false;
-      }, 3500);
-    }, 600);
+  launchBtn.addEventListener('click', (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    window.location.href = '404.html';
   });
 }
 
