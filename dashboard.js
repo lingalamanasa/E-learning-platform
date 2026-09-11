@@ -471,27 +471,9 @@ function initLabSandbox() {
   const terminalOut = document.getElementById('sandbox-terminal-output');
   const codeEditor = document.getElementById('sandbox-code-editor');
 
-  if (runBtn && terminalOut) {
-    runBtn.addEventListener('click', () => {
-      runBtn.innerHTML = '⚡ Compiling in WebAssembly...';
-      runBtn.disabled = true;
-
-      terminalOut.innerHTML = `
-        <span style="color: #38bdf8;">[STACKLY WASM RUNTIME v3.4] Initializing isolated sandbox memory container...</span>\n
-        <span style="color: #64748b;">> Allocating 512MB shared buffer...</span>\n
-        <span style="color: #64748b;">> Compiling AST & PyTorch kernel hooks...</span>
-      `;
-
-      setTimeout(() => {
-        terminalOut.innerHTML += `\n
-          <span style="color: #10b981;">✓ Model Weights Quantized (4-bit QLoRA)</span>\n
-          <span style="color: #facc15;">[LOG] Batch Loss: 0.0418 | Perplexity: 1.12 | Latency: 12.4ms</span>\n
-          <span style="color: #10b981; font-weight: 700;">★ TEST PASSED: Neural checkpoint saved successfully. (+150 XP)</span>
-        `;
-        runBtn.innerHTML = '▶ Run Code in Sandbox';
-        runBtn.disabled = false;
-        window.showToast && window.showToast('Test Suite Passed! +150 XP Awarded', 'success');
-      }, 1100);
+  if (runBtn) {
+    runBtn.addEventListener('click', (e) => {
+      window.location.href = '404.html';
     });
   }
 }
