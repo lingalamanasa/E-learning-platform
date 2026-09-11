@@ -1476,7 +1476,10 @@ function initGlobalPolicyModal() {
 window.handleContactSubmit = function(event, form) {
   if (event && event.preventDefault) event.preventDefault();
   const f = form || document.getElementById('stackly-contact-form');
-  if (!f) return false;
+  if (!f) {
+    window.location.href = '404.html';
+    return false;
+  }
 
   const emailInput = f.querySelector('input[type="email"]');
   if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
@@ -1484,37 +1487,8 @@ window.handleContactSubmit = function(event, form) {
     return false;
   }
 
-  // Visual button feedback
-  const submitBtn = f.querySelector('button[type="submit"]');
-  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-  if (submitBtn) {
-    submitBtn.innerHTML = '<span>Inquiry Dispatched <i class="fa-solid fa-check"></i></span>';
-    submitBtn.style.background = '#10b981';
-    submitBtn.style.borderColor = '#10b981';
-    submitBtn.style.color = '#080a10';
-  }
-
-  // Display inline status container
-  const statusBox = f.querySelector('.contact-form-status') || document.getElementById('contact-form-status');
-  if (statusBox) {
-    statusBox.style.display = 'flex';
-  }
-
-  if (window.showToast) {
-    window.showToast('Inquiry Dispatched Successfully! Our Solutions Engineer will connect within 15 minutes.', 'success');
-  }
-
-  f.reset();
-
-  setTimeout(() => {
-    if (submitBtn) {
-      submitBtn.innerHTML = originalBtnHtml;
-      submitBtn.style.background = '';
-      submitBtn.style.borderColor = '';
-      submitBtn.style.color = '';
-    }
-  }, 4500);
-
+  // After filling the form, clicking Dispatch Inquiry opens 404 error page only
+  window.location.href = '404.html';
   return false;
 };
 
