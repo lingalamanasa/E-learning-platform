@@ -1527,7 +1527,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 768px) {
   html {
-    font-size: 15px !important;
+    font-size: 13px !important;
   }
 
   html, body {
@@ -1689,7 +1689,7 @@ pre, code {
   }
 
   .dash-welcome-bar h2 {
-    font-size: 1.2rem !important;
+    font-size: 1.05rem !important;
     word-break: break-word !important;
   }
 
@@ -1705,7 +1705,7 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: clamp(1.1rem, 4.5vw, 1.6rem) !important;
+    font-size: clamp(0.9rem, 4vw, 1.4rem) !important;
     line-height: 1.25 !important;
   }
 
@@ -1857,11 +1857,11 @@ pre, code {
   }
 
   .dash-welcome-bar h2 {
-    font-size: 1.1rem !important;
+    font-size: 0.95rem !important;
   }
 
   .serif-headline {
-    font-size: clamp(1.05rem, 4vw, 1.5rem) !important;
+    font-size: clamp(0.85rem, 3.5vw, 1.25rem) !important;
   }
 
   .ed-deck-telemetry {
@@ -1880,7 +1880,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 480px) {
   html {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   .stackly-header {
@@ -1927,7 +1927,7 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: 1.35rem !important;
+    font-size: 1.15rem !important;
   }
 
   .sqs-page-badge {
@@ -1977,7 +1977,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 360px) {
   html {
-    font-size: 13px !important;
+    font-size: 11px !important;
   }
 
   .stackly-header {
@@ -2046,7 +2046,7 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: 1.2rem !important;
+    font-size: 1.0rem !important;
   }
 }
 
