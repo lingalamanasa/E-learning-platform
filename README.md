@@ -8,7 +8,8 @@
 
 > A premium, full-featured e-learning platform with animated dashboards, interactive lab sandboxes, cognitive radar analytics, and a global leaderboard — all built in vanilla HTML, CSS & JavaScript.
 
-🔗 **Live Site:** [lingalamanasa.github.io/E-learning-platform](https://lingalamanasa.github.io/E-learning-platform/)
+🔗 **Live Site:** [https://lingalamanasa.github.io/E-learning-platform/](https://lingalamanasa.github.io/E-learning-platform/)  
+📦 **GitHub Repository:** [https://github.com/lingalamanasa/E-learning-platform](https://github.com/lingalamanasa/E-learning-platform)
 
 ---
 
