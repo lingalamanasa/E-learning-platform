@@ -1551,7 +1551,10 @@ window.handleContactSubmit = function(event, form) {
 window.handleBlogNewsletter = function(event, form) {
   if (event && event.preventDefault) event.preventDefault();
   const f = form || document.getElementById('blog-newsletter-form');
-  if (!f) return false;
+  if (!f) {
+    window.location.href = '404.html';
+    return false;
+  }
 
   const emailInput = f.querySelector('input[type="email"]');
   if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
@@ -1559,42 +1562,18 @@ window.handleBlogNewsletter = function(event, form) {
     return false;
   }
 
-  const submitBtn = f.querySelector('button[type="submit"]');
-  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-  if (submitBtn) {
-    submitBtn.innerHTML = '<span>Subscribed <i class="fa-solid fa-check"></i></span>';
-    submitBtn.style.background = '#10b981';
-    submitBtn.style.borderColor = '#10b981';
-    submitBtn.style.color = '#080a10';
-  }
-
-  const statusBox = f.parentElement ? (f.parentElement.querySelector('.blog-newsletter-status') || document.getElementById('blog-newsletter-status')) : null;
-  if (statusBox) {
-    statusBox.style.display = 'flex';
-  }
-
-  if (window.showToast) {
-    window.showToast('Subscribed Successfully! Architectural insights will be dispatched to your inbox.', 'success');
-  }
-
-  f.reset();
-
-  setTimeout(() => {
-    if (submitBtn) {
-      submitBtn.innerHTML = originalBtnHtml;
-      submitBtn.style.background = '';
-      submitBtn.style.borderColor = '';
-      submitBtn.style.color = '';
-    }
-  }, 4500);
-
+  // After filling the form, clicking subscribe opens 404 error page only
+  window.location.href = '404.html';
   return false;
 };
 
 window.handleFooterSubscribe = function(event, form) {
   if (event && event.preventDefault) event.preventDefault();
   const f = form || (event && event.target);
-  if (!f) return false;
+  if (!f) {
+    window.location.href = '404.html';
+    return false;
+  }
 
   const emailInput = f.querySelector('input[type="email"]');
   if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
@@ -1602,34 +1581,8 @@ window.handleFooterSubscribe = function(event, form) {
     return false;
   }
 
-  const submitBtn = f.querySelector('.footer-subscribe-btn');
-  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-  if (submitBtn) {
-    submitBtn.innerHTML = '<span>Subscribed</span> <span><i class="fa-solid fa-check"></i></span>';
-    submitBtn.style.background = '#10b981';
-  }
-
-  const statusBox = f.querySelector('.footer-subscribe-success');
-  if (statusBox) {
-    statusBox.style.display = 'block';
-  }
-
-  if (window.showToast) {
-    window.showToast('Subscribed Successfully! Thank you for staying in the loop.', 'success');
-  }
-
-  f.reset();
-
-  setTimeout(() => {
-    if (submitBtn) {
-      submitBtn.innerHTML = originalBtnHtml;
-      submitBtn.style.background = '';
-    }
-    if (statusBox) {
-      statusBox.style.display = 'none';
-    }
-  }, 4500);
-
+  // After filling the form, clicking subscribe opens 404 error page only
+  window.location.href = '404.html';
   return false;
 };
 
