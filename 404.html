@@ -251,17 +251,43 @@
     }
 
     function handleBackNav() {
-      // Primary: use the HTTP referrer — the exact page the user came from
-      if (document.referrer && !document.referrer.includes('404')) {
-        window.location.href = document.referrer;
-        return;
-      }
-      // Secondary: browser history back
+      // 1. Primary: Browser history back (returns to the exact section & scroll position on the previous page)
       if (window.history.length > 1) {
         window.history.back();
         return;
       }
-      // Fallback: no history or referrer, go home
+
+      // 2. Fallback: Stored previous page with section anchor
+      try {
+        const lastPage = sessionStorage.getItem('stackly_last_page');
+        const lastSection = sessionStorage.getItem('stackly_last_section');
+        if (lastPage && !lastPage.includes('404')) {
+          let target = lastPage;
+          if (lastSection && !target.includes('#')) {
+            target += '#' + lastSection;
+          }
+          window.location.href = target;
+          return;
+        }
+      } catch (err) {}
+
+      // 3. Fallback: HTTP Referrer with section anchor
+      if (document.referrer && !document.referrer.includes('404')) {
+        try {
+          const lastSection = sessionStorage.getItem('stackly_last_section');
+          let target = document.referrer;
+          if (lastSection && !target.includes('#')) {
+            target += '#' + lastSection;
+          }
+          window.location.href = target;
+          return;
+        } catch (err) {
+          window.location.href = document.referrer;
+          return;
+        }
+      }
+
+      // 4. Default fallback: Home
       handleHomeNav();
     }
   </script>

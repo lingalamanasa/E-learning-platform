@@ -4,11 +4,24 @@
  * Tab Switching, Lab Sandboxes, and Admin CRUD.
  */
 
-// Track last visited platform page for 404 "Go Back" navigation
+// Track last visited platform page, section & scroll position for 404 "Go Back" navigation
 (function() {
   try {
     if (!window.location.pathname.includes('404')) {
       sessionStorage.setItem('stackly_last_page', window.location.href);
+
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a[href*="404"], button[onclick*="404"]');
+        if (target) {
+          try {
+            const section = target.closest('section[id], div[id], [id]');
+            if (section && section.id) {
+              sessionStorage.setItem('stackly_last_section', section.id);
+            }
+            sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
+          } catch (err) {}
+        }
+      }, true);
     }
   } catch (e) {}
 })();

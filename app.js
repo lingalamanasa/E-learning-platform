@@ -4,11 +4,61 @@
    Assessment Sandbox, Skill Telemetry Tracker, and Carousel Engine
    ========================================================================== */
 
-// --- Track last visited non-404 platform page for 404 "Go Back" button ---
+// --- Track last visited non-404 platform page, section & scroll position for 404 "Go Back" button ---
 (function() {
   try {
     if (!window.location.pathname.includes('404')) {
       sessionStorage.setItem('stackly_last_page', window.location.href);
+
+      // Listen for clicks on any link or button that navigates to 404
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a[href*="404"], button[onclick*="404"]');
+        if (target) {
+          try {
+            const section = target.closest('section[id], div[id], [id]');
+            if (section && section.id) {
+              sessionStorage.setItem('stackly_last_section', section.id);
+            }
+            sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
+          } catch (err) {}
+        }
+      }, true);
+
+      // Restore exact section / scroll position when returning from 404
+      const restoreSectionPosition = () => {
+        try {
+          const savedSection = sessionStorage.getItem('stackly_last_section');
+          const savedScroll = sessionStorage.getItem('stackly_last_scroll');
+          if (savedSection) {
+            const el = document.getElementById(savedSection);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            sessionStorage.removeItem('stackly_last_section');
+            sessionStorage.removeItem('stackly_last_scroll');
+            return;
+          }
+          if (savedScroll !== null) {
+            const y = parseInt(savedScroll, 10);
+            if (!isNaN(y) && y > 0) {
+              window.scrollTo({ top: y, behavior: 'instant' });
+            }
+            sessionStorage.removeItem('stackly_last_scroll');
+          }
+        } catch (err) {}
+      };
+
+      window.addEventListener('pageshow', (evt) => {
+        setTimeout(restoreSectionPosition, 80);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          setTimeout(restoreSectionPosition, 180);
+        });
+      } else {
+        setTimeout(restoreSectionPosition, 180);
+      }
     }
   } catch (e) {}
 })();
