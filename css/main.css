@@ -1527,7 +1527,8 @@ pre, code {
    ========================================================================== */
 @media (max-width: 768px) {
   html {
-    font-size: 13px !important;
+    font-size: 16px !important;
+    letter-spacing: 0.01em;
   }
 
   html, body {
@@ -1656,9 +1657,9 @@ pre, code {
 
   .dashboard-portal-badge,
   .stackly-brand > span {
-    font-size: 0.62rem !important;
-    padding: 0.16rem 0.42rem !important;
-    letter-spacing: 0.03em !important;
+    font-size: 0.68rem !important;
+    padding: 0.18rem 0.48rem !important;
+    letter-spacing: 0.06em !important;
     white-space: nowrap !important;
     flex-shrink: 0 !important;
   }
@@ -1689,7 +1690,8 @@ pre, code {
   }
 
   .dash-welcome-bar h2 {
-    font-size: 1.05rem !important;
+    font-size: 1.3rem !important;
+    letter-spacing: 0.01em !important;
     word-break: break-word !important;
   }
 
@@ -1705,8 +1707,9 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: clamp(0.9rem, 4vw, 1.4rem) !important;
-    line-height: 1.25 !important;
+    font-size: clamp(1.3rem, 5vw, 1.9rem) !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.2 !important;
   }
 
   .dashboard-main pre,
@@ -1857,11 +1860,13 @@ pre, code {
   }
 
   .dash-welcome-bar h2 {
-    font-size: 0.95rem !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 0.01em !important;
   }
 
   .serif-headline {
-    font-size: clamp(0.85rem, 3.5vw, 1.25rem) !important;
+    font-size: clamp(1.15rem, 4.5vw, 1.7rem) !important;
+    letter-spacing: 0.01em !important;
   }
 
   .ed-deck-telemetry {
@@ -1880,7 +1885,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 480px) {
   html {
-    font-size: 12px !important;
+    font-size: 15px !important;
   }
 
   .stackly-header {
@@ -1927,7 +1932,8 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: 1.15rem !important;
+    font-size: 1.55rem !important;
+    letter-spacing: 0.01em !important;
   }
 
   .sqs-page-badge {
@@ -1977,7 +1983,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 360px) {
   html {
-    font-size: 11px !important;
+    font-size: 14px !important;
   }
 
   .stackly-header {
@@ -2046,7 +2052,8 @@ pre, code {
   }
 
   .serif-headline {
-    font-size: 1.0rem !important;
+    font-size: 1.35rem !important;
+    letter-spacing: 0.01em !important;
   }
 }
 
