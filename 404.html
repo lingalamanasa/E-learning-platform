@@ -251,13 +251,18 @@
     }
 
     function handleBackNav() {
-      // Go back to the previous page in browser history
+      // Primary: use the HTTP referrer — the exact page the user came from
+      if (document.referrer && !document.referrer.includes('404')) {
+        window.location.href = document.referrer;
+        return;
+      }
+      // Secondary: browser history back
       if (window.history.length > 1) {
         window.history.back();
-      } else {
-        // Fallback: no history available, go home
-        handleHomeNav();
+        return;
       }
+      // Fallback: no history or referrer, go home
+      handleHomeNav();
     }
   </script>
 
