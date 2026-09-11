@@ -643,18 +643,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1.1fr 1.5fr;
+  grid-template-columns: 1.3fr 0.8fr 1.2fr 1.5fr;
   justify-content: space-between;
-  gap: clamp(1.8rem, 3.5vw, 4rem);
+  gap: clamp(1.5rem, 2.5vw, 3rem);
   align-items: start;
-  margin-bottom: 4.5rem;
+  margin-bottom: 3.5rem;
 }
 
 /* Column 1: Brand & Socials */
 .footer-brand-col {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .footer-brand-logo {
@@ -667,9 +667,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-brand-logo img,
 .footer-brand-img {
-  height: 70px !important;
+  height: 48px !important;
   width: auto !important;
-  max-width: 250px;
+  max-width: 190px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 0 18px rgba(124, 113, 246, 0.6));
@@ -684,7 +684,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-brand-name {
   font-family: var(--font-sans);
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 900;
   letter-spacing: 0.05em;
   color: #ffffff;
@@ -692,22 +692,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-brand-desc {
-  font-size: 1.15rem;
-  line-height: 1.75;
+  font-size: 0.88rem;
+  line-height: 1.6;
   color: #b8b5ab;
-  max-width: 360px;
+  max-width: 300px;
 }
 
 .footer-social-row {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-top: 0.5rem;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
 }
 
 .footer-social-btn {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -715,7 +715,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.25s ease;
 }
@@ -728,14 +728,14 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
 }
 
-/* Headings with yellow underline accent - strictly single line */
+/* Headings with yellow underline accent */
 .footer-col-title {
-  font-size: 1.2rem;
+  font-size: 0.92rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
   position: relative;
   display: inline-block;
   white-space: nowrap;
@@ -745,19 +745,19 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -6px;
-  width: 36px;
-  height: 2.5px;
+  bottom: -5px;
+  width: 32px;
+  height: 2px;
   background: #eab308;
   border-radius: 2px;
 }
 
-/* Column 2: Quick Links - strictly single line */
+/* Column 2: Quick Links */
 .footer-links-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
 }
@@ -765,8 +765,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer-link-item a {
   color: #b8b5ab;
   text-decoration: none;
-  font-size: 1.14rem;
-  line-height: 1.8;
+  font-size: 0.88rem;
+  line-height: 1.6;
   transition: all 0.2s ease;
   display: inline-block;
   white-space: nowrap;
@@ -777,12 +777,12 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(4px);
 }
 
-/* Column 3: Contact Details - strictly single line for phone and hours */
+/* Column 3: Contact Details */
 .footer-contact-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 0.85rem;
   padding: 0;
   margin: 0;
 }
@@ -790,20 +790,15 @@ h1, h2, h3, h4, h5, h6 {
 .footer-contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  font-size: 1.12rem;
-  line-height: 1.65;
+  gap: 0.8rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: #b8b5ab;
-}
-
-.footer-contact-item a,
-.footer-contact-item span {
-  white-space: nowrap;
 }
 
 .footer-contact-icon {
   color: #eab308;
-  font-size: 1.25rem;
+  font-size: 1rem;
   flex-shrink: 0;
   margin-top: 0.15rem;
 }
@@ -820,10 +815,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Column 4: Newsletter Box */
 .footer-newsletter-text {
-  font-size: 1.15rem;
-  line-height: 1.75;
+  font-size: 0.88rem;
+  line-height: 1.6;
   color: #b8b5ab;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.1rem;
 }
 
 .footer-subscribe-box {
@@ -832,12 +827,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #111318;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 100px;
-  padding: 0.35rem 0.35rem 0.35rem 1.2rem;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
   position: relative;
   transition: all 0.25s ease;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   box-sizing: border-box;
 }
 
@@ -853,10 +848,10 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
   color: #ffffff;
   font-family: var(--font-sans);
-  font-size: 0.96rem;
+  font-size: 0.85rem;
   flex: 1;
-  min-width: 110px;
-  padding: 0.45rem 0.4rem 0.45rem 0;
+  min-width: 100px;
+  padding: 0.4rem 0.4rem 0.4rem 0;
 }
 
 .footer-subscribe-input::placeholder {
@@ -868,14 +863,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #0c0d10;
   border: none;
   border-radius: 100px;
-  padding: 0.72rem 1.35rem;
+  padding: 0.55rem 1.15rem;
   font-family: var(--font-sans);
-  font-size: 0.94rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   white-space: nowrap;
   flex-shrink: 0;
   transition: all 0.25s ease;
@@ -890,34 +885,34 @@ h1, h2, h3, h4, h5, h6 {
 .footer-security-note {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.98rem;
+  gap: 0.45rem;
+  font-size: 0.78rem;
   color: #949086;
 }
 
 /* Bottom Bar */
 .footer-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.09);
-  padding-top: 2.2rem;
+  padding-top: 1.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.05rem;
+  font-size: 0.82rem;
   color: #a3a096;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .footer-legal-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .footer-legal-links a {
   color: #a3a096;
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 0.82rem;
   transition: color 0.2s ease;
 }
 
@@ -926,26 +921,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive Footer Breakpoints */
-@media (max-width: 1260px) {
+@media (max-width: 1080px) {
   .footer-main-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 3.2rem 2.5rem;
+    gap: 2.5rem 2rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .footer-main-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   .footer-col-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
   .footer-subscribe-box {
     flex-direction: column;
-    padding: 0.8rem;
+    padding: 0.75rem;
     border-radius: 14px;
-    gap: 0.8rem;
+    gap: 0.65rem;
+  }
+  .footer-subscribe-input {
+    width: 100%;
+    padding: 0.35rem 0.5rem;
   }
   .footer-subscribe-btn {
     width: 100%;
