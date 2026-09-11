@@ -4,6 +4,15 @@
    Assessment Sandbox, Skill Telemetry Tracker, and Carousel Engine
    ========================================================================== */
 
+// --- Track last visited non-404 platform page for 404 "Go Back" button ---
+(function() {
+  try {
+    if (!window.location.pathname.includes('404')) {
+      sessionStorage.setItem('stackly_last_page', window.location.href);
+    }
+  } catch (e) {}
+})();
+
 // --- 0. SITE FLASH PRELOADER (Runs immediately on load) ---
 (function() {
   const preloader = document.getElementById('sitePreloader');

@@ -230,7 +230,7 @@
       </a>
 
       <!-- Button 2: Go Back -->
-      <button type="button" onclick="handleBackNav()" class="detour-btn-outline">
+      <button type="button" id="btnGoBack404" onclick="handleBackNav()" class="detour-btn-outline">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Go Back</span>
       </button>
@@ -251,11 +251,29 @@
     }
 
     function handleBackNav() {
+      // 1. If document.referrer points to an existing non-404 page, navigate directly to it
+      if (document.referrer && document.referrer !== window.location.href && !document.referrer.includes('404')) {
+        window.location.href = document.referrer;
+        return;
+      }
+
+      // 2. Check stored last visited platform page from session
+      try {
+        const lastVisited = sessionStorage.getItem('stackly_last_page');
+        if (lastVisited && lastVisited !== window.location.href && !lastVisited.includes('404')) {
+          window.location.href = lastVisited;
+          return;
+        }
+      } catch (err) {}
+
+      // 3. Fallback to browser history back if history entries exist
       if (window.history.length > 1) {
         window.history.back();
-      } else {
-        handleHomeNav();
+        return;
       }
+
+      // 4. Default fallback to home
+      handleHomeNav();
     }
   </script>
 

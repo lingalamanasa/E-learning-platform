@@ -4,6 +4,15 @@
  * Tab Switching, Lab Sandboxes, and Admin CRUD.
  */
 
+// Track last visited platform page for 404 "Go Back" navigation
+(function() {
+  try {
+    if (!window.location.pathname.includes('404')) {
+      sessionStorage.setItem('stackly_last_page', window.location.href);
+    }
+  } catch (e) {}
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   initDynamicGreetings();
   initDashboardTabs();
