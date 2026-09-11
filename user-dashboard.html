@@ -11,6 +11,19 @@
   <link rel="stylesheet" href="css/animations.css?v=dashresponsive.4">
   <link rel="stylesheet" href="css/components.css?v=dashresponsive.4">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    (function() {
+      function restoreVisibility() {
+        if (document.body) {
+          document.body.style.opacity = '1';
+          document.body.classList.add('page-restored');
+        }
+      }
+      window.addEventListener('pageshow', restoreVisibility);
+      window.addEventListener('load', function() { setTimeout(restoreVisibility, 150); });
+      setTimeout(restoreVisibility, 500);
+    })();
+  </script>
 </head>
 <body style="background: #080a10; color: #fff; min-height: 100vh; font-family: var(--font-sans);">
 

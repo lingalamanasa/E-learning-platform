@@ -263,44 +263,59 @@
     }
 
     function handleBackNav() {
+      let navigated = false;
+      const onUnload = () => { navigated = true; };
+      window.addEventListener('beforeunload', onUnload);
+      window.addEventListener('pagehide', onUnload);
+
+      function doFallback() {
+        // 2. Fallback: Stored previous page with section anchor
+        try {
+          const lastPage = sessionStorage.getItem('stackly_last_page');
+          const lastSection = sessionStorage.getItem('stackly_last_section');
+          if (lastPage && !lastPage.includes('404')) {
+            let target = sanitizePlatformUrl(lastPage);
+            if (lastSection && !target.includes('#')) {
+              target += '#' + lastSection;
+            }
+            window.location.href = target;
+            return;
+          }
+        } catch (err) {}
+
+        // 3. Fallback: HTTP Referrer with section anchor
+        if (document.referrer && !document.referrer.includes('404')) {
+          try {
+            const lastSection = sessionStorage.getItem('stackly_last_section');
+            let target = sanitizePlatformUrl(document.referrer);
+            if (lastSection && !target.includes('#')) {
+              target += '#' + lastSection;
+            }
+            window.location.href = target;
+            return;
+          } catch (err) {
+            window.location.href = sanitizePlatformUrl(document.referrer);
+            return;
+          }
+        }
+
+        // 4. Default fallback: Home
+        handleHomeNav();
+      }
+
       // 1. Primary: Browser history back (returns to the exact section & scroll position on the previous page)
       if (window.history.length > 1) {
         window.history.back();
+        // If history.back doesn't navigate within 350ms, run fallback
+        setTimeout(() => {
+          if (!navigated) {
+            doFallback();
+          }
+        }, 350);
         return;
       }
 
-      // 2. Fallback: Stored previous page with section anchor
-      try {
-        const lastPage = sessionStorage.getItem('stackly_last_page');
-        const lastSection = sessionStorage.getItem('stackly_last_section');
-        if (lastPage && !lastPage.includes('404')) {
-          let target = sanitizePlatformUrl(lastPage);
-          if (lastSection && !target.includes('#')) {
-            target += '#' + lastSection;
-          }
-          window.location.href = target;
-          return;
-        }
-      } catch (err) {}
-
-      // 3. Fallback: HTTP Referrer with section anchor
-      if (document.referrer && !document.referrer.includes('404')) {
-        try {
-          const lastSection = sessionStorage.getItem('stackly_last_section');
-          let target = sanitizePlatformUrl(document.referrer);
-          if (lastSection && !target.includes('#')) {
-            target += '#' + lastSection;
-          }
-          window.location.href = target;
-          return;
-        } catch (err) {
-          window.location.href = sanitizePlatformUrl(document.referrer);
-          return;
-        }
-      }
-
-      // 4. Default fallback: Home
-      handleHomeNav();
+      doFallback();
     }
   </script>
 

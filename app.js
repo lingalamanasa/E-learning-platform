@@ -49,7 +49,10 @@
       };
 
       window.addEventListener('pageshow', (evt) => {
-        document.body.style.opacity = '1';
+        if (document.body) {
+          document.body.style.opacity = '1';
+          document.body.classList.add('page-restored');
+        }
         const pre = document.getElementById('sitePreloader');
         if (pre) {
           pre.classList.add('preloader-hidden');

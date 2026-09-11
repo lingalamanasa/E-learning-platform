@@ -283,30 +283,36 @@ function initWobbleCards() {
 }
 
 /* ==========================================================================
-   20. SMOOTH SECTION TRANSITION — route changes & anchor clicks
+   20. SMOOTH SECTION TRANSITION — clean, instant visibility restoration
    ========================================================================== */
 function initSmoothSectionTransitions() {
-  // Ensure page is immediately visible
-  document.body.style.opacity = '1';
-  document.body.style.transition = 'opacity 0.35s ease';
-
-  // Always reset opacity to 1 on pageshow (e.g. browser back/forward history navigation or BFCache restore)
-  window.addEventListener('pageshow', () => {
-    document.body.style.opacity = '1';
-  });
-
-  // Smooth link transitions
-  document.querySelectorAll('a[href]:not([href^="#"]):not([href^="mailto"]):not([href^="tel"]):not([target])').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('javascript') || href.startsWith('http') || href.includes('://')) return;
-      // Do not fade out body when navigating to 404 so back navigation is never stuck on a black/blank screen
-      if (href.includes('404')) return;
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 280);
+  function enforceVisibility() {
+    if (document.body) {
+      document.body.style.opacity = '1';
+      document.body.classList.add('page-restored');
+    }
+    const preloader = document.getElementById('sitePreloader');
+    if (preloader) {
+      preloader.classList.add('preloader-hidden');
+      preloader.style.display = 'none';
+    }
+    // Refresh GSAP ScrollTrigger so positions recalculate cleanly
+    if (typeof ScrollTrigger !== 'undefined') {
+      try { ScrollTrigger.refresh(true); } catch (e) {}
+    }
+    // Ensure all reveal elements are immediately visible
+    document.querySelectorAll('.slide-left-reveal, .slide-right-reveal, .slide-up-reveal, .zoom-reveal, [data-reveal]').forEach(el => {
+      el.classList.add('revealed', 'active');
+      el.style.opacity = '1';
     });
-  });
+  }
+
+  // Ensure body is immediately visible
+  enforceVisibility();
+
+  // Always enforce full visibility on history back/forward (BFCache restore)
+  window.addEventListener('pageshow', enforceVisibility);
+  window.addEventListener('load', () => setTimeout(enforceVisibility, 100));
 }
 
 /* ==========================================================================
@@ -385,7 +391,7 @@ function initGsapBentoSideSlideAnimations() {
 
   if (bentoGrid) gsap.set(bentoGrid, { perspective: 1200, transformStyle: 'preserve-3d' });
 
-  const triggerOpts = { trigger: bentoGrid || bentoSection, start: 'top 78%', toggleActions: 'play none none reverse' };
+  const triggerOpts = { trigger: bentoGrid || bentoSection, start: 'top 78%', toggleActions: 'play none none none' };
 
   if (leftCards.length)
     gsap.fromTo(leftCards,
@@ -421,19 +427,19 @@ function initGsapUniversalSideSlideAnimations() {
 
   document.querySelectorAll('.slide-left-reveal:not(.sqs-bento-card)').forEach(el =>
     gsap.fromTo(el, { x: -dist, opacity: 0 },
-      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
 
   document.querySelectorAll('.slide-right-reveal:not(.sqs-bento-card)').forEach(el =>
     gsap.fromTo(el, { x: dist, opacity: 0 },
-      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
 
   document.querySelectorAll(
     '.slide-up-reveal:not(#intelligence *):not(.sqs-bento-section *):not(.sqs-step-card):not(.value-card):not(.skill-tree-node):not(.blog-card):not(.dynamic-course-card)'
   ).forEach(el =>
     gsap.fromTo(el, { y: 40, opacity: 0 },
-      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }));
 }
 
@@ -444,7 +450,7 @@ function initGsapRotateReveal() {
   if (typeof ScrollTrigger === 'undefined') return;
   document.querySelectorAll('[data-reveal="rotate"], .anim-rotate-in').forEach(el => {
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
       rotation: -180, scale: 0.5, opacity: 0,
       duration: 0.85, ease: 'back.out(1.7)'
     });
@@ -459,14 +465,14 @@ function initGsapZoomReveal() {
   document.querySelectorAll('[data-reveal="zoom"], .zoom-reveal:not([data-processed])').forEach(el => {
     el.setAttribute('data-processed', '1');
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
       scale: 0.82, opacity: 0,
       duration: 0.85, ease: 'power3.out'
     });
   });
   document.querySelectorAll('[data-reveal="zoom-out"]').forEach(el => {
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
       scale: 1.2, opacity: 0, duration: 0.85, ease: 'power3.out'
     });
   });

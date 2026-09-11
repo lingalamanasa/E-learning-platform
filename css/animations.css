@@ -66,7 +66,15 @@
 .slide-left-reveal.active,
 .slide-right-reveal.active,
 .slide-up-reveal.active,
-.zoom-reveal.active {
+.zoom-reveal.active,
+.slide-left-reveal.revealed,
+.slide-right-reveal.revealed,
+.slide-up-reveal.revealed,
+.zoom-reveal.revealed,
+body.page-restored .slide-left-reveal,
+body.page-restored .slide-right-reveal,
+body.page-restored .slide-up-reveal,
+body.page-restored .zoom-reveal {
   opacity: 1 !important;
   transform: translate(0,0) scale(1) !important;
 }
