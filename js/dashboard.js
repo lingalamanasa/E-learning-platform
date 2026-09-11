@@ -23,27 +23,67 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   0. DYNAMIC PERSONALIZED GREETINGS
+   0. DYNAMIC PERSONALIZED GREETINGS & USERNAME MANAGEMENT
    ========================================================================== */
 function initDynamicGreetings() {
   try {
-    const savedName = localStorage.getItem('stackly_auth_name');
+    const savedName = localStorage.getItem('stackly_auth_name') || localStorage.getItem('stackly_auth_username');
     const savedEmail = localStorage.getItem('stackly_auth_email');
     
     let displayName = savedName;
     if (!displayName && savedEmail) {
       const prefix = savedEmail.split('@')[0];
-      displayName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+      displayName = prefix.replace(/[._-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     }
 
     const adminGreeting = document.getElementById('admin-greeting-name');
     if (adminGreeting) {
-      adminGreeting.textContent = displayName || 'Dr. Marcus Vance';
+      if (displayName) {
+        adminGreeting.textContent = displayName;
+      }
+      if (!adminGreeting.getAttribute('data-edit-attached')) {
+        adminGreeting.setAttribute('data-edit-attached', 'true');
+        adminGreeting.style.cursor = 'pointer';
+        adminGreeting.title = 'Click to customize your displayed username';
+        adminGreeting.addEventListener('click', () => {
+          const current = adminGreeting.textContent.trim();
+          const newName = prompt('Enter your username to display on the dashboard:', current);
+          if (newName && newName.trim()) {
+            const trimmed = newName.trim();
+            localStorage.setItem('stackly_auth_name', trimmed);
+            localStorage.setItem('stackly_auth_username', trimmed);
+            adminGreeting.textContent = trimmed;
+            const userG = document.getElementById('user-greeting-name');
+            if (userG) userG.textContent = trimmed;
+            if (window.showToast) window.showToast(`Username updated to "${trimmed}"!`, 'success');
+          }
+        });
+      }
     }
 
     const userGreeting = document.getElementById('user-greeting-name');
     if (userGreeting) {
-      userGreeting.textContent = displayName || 'Alex Mercer';
+      if (displayName) {
+        userGreeting.textContent = displayName;
+      }
+      if (!userGreeting.getAttribute('data-edit-attached')) {
+        userGreeting.setAttribute('data-edit-attached', 'true');
+        userGreeting.style.cursor = 'pointer';
+        userGreeting.title = 'Click to customize your displayed username';
+        userGreeting.addEventListener('click', () => {
+          const current = userGreeting.textContent.trim();
+          const newName = prompt('Enter your username to display on the dashboard:', current);
+          if (newName && newName.trim()) {
+            const trimmed = newName.trim();
+            localStorage.setItem('stackly_auth_name', trimmed);
+            localStorage.setItem('stackly_auth_username', trimmed);
+            userGreeting.textContent = trimmed;
+            const adminG = document.getElementById('admin-greeting-name');
+            if (adminG) adminG.textContent = trimmed;
+            if (window.showToast) window.showToast(`Username updated to "${trimmed}"!`, 'success');
+          }
+        });
+      }
     }
 
     // Live formatted date ticker

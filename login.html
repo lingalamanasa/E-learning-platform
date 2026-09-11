@@ -47,16 +47,15 @@
       <form id="login-form" class="auth-inner-form" novalidate>
         
         <div class="auth-field-group">
-          <label for="auth-email" class="auth-field-label">Email</label>
+          <label for="auth-email" class="auth-field-label">Username or Email</label>
           <input 
-            type="email" 
+            type="text" 
             id="auth-email" 
             name="email" 
             required 
-            value="amelielaurent7622@gmail.com" 
-            placeholder="amélielaurent7622@gmail.com" 
+            placeholder="Enter your username or email" 
             class="auth-field-input" 
-            autocomplete="email"
+            autocomplete="username"
           />
         </div>
 
@@ -227,11 +226,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       // Pre-fill credentials if stored
       try {
-        const savedEmail = localStorage.getItem('stackly_auth_email');
+        const savedUsername = localStorage.getItem('stackly_auth_username') || localStorage.getItem('stackly_auth_name') || localStorage.getItem('stackly_auth_email');
         const savedRole = localStorage.getItem('stackly_auth_role');
-        if (savedEmail) {
+        if (savedUsername) {
           const emailInput = document.getElementById('auth-email');
-          if (emailInput) emailInput.value = savedEmail;
+          if (emailInput) emailInput.value = savedUsername;
         }
         if (savedRole) {
           const roleSelect = document.getElementById('auth-role');
@@ -253,19 +252,32 @@
         });
       }
 
-      // Handle Login Form Submit -> Directs to Dashboard
+      // Handle Login Form Submit -> Directs to Dashboard & Saves Entered Username
       const loginForm = document.getElementById('login-form');
       loginForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         const role = document.getElementById('auth-role')?.value || 'user';
-        const email = document.getElementById('auth-email')?.value || '';
+        const rawInput = document.getElementById('auth-email')?.value.trim() || '';
+        
+        let displayName = rawInput;
+        if (rawInput.includes('@')) {
+          const prefix = rawInput.split('@')[0];
+          displayName = prefix.replace(/[._-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        }
+
+        if (displayName) {
+          localStorage.setItem('stackly_auth_name', displayName);
+          localStorage.setItem('stackly_auth_username', rawInput);
+          localStorage.setItem('stackly_auth_email', rawInput);
+          localStorage.setItem('stackly_auth_role', role);
+        }
         
         if (window.showToast) {
-          window.showToast('Signing in... Welcome back to STACKLY!', 'success');
+          window.showToast(`Signing in as ${displayName || 'user'}... Welcome back!`, 'success');
         }
         
         setTimeout(() => {
-          if (role === 'admin' || email.includes('admin')) {
+          if (role === 'admin' || rawInput.toLowerCase().includes('admin')) {
             window.location.href = 'admin-dashboard.html';
           } else {
             window.location.href = 'user-dashboard.html';

@@ -47,14 +47,13 @@
       <form id="signup-form" class="auth-inner-form" novalidate>
         
         <div class="auth-field-group">
-          <label for="signup-name" class="auth-field-label">Full name</label>
+          <label for="signup-name" class="auth-field-label">Username / Full Name</label>
           <input 
             type="text" 
             id="signup-name" 
             name="name" 
             required 
-            value="Amélie Laurent" 
-            placeholder="Amélie Laurent" 
+            placeholder="Enter your name or username" 
             class="auth-field-input" 
             autocomplete="name"
           />
@@ -67,8 +66,7 @@
             id="signup-email" 
             name="email" 
             required 
-            value="amélielaurent7622@gmail.com" 
-            placeholder="amélielaurent7622@gmail.com" 
+            placeholder="Enter your email address" 
             class="auth-field-input" 
             autocomplete="email"
           />
@@ -240,20 +238,25 @@
       const signupForm = document.getElementById('signup-form');
       signupForm?.addEventListener('submit', (e) => {
         e.preventDefault();
-        const name = document.getElementById('signup-name')?.value || '';
-        const email = document.getElementById('signup-email')?.value || '';
+        const name = document.getElementById('signup-name')?.value.trim() || '';
+        const email = document.getElementById('signup-email')?.value.trim() || '';
         
         try {
-          if (name) localStorage.setItem('stackly_auth_name', name);
-          if (email) localStorage.setItem('stackly_auth_email', email);
+          if (name) {
+            localStorage.setItem('stackly_auth_name', name);
+            localStorage.setItem('stackly_auth_username', name);
+          }
+          if (email) {
+            localStorage.setItem('stackly_auth_email', email);
+          }
         } catch (err) {}
 
         if (window.showToast) {
-          window.showToast('Account created successfully! Welcome to STACKLY 30-Day Trial.', 'success');
+          window.showToast(`Account created for ${name || 'user'}! Welcome to STACKLY.`, 'success');
         }
 
         setTimeout(() => {
-          window.location.href = 'login.html';
+          window.location.href = 'user-dashboard.html';
         }, 700);
       });
     });
