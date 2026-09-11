@@ -172,6 +172,9 @@ function initDashboardTabs() {
 
       initMetricCounterAnimations();
       initCharts();
+      setTimeout(() => {
+        initCharts();
+      }, 60);
     }
   }
 
@@ -300,7 +303,8 @@ function initCharts() {
  * Draws a glowing interactive SVG Line Chart
  */
 function renderSVGLineChart(container, data, options) {
-  const width = container.clientWidth || 700;
+  const contW = container.getBoundingClientRect().width;
+  const width = Math.max(280, contW > 50 ? contW : (typeof window !== 'undefined' && window.innerWidth ? Math.min(window.innerWidth - 60, 700) : 700));
   const height = 260;
   const padLeft = 45;
   const padRight = 25;
@@ -365,8 +369,8 @@ function renderSVGLineChart(container, data, options) {
   const gradientId = `grad-${Math.random().toString(36).substr(2, 9)}`;
 
   container.innerHTML = `
-    <div style="position: relative; width: 100%;">
-      <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="overflow: visible;">
+    <div style="position: relative; width: 100%; max-width: 100%; overflow: hidden;">
+      <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="overflow: hidden; max-width: 100%; display: block;">
         <defs>
           <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="${options.fillStart}" />
@@ -415,7 +419,8 @@ function renderSVGLineChart(container, data, options) {
  * Draws Multi-Line SVG Chart for Admin Analytics
  */
 function renderSVGMultiLineChart(container, data, options) {
-  const width = container.clientWidth || 700;
+  const contW = container.getBoundingClientRect().width;
+  const width = Math.max(280, contW > 50 ? contW : (typeof window !== 'undefined' && window.innerWidth ? Math.min(window.innerWidth - 60, 700) : 700));
   const height = 280;
   const padLeft = 55;
   const padRight = 30;
@@ -483,8 +488,8 @@ function renderSVGMultiLineChart(container, data, options) {
   const gradientId = `grad-admin-${Math.random().toString(36).substr(2, 9)}`;
 
   container.innerHTML = `
-    <div style="position: relative; width: 100%;">
-      <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="overflow: visible;">
+    <div style="position: relative; width: 100%; max-width: 100%; overflow: hidden;">
+      <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="overflow: hidden; max-width: 100%; display: block;">
         <defs>
           <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="${options.fillStart1}" />

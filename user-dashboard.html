@@ -7,9 +7,9 @@
   <meta name="description" content="Comprehensive 10-view learner intelligence portal featuring animated metric telemetry, interactive study velocity line charts, WebAssembly cloud sandboxes, and verified skill progression.">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=fluidfull6.0">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/main.css?v=dashresponsive.1">
+  <link rel="stylesheet" href="css/animations.css?v=dashresponsive.1">
+  <link rel="stylesheet" href="css/components.css?v=dashresponsive.1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body style="background: #080a10; color: #fff; min-height: 100vh; font-family: var(--font-sans);">
@@ -33,11 +33,11 @@
     <div class="stackly-nav-container" style="max-width: 100%; width: 100%; padding: 0 clamp(0.8rem, 3vw, 2.5rem); display: flex; justify-content: space-between; align-items: center;">
       <a href="user-dashboard.html" class="stackly-brand">
         <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" />
-        <span style="font-size: 0.7rem; background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 700; letter-spacing: 0.05em; margin-left: 0.4rem; white-space: nowrap;">LEARNER PORTAL</span>
+        <span class="dashboard-portal-badge" style="font-size: 0.7rem; background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 700; letter-spacing: 0.05em; margin-left: 0.4rem; white-space: nowrap;">LEARNER PORTAL</span>
       </a>
 
-      <div style="display: flex; align-items: center; gap: 0.8rem;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 100px;">
+      <div class="dashboard-header-right" style="display: flex; align-items: center; gap: 0.8rem;">
+        <div class="dashboard-header-ticker" style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 100px;">
           <span class="pulse-dot" style="background: #22d3ee;"></span>
           <span style="font-size: 0.8rem; color: #e6e4dc; font-family: var(--font-code);" id="user-time-ticker">Live Cloud Telemetry</span>
         </div>
@@ -47,7 +47,7 @@
         </div>
 
         <button class="dashboard-sidebar-toggle" id="userSidebarToggle" aria-label="Toggle Dashboard Menu">
-          <i class="fa-solid fa-bars-staggered"></i> <span>Menu</span>
+          <i class="fa-solid fa-bars-staggered"></i> <span class="sidebar-toggle-text">Menu</span>
         </button>
       </div>
     </div>
@@ -124,7 +124,13 @@
               <span>10. Heatmap &amp; Growth</span>
             </a>
           </li>
-          <li class="sidebar-nav-item" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
+          <li class="sidebar-nav-item" style="margin-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.8rem;">
+            <a href="admin-dashboard.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; border-radius: 10px; color: #d4a96a; text-decoration: none; font-size: 0.85rem; font-weight: 600; background: rgba(212, 169, 106, 0.08); border: 1px solid rgba(212, 169, 106, 0.25); transition: all 0.2s;">
+              <i class="fa-solid fa-shield-halved" style="color: #d4a96a;"></i>
+              <span>Admin Command Mode</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item" style="margin-top: 0.4rem;">
             <a href="login.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; border-radius: 10px; color: #fb7185; text-decoration: none; font-size: 0.85rem; font-weight: 600; background: rgba(251, 113, 133, 0.08); border: 1px solid rgba(251, 113, 133, 0.2); transition: all 0.2s;">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
               <span>Log Out</span>
@@ -176,7 +182,7 @@
             </div>
 
             <!-- Daily Target Capsule -->
-            <div style="background: rgba(10, 14, 24, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 1.4rem 1.8rem; min-width: 280px;">
+            <div style="background: rgba(10, 14, 24, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 1.4rem 1.8rem; flex: 1 1 260px; max-width: 100%; box-sizing: border-box;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
                 <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Daily Study Target</span>
                 <span style="font-family: var(--font-code); color: #22d3ee; font-weight: 700; font-size: 0.9rem;">45 / 60 min</span>
@@ -320,7 +326,7 @@
               <div class="sqs-page-badge" style="margin-bottom: 0.4rem;">SECTION 2.1 &bull; TELEMETRY OVERVIEW</div>
               <h2 class="serif-headline" style="font-size: 2rem; color: #fff; margin: 0;">Comprehensive Performance Telemetry</h2>
             </div>
-            <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
               <span style="font-size: 0.82rem; color: #10b981; font-weight: 600;">● Live Cloud Sync (0.4s ago)</span>
               <a href="404.html" class="btn-outline-glass" style="font-size: 0.8rem; padding: 0.4rem 0.9rem;">Export Telemetry CSV</a>
             </div>
@@ -1284,8 +1290,8 @@ print("[INIT] Initialized 16-rank LoRA adapter layer.")
           </div>
 
           <!-- Heatmap Grid (7 rows x 12 cols = 84 days) -->
-          <div class="table-responsive" style="margin-bottom: 0;">
-            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; min-width: 380px;">
+          <div class="table-responsive" style="margin-bottom: 0; width: 100%; overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; min-width: 280px; width: 100%;">
               <div style="height: 18px; border-radius: 3px; background: rgba(34,211,238,0.3);"></div>
               <div style="height: 18px; border-radius: 3px; background: rgba(34,211,238,0.7);"></div>
               <div style="height: 18px; border-radius: 3px; background: #22d3ee;"></div>
@@ -1445,7 +1451,7 @@ print("[INIT] Initialized 16-rank LoRA adapter layer.")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/gsap-animations.js?v=gravity1.0"></script>
-  <script src="js/app.js"></script>
-  <script src="js/dashboard.js"></script>
+  <script src="js/app.js?v=dashresponsive.1"></script>
+  <script src="js/dashboard.js?v=dashresponsive.1"></script>
 </body>
 </html>
