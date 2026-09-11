@@ -240,11 +240,23 @@
   </main>
 
   <script>
+    function sanitizePlatformUrl(url) {
+      if (!url) return url;
+      if (url.includes('github.io')) {
+        return url.replace(/E(%20|\s+)learning(%20|\s+)platform/gi, 'E-learning-platform');
+      }
+      return url;
+    }
+
     function handleHomeNav(e) {
       if (e) e.preventDefault();
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
-      if (window.location.hostname.includes('github.io') && pathSegments.length > 0) {
-        window.location.href = window.location.origin + '/' + pathSegments[0] + '/index.html';
+      if (window.location.hostname.includes('github.io')) {
+        let repo = 'E-learning-platform';
+        if (pathSegments.length > 0 && !pathSegments[0].includes('.html')) {
+          repo = pathSegments[0].replace(/%20|\s+/g, '-');
+        }
+        window.location.href = window.location.origin + '/' + repo + '/index.html';
       } else {
         window.location.href = 'index.html';
       }
@@ -262,7 +274,7 @@
         const lastPage = sessionStorage.getItem('stackly_last_page');
         const lastSection = sessionStorage.getItem('stackly_last_section');
         if (lastPage && !lastPage.includes('404')) {
-          let target = lastPage;
+          let target = sanitizePlatformUrl(lastPage);
           if (lastSection && !target.includes('#')) {
             target += '#' + lastSection;
           }
@@ -275,14 +287,14 @@
       if (document.referrer && !document.referrer.includes('404')) {
         try {
           const lastSection = sessionStorage.getItem('stackly_last_section');
-          let target = document.referrer;
+          let target = sanitizePlatformUrl(document.referrer);
           if (lastSection && !target.includes('#')) {
             target += '#' + lastSection;
           }
           window.location.href = target;
           return;
         } catch (err) {
-          window.location.href = document.referrer;
+          window.location.href = sanitizePlatformUrl(document.referrer);
           return;
         }
       }

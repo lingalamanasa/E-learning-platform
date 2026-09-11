@@ -49,6 +49,12 @@
       };
 
       window.addEventListener('pageshow', (evt) => {
+        document.body.style.opacity = '1';
+        const pre = document.getElementById('sitePreloader');
+        if (pre) {
+          pre.classList.add('preloader-hidden');
+          pre.style.display = 'none';
+        }
         setTimeout(restoreSectionPosition, 80);
       });
 
@@ -72,17 +78,19 @@
       preloader.classList.add('preloader-hidden');
       setTimeout(() => {
         preloader.style.display = 'none';
-      }, 650);
+      }, 400);
     };
 
+    window.addEventListener('pageshow', hidePreloader);
+
     if (document.readyState === 'complete') {
-      setTimeout(hidePreloader, 450);
+      setTimeout(hidePreloader, 350);
     } else {
       window.addEventListener('load', () => {
-        setTimeout(hidePreloader, 400);
+        setTimeout(hidePreloader, 300);
       });
       // Safety fallback so it never stays stuck on slow connections
-      setTimeout(hidePreloader, 1600);
+      setTimeout(hidePreloader, 1000);
     }
   }
 })();

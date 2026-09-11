@@ -286,19 +286,25 @@ function initWobbleCards() {
    20. SMOOTH SECTION TRANSITION — route changes & anchor clicks
    ========================================================================== */
 function initSmoothSectionTransitions() {
-  // Fade-in page on load
-  document.body.style.opacity = '0';
-  document.body.style.transition = 'opacity 0.55s ease';
-  requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+  // Ensure page is immediately visible
+  document.body.style.opacity = '1';
+  document.body.style.transition = 'opacity 0.35s ease';
+
+  // Always reset opacity to 1 on pageshow (e.g. browser back/forward history navigation or BFCache restore)
+  window.addEventListener('pageshow', () => {
+    document.body.style.opacity = '1';
+  });
 
   // Smooth link transitions
   document.querySelectorAll('a[href]:not([href^="#"]):not([href^="mailto"]):not([href^="tel"]):not([target])').forEach(link => {
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('javascript') || href.startsWith('http') || href.includes('://')) return;
+      // Do not fade out body when navigating to 404 so back navigation is never stuck on a black/blank screen
+      if (href.includes('404')) return;
       e.preventDefault();
       document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 380);
+      setTimeout(() => { window.location.href = href; }, 280);
     });
   });
 }
