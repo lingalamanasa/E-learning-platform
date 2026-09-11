@@ -658,7 +658,7 @@
           <p class="footer-newsletter-text">
             Subscribe to our newsletter for library tips, book recommendations, and exclusive offers.
           </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); window.showToast && window.showToast('Subscription active! Thank you for staying in the loop.', 'success'); this.reset();">
+          <form class="footer-newsletter-form" action="javascript:void(0);" method="POST" onsubmit="return window.handleFooterSubscribe(event, this);">
             <div class="footer-subscribe-box">
               <input type="email" required placeholder="Enter your email" class="footer-subscribe-input" />
               <button type="submit" class="footer-subscribe-btn">
@@ -668,6 +668,9 @@
             </div>
             <div class="footer-security-note">
               <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i></span> <span>No spam, unsubscribe anytime.</span>
+            </div>
+            <div class="footer-subscribe-success" style="display: none; color: #10b981; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem;">
+              <i class="fa-solid fa-circle-check" style="margin-right: 0.3rem;"></i> Subscribed successfully! Welcome aboard.
             </div>
           </form>
         </div>

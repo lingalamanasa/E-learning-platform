@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/main.css?v=leftside5.0">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
+</head>
 <body>
 
   <!-- ==========================================================================
@@ -141,7 +142,7 @@
               </p>
             </div>
 
-            <form id="stackly-contact-form" action="https://formspree.io/f/placeholder" method="POST">
+            <form id="stackly-contact-form" action="javascript:void(0);" method="POST" onsubmit="return window.handleContactSubmit(event, this);">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;" class="form-group-custom">
                 <div>
                   <label class="form-label-custom">First Name *</label>
@@ -177,6 +178,11 @@
               <button type="submit" class="sqs-btn-solid-white" style="width: 100%; justify-content: center; padding: 1.1rem;">
                 Dispatch Inquiry <i class="fa-solid fa-wand-magic-sparkles"></i>
               </button>
+
+              <div class="contact-form-status" id="contact-form-status" style="display: none; padding: 0.9rem 1.2rem; margin-top: 1.2rem; border-radius: 12px; background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-weight: 600; font-size: 0.92rem; align-items: center; gap: 0.6rem;">
+                <i class="fa-solid fa-circle-check" style="font-size: 1.2rem; color: #10b981;"></i>
+                <span>Inquiry Dispatched Successfully! Our Solutions Engineer will connect within 15 minutes.</span>
+              </div>
             </form>
           </div>
 
@@ -800,7 +806,7 @@
           <p class="footer-newsletter-text">
             Subscribe to our newsletter for library tips, book recommendations, and exclusive offers.
           </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); window.showToast && window.showToast('Subscription active! Thank you for staying in the loop.', 'success'); this.reset();">
+          <form class="footer-newsletter-form" action="javascript:void(0);" method="POST" onsubmit="return window.handleFooterSubscribe(event, this);">
             <div class="footer-subscribe-box">
               <input type="email" required placeholder="Enter your email" class="footer-subscribe-input" />
               <button type="submit" class="footer-subscribe-btn">
@@ -810,6 +816,9 @@
             </div>
             <div class="footer-security-note">
               <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i></span> <span>No spam, unsubscribe anytime.</span>
+            </div>
+            <div class="footer-subscribe-success" style="display: none; color: #10b981; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem;">
+              <i class="fa-solid fa-circle-check" style="margin-right: 0.3rem;"></i> Subscribed successfully! Welcome aboard.
             </div>
           </form>
         </div>
@@ -833,9 +842,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       // Contact form submission
       document.getElementById('stackly-contact-form')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        window.showToast('Inquiry Dispatched! Our Solutions Engineer will connect within 15 minutes.', 'success');
-        e.target.reset();
+        if (window.handleContactSubmit) {
+          window.handleContactSubmit(e, e.target);
+        }
       });
 
       // FAQ accordion

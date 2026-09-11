@@ -1493,14 +1493,145 @@ function initGlobalPolicyModal() {
   });
 }
 
+// Dedicated Form Submission Handlers for Marked Actions
+window.handleContactSubmit = function(event, form) {
+  if (event && event.preventDefault) event.preventDefault();
+  const f = form || document.getElementById('stackly-contact-form');
+  if (!f) return false;
+
+  const emailInput = f.querySelector('input[type="email"]');
+  if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
+    if (window.showToast) window.showToast('Please enter a valid work email address.', 'error');
+    return false;
+  }
+
+  // Visual button feedback
+  const submitBtn = f.querySelector('button[type="submit"]');
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+  if (submitBtn) {
+    submitBtn.innerHTML = '<span>Inquiry Dispatched <i class="fa-solid fa-check"></i></span>';
+    submitBtn.style.background = '#10b981';
+    submitBtn.style.borderColor = '#10b981';
+    submitBtn.style.color = '#080a10';
+  }
+
+  // Display inline status container
+  const statusBox = f.querySelector('.contact-form-status') || document.getElementById('contact-form-status');
+  if (statusBox) {
+    statusBox.style.display = 'flex';
+  }
+
+  if (window.showToast) {
+    window.showToast('Inquiry Dispatched Successfully! Our Solutions Engineer will connect within 15 minutes.', 'success');
+  }
+
+  f.reset();
+
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.innerHTML = originalBtnHtml;
+      submitBtn.style.background = '';
+      submitBtn.style.borderColor = '';
+      submitBtn.style.color = '';
+    }
+  }, 4500);
+
+  return false;
+};
+
+window.handleBlogNewsletter = function(event, form) {
+  if (event && event.preventDefault) event.preventDefault();
+  const f = form || document.getElementById('blog-newsletter-form');
+  if (!f) return false;
+
+  const emailInput = f.querySelector('input[type="email"]');
+  if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
+    if (window.showToast) window.showToast('Please enter a valid engineering email address.', 'error');
+    return false;
+  }
+
+  const submitBtn = f.querySelector('button[type="submit"]');
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+  if (submitBtn) {
+    submitBtn.innerHTML = '<span>Subscribed <i class="fa-solid fa-check"></i></span>';
+    submitBtn.style.background = '#10b981';
+    submitBtn.style.borderColor = '#10b981';
+    submitBtn.style.color = '#080a10';
+  }
+
+  const statusBox = f.parentElement ? (f.parentElement.querySelector('.blog-newsletter-status') || document.getElementById('blog-newsletter-status')) : null;
+  if (statusBox) {
+    statusBox.style.display = 'flex';
+  }
+
+  if (window.showToast) {
+    window.showToast('Subscribed Successfully! Architectural insights will be dispatched to your inbox.', 'success');
+  }
+
+  f.reset();
+
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.innerHTML = originalBtnHtml;
+      submitBtn.style.background = '';
+      submitBtn.style.borderColor = '';
+      submitBtn.style.color = '';
+    }
+  }, 4500);
+
+  return false;
+};
+
+window.handleFooterSubscribe = function(event, form) {
+  if (event && event.preventDefault) event.preventDefault();
+  const f = form || (event && event.target);
+  if (!f) return false;
+
+  const emailInput = f.querySelector('input[type="email"]');
+  if (emailInput && (!emailInput.value || !emailInput.value.includes('@'))) {
+    if (window.showToast) window.showToast('Please enter a valid email address.', 'error');
+    return false;
+  }
+
+  const submitBtn = f.querySelector('.footer-subscribe-btn');
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+  if (submitBtn) {
+    submitBtn.innerHTML = '<span>Subscribed</span> <span><i class="fa-solid fa-check"></i></span>';
+    submitBtn.style.background = '#10b981';
+  }
+
+  const statusBox = f.querySelector('.footer-subscribe-success');
+  if (statusBox) {
+    statusBox.style.display = 'block';
+  }
+
+  if (window.showToast) {
+    window.showToast('Subscribed Successfully! Thank you for staying in the loop.', 'success');
+  }
+
+  f.reset();
+
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.innerHTML = originalBtnHtml;
+      submitBtn.style.background = '';
+    }
+    if (statusBox) {
+      statusBox.style.display = 'none';
+    }
+  }, 4500);
+
+  return false;
+};
+
 function initGlobalFormHandlers() {
   document.querySelectorAll('form').forEach(form => {
     if (form.getAttribute('data-handler-attached')) return;
     form.setAttribute('data-handler-attached', 'true');
 
-    // Skip auth form or custom modal forms that already have action listeners
+    // Skip auth form or custom forms that have dedicated handlers
     const formId = form.id;
-    if (formId === 'contact-form' || formId === 'login-form' || formId === 'signup-form' || formId === 'admin-course-form') return;
+    if (formId === 'contact-form' || formId === 'stackly-contact-form' || formId === 'blog-newsletter-form' || form.classList.contains('footer-newsletter-form') || formId === 'login-form' || formId === 'signup-form' || formId === 'admin-course-form') return;
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
