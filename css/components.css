@@ -2117,13 +2117,16 @@
 
 .sqs-marquee-track {
   display: flex;
-  gap: 2rem;
   width: max-content;
-  animation: sqsMarqueeScroll 35s linear infinite;
+  animation: sqsMarqueeScroll 28s linear infinite;
+  will-change: transform;
 }
 
-.sqs-marquee-track:hover {
-  animation-play-state: paused;
+.sqs-marquee-group {
+  display: flex;
+  gap: 2rem;
+  padding-right: 2rem;
+  flex-shrink: 0;
 }
 
 @keyframes sqsMarqueeScroll {
@@ -2131,7 +2134,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 1rem));
+    transform: translateX(-50%);
   }
 }
 
