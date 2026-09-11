@@ -251,29 +251,13 @@
     }
 
     function handleBackNav() {
-      // 1. If document.referrer points to an existing non-404 page, navigate directly to it
-      if (document.referrer && document.referrer !== window.location.href && !document.referrer.includes('404')) {
-        window.location.href = document.referrer;
-        return;
-      }
-
-      // 2. Check stored last visited platform page from session
-      try {
-        const lastVisited = sessionStorage.getItem('stackly_last_page');
-        if (lastVisited && lastVisited !== window.location.href && !lastVisited.includes('404')) {
-          window.location.href = lastVisited;
-          return;
-        }
-      } catch (err) {}
-
-      // 3. Fallback to browser history back if history entries exist
+      // Go back to the previous page in browser history
       if (window.history.length > 1) {
         window.history.back();
-        return;
+      } else {
+        // Fallback: no history available, go home
+        handleHomeNav();
       }
-
-      // 4. Default fallback to home
-      handleHomeNav();
     }
   </script>
 
