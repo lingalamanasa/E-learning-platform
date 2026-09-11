@@ -1528,7 +1528,7 @@ function initTemplatePreviewModal() {
           <button id="close-tpl-modal-btn2" class="btn-outline-glass" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; cursor: pointer;">
             Close Preview
           </button>
-          <a href="signup.html" class="sqs-btn-solid-white" style="padding: 0.7rem 1.8rem; font-size: 0.85rem; text-decoration: none;">
+          <a href="404.html" class="sqs-btn-solid-white" style="padding: 0.7rem 1.8rem; font-size: 0.85rem; text-decoration: none;">
             Start Building with Template <i class="fa-solid fa-arrow-right" style="margin-left: 0.4rem;"></i>
           </a>
         </div>
