@@ -234,10 +234,12 @@
         });
       }
 
-      // Handle Sign Up Form Submit -> Redirects to Login / Dashboard
+      // Handle Sign Up Form Submit -> Redirects to Login
       const signupForm = document.getElementById('signup-form');
-      signupForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
+      const submitSignupBtn = document.getElementById('btnSubmitSignup');
+
+      function processSignupAndRedirect(e) {
+        if (e) e.preventDefault();
         const name = document.getElementById('signup-name')?.value.trim() || '';
         const email = document.getElementById('signup-email')?.value.trim() || '';
         
@@ -252,12 +254,19 @@
         } catch (err) {}
 
         if (window.showToast) {
-          window.showToast(`Account created for ${name || 'user'}! Welcome to STACKLY.`, 'success');
+          window.showToast(`Account created for ${name || 'user'}! Redirecting to login...`, 'success');
         }
 
         setTimeout(() => {
-          window.location.href = 'user-dashboard.html';
-        }, 700);
+          window.location.href = 'login.html';
+        }, 500);
+      }
+
+      signupForm?.addEventListener('submit', processSignupAndRedirect);
+      submitSignupBtn?.addEventListener('click', (e) => {
+        if (!signupForm) {
+          processSignupAndRedirect(e);
+        }
       });
     });
   </script>

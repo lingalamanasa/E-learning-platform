@@ -174,6 +174,17 @@ function initDashboardTabs() {
     });
   });
 
+  // When clicking on STACKLY logo in dashboard header, stay on dashboard and switch to first section
+  const brandLink = document.querySelector('.stackly-brand');
+  if (brandLink) {
+    brandLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const firstTab = navLinks[0]?.getAttribute('data-tab') || 'hero';
+      activateView(firstTab, true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   window.addEventListener('popstate', (e) => {
     const params = new URLSearchParams(window.location.search);
     const tabFromUrl = params.get('tab') || (e.state && e.state.tab);
