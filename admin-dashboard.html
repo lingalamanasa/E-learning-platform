@@ -32,21 +32,25 @@
 
   <!-- STACKLY Admin Dashboard Header -->
   <header class="stackly-header" style="background: rgba(10, 12, 18, 0.96); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 100; width: 100%;">
-    <div class="stackly-nav-container" style="max-width: 100%; width: 100%; padding: 0 2.5rem;">
+    <div class="stackly-nav-container" style="max-width: 100%; width: 100%; padding: 0 clamp(0.8rem, 3vw, 2.5rem); display: flex; justify-content: space-between; align-items: center;">
       <a href="index.html" class="stackly-brand">
-        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" style="height: 52px;" />
-        <span style="font-size: 0.7rem; background: linear-gradient(90deg, #d4a96a, #f59e0b); color: #0f172a; padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 800; letter-spacing: 0.08em; margin-left: 0.6rem;">ADMIN COMMAND</span>
+        <img src="images/stackly-logo.webp" alt="STACKLY" class="stackly-brand-img" />
+        <span style="font-size: 0.7rem; background: linear-gradient(90deg, #d4a96a, #f59e0b); color: #0f172a; padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 800; letter-spacing: 0.08em; margin-left: 0.4rem; white-space: nowrap;">ADMIN COMMAND</span>
       </a>
 
-      <div style="display: flex; align-items: center; gap: 1.2rem;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.82rem;">
+      <div style="display: flex; align-items: center; gap: 0.8rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.35rem 0.8rem; border-radius: 100px; font-size: 0.8rem;">
           <span class="pulse-dot" style="background: #10b981;"></span>
-          <span style="color: #10b981; font-weight: 700;">140 Edge Clusters Online</span>
+          <span style="color: #10b981; font-weight: 700;" id="admin-time-ticker">140 Edge Clusters Online</span>
         </div>
 
-        <div class="stackly-auth-actions" style="margin-left: 0.5rem; display: flex; gap: 0.8rem;">
-          <a href="user-dashboard.html" class="btn-outline-glass" style="padding: 0.4rem 0.9rem; font-size: 0.82rem; color: #22d3ee;">Learner Mode</a>
+        <div class="stackly-auth-actions" style="display: flex; gap: 0.6rem;">
+          <a href="user-dashboard.html" class="btn-outline-glass" style="padding: 0.35rem 0.8rem; font-size: 0.8rem; color: #22d3ee; white-space: nowrap;">Learner Mode</a>
         </div>
+
+        <button class="dashboard-sidebar-toggle admin-sidebar-toggle" id="adminSidebarToggle" aria-label="Toggle Admin Menu">
+          <i class="fa-solid fa-bars-staggered"></i> <span>Menu</span>
+        </button>
       </div>
     </div>
   </header>
@@ -56,6 +60,10 @@
     <!-- Sidebar Navigation (Fixed on Left) -->
     <aside class="dashboard-sidebar admin-sidebar">
       
+      <button class="sidebar-close-btn" id="adminSidebarClose" aria-label="Close Sidebar Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
       <nav style="flex: 1;">
         <ul class="sidebar-nav" style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; padding: 0; margin: 0;">
           <li class="sidebar-nav-item active">

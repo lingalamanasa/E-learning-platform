@@ -1096,19 +1096,21 @@ function initSubnavScrollSpy() {
 }
 
 function initMobileNavDrawer() {
+  const isDashboard = !!document.querySelector('.dashboard-layout, .dashboard-sidebar');
+  if (isDashboard) return; // Dashboards use their dedicated sidebar drawer
+
   const toggleBtns = document.querySelectorAll('.stackly-mobile-toggle, .mobile-menu-toggle, #mobileNavToggle');
   let drawer = document.querySelector('.stackly-mobile-drawer, .mobile-nav-drawer, #mobileNavDrawer');
   let backdrop = document.querySelector('.stackly-drawer-backdrop, .mobile-nav-drawer-backdrop, #mobileNavBackdrop');
   
   // If drawer does not exist on page, dynamically create it
   if (!drawer && document.querySelector('.stackly-header')) {
-    const header = document.querySelector('.stackly-header');
     drawer = document.createElement('div');
     drawer.className = 'stackly-mobile-drawer';
     drawer.id = 'mobileNavDrawer';
     drawer.innerHTML = `
       <div class="mobile-drawer-header">
-        <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 32px;" />
+        <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 38px;" />
         <button class="mobile-drawer-close" id="mobileNavClose" aria-label="Close Navigation Menu">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1134,7 +1136,7 @@ function initMobileNavDrawer() {
     document.body.appendChild(backdrop);
   }
 
-  // Also ensure mobile toggle button exists in header
+  // Ensure mobile toggle button exists in header for public pages
   const navContainers = document.querySelectorAll('.stackly-nav-container');
   navContainers.forEach(container => {
     if (!container.querySelector('.stackly-mobile-toggle, .mobile-menu-toggle')) {
@@ -1180,42 +1182,72 @@ function initDashboardSidebarToggle() {
   const sidebar = document.querySelector('.dashboard-sidebar');
   if (!sidebar) return;
 
-  const header = document.querySelector('.stackly-header .stackly-nav-container');
-  if (header && !header.querySelector('.dashboard-sidebar-toggle')) {
-    const toggle = document.createElement('button');
-    toggle.className = 'dashboard-sidebar-toggle';
-    toggle.setAttribute('aria-label', 'Toggle Dashboard Sidebar');
-    toggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
-    header.prepend(toggle);
-    
-    let backdrop = document.querySelector('.dashboard-sidebar-backdrop');
-    if (!backdrop) {
-      backdrop = document.createElement('div');
-      backdrop.className = 'stackly-drawer-backdrop dashboard-sidebar-backdrop';
-      document.body.appendChild(backdrop);
-    }
+  const headerContainer = document.querySelector('.stackly-header .stackly-nav-container');
+  if (!headerContainer) return;
 
-    const toggleSidebar = () => {
-      sidebar.classList.toggle('active');
-      backdrop.classList.toggle('active');
-      document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-    };
-
-    const closeSidebar = () => {
-      sidebar.classList.remove('active');
-      backdrop.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    toggle.addEventListener('click', toggleSidebar);
-    backdrop.addEventListener('click', closeSidebar);
-
-    sidebar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 1024) closeSidebar();
-      });
-    });
+  // Add close button to sidebar if missing
+  if (!sidebar.querySelector('.sidebar-close-btn')) {
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'sidebar-close-btn';
+    closeBtn.setAttribute('aria-label', 'Close Sidebar Menu');
+    closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    sidebar.prepend(closeBtn);
   }
+
+  // Add sidebar toggle button to header right area if missing
+  let toggle = headerContainer.querySelector('.dashboard-sidebar-toggle');
+  if (!toggle) {
+    toggle = document.createElement('button');
+    toggle.className = 'dashboard-sidebar-toggle' + (sidebar.classList.contains('admin-sidebar') ? ' admin-sidebar-toggle' : '');
+    toggle.setAttribute('aria-label', 'Toggle Dashboard Menu');
+    toggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i> <span>Menu</span>';
+    headerContainer.appendChild(toggle);
+  }
+
+  let backdrop = document.querySelector('.dashboard-sidebar-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'stackly-drawer-backdrop dashboard-sidebar-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  const openSidebar = () => {
+    sidebar.classList.add('active', 'open');
+    backdrop.classList.add('active', 'open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeSidebar = () => {
+    sidebar.classList.remove('active', 'open');
+    backdrop.classList.remove('active', 'open');
+    document.body.style.overflow = '';
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (sidebar.classList.contains('active')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+
+  const sidebarClose = sidebar.querySelector('.sidebar-close-btn');
+  if (sidebarClose) {
+    sidebarClose.addEventListener('click', closeSidebar);
+  }
+
+  backdrop.addEventListener('click', closeSidebar);
+
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) closeSidebar();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSidebar();
+  });
 }
 
 function initSearchModal() {

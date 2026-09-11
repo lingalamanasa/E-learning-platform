@@ -102,6 +102,15 @@ function initDashboardTabs() {
         window.history.pushState({ tab: actualId }, '', url);
       }
 
+      // On mobile / tablet, close sidebar drawer
+      const sidebar = document.querySelector('.dashboard-sidebar');
+      const backdrop = document.querySelector('.dashboard-sidebar-backdrop');
+      if (sidebar && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active', 'open');
+        if (backdrop) backdrop.classList.remove('active', 'open');
+        document.body.style.overflow = '';
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (window.gsap) {
