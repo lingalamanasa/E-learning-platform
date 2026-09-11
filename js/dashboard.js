@@ -57,54 +57,91 @@ function initDynamicGreetings() {
 }
 
 /* ==========================================================================
-   1. SECTION & TAB NAVIGATION
+   1. MULTI-PAGE ISOLATED VIEW NAVIGATION
    ========================================================================== */
 function initDashboardTabs() {
-  const navLinks = document.querySelectorAll('.sidebar-nav-item a');
+  const navLinks = document.querySelectorAll('.sidebar-nav-item a[data-tab]');
+  const pageViews = document.querySelectorAll('.dashboard-page-view');
   
+  if (!pageViews.length) return;
+
+  function activateView(targetTabId, pushState = true) {
+    if (!targetTabId) return;
+
+    const cleanId = targetTabId.replace(/^view-/, '').replace(/^sec-admin-/, '').replace(/^sec-user-/, '').replace(/^#/, '');
+
+    let targetView = document.getElementById(`view-${cleanId}`);
+    if (!targetView) {
+      targetView = document.querySelector(`.dashboard-page-view[data-page="${cleanId}"]`) ||
+                   document.querySelector(`.dashboard-page-view[id*="${cleanId}"]`);
+    }
+
+    if (!targetView && pageViews.length > 0) {
+      targetView = pageViews[0];
+    }
+
+    if (targetView) {
+      pageViews.forEach(view => {
+        view.classList.remove('active');
+        view.style.display = 'none';
+      });
+
+      targetView.classList.add('active');
+      targetView.style.display = 'flex';
+
+      const actualId = targetView.getAttribute('data-page') || cleanId;
+      document.querySelectorAll('.sidebar-nav-item').forEach(item => item.classList.remove('active'));
+      const activeLink = document.querySelector(`.sidebar-nav-item a[data-tab="${actualId}"]`);
+      if (activeLink) {
+        activeLink.closest('.sidebar-nav-item').classList.add('active');
+      }
+
+      if (pushState) {
+        const url = new URL(window.location);
+        url.searchParams.set('tab', actualId);
+        window.history.pushState({ tab: actualId }, '', url);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (window.gsap) {
+        window.gsap.fromTo(
+          targetView.querySelectorAll('.slide-up-reveal, .dashboard-section-card, section'),
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out' }
+        );
+      }
+
+      initMetricCounterAnimations();
+      initCharts();
+    }
+  }
+
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#sec-')) {
-        e.preventDefault();
-        const targetSection = document.querySelector(href);
-        if (targetSection) {
-          // Update sidebar active states
-          document.querySelectorAll('.sidebar-nav-item').forEach(item => item.classList.remove('active'));
-          link.closest('.sidebar-nav-item').classList.add('active');
-
-          const headerOffset = 80;
-          const elementPosition = targetSection.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }
+      e.preventDefault();
+      const tabName = link.getAttribute('data-tab');
+      activateView(tabName, true);
     });
   });
 
-  // ScrollSpy for sections
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('main section[id]');
-    const scrollPosition = window.pageYOffset + 120;
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        document.querySelectorAll('.sidebar-nav-item').forEach(item => item.classList.remove('active'));
-        const activeLink = document.querySelector(`.sidebar-nav-item a[href="#${id}"]`);
-        if (activeLink) {
-          activeLink.closest('.sidebar-nav-item').classList.add('active');
-        }
-      }
-    });
+  window.addEventListener('popstate', (e) => {
+    const params = new URLSearchParams(window.location.search);
+    const tabFromUrl = params.get('tab') || (e.state && e.state.tab);
+    if (tabFromUrl) {
+      activateView(tabFromUrl, false);
+    } else {
+      activateView(navLinks[0]?.getAttribute('data-tab') || 'hero', false);
+    }
   });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTab = urlParams.get('tab') || window.location.hash.replace('#', '');
+  if (initialTab) {
+    activateView(initialTab, false);
+  } else if (navLinks.length > 0) {
+    activateView(navLinks[0].getAttribute('data-tab'), false);
+  }
 }
 
 /* ==========================================================================
