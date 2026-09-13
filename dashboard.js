@@ -199,16 +199,16 @@ function initDashboardTabs() {
     });
   });
 
-  // When clicking on STACKLY logo in dashboard header, stay on dashboard and switch to first section
-  const brandLink = document.querySelector('.stackly-brand');
-  if (brandLink) {
+  // When clicking on STACKLY logo, strictly open the dashboard page
+  const brandLinks = document.querySelectorAll('.stackly-brand');
+  brandLinks.forEach(brandLink => {
     brandLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const firstTab = navLinks[0]?.getAttribute('data-tab') || 'hero';
-      activateView(firstTab, true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const isUserDash = window.location.pathname.includes('user-dashboard');
+      const targetDashboard = isUserDash ? 'user-dashboard.html' : 'admin-dashboard.html';
+      window.location.href = targetDashboard;
     });
-  }
+  });
 
   window.addEventListener('popstate', (e) => {
     const params = new URLSearchParams(window.location.search);
