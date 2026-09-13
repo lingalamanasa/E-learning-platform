@@ -423,3 +423,12 @@ body.gsap-active .sqs-step-card {
 .anim-wrong {
   animation: shakeWrong 0.5s ease-in-out;
 }
+
+/* GSAP Footer Character Kinetic Typography */
+.gsap-footer-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: color 0.18s ease;
+}

@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGsapRotateReveal();             // 17. Rotate Animation
     initGsapZoomReveal();               //  3. Zoom In / Out
     initGsapFloatingChips();            //  9. Floating Animation
+    initGsapFooterCharacterAnimation(); // 21. Character Animation (Footer)
 
     window.addEventListener('load', () => {
       if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
@@ -636,6 +637,147 @@ function initGsapGravityCardDropAnimations() {
         gsap.to(card, { y: -14, scale: 1.025, duration: 0.28, ease: 'power2.out', overwrite: 'auto' }));
       card.addEventListener('mouseleave', () =>
         gsap.to(card, { y: 0, scale: 1, duration: 0.6, ease: 'bounce.out', overwrite: 'auto' }));
+    });
+  });
+}
+
+/* ==========================================================================
+   21. GSAP — FOOTER CHARACTER ANIMATION (Kinetic Typography Stagger)
+   Note: Strictly animates purely text nodes, preserving all 404 links/buttons
+   ========================================================================== */
+function initGsapFooterCharacterAnimation() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const footers = document.querySelectorAll('.stackly-footer');
+  if (!footers.length) return;
+
+  function splitNodeIntoChars(element) {
+    if (!element || element.dataset.charSplitDone) return;
+    element.dataset.charSplitDone = 'true';
+
+    const childNodes = Array.from(element.childNodes);
+    element.innerHTML = '';
+
+    childNodes.forEach(node => {
+      if (node.nodeType === 3) { // Text node
+        const text = node.textContent;
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          const span = document.createElement('span');
+          span.className = 'gsap-footer-char';
+          span.style.display = 'inline-block';
+          span.style.willChange = 'transform, opacity';
+          if (char === ' ') {
+            span.innerHTML = '&nbsp;';
+            span.style.width = '0.28em';
+          } else {
+            span.textContent = char;
+          }
+          frag.appendChild(span);
+        }
+        element.appendChild(frag);
+      } else if (node.nodeType === 1) { // Element node (e.g. <strong>, <span>)
+        splitNodeIntoChars(node);
+        element.appendChild(node);
+      }
+    });
+  }
+
+  footers.forEach(footer => {
+    // Only target headings, descriptive texts, and bottom legal bar (never links or 404 buttons)
+    const titleTargets = footer.querySelectorAll('.footer-col-title');
+    const descTargets  = footer.querySelectorAll('.footer-brand-desc, .footer-newsletter-text');
+    const legalTargets = footer.querySelectorAll('.footer-bottom-bar p');
+
+    titleTargets.forEach(el => splitNodeIntoChars(el));
+    descTargets.forEach(el => splitNodeIntoChars(el));
+    legalTargets.forEach(el => splitNodeIntoChars(el));
+
+    const allTitleChars = footer.querySelectorAll('.footer-col-title .gsap-footer-char');
+    const allDescChars  = footer.querySelectorAll('.footer-brand-desc .gsap-footer-char, .footer-newsletter-text .gsap-footer-char');
+    const allLegalChars = footer.querySelectorAll('.footer-bottom-bar .gsap-footer-char');
+
+    const triggerOpts = {
+      trigger: footer,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    };
+
+    // 1. Column Titles: 3D character flip-up with bounce
+    if (allTitleChars.length) {
+      gsap.fromTo(allTitleChars,
+        {
+          opacity: 0,
+          y: 22,
+          rotationX: -80,
+          scale: 0.8,
+          transformOrigin: '50% 100%'
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotationX: 0,
+          scale: 1,
+          stagger: 0.025,
+          duration: 0.65,
+          ease: 'back.out(2)',
+          scrollTrigger: triggerOpts
+        }
+      );
+    }
+
+    // 2. Brand Description & Newsletter Subtext: Smooth wave character glide
+    if (allDescChars.length) {
+      gsap.fromTo(allDescChars,
+        {
+          opacity: 0,
+          y: 12,
+          scale: 0.95
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.008,
+          duration: 0.45,
+          ease: 'power2.out',
+          scrollTrigger: triggerOpts
+        }
+      );
+    }
+
+    // 3. Bottom Legal Bar: subtle character stagger fade
+    if (allLegalChars.length) {
+      gsap.fromTo(allLegalChars,
+        {
+          opacity: 0,
+          y: 8
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.01,
+          duration: 0.4,
+          ease: 'power1.out',
+          scrollTrigger: triggerOpts
+        }
+      );
+    }
+
+    // 4. Interactive Micro-Animation on title characters: hover pop wave
+    allTitleChars.forEach(char => {
+      char.addEventListener('mouseenter', () => {
+        gsap.to(char, {
+          y: -4,
+          color: '#eab308',
+          scale: 1.15,
+          duration: 0.16,
+          ease: 'power2.out',
+          yoyo: true,
+          repeat: 1
+        });
+      });
     });
   });
 }

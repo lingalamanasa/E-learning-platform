@@ -697,7 +697,14 @@ body.gsap-active .sqs-step-card {
   transform: translateY(-50%) scale(1.12);
 }
 .carousel-circle-btn.prev { left: 14px; }
-.carousel-circle-btn.next { right: 14px; }
+/* GSAP Footer Character Kinetic Typography */
+.gsap-footer-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: color 0.18s ease;
+}
 
 /* Accessibility — respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
