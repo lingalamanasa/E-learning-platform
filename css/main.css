@@ -1230,12 +1230,12 @@ img, video, canvas, svg {
   margin-left: 340px !important;
   width: calc(100% - 340px) !important;
   min-height: calc(100vh - var(--header-height)) !important;
-  padding: 2.2rem clamp(1.8rem, 3vw, 3.5rem) !important;
+  padding: 1rem clamp(1.5rem, 2.5vw, 3rem) 2.5rem !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
   justify-content: flex-start !important;
-  gap: 2.2rem !important;
+  gap: 1.5rem !important;
   box-sizing: border-box !important;
   overflow-y: visible !important;
   overflow-x: hidden !important;
@@ -1461,7 +1461,7 @@ pre, code {
    ========================================================================== */
 @media (max-width: 1280px) {
   .dashboard-main {
-    padding: 2rem 1.8rem !important;
+    padding: 1rem 1.8rem 2.2rem !important;
   }
 
   .career-timeline-grid {
@@ -1523,7 +1523,7 @@ pre, code {
   .dashboard-main {
     margin-left: 0 !important;
     width: 100% !important;
-    padding: 1.6rem 1.2rem !important;
+    padding: 0.85rem 1.2rem 2rem !important;
   }
 
   .dashboard-page-view {
@@ -1693,6 +1693,10 @@ pre, code {
   }
 
   /* Dashboard Layout & Section Containers */
+  .dashboard-layout {
+    padding-top: 64px !important;
+  }
+
   .dashboard-layout,
   .dashboard-main,
   .dashboard-page-view {
@@ -1703,9 +1707,10 @@ pre, code {
   }
 
   .dashboard-main {
-    padding-top: 80px !important;
+    padding-top: 0.75rem !important;
     padding-left: 0.85rem !important;
     padding-right: 0.85rem !important;
+    padding-bottom: 2rem !important;
   }
 
   .dash-welcome-bar {
@@ -1950,8 +1955,12 @@ pre, code {
     display: none !important;
   }
 
+  .dashboard-layout {
+    padding-top: 64px !important;
+  }
+
   .dashboard-main {
-    padding: 72px 0.65rem 1.5rem !important;
+    padding: 0.65rem 0.65rem 1.5rem !important;
   }
 
   .dashboard-section-card {
@@ -2070,8 +2079,12 @@ pre, code {
     box-sizing: border-box !important;
   }
 
+  .dashboard-layout {
+    padding-top: 60px !important;
+  }
+
   .dashboard-main {
-    padding: 68px 0.5rem 1.2rem !important;
+    padding: 0.5rem 0.5rem 1.2rem !important;
   }
 
   .dashboard-section-card {
