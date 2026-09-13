@@ -1327,7 +1327,27 @@ pre, code {
   pointer-events: auto;
 }
 
-/* Dashboard Sidebar Close Button */
+/* Dashboard Sidebar Header & Close Button */
+.dashboard-sidebar-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-sidebar-header .sidebar-close-btn {
+  margin: 0 !important;
+}
+
+.dashboard-sidebar-header .stackly-brand-img {
+  height: 32px;
+  width: auto;
+  max-width: 135px;
+}
+
 .sidebar-close-btn {
   display: none;
   width: 36px;
@@ -1467,6 +1487,10 @@ pre, code {
     display: inline-flex !important;
   }
 
+  .dashboard-sidebar-header {
+    display: flex !important;
+  }
+
   .sidebar-close-btn {
     display: flex !important;
   }
@@ -1564,6 +1588,10 @@ pre, code {
     box-sizing: border-box !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
+  }
+
+  .dashboard-sidebar-header {
+    display: flex !important;
   }
 
   .sidebar-close-btn {
