@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGsapHeroAnimations();            //  1. Fade Up  (Hero)
     initGsapBentoSideSlideAnimations();  //  2. Slide In (Bento)
     initGsapStepsSideSlideAnimations();  //  2.1 Slide In (4-Step Workflow)
+    initGsapSectionSideSlideAnimations(); // 2.2 Slide In (Genesis, Mentorship, Bug Bounty)
     initGsapUniversalSideSlideAnimations(); // 2. Slide In (Universal)
     initGsapSkillTreeAnimations();       // 13. 3D Tilt
     initGsapCtaBoxAnimations();          //  4. Scale In
@@ -466,18 +467,68 @@ function initGsapStepsSideSlideAnimations() {
 }
 
 /* ==========================================================================
+   2.2 GSAP — DUAL-COLUMN SECTIONS SLIDE IN FROM SIDES
+   (About Story #story, Services Mentorship #mentorship, Contact Bug Bounty #security-disclosure)
+   ========================================================================== */
+function initGsapSectionSideSlideAnimations() {
+  if (typeof ScrollTrigger === 'undefined' || typeof gsap === 'undefined') return;
+
+  const targetSections = [
+    { selector: '#story', grid: '.services-split-grid' },
+    { selector: '#mentorship', grid: '.services-split-grid' },
+    { selector: '#security-disclosure', grid: '.bento-asymmetric-grid' }
+  ];
+
+  const isMobile = window.innerWidth <= 768;
+  const dist = isMobile ? 65 : 140;
+
+  targetSections.forEach(({ selector, grid }) => {
+    const section = document.querySelector(selector);
+    if (!section) return;
+
+    const gridEl = section.querySelector(grid) || section;
+    const leftEl = section.querySelector('.slide-left-reveal');
+    const rightEl = section.querySelector('.slide-right-reveal');
+
+    if (gridEl) {
+      gsap.set(gridEl, { perspective: 1200, transformStyle: 'preserve-3d' });
+    }
+
+    const triggerOpts = {
+      trigger: gridEl,
+      start: 'top 82%',
+      toggleActions: 'play none none none'
+    };
+
+    if (leftEl) {
+      gsap.fromTo(leftEl,
+        { x: -dist, opacity: 0, rotationY: isMobile ? 0 : 8, scale: 0.95 },
+        { x: 0, opacity: 1, rotationY: 0, scale: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: triggerOpts }
+      );
+    }
+
+    if (rightEl) {
+      gsap.fromTo(rightEl,
+        { x: dist, opacity: 0, rotationY: isMobile ? 0 : -8, scale: 0.95 },
+        { x: 0, opacity: 1, rotationY: 0, scale: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: triggerOpts }
+      );
+    }
+  });
+}
+
+/* ==========================================================================
    2. GSAP — UNIVERSAL SIDE SLIDE + FADE UP
    ========================================================================== */
 function initGsapUniversalSideSlideAnimations() {
   if (typeof ScrollTrigger === 'undefined') return;
   const dist = window.innerWidth <= 768 ? 50 : 90;
 
-  document.querySelectorAll('.slide-left-reveal:not(.sqs-bento-card):not(.sqs-step-card)').forEach(el =>
+  document.querySelectorAll('.slide-left-reveal:not(.sqs-bento-card):not(.sqs-step-card):not(#story *):not(#mentorship *):not(#security-disclosure *)').forEach(el =>
     gsap.fromTo(el, { x: -dist, opacity: 0 },
       { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
 
-  document.querySelectorAll('.slide-right-reveal:not(.sqs-bento-card):not(.sqs-step-card)').forEach(el =>
+  document.querySelectorAll('.slide-right-reveal:not(.sqs-bento-card):not(.sqs-step-card):not(#story *):not(#mentorship *):not(#security-disclosure *)').forEach(el =>
     gsap.fromTo(el, { x: dist, opacity: 0 },
       { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));

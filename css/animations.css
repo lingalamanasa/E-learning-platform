@@ -71,10 +71,10 @@
 .slide-right-reveal.revealed,
 .slide-up-reveal.revealed,
 .zoom-reveal.revealed,
-body.page-restored .slide-left-reveal,
-body.page-restored .slide-right-reveal,
-body.page-restored .slide-up-reveal,
-body.page-restored .zoom-reveal {
+body.page-restored:not(.gsap-active) .slide-left-reveal,
+body.page-restored:not(.gsap-active) .slide-right-reveal,
+body.page-restored:not(.gsap-active) .slide-up-reveal,
+body.page-restored:not(.gsap-active) .zoom-reveal {
   opacity: 1 !important;
   transform: translate(0,0) scale(1) !important;
 }
