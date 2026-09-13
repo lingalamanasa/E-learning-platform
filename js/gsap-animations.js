@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGsapStepsSideSlideAnimations();  //  2.1 Slide In (4-Step Workflow)
     initGsapSectionSideSlideAnimations(); // 2.2 Slide In (Genesis, Mentorship, Bug Bounty)
     initGsapUniversalSideSlideAnimations(); // 2. Slide In (Universal)
+    initGsapVerticalCardStack();         // 2.3 Vertical Card Stack (Milestones of Innovation)
     initGsapSkillTreeAnimations();       // 13. 3D Tilt
     initGsapCtaBoxAnimations();          //  4. Scale In
     initGsapBounceParallax();            // 16. Bounce + 10. Parallax
@@ -517,6 +518,142 @@ function initGsapSectionSideSlideAnimations() {
 }
 
 /* ==========================================================================
+   2.3 GSAP — VERTICAL CARD STACK ANIMATION (MILESTONES OF INNOVATION)
+   ========================================================================== */
+function initGsapVerticalCardStack() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const timelineSection = document.querySelector('#timeline');
+  if (!timelineSection) return;
+
+  const stackWrap = timelineSection.querySelector('.story-timeline-wrap');
+  if (!stackWrap) return;
+
+  const steps = Array.from(stackWrap.querySelectorAll('.timeline-step, .timeline-stack-step'));
+  if (!steps.length) return;
+
+  stackWrap.classList.add('timeline-stack-wrap');
+
+  const total = steps.length;
+  const isMobile = window.innerWidth <= 768;
+
+  steps.forEach((step, i) => {
+    step.classList.add('timeline-stack-step');
+    step.style.setProperty('--stack-idx', i);
+    step.setAttribute('data-stack-index', i);
+
+    const card = step.querySelector('.timeline-card');
+    const marker = step.querySelector('.timeline-marker');
+    if (!card) return;
+
+    // 1. Initial 3D entrance as card approaches viewport
+    if (i > 0) {
+      gsap.fromTo(card,
+        {
+          y: isMobile ? 35 : 70,
+          opacity: 0.5,
+          scale: 0.95,
+          rotationX: isMobile ? 0 : 6,
+          transformPerspective: 1200
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotationX: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: step,
+            start: 'top 92%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // 2. Marker activation when card reaches its sticky position
+    const stickyTop = isMobile ? (85 + i * 16) : (105 + i * 26);
+    ScrollTrigger.create({
+      trigger: step,
+      start: `top ${stickyTop + 25}px`,
+      end: `bottom ${stickyTop + 25}px`,
+      onEnter: () => {
+        step.classList.add('stack-active');
+        if (marker) {
+          gsap.to(marker, {
+            scale: 1.35,
+            backgroundColor: '#d4a96a',
+            boxShadow: '0 0 20px rgba(212, 169, 106, 0.95)',
+            duration: 0.35,
+            ease: 'back.out(2)'
+          });
+        }
+      },
+      onLeaveBack: () => {
+        step.classList.remove('stack-active');
+        if (marker) {
+          gsap.to(marker, {
+            scale: 1,
+            backgroundColor: '#1a0e06',
+            boxShadow: '0 0 12px rgba(212, 169, 106, 0.6)',
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        }
+      }
+    });
+
+    // 3. Vertical Stack Deck Scrub:
+    // As the NEXT card (i+1) scrolls up over this card (i),
+    // scrub this card's scale down, dim brightness, and adjust vertical depth
+    if (i < total - 1) {
+      const nextStep = steps[i + 1];
+      const targetScale = 1 - (total - i) * 0.035; // e.g. i=0 -> 0.86, i=1 -> 0.895, i=2 -> 0.93
+      const targetBrightness = 0.55 + (i * 0.12);
+      const targetY = -(total - 1 - i) * 6;
+
+      gsap.to(card, {
+        scale: targetScale,
+        filter: `brightness(${targetBrightness})`,
+        y: targetY,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: nextStep,
+          start: 'top 80%',
+          end: `top ${isMobile ? 100 : 135 + (i + 1) * 26}px`,
+          scrub: true
+        }
+      });
+    }
+
+    // 4. Interactive 3D cursor tilt on card
+    card.addEventListener('mousemove', (e) => {
+      if (isMobile) return;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+      const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      gsap.to(card, {
+        rotationY: x * 3.5,
+        rotationX: -y * 3.5,
+        transformPerspective: 1000,
+        ease: 'power1.out',
+        duration: 0.2
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, {
+        rotationY: 0,
+        rotationX: 0,
+        ease: 'power2.out',
+        duration: 0.4
+      });
+    });
+  });
+}
+
+/* ==========================================================================
    2. GSAP — UNIVERSAL SIDE SLIDE + FADE UP
    ========================================================================== */
 function initGsapUniversalSideSlideAnimations() {
@@ -534,7 +671,7 @@ function initGsapUniversalSideSlideAnimations() {
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
 
   document.querySelectorAll(
-    '.slide-up-reveal:not(#intelligence *):not(.sqs-bento-section *):not(.sqs-step-card):not(.value-card):not(.skill-tree-node):not(.blog-card):not(.dynamic-course-card)'
+    '.slide-up-reveal:not(#intelligence *):not(.sqs-bento-section *):not(.sqs-step-card):not(.value-card):not(.skill-tree-node):not(.blog-card):not(.dynamic-course-card):not(#timeline *)'
   ).forEach(el =>
     gsap.fromTo(el, { y: 40, opacity: 0 },
       { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
