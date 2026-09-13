@@ -647,7 +647,7 @@ class AssessmentEngine {
               </div>
               <p style="font-size: 0.85rem; color: #e2e8f0; line-height: 1.5;">${q.explanation}</p>
               <button id="sandbox-next-btn" class="btn-crimson" style="margin-top: 1rem; padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-                Next Challenge ➔
+                Next Challenge <i class="fa-solid fa-arrow-right" style="margin-left: 0.35rem;"></i>
               </button>
             </div>
           `;
@@ -666,7 +666,7 @@ class AssessmentEngine {
               </div>
               <p style="font-size: 0.85rem; color: #e2e8f0; line-height: 1.5;">${q.explanation}</p>
               <button id="sandbox-next-btn" class="btn-outline-glass" style="margin-top: 1rem; padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-                Next Challenge ➔
+                Next Challenge <i class="fa-solid fa-arrow-right" style="margin-left: 0.35rem;"></i>
               </button>
             </div>
           `;
