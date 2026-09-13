@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGsapHeroAnimations();            //  1. Fade Up  (Hero)
     initGsapBentoSideSlideAnimations();  //  2. Slide In (Bento)
+    initGsapStepsSideSlideAnimations();  //  2.1 Slide In (4-Step Workflow)
     initGsapUniversalSideSlideAnimations(); // 2. Slide In (Universal)
     initGsapSkillTreeAnimations();       // 13. 3D Tilt
     initGsapCtaBoxAnimations();          //  4. Scale In
@@ -419,18 +420,63 @@ function initGsapBentoSideSlideAnimations() {
 }
 
 /* ==========================================================================
+   2.1 GSAP — 4-STEP WORKFLOW CARDS SLIDE IN FROM SIDES
+   ========================================================================== */
+function initGsapStepsSideSlideAnimations() {
+  if (typeof ScrollTrigger === 'undefined' || typeof gsap === 'undefined') return;
+  const stepsSection = document.querySelector('#how-it-works');
+  if (!stepsSection) return;
+
+  const stepsGrid  = stepsSection.querySelector('.sqs-steps-grid');
+  const leftCards  = stepsSection.querySelectorAll('.step-slide-left, .sqs-step-card.slide-left-reveal');
+  const rightCards = stepsSection.querySelectorAll('.step-slide-right, .sqs-step-card.slide-right-reveal');
+  const isMobile   = window.innerWidth <= 768;
+  const dist       = isMobile ? 60 : 130;
+
+  if (stepsGrid) gsap.set(stepsGrid, { perspective: 1200, transformStyle: 'preserve-3d' });
+
+  const triggerOpts = { trigger: stepsGrid || stepsSection, start: 'top 80%', toggleActions: 'play none none none' };
+
+  if (leftCards.length) {
+    gsap.fromTo(leftCards,
+      { x: -dist, opacity: 0, rotationY: isMobile ? 0 : 8, scale: 0.95 },
+      { x: 0, opacity: 1, rotationY: 0, scale: 1, stagger: 0.16, duration: 1.15, ease: 'power3.out', scrollTrigger: triggerOpts }
+    );
+  }
+
+  if (rightCards.length) {
+    gsap.fromTo(rightCards,
+      { x: dist, opacity: 0, rotationY: isMobile ? 0 : -8, scale: 0.95 },
+      { x: 0, opacity: 1, rotationY: 0, scale: 1, stagger: 0.16, duration: 1.15, ease: 'power3.out', scrollTrigger: triggerOpts }
+    );
+  }
+
+  // 3D Interactive tilt on workflow step cards
+  stepsSection.querySelectorAll('.sqs-step-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
+      const y = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+      gsap.to(card, { rotationY: x * 5, rotationX: -y * 5, transformPerspective: 1000, ease: 'power1.out', duration: 0.25 });
+    });
+    card.addEventListener('mouseleave', () =>
+      gsap.to(card, { rotationY: 0, rotationX: 0, ease: 'power2.out', duration: 0.5 }));
+  });
+}
+
+/* ==========================================================================
    2. GSAP — UNIVERSAL SIDE SLIDE + FADE UP
    ========================================================================== */
 function initGsapUniversalSideSlideAnimations() {
   if (typeof ScrollTrigger === 'undefined') return;
   const dist = window.innerWidth <= 768 ? 50 : 90;
 
-  document.querySelectorAll('.slide-left-reveal:not(.sqs-bento-card)').forEach(el =>
+  document.querySelectorAll('.slide-left-reveal:not(.sqs-bento-card):not(.sqs-step-card)').forEach(el =>
     gsap.fromTo(el, { x: -dist, opacity: 0 },
       { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
 
-  document.querySelectorAll('.slide-right-reveal:not(.sqs-bento-card)').forEach(el =>
+  document.querySelectorAll('.slide-right-reveal:not(.sqs-bento-card):not(.sqs-step-card)').forEach(el =>
     gsap.fromTo(el, { x: dist, opacity: 0 },
       { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
         x: 0, opacity: 1, duration: 1, ease: 'power3.out' }));
@@ -553,7 +599,7 @@ function initGsapGravityCardDropAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   const selectors = [
-    '.sqs-step-card', '.value-card', '.skill-tree-node',
+    '.value-card', '.skill-tree-node',
     '.bento-card-large', '.pricing-card', '.blog-card',
     '.channel-card', '.sla-tier-card', '.blog-featured-card',
     '.dynamic-course-card', '.elearn-topic-card'
@@ -564,7 +610,7 @@ function initGsapGravityCardDropAnimations() {
 
   const groupMap = new Map();
   allCards.forEach(card => {
-    if (card.closest('#intelligence') || card.closest('.sqs-bento-section')) return;
+    if (card.closest('#intelligence') || card.closest('.sqs-bento-section') || card.closest('#how-it-works') || card.closest('.sqs-steps-grid')) return;
     const container = card.closest(
       '.sqs-steps-grid, .skill-tree-grid, .bento-asymmetric-grid, .values-grid, .pricing-grid, [style*="grid"], [class*="grid"]'
     ) || card.parentElement;

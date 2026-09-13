@@ -595,14 +595,17 @@ body.gsap-active .slide-left-reveal,
 body.gsap-active .slide-right-reveal,
 body.gsap-active .slide-up-reveal,
 body.gsap-active .zoom-reveal,
-body.gsap-active .sqs-bento-card {
+body.gsap-active .sqs-bento-card,
+body.gsap-active .sqs-step-card {
   transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
-body.gsap-active .sqs-bento-grid {
+body.gsap-active .sqs-bento-grid,
+body.gsap-active .sqs-steps-grid {
   perspective: 1200px;
   transform-style: preserve-3d;
 }
-body.gsap-active .sqs-bento-card {
+body.gsap-active .sqs-bento-card,
+body.gsap-active .sqs-step-card {
   will-change: transform, opacity;
   transform-style: preserve-3d;
   backface-visibility: hidden;
