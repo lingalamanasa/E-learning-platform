@@ -94,6 +94,13 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.18 — 404 Error Page "Go Back" Previous Page Return Optimization *(Sep 16, 2026)*
+
+- **Direct Previous Page Return on Mobile View** — Optimized `handleBackNav()` on `404error.html` and `404.html` to prioritize standard browser history navigation (`window.history.back()`). When clicked/tapped in mobile view, it directly returns the user to the exact previous page they were visiting (`contact.html`, `blog.html`, `about.html`, etc.) matching desktop behavior.
+- **Removed Restrictive Touch Hijacking** — Cleaned up redundant `touchend` event bindings that were interfering with mobile WebKit/Blink trusted user gestures and causing touch event conflicts.
+- **Resilient Multi-Tier Fallback Chain** — Retained URL parameter (`?from=...`), HTTP referrer, and session/local storage fallbacks for scenarios where the page is accessed directly with no prior history.
+- **Zero Disturbance Guarantee** — Kept all other buttons, layouts, designs, desktop behavior, and 404 controls completely untouched and functional.
+
 ### v1.1.17 — 404 Error Page "Go Back" Mobile Route Precision *(Sep 16, 2026)*
 
 - **Exact Originating Page Return on Mobile View** — Resolved mobile issue where tapping `Go Back` on `404error.html` would default to `index.html` due to mobile browser history delays and empty referrer policies.

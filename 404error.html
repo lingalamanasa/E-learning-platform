@@ -296,19 +296,20 @@
       }
     }
 
-    let isNavigatingBack = false;
-
     function handleBackNav(e) {
-      if (e) {
+      if (e && e.preventDefault) {
         try {
           e.preventDefault();
-          e.stopPropagation();
         } catch (err) {}
       }
-      if (isNavigatingBack) return;
-      isNavigatingBack = true;
 
-      // 1. Priority 1: Check URL query parameter '?from=...' (guaranteed across mobile webviews, file://, and http/https)
+      // 1. Primary: Browser history back returns user directly to the previous page they were visiting
+      if (window.history && window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      // 2. Fallback: URL query parameter '?from=...'
       try {
         const urlParams = new URLSearchParams(window.location.search);
         let fromParam = urlParams.get('from');
@@ -326,7 +327,15 @@
         }
       } catch (err) {}
 
-      // 2. Priority 2: Check sessionStorage & localStorage for last visited page
+      // 3. Fallback: Document referrer if not 404
+      try {
+        if (document.referrer && !document.referrer.includes('404')) {
+          window.location.href = sanitizePlatformUrl(document.referrer);
+          return;
+        }
+      } catch (err) {}
+
+      // 4. Fallback: Stored previous page from sessionStorage / localStorage
       try {
         const lastPage = sessionStorage.getItem('stackly_last_page') || localStorage.getItem('stackly_last_page');
         const lastSection = sessionStorage.getItem('stackly_last_section') || localStorage.getItem('stackly_last_section');
@@ -340,44 +349,9 @@
         }
       } catch (err) {}
 
-      // 3. Priority 3: Check document.referrer if not 404
-      try {
-        if (document.referrer && !document.referrer.includes('404')) {
-          const lastSection = sessionStorage.getItem('stackly_last_section') || localStorage.getItem('stackly_last_section');
-          let target = sanitizePlatformUrl(document.referrer);
-          if (lastSection && !target.includes('#')) {
-            target += '#' + lastSection;
-          }
-          window.location.href = target;
-          return;
-        }
-      } catch (err) {}
-
-      // 4. Priority 4: Browser History Back if history exists
-      if (window.history.length > 1) {
-        window.history.back();
-        return;
-      }
-
-      // 5. Default fallback: Only if directly opened with no previous page
+      // 5. Default fallback: Home only if directly opened without prior history
       handleHomeNav();
     }
-
-    // Direct touch event bindings for immediate mobile response
-    document.addEventListener('DOMContentLoaded', () => {
-      const btnBack = document.getElementById('btnGoBack404');
-      const btnHome = document.getElementById('btnHome404');
-      if (btnBack) {
-        btnBack.addEventListener('touchend', (e) => {
-          handleBackNav(e);
-        }, { passive: false });
-      }
-      if (btnHome) {
-        btnHome.addEventListener('touchend', (e) => {
-          handleHomeNav(e);
-        }, { passive: false });
-      }
-    });
   </script>
 
 </body>
