@@ -80,8 +80,7 @@
               id="signup-password" 
               name="password" 
               required 
-              value="AmelieLaurent@2026" 
-              placeholder="••••••••••••••••••••" 
+              placeholder="Enter your password" 
               class="auth-field-input" 
               autocomplete="new-password"
             />
@@ -91,9 +90,28 @@
           </div>
         </div>
 
-        <!-- Submit Button -->
+        <div class="auth-field-group">
+          <label for="signup-confirm-password" class="auth-field-label">Confirm Password</label>
+          <div class="auth-password-wrapper">
+            <input 
+              type="password" 
+              id="signup-confirm-password" 
+              name="confirmPassword" 
+              required 
+              placeholder="Confirm your password" 
+              class="auth-field-input" 
+              autocomplete="new-password"
+            />
+            <button type="button" class="auth-eye-btn" id="toggle-signup-confirm-password" aria-label="Toggle confirm password visibility">
+              <i class="fa-regular fa-eye-slash" id="eye-icon-signup-confirm"></i>
+            </button>
+          </div>
+          <div id="signup-password-match-error" style="display: none; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500;"></div>
+        </div>
+
+        <!-- Confirm Password Button -->
         <button type="submit" class="auth-submit-btn" id="btnSubmitSignup">
-          <span>Submit</span>
+          <span>Confirm Password</span>
         </button>
 
         <!-- Social Auth Buttons -->
@@ -234,6 +252,41 @@
         });
       }
 
+      // Toggle Confirm Password Visibility
+      const toggleConfirmBtn = document.getElementById('toggle-signup-confirm-password');
+      const confirmPassInput = document.getElementById('signup-confirm-password');
+      const eyeIconConfirm = document.getElementById('eye-icon-signup-confirm');
+      if (toggleConfirmBtn && confirmPassInput) {
+        toggleConfirmBtn.addEventListener('click', () => {
+          const isPass = confirmPassInput.type === 'password';
+          confirmPassInput.type = isPass ? 'text' : 'password';
+          if (eyeIconConfirm) {
+            eyeIconConfirm.className = isPass ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
+          }
+        });
+      }
+
+      // Live match check indicator
+      const matchMsg = document.getElementById('signup-password-match-error');
+      function checkPasswordsMatch() {
+        if (!confirmPassInput || !passInput || !matchMsg) return;
+        if (!confirmPassInput.value) {
+          matchMsg.style.display = 'none';
+          return;
+        }
+        if (passInput.value === confirmPassInput.value) {
+          matchMsg.style.display = 'block';
+          matchMsg.style.color = '#10b981';
+          matchMsg.textContent = '✓ Passwords match';
+        } else {
+          matchMsg.style.display = 'block';
+          matchMsg.style.color = '#fb7185';
+          matchMsg.textContent = 'Passwords do not match';
+        }
+      }
+      passInput?.addEventListener('input', checkPasswordsMatch);
+      confirmPassInput?.addEventListener('input', checkPasswordsMatch);
+
       // Handle Sign Up Form Submit -> Redirects to Login
       const signupForm = document.getElementById('signup-form');
       const submitSignupBtn = document.getElementById('btnSubmitSignup');
@@ -242,6 +295,28 @@
         if (e) e.preventDefault();
         const name = document.getElementById('signup-name')?.value.trim() || '';
         const email = document.getElementById('signup-email')?.value.trim() || '';
+        const password = passInput?.value || '';
+        const confirmPassword = confirmPassInput?.value || '';
+
+        if (!name || !email || !password) {
+          if (window.showToast) {
+            window.showToast('Please fill in all required fields.', 'error');
+          }
+          return;
+        }
+
+        if (confirmPassword && password !== confirmPassword) {
+          if (matchMsg) {
+            matchMsg.style.display = 'block';
+            matchMsg.style.color = '#fb7185';
+            matchMsg.textContent = 'Passwords do not match. Please re-enter.';
+          }
+          if (window.showToast) {
+            window.showToast('Passwords do not match. Please verify your confirm password.', 'error');
+          }
+          confirmPassInput?.focus();
+          return;
+        }
         
         try {
           if (name) {

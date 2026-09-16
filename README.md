@@ -94,6 +94,11 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.3 — Auth Password Defaults Removed & Confirm Password Enabled *(Sep 16, 2026)*
+
+- **Default Passwords Removed** — Removed pre-filled hardcoded passwords from both `login.html` and `signup.html` password fields, replacing them with clear descriptive placeholders.
+- **Confirm Password Field & Button (Sign Up)** — Added dedicated "Confirm Password" input field with visibility toggle and live match validation on `signup.html`. Explicitly updated and enabled the primary action button to "Confirm Password".
+
 ### v1.1.2 — FAQ Accordion Clickability & State Fix *(Sep 16, 2026)*
 
 - **FAQ Accordion Interactions (Contact)** — Resolved dual-listener race condition on `.sqs-faq-question` elements in `contact.html` and `app.js`. All 4 questions now expand and collapse smoothly with active rotation indicators and hover feedback.
