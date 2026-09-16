@@ -94,6 +94,11 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.5 — Regional Developer Meetups RSVP Buttons 404 Routing (Laptop & Mobile) *(Sep 16, 2026)*
+
+- **Contact Page Regional Developer Meetups (`contact.html`)** — Made all 3 marked `RSVP Free Pass →` buttons (`LLM Kernel Optimization Summit - SF`, `Zero-Trust Cloud Mesh Workshop - London`, `High-Velocity WebGPU Graphics - Tokyo`) fully clickable in laptop and mobile views. Configured `position: relative; z-index: 10;`, `touch-action: manipulation;`, responsive click handlers, and `#meetups` section tracking to `404.html`.
+- **Preserved 404 Route Integrity (`404.html`)** — Native error page controls (`Back to Home` and `Go Back`) remain completely undisturbed, intact, and responsive.
+
 ### v1.1.4 — Action Buttons & Direct Channels 404 Routing (Laptop & Mobile Responsive) *(Sep 16, 2026)*
 
 - **Home Page Skill Tree Nodes & Explore Links (`index.html`)** — All 4 skill node badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`) and all 4 `Explore Node →` action buttons are fully clickable with `z-index: 10`, touch-action manipulation, and section tracking to `404.html`.
