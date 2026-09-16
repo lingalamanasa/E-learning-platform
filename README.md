@@ -94,6 +94,12 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.9 — Project-Wide Image Optimization Under 100 KB *(Sep 16, 2026)*
+
+- **Platform-Wide Image Compression** — Scanned all 106 images across the repository and compressed every image exceeding size limits. 
+- **Major Asset Reductions** — Optimized `images/auth_team_collab.jpg` from **878.98 KB** down to **79.87 KB** (-90.9% size reduction). Compressed 28 WebP assets from 95–99.9 KB down to 50–91 KB while preserving high-definition visual fidelity.
+- **Strict Size Compliance** — 100% of images across all folders are now guaranteed to be strictly under 100 KB (and under 100,000 bytes).
+
 ### v1.1.8 — Role Selector Mobile View Overflow Fix *(Sep 16, 2026)*
 
 - **Role Dropdown Overflow Prevention (`login.html`)** — Resolved mobile text overflow on the account role selector (`#auth-role`). Implemented adaptive role labeling (`Learner` & `Administrator` on mobile `<= 640px`, and descriptive titles on larger desktop viewports) to eliminate container clipping and awkward line wrapping.
