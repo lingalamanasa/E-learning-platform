@@ -893,18 +893,10 @@
         }
       });
 
-      // FAQ accordion
-      const faqItems = document.querySelectorAll('.sqs-faq-item');
-      faqItems.forEach(item => {
-        const questionBtn = item.querySelector('.sqs-faq-question');
-        questionBtn?.addEventListener('click', () => {
-          const isActive = item.classList.contains('active');
-          faqItems.forEach(i => i.classList.remove('active'));
-          if (!isActive) {
-            item.classList.add('active');
-          }
-        });
-      });
+      // FAQ accordion initialization
+      if (typeof initFaqAccordion === 'function') {
+        initFaqAccordion();
+      }
     });
   </script>
 </body>

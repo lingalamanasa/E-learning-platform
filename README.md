@@ -94,6 +94,11 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.2 — FAQ Accordion Clickability & State Fix *(Sep 16, 2026)*
+
+- **FAQ Accordion Interactions (Contact)** — Resolved dual-listener race condition on `.sqs-faq-question` elements in `contact.html` and `app.js`. All 4 questions now expand and collapse smoothly with active rotation indicators and hover feedback.
+- **Idempotent Accordion Controller** — Added `dataset.faqInit` guards to `initFaqAccordion()` ensuring safe, single-listener execution across all script lifecycles.
+
 ### v1.1.1 — Interactive Badge Routing & 404 Error Page Linking *(Sep 16, 2026)*
 
 - **Skill Tree Progression Badges (Home)** — Converted skill progression badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`) into interactive clickable links routing to `404.html` with section tracking (`#skill-trees`) and glowing hover states.

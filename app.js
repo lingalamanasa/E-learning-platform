@@ -1071,11 +1071,13 @@ function initFaqAccordion() {
 
   faqItems.forEach(item => {
     const question = item.querySelector('.sqs-faq-question');
-    if (question) {
-      question.addEventListener('click', () => {
+    if (question && !question.dataset.faqInit) {
+      question.dataset.faqInit = 'true';
+      question.addEventListener('click', (e) => {
+        e.preventDefault();
         const isActive = item.classList.contains('active');
         
-        // Optional: close other items for clean accordion effect
+        // Close other items for clean accordion effect
         faqItems.forEach(other => {
           if (other !== item) other.classList.remove('active');
         });
