@@ -94,6 +94,12 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.6 — Instant FAQ Accordion Interactive Clickability (Laptop & Mobile Responsive) *(Sep 16, 2026)*
+
+- **Interactive FAQ Accordion (`contact.html`)** — Upgraded all 4 marked FAQ questions with direct `onclick="window.toggleFaq(this)"`, `aria-expanded` state tracking, and touch-action manipulation. Ensured that clicking anywhere on the question bar or toggle indicator instantly expands/collapses the corresponding answer.
+- **Cross-Platform Responsive Mechanics (`css/components.css`, `components.css`)** — Elevated `.sqs-faq-question` with `z-index: 5`, mobile-tailored padding (1.15rem 1.25rem), smooth 500px cubic-bezier expansion, and 45-degree rotation for the `+` / `×` indicator.
+- **Race-Condition & Dual-Listener Safeguard (`js/app.js`, `app.js`)** — Harmonized global `window.toggleFaq()` with idempotent listener registration to guarantee exactly one toggle per interaction.
+
 ### v1.1.5 — Regional Developer Meetups RSVP Buttons 404 Routing (Laptop & Mobile) *(Sep 16, 2026)*
 
 - **Contact Page Regional Developer Meetups (`contact.html`)** — Made all 3 marked `RSVP Free Pass →` buttons (`LLM Kernel Optimization Summit - SF`, `Zero-Trust Cloud Mesh Workshop - London`, `High-Velocity WebGPU Graphics - Tokyo`) fully clickable in laptop and mobile views. Configured `position: relative; z-index: 10;`, `touch-action: manipulation;`, responsive click handlers, and `#meetups` section tracking to `404.html`.

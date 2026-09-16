@@ -1069,25 +1069,39 @@ function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.sqs-faq-item');
   if (!faqItems.length) return;
 
+  if (typeof window.toggleFaq !== 'function') {
+    window.toggleFaq = function(triggerEl) {
+      const item = triggerEl.closest('.sqs-faq-item');
+      if (!item) return;
+      const wrap = item.closest('.sqs-faq-wrap') || document.querySelector('.sqs-faq-wrap');
+      const wasActive = item.classList.contains('active');
+      
+      if (wrap) {
+        wrap.querySelectorAll('.sqs-faq-item').forEach(function(other) {
+          other.classList.remove('active');
+          const btn = other.querySelector('.sqs-faq-question');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+      
+      if (!wasActive) {
+        item.classList.add('active');
+        const btn = item.querySelector('.sqs-faq-question');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+  }
+
   faqItems.forEach(item => {
     const question = item.querySelector('.sqs-faq-question');
     if (question && !question.dataset.faqInit) {
       question.dataset.faqInit = 'true';
-      question.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isActive = item.classList.contains('active');
-        
-        // Close other items for clean accordion effect
-        faqItems.forEach(other => {
-          if (other !== item) other.classList.remove('active');
+      if (!question.getAttribute('onclick')) {
+        question.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.toggleFaq(question);
         });
-
-        if (isActive) {
-          item.classList.remove('active');
-        } else {
-          item.classList.add('active');
-        }
-      });
+      }
     }
   });
 }

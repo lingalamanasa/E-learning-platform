@@ -536,7 +536,7 @@
         <div class="sqs-faq-wrap slide-up-reveal">
           
           <div class="sqs-faq-item active">
-            <button class="sqs-faq-question" type="button">
+            <button class="sqs-faq-question" type="button" onclick="window.toggleFaq(this)" aria-expanded="true" style="touch-action: manipulation; cursor: pointer;">
               <span>Can we pilot STACKLY with a subset of our engineering team?</span>
               <span class="sqs-faq-icon">+</span>
             </button>
@@ -546,7 +546,7 @@
           </div>
 
           <div class="sqs-faq-item">
-            <button class="sqs-faq-question" type="button">
+            <button class="sqs-faq-question" type="button" onclick="window.toggleFaq(this)" aria-expanded="false" style="touch-action: manipulation; cursor: pointer;">
               <span>How does STACKLY protect our proprietary code during sandbox sessions?</span>
               <span class="sqs-faq-icon">+</span>
             </button>
@@ -556,7 +556,7 @@
           </div>
 
           <div class="sqs-faq-item">
-            <button class="sqs-faq-question" type="button">
+            <button class="sqs-faq-question" type="button" onclick="window.toggleFaq(this)" aria-expanded="false" style="touch-action: manipulation; cursor: pointer;">
               <span>How are 1-on-1 mentors vetted?</span>
               <span class="sqs-faq-icon">+</span>
             </button>
@@ -566,7 +566,7 @@
           </div>
 
           <div class="sqs-faq-item">
-            <button class="sqs-faq-question" type="button">
+            <button class="sqs-faq-question" type="button" onclick="window.toggleFaq(this)" aria-expanded="false" style="touch-action: manipulation; cursor: pointer;">
               <span>What payment methods and invoicing options do you support?</span>
               <span class="sqs-faq-icon">+</span>
             </button>
@@ -576,6 +576,30 @@
           </div>
 
         </div>
+
+        <script>
+          function toggleFaq(triggerEl) {
+            const item = triggerEl.closest('.sqs-faq-item');
+            if (!item) return;
+            const wrap = item.closest('.sqs-faq-wrap') || document.querySelector('.sqs-faq-wrap');
+            const wasActive = item.classList.contains('active');
+            
+            if (wrap) {
+              wrap.querySelectorAll('.sqs-faq-item').forEach(function(other) {
+                other.classList.remove('active');
+                const btn = other.querySelector('.sqs-faq-question');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+              });
+            }
+            
+            if (!wasActive) {
+              item.classList.add('active');
+              const btn = item.querySelector('.sqs-faq-question');
+              if (btn) btn.setAttribute('aria-expanded', 'true');
+            }
+          }
+          window.toggleFaq = toggleFaq;
+        </script>
 
       </div>
     </section>

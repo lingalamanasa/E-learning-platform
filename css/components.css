@@ -2889,6 +2889,8 @@ body.gsap-active .dynamic-course-card {
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: all 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sqs-faq-item:hover {
@@ -2906,7 +2908,7 @@ body.gsap-active .dynamic-course-card {
   text-align: left;
   background: transparent;
   border: none;
-  padding: 1.5rem 1.75rem;
+  padding: 1.4rem 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2915,24 +2917,34 @@ body.gsap-active .dynamic-course-card {
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 5;
   transition: color 0.2s ease, background-color 0.2s ease;
   user-select: none;
 }
 
-.sqs-faq-question:hover {
+.sqs-faq-question:hover,
+.sqs-faq-question:focus-visible {
   color: #22d3ee;
   background: rgba(255, 255, 255, 0.02);
+  outline: none;
 }
 
 .sqs-faq-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
   color: #22d3ee;
   flex-shrink: 0;
+  pointer-events: none;
 }
 
 .sqs-faq-item.active .sqs-faq-icon {
@@ -2942,8 +2954,9 @@ body.gsap-active .dynamic-course-card {
 
 .sqs-faq-answer {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.35s ease;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease, opacity 0.25s ease;
   padding: 0 1.75rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
@@ -2951,8 +2964,25 @@ body.gsap-active .dynamic-course-card {
 }
 
 .sqs-faq-item.active .sqs-faq-answer {
-  max-height: 300px;
+  max-height: 500px;
+  opacity: 1;
   padding: 0 1.75rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .sqs-faq-question {
+    padding: 1.15rem 1.25rem;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+  .sqs-faq-answer {
+    padding: 0 1.25rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .sqs-faq-item.active .sqs-faq-answer {
+    padding: 0 1.25rem 1.25rem;
+  }
 }
 
 /* SECTION: 24/7 SUPPORT & WEBINARS */
