@@ -94,6 +94,20 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.10 — Mobile & Multi-Device 404error.html Routing for All Marked Buttons *(Sep 16, 2026)*
+
+- **Dedicated `404error.html` Support** — Provisioned `404error.html` page matching `404.html` with full brand aesthetic, dynamic radial gradients, and responsive navigation controls (`Back to Home` & `Go Back`).
+- **All Marked Buttons Routed to `404error.html` on Mobile, Tablet & Desktop** — Upgraded every marked button across all 6 platform pages to route to `404error.html` on mobile viewports as well as tablet, laptop, and desktop:
+  - **Landing Page (`index.html`)**: All 4 skill node progression badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`), all 4 `Explore Node →` action buttons, and the primary `Provision Your Free Sandbox ↗` CTA button.
+  - **About Page (`about.html`)**: All 3 faculty credential badges (`14 Nature & NeurIPS Publications ↗`, `ACM Fellow & Core Kubernetes Contributor ↗`, `IEEE Educational Innovation Award ↗`).
+  - **Blog Page (`blog.html`)**: Both podcast episodes (`Play Episode (44m)` & `Play Episode (38m)`) and both community RFC buttons (`Join Discussion`).
+  - **Contact Page (`contact.html`)**: All 3 Direct Access cards & emails (`enterprise@stackly.io`, `support@stackly.io`, `mentors@stackly.io`) and all 3 Regional Developer Meetup passes (`RSVP Free Pass →`).
+  - **User Dashboard (`user-dashboard.html`)**: The `Download Certificate PDF ↗` accreditation button under *Section 8.2 • Verified Badges*.
+  - **Admin Dashboard (`admin-dashboard.html`)**: All 3 `Rebalance Cluster` buttons under *Section 2 • Active Regions* (`US-West`, `EU-Central`, `AP-South`).
+- **Zero Layout or Design Disturbance** — All button styling, colors, padding, typography, animations, and layouts remain completely unchanged.
+- **Undisturbed Native 404 Controls & Existing Buttons** — Native buttons on the 404 page (`Back to Home` and `Go Back`) and all other existing buttons throughout the platform remain completely untouched and fully functional.
+- **Mobile Touch Optimization** — Applied `touch-action: manipulation;`, `-webkit-tap-highlight-color: rgba(...)`, and elevated `position: relative; z-index: 10;` to ensure instant, reliable touch responsiveness over 3D card tilt and perspective transformations.
+
 ### v1.1.9 — Project-Wide Image Optimization Under 100 KB *(Sep 16, 2026)*
 
 - **Platform-Wide Image Compression** — Scanned all 106 images across the repository and compressed every image exceeding size limits. 

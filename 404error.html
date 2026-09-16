@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | STACKLY</title>
+  <meta name="description" content="Oops! You took a detour. The page you're looking for doesn't seem to be here. Let's get you back on a familiar path.">
+
+  <!-- Google Fonts Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      width: 100%;
+      background: #fbfdfe;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Ambient Soft Radial Glows matching STACKLY brand palette */
+    .glow-top-left {
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: clamp(350px, 45vw, 650px);
+      height: clamp(350px, 45vw, 650px);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.32) 0%, rgba(6, 182, 212, 0.14) 50%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-bottom-right {
+      position: fixed;
+      bottom: -10%;
+      right: -10%;
+      width: clamp(350px, 45vw, 650px);
+      height: clamp(350px, 45vw, 650px);
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.22) 0%, rgba(251, 146, 60, 0.12) 50%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Main Container */
+    .detour-container {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInDetour 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInDetour {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Big 404 Digit Text - Website Brand Gradient */
+    .detour-code {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: clamp(6.5rem, 14vw, 10.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 45%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #4f46e5;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+      user-select: none;
+      filter: drop-shadow(0 8px 24px rgba(79, 70, 229, 0.2));
+    }
+
+    /* Headline */
+    .detour-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+      font-weight: 800;
+      color: #1a2233;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* Subtext */
+    .detour-subtext {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      color: #64748b;
+      max-width: 560px;
+      line-height: 1.65;
+      margin: 0 auto 2.8rem;
+      font-weight: 400;
+    }
+
+    /* Actions Row */
+    .detour-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* Solid Brand Button */
+    .detour-btn-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 2.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid #4f46e5;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.32);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .detour-btn-solid:hover {
+      background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+      border-color: #4338ca;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(79, 70, 229, 0.45);
+    }
+
+    /* Outline Brand Button */
+    .detour-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: #4f46e5;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 2.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid #6366f1;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .detour-btn-outline:hover {
+      background: rgba(99, 102, 241, 0.08);
+      color: #4338ca;
+      border-color: #4f46e5;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 480px) {
+      .detour-actions-row {
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .detour-btn-solid,
+      .detour-btn-outline {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top-Left Mint Glow -->
+  <div class="glow-top-left" aria-hidden="true"></div>
+
+  <!-- Bottom-Right Peach Glow -->
+  <div class="glow-bottom-right" aria-hidden="true"></div>
+
+  <!-- Central Detour Container -->
+  <main class="detour-container">
+    
+    <!-- 404 Big Teal Text -->
+    <h1 class="detour-code">404</h1>
+
+    <!-- Headline -->
+    <h2 class="detour-title">Oops! You Took a Detour.</h2>
+
+    <!-- Subtitle -->
+    <p class="detour-subtext">
+      The page you're looking for doesn't seem to be here. Let's get you back on a familiar path.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="detour-actions-row">
+      
+      <!-- Button 1: Back to Home -->
+      <a href="index.html" onclick="handleHomeNav(event)" class="detour-btn-solid">
+        <i class="fa-solid fa-house"></i>
+        <span>Back to Home</span>
+      </a>
+
+      <!-- Button 2: Go Back -->
+      <button type="button" id="btnGoBack404" onclick="handleBackNav()" class="detour-btn-outline">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Go Back</span>
+      </button>
+
+    </div>
+
+  </main>
+
+  <script>
+    function sanitizePlatformUrl(url) {
+      if (!url) return url;
+      if (url.includes('github.io')) {
+        return url.replace(/E(%20|\s+)learning(%20|\s+)platform/gi, 'E-learning-platform');
+      }
+      return url;
+    }
+
+    function handleHomeNav(e) {
+      if (e) e.preventDefault();
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      if (window.location.hostname.includes('github.io')) {
+        let repo = 'E-learning-platform';
+        if (pathSegments.length > 0 && !pathSegments[0].includes('.html')) {
+          repo = pathSegments[0].replace(/%20|\s+/g, '-');
+        }
+        window.location.href = window.location.origin + '/' + repo + '/index.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    function handleBackNav() {
+      let navigated = false;
+      const onUnload = () => { navigated = true; };
+      window.addEventListener('beforeunload', onUnload);
+      window.addEventListener('pagehide', onUnload);
+
+      function doFallback() {
+        // 2. Fallback: Stored previous page with section anchor
+        try {
+          const lastPage = sessionStorage.getItem('stackly_last_page');
+          const lastSection = sessionStorage.getItem('stackly_last_section');
+          if (lastPage && !lastPage.includes('404')) {
+            let target = sanitizePlatformUrl(lastPage);
+            if (lastSection && !target.includes('#')) {
+              target += '#' + lastSection;
+            }
+            window.location.href = target;
+            return;
+          }
+        } catch (err) {}
+
+        // 3. Fallback: HTTP Referrer with section anchor
+        if (document.referrer && !document.referrer.includes('404')) {
+          try {
+            const lastSection = sessionStorage.getItem('stackly_last_section');
+            let target = sanitizePlatformUrl(document.referrer);
+            if (lastSection && !target.includes('#')) {
+              target += '#' + lastSection;
+            }
+            window.location.href = target;
+            return;
+          } catch (err) {
+            window.location.href = sanitizePlatformUrl(document.referrer);
+            return;
+          }
+        }
+
+        // 4. Default fallback: Home
+        handleHomeNav();
+      }
+
+      // 1. Primary: Browser history back (returns to the exact section & scroll position on the previous page)
+      if (window.history.length > 1) {
+        window.history.back();
+        // If history.back doesn't navigate within 350ms, run fallback
+        setTimeout(() => {
+          if (!navigated) {
+            doFallback();
+          }
+        }, 350);
+        return;
+      }
+
+      doFallback();
+    }
+  </script>
+
+</body>
+</html>
