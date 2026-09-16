@@ -88,8 +88,35 @@
         <a href="login.html" class="btn-nav-login">Login</a>
         <a href="signup.html" class="btn-nav-signup">Sign Up</a>
       </div>
+
+      <!-- Mobile Hamburger Toggle Button -->
+      <button class="stackly-mobile-toggle mobile-menu-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer & Backdrop -->
+  <div class="stackly-drawer-backdrop mobile-nav-drawer-backdrop" id="mobileNavBackdrop"></div>
+  <aside class="stackly-mobile-drawer mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Menu">
+    <div class="mobile-drawer-header">
+      <img src="images/stackly-logo.webp" alt="STACKLY" style="height: 38px;" />
+      <button class="mobile-drawer-close" id="mobileNavClose" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+      <li><a href="services.html" class="mobile-nav-link active"><i class="fa-solid fa-cube"></i> Services &amp; Library</a></li>
+      <li><a href="blog.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-actions">
+      <a href="login.html" class="btn-mobile-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+      <a href="signup.html" class="btn-mobile-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+    </div>
+  </aside>
 
   <main style="padding-top: var(--header-height);">
 

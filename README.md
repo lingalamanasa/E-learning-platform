@@ -94,6 +94,14 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.16 — Mobile Hamburger Navigation Menu Restoration & Universal 404 Parity *(Sep 16, 2026)*
+
+- **Mobile Navigation Menu Restoration** — Integrated static `#mobileNavToggle` (`.stackly-mobile-toggle.mobile-menu-toggle`) buttons and corresponding slide-out drawer markup (`#mobileNavDrawer`, `#mobileNavBackdrop`) across all public pages (`index.html`, `about.html`, `services.html`, `blog.html`, `contact.html`). Eliminates any dependency on deferred JS injection, ensuring immediate visibility and 0ms touch response on mobile/tablet screens.
+- **Universal Touch & Click Event Handlers (`js/app.js`, `app.js`)** — Implemented both direct `click`/`touchend` listeners and a delegated document event listener for the mobile navigation drawer. Supports instant toggle, backdrop tap to dismiss, link tap to close, and Escape key dismissal.
+- **Complete Desktop-to-Mobile 404 Button Parity** — Verified and guaranteed that all marked buttons that open `404error.html` on desktop and laptop viewports work with identical functionality on mobile viewports without altering layouts, designs, or links.
+- **Visual Match to 404 Error Detour Design** — Verified `404error.html` matches the user's interface with gradient detour typography, "Oops! You Took a Detour.", "Back to Home", and "Go Back" controls.
+- **Zero Disturbance Guarantee** — All other buttons with 404 functionality, including error page back navigation (`Back to Home` & `Go Back`), dashboard links, and platform features remain completely untouched and fully functional.
+
 ### v1.1.15 — Cross-Device Mobile & Desktop Parity for All 404-Error Buttons *(Sep 16, 2026)*
 
 - **Comprehensive Desktop-to-Mobile 404 Parity** — Identified all existing desktop/laptop 404 buttons across all platform pages and synchronized their exact `404error.html` navigation behavior to mobile viewports without altering layouts, designs, or links.

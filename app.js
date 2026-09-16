@@ -62,7 +62,6 @@
 
       document.addEventListener('click', handleUniversal404Activation, true);
       document.addEventListener('touchend', handleUniversal404Activation, true);
-    }
 
       // Restore exact section / scroll position when returning from 404
       const restoreSectionPosition = () => {
@@ -1247,31 +1246,82 @@ function initMobileNavDrawer() {
 
   const closeBtns = document.querySelectorAll('.mobile-drawer-close, .mobile-nav-close, #mobileNavClose');
 
-  function openDrawer() {
+  function openDrawer(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!drawer) drawer = document.querySelector('.stackly-mobile-drawer, .mobile-nav-drawer, #mobileNavDrawer');
+    if (!backdrop) backdrop = document.querySelector('.stackly-drawer-backdrop, .mobile-nav-drawer-backdrop, #mobileNavBackdrop');
     if (drawer) drawer.classList.add('active', 'open');
     if (backdrop) backdrop.classList.add('active', 'open');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeDrawer() {
+  function closeDrawer(e) {
+    if (e && e.preventDefault && e.type !== 'click') e.preventDefault();
+    if (!drawer) drawer = document.querySelector('.stackly-mobile-drawer, .mobile-nav-drawer, #mobileNavDrawer');
+    if (!backdrop) backdrop = document.querySelector('.stackly-drawer-backdrop, .mobile-nav-drawer-backdrop, #mobileNavBackdrop');
     if (drawer) drawer.classList.remove('active', 'open');
     if (backdrop) backdrop.classList.remove('active', 'open');
     document.body.style.overflow = '';
   }
 
-  toggleBtns.forEach(btn => btn.addEventListener('click', openDrawer));
-  closeBtns.forEach(btn => btn.addEventListener('click', closeDrawer));
-  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', openDrawer);
+    btn.addEventListener('touchend', openDrawer, { passive: false });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeDrawer);
+    btn.addEventListener('touchend', closeDrawer, { passive: false });
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('touchend', closeDrawer, { passive: false });
+  }
 
   if (drawer) {
     const drawerLinks = drawer.querySelectorAll('a');
     drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
   }
 
+  // Delegated document click and touch listener for absolute reliability
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.stackly-mobile-toggle, .mobile-menu-toggle, #mobileNavToggle');
+    if (toggle) {
+      openDrawer(e);
+      return;
+    }
+    const closeBtn = e.target.closest('.mobile-drawer-close, .mobile-nav-close, #mobileNavClose');
+    if (closeBtn) {
+      closeDrawer(e);
+      return;
+    }
+  });
+
+  document.addEventListener('touchend', (e) => {
+    const toggle = e.target.closest('.stackly-mobile-toggle, .mobile-menu-toggle, #mobileNavToggle');
+    if (toggle) {
+      e.preventDefault();
+      openDrawer(e);
+      return;
+    }
+    const closeBtn = e.target.closest('.mobile-drawer-close, .mobile-nav-close, #mobileNavClose');
+    if (closeBtn) {
+      e.preventDefault();
+      closeDrawer(e);
+      return;
+    }
+  }, { passive: false });
+
   // Escape key support
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
   });
+}
+
+// Auto-initialize if DOM is already parsed
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  initMobileNavDrawer();
 }
 
 function initDashboardSidebarToggle() {
