@@ -25,32 +25,43 @@
         window.location.href = '404error.html';
       };
 
-      // Listen for clicks & touches on any link or button that navigates to 404
-      const handle404TargetCapture = (e) => {
-        const target = e.target.closest('a[href*="404"], button[onclick*="404"], .skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, .podcast-play-btn, .rfc-join-btn, .channel-card, .channel-email-link, .rsvp-pass-btn');
+      // Touch-tracking to distinguish genuine taps from scrolls on mobile devices
+      let isTouchScrolling = false;
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        isTouchScrolling = false;
+        if (e.touches && e.touches[0]) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+          const dx = Math.abs(e.touches[0].clientX - touchStartX);
+          const dy = Math.abs(e.touches[0].clientY - touchStartY);
+          if (dx > 8 || dy > 8) {
+            isTouchScrolling = true;
+          }
+        }
+      }, { passive: true });
+
+      const marked404Selector = 'a[href*="404error.html"], button[onclick*="404error.html"], .skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, #cloud-sandbox .sqs-btn-solid-white, .podcast-play-btn, .rfc-join-btn, .channel-card, .channel-email-link, .rsvp-pass-btn';
+
+      // Universal delegator: guarantees all marked buttons open 404error.html on mobile, tablet, laptop, and desktop
+      const handleUniversal404Activation = (e) => {
+        if (e.type === 'touchend' && isTouchScrolling) return;
+        const target = e.target.closest(marked404Selector);
         if (target) {
-          try {
-            const section = target.closest('section[id], div[id], [id]');
-            if (section && section.id) {
-              sessionStorage.setItem('stackly_last_section', section.id);
-            }
-            sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
-          } catch (err) {}
+          const section = target.closest('section[id], div[id], [id]')?.id || '';
+          window.handlePlatform404(e, section);
         }
       };
-      document.addEventListener('click', handle404TargetCapture, true);
-      document.addEventListener('touchend', handle404TargetCapture, true);
 
-      // Dedicated instant touch delegation for marked buttons
-      document.addEventListener('DOMContentLoaded', () => {
-        const markedSelectors = '.skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, #cloud-sandbox .sqs-btn-solid-white, .podcast-play-btn, .rfc-join-btn, .channel-card, .channel-email-link, .rsvp-pass-btn';
-        document.querySelectorAll(markedSelectors).forEach(el => {
-          el.addEventListener('touchend', (e) => {
-            const sec = el.closest('section[id]')?.id || '';
-            window.handlePlatform404(e, sec);
-          }, { passive: false });
-        });
-      });
+      document.addEventListener('click', handleUniversal404Activation, true);
+      document.addEventListener('touchend', handleUniversal404Activation, true);
     }
 
       // Restore exact section / scroll position when returning from 404

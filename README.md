@@ -94,6 +94,14 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.15 — Cross-Device Mobile & Desktop Parity for All 404-Error Buttons *(Sep 16, 2026)*
+
+- **Comprehensive Desktop-to-Mobile 404 Parity** — Identified all existing desktop/laptop 404 buttons across all platform pages and synchronized their exact `404error.html` navigation behavior to mobile viewports without altering layouts, designs, or links.
+- **Scroll-Aware Universal Event Delegation (`js/app.js`, `app.js`)** — Implemented global capture-phase touch and click delegation with real-time delta tracking (`touchmove` threshold > 8px) to eliminate mobile tap delays, prevent accidental triggers during page scrolling, and guarantee identical navigation behavior on mobile, tablet, laptop, and desktop.
+- **Admin Dashboard Cluster Rebalance Buttons (`admin-dashboard.html`)** — Upgraded all 3 `Rebalance Cluster` buttons (`US-WEST`, `EU-CENTRAL`, `AP-SOUTH`) with `handlePlatform404(event, 'pod-clusters')`, `z-index: 25`, and `transform: translateZ(30px)` matching desktop elevation.
+- **Learner Dashboard Certificate Download (`user-dashboard.html`)** — Upgraded `Download Certificate PDF ↗` with `handlePlatform404(event, 'badges-rankings')`, `z-index: 25`, and `transform: translateZ(30px)`.
+- **Zero Disturbance Guarantee** — All other buttons with 404 functionality, including error page back navigation (`Back to Home` & `Go Back`), dashboard links, and platform features remain completely untouched and fully functional.
+
 ### v1.1.14 — Full 3D Elevation & Fail-Safe 404 Navigation for Blog & Contact Marked Buttons *(Sep 16, 2026)*
 
 - **Blog Page Audio Podcast Buttons (`blog.html`)** — Upgraded `Play Episode (44m)` (Episode #46) and `Play Episode (38m)` (Episode #47) buttons with `handlePlatform404(event, 'podcast')`, `.podcast-play-btn` class, `position: relative; z-index: 25;`, and `transform: translateZ(30px);` to eliminate 3D card perspective touch interception on mobile devices.
