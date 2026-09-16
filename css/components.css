@@ -6341,3 +6341,47 @@ body.gsap-active .dynamic-course-card {
 .rsvp-pass-btn:active {
   transform: translateY(0) scale(0.98);
 }
+
+.cert-pdf-link {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(34, 211, 238, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cert-pdf-link:hover,
+.cert-pdf-link:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(34, 211, 238, 0.18) !important;
+  border-color: rgba(34, 211, 238, 0.5) !important;
+  color: #fff !important;
+}
+
+.cert-pdf-link:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cluster-rebalance-btn {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cluster-rebalance-btn:hover,
+.cluster-rebalance-btn:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  color: #fff !important;
+}
+
+.cluster-rebalance-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+

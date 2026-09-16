@@ -94,6 +94,13 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.7 — Dashboard Accreditations & Cluster Rebalance Buttons 404 Routing (Laptop & Mobile Responsive) *(Sep 16, 2026)*
+
+- **Learner Dashboard Cryptographic Accreditations (`user-dashboard.html`)** — Made the marked `Download Certificate PDF ↗` action link under *Section 8.2 • Verified Badges* fully clickable with elevated `z-index: 10`, `touch-action: manipulation;`, cyan badge hover styling, and `#badges-rankings` section tracking to `404.html`.
+- **Admin Command Cloud Sandbox Pod Clusters (`admin-dashboard.html`)** — Upgraded all 3 marked `Rebalance Cluster` buttons under *Section 2 • Active Regions* (`US-WEST (OREGON)`, `EU-CENTRAL (FRANKFURT)`, `AP-SOUTH (SINGAPORE)`) to be reliably clickable across desktop, laptop, and mobile viewports with `#pod-clusters` tracking to `404.html`.
+- **Responsive Touch & Card Preservations (`css/components.css`, `components.css`)** — Added dedicated `.cert-pdf-link` and `.cluster-rebalance-btn` classes ensuring touch taps trigger smoothly above 3D tilt perspective overlays.
+- **Preserved 404 Error Page Controls (`404.html`)** — Native error page controls (`Back to Home` and `Go Back`) remain completely undisturbed, intact, and responsive.
+
 ### v1.1.6 — Instant FAQ Accordion Interactive Clickability (Laptop & Mobile Responsive) *(Sep 16, 2026)*
 
 - **Interactive FAQ Accordion (`contact.html`)** — Upgraded all 4 marked FAQ questions with direct `onclick="window.toggleFaq(this)"`, `aria-expanded` state tracking, and touch-action manipulation. Ensured that clicking anywhere on the question bar or toggle indicator instantly expands/collapses the corresponding answer.

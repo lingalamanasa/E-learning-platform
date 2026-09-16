@@ -696,35 +696,35 @@
         </section>
 
         <!-- Section 6.2: Regional Cluster Cards -->
-        <section class="dashboard-section-card slide-up-reveal">
+        <section class="dashboard-section-card slide-up-reveal" id="pod-clusters">
           <div class="sqs-page-badge" style="margin-bottom: 0.6rem;">SECTION 2 • ACTIVE REGIONS</div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
-            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div class="value-card tilt-interactive" style="padding: 1.8rem; position: relative;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
                 <span style="font-size: 0.8rem; color: #10b981; font-weight: 700;">● US-WEST (OREGON)</span>
                 <span class="sqs-chip" style="font-size: 0.72rem;">Zone A</span>
               </div>
               <div style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">640 Active Containers</div>
               <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">CPU: 34% • Memory: 62% • Latency: 18ms</div>
-              <button class="btn-outline-glass" style="width: 100%; padding: 0.5rem; font-size: 0.8rem;" onclick="location.href='404.html'">Rebalance Cluster</button>
+              <button type="button" class="btn-outline-glass cluster-rebalance-btn" style="width: 100%; padding: 0.65rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; position: relative; z-index: 10; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2);" onclick="sessionStorage.setItem('stackly_last_section', 'pod-clusters'); window.location.href='404.html';">Rebalance Cluster</button>
             </div>
-            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div class="value-card tilt-interactive" style="padding: 1.8rem; position: relative;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
                 <span style="font-size: 0.8rem; color: #10b981; font-weight: 700;">● EU-CENTRAL (FRANKFURT)</span>
                 <span class="sqs-chip" style="font-size: 0.72rem;">Zone B</span>
               </div>
               <div style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">480 Active Containers</div>
               <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">CPU: 41% • Memory: 58% • Latency: 24ms</div>
-              <button class="btn-outline-glass" style="width: 100%; padding: 0.5rem; font-size: 0.8rem;" onclick="location.href='404.html'">Rebalance Cluster</button>
+              <button type="button" class="btn-outline-glass cluster-rebalance-btn" style="width: 100%; padding: 0.65rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; position: relative; z-index: 10; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2);" onclick="sessionStorage.setItem('stackly_last_section', 'pod-clusters'); window.location.href='404.html';">Rebalance Cluster</button>
             </div>
-            <div class="value-card tilt-interactive" style="padding: 1.8rem;">
+            <div class="value-card tilt-interactive" style="padding: 1.8rem; position: relative;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
                 <span style="font-size: 0.8rem; color: #10b981; font-weight: 700;">● AP-SOUTH (SINGAPORE)</span>
                 <span class="sqs-chip" style="font-size: 0.72rem;">Zone C</span>
               </div>
               <div style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">300 Active Containers</div>
               <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">CPU: 28% • Memory: 45% • Latency: 32ms</div>
-              <button class="btn-outline-glass" style="width: 100%; padding: 0.5rem; font-size: 0.8rem;" onclick="location.href='404.html'">Rebalance Cluster</button>
+              <button type="button" class="btn-outline-glass cluster-rebalance-btn" style="width: 100%; padding: 0.65rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; position: relative; z-index: 10; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2);" onclick="sessionStorage.setItem('stackly_last_section', 'pod-clusters'); window.location.href='404.html';">Rebalance Cluster</button>
             </div>
           </div>
         </section>
