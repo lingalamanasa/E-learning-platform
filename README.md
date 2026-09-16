@@ -94,6 +94,15 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.11 — Mobile 404 Error Page Buttons Touch Responsiveness & Fail-Safe Navigation *(Sep 16, 2026)*
+
+- **Mobile Viewport 404 Responsiveness (`404.html` & `404error.html`)** — Expanded the mobile adaptation breakpoint from `max-width: 480px` to `max-width: 768px`. This ensures all smartphones, tablets, and testing viewports (such as 502px) stack buttons cleanly with full touch targets (`max-width: 320px`, `padding: 1rem 1.8rem`).
+- **Instant Mobile Touch Response** — Added direct `touchend` event listeners alongside standard `onclick` handlers, plus `touch-action: manipulation;`, `-webkit-tap-highlight-color: rgba(...)`, and elevated `position: relative; z-index: 10;` for zero-lag touch registration on both `Back to Home` (`#btnHome404`) and `Go Back` (`#btnGoBack404`).
+- **Fail-Safe "Go Back" Navigation** — Rewrote navigation handling to prevent frozen taps when accessed directly without prior session history (e.g. opened in new tab or external link). The button immediately checks `sessionStorage` for the last active STACKLY page and section, falls back to `document.referrer`, verifies `window.history`, and defaults safely to `handleHomeNav()` if no previous page exists.
+- **Fail-Safe "Back to Home" Navigation** — Upgraded `handleHomeNav(e)` with repository name detection on GitHub Pages (`window.location.origin + '/' + repo + '/index.html'`) and local filesystem fallback (`index.html`).
+- **Global Innovation Hubs Contact Directions (`contact.html`)** — Added elevated `z-index: 10`, `touch-action: manipulation;`, and tap highlight to the 3 `Directions ↗` links under Global Innovation Hubs without altering existing layouts or styles.
+- **Zero Disturbance to Other Buttons** — All existing 404-routing buttons and platform interactions across all pages remain completely untouched and fully functional.
+
 ### v1.1.10 — Mobile & Multi-Device 404error.html Routing for All Marked Buttons *(Sep 16, 2026)*
 
 - **Dedicated `404error.html` Support** — Provisioned `404error.html` page matching `404.html` with full brand aesthetic, dynamic radial gradients, and responsive navigation controls (`Back to Home` & `Go Back`).

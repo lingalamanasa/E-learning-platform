@@ -131,6 +131,8 @@
       gap: 1.25rem;
       flex-wrap: wrap;
       width: 100%;
+      position: relative;
+      z-index: 10;
     }
 
     /* Solid Brand Button */
@@ -148,15 +150,26 @@
       text-decoration: none;
       border: 1.5px solid #4f46e5;
       cursor: pointer;
+      position: relative;
+      z-index: 10;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3);
+      user-select: none;
       box-shadow: 0 6px 20px rgba(79, 70, 229, 0.32);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .detour-btn-solid:hover {
+    .detour-btn-solid:hover,
+    .detour-btn-solid:focus-visible {
       background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
       border-color: #4338ca;
       transform: translateY(-2px);
       box-shadow: 0 10px 26px rgba(79, 70, 229, 0.45);
+    }
+
+    .detour-btn-solid:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 12px rgba(79, 70, 229, 0.3);
     }
 
     /* Outline Brand Button */
@@ -165,7 +178,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      background: transparent;
+      background: rgba(255, 255, 255, 0.8);
       color: #4f46e5;
       font-size: 0.95rem;
       font-weight: 700;
@@ -174,26 +187,42 @@
       text-decoration: none;
       border: 1.5px solid #6366f1;
       cursor: pointer;
+      position: relative;
+      z-index: 10;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
+      user-select: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .detour-btn-outline:hover {
+    .detour-btn-outline:hover,
+    .detour-btn-outline:focus-visible {
       background: rgba(99, 102, 241, 0.08);
       color: #4338ca;
       border-color: #4f46e5;
       transform: translateY(-2px);
     }
 
+    .detour-btn-outline:active {
+      transform: translateY(0);
+      background: rgba(99, 102, 241, 0.15);
+    }
+
     /* Mobile Adaptations */
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .detour-actions-row {
         flex-direction: column;
         gap: 0.9rem;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
       }
       .detour-btn-solid,
       .detour-btn-outline {
         width: 100%;
-        max-width: 280px;
+        max-width: 100%;
+        padding: 1rem 1.8rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -224,13 +253,13 @@
     <div class="detour-actions-row">
       
       <!-- Button 1: Back to Home -->
-      <a href="index.html" onclick="handleHomeNav(event)" class="detour-btn-solid">
+      <a href="index.html" id="btnHome404" onclick="handleHomeNav(event)" class="detour-btn-solid">
         <i class="fa-solid fa-house"></i>
         <span>Back to Home</span>
       </a>
 
       <!-- Button 2: Go Back -->
-      <button type="button" id="btnGoBack404" onclick="handleBackNav()" class="detour-btn-outline">
+      <button type="button" id="btnGoBack404" onclick="handleBackNav(event)" class="detour-btn-outline">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Go Back</span>
       </button>
@@ -249,9 +278,14 @@
     }
 
     function handleHomeNav(e) {
-      if (e) e.preventDefault();
-      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      if (e) {
+        try {
+          e.preventDefault();
+          e.stopPropagation();
+        } catch (err) {}
+      }
       if (window.location.hostname.includes('github.io')) {
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
         let repo = 'E-learning-platform';
         if (pathSegments.length > 0 && !pathSegments[0].includes('.html')) {
           repo = pathSegments[0].replace(/%20|\s+/g, '-');
@@ -262,61 +296,72 @@
       }
     }
 
-    function handleBackNav() {
-      let navigated = false;
-      const onUnload = () => { navigated = true; };
-      window.addEventListener('beforeunload', onUnload);
-      window.addEventListener('pagehide', onUnload);
-
-      function doFallback() {
-        // 2. Fallback: Stored previous page with section anchor
+    function handleBackNav(e) {
+      if (e) {
         try {
-          const lastPage = sessionStorage.getItem('stackly_last_page');
-          const lastSection = sessionStorage.getItem('stackly_last_section');
-          if (lastPage && !lastPage.includes('404')) {
-            let target = sanitizePlatformUrl(lastPage);
-            if (lastSection && !target.includes('#')) {
-              target += '#' + lastSection;
-            }
-            window.location.href = target;
-            return;
-          }
+          e.preventDefault();
+          e.stopPropagation();
         } catch (err) {}
-
-        // 3. Fallback: HTTP Referrer with section anchor
-        if (document.referrer && !document.referrer.includes('404')) {
-          try {
-            const lastSection = sessionStorage.getItem('stackly_last_section');
-            let target = sanitizePlatformUrl(document.referrer);
-            if (lastSection && !target.includes('#')) {
-              target += '#' + lastSection;
-            }
-            window.location.href = target;
-            return;
-          } catch (err) {
-            window.location.href = sanitizePlatformUrl(document.referrer);
-            return;
-          }
-        }
-
-        // 4. Default fallback: Home
-        handleHomeNav();
       }
 
-      // 1. Primary: Browser history back (returns to the exact section & scroll position on the previous page)
-      if (window.history.length > 1) {
-        window.history.back();
-        // If history.back doesn't navigate within 350ms, run fallback
-        setTimeout(() => {
-          if (!navigated) {
-            doFallback();
+      // 1. Return immediately to the exact previous STACKLY page and section if available
+      try {
+        const lastPage = sessionStorage.getItem('stackly_last_page');
+        const lastSection = sessionStorage.getItem('stackly_last_section');
+        if (lastPage && !lastPage.includes('404')) {
+          let target = sanitizePlatformUrl(lastPage);
+          if (lastSection && !target.includes('#')) {
+            target += '#' + lastSection;
           }
-        }, 350);
+          window.location.href = target;
+          return;
+        }
+      } catch (err) {}
+
+      // 2. Return to referrer if from same platform and not 404
+      if (document.referrer && !document.referrer.includes('404')) {
+        try {
+          const lastSection = sessionStorage.getItem('stackly_last_section');
+          let target = sanitizePlatformUrl(document.referrer);
+          if (lastSection && !target.includes('#')) {
+            target += '#' + lastSection;
+          }
+          window.location.href = target;
+          return;
+        } catch (err) {
+          window.location.href = sanitizePlatformUrl(document.referrer);
+          return;
+        }
+      }
+
+      // 3. Fallback to browser history back if session history exists
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
+        setTimeout(() => {
+          handleHomeNav();
+        }, 300);
         return;
       }
 
-      doFallback();
+      // 4. Default fallback: Navigate to Home
+      handleHomeNav();
     }
+
+    // Direct touch event bindings for immediate mobile response
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnBack = document.getElementById('btnGoBack404');
+      const btnHome = document.getElementById('btnHome404');
+      if (btnBack) {
+        btnBack.addEventListener('touchend', (e) => {
+          handleBackNav(e);
+        }, { passive: false });
+      }
+      if (btnHome) {
+        btnHome.addEventListener('touchend', (e) => {
+          handleHomeNav(e);
+        }, { passive: false });
+      }
+    });
   </script>
 
 </body>
