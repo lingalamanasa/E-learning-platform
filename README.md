@@ -94,6 +94,14 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.13 — 3D Tilt Plane Elevation & Touch Target Optimization for Marked 404 Buttons *(Sep 16, 2026)*
+
+- **GPU 3D Plane Elevation (`css/components.css`, `components.css`)** — Elevated all marked interactive buttons (`.skill-node-badge`, `.explore-node-btn`, `.faculty-badge-link`, `.sqs-btn-solid-white`) with `transform: translateZ(30px) !important;` and `z-index: 25 !important;`. This completely resolves mobile and emulator touch-hit occlusion where 3D perspective card rotations intercepted child taps.
+- **Enhanced Mobile Hit Targets** — Added mobile media query styles expanding `.explore-node-btn` and `.skill-node-badge` hit targets with `padding: 0.4rem 0.85rem` to `0.55rem 1rem`, background pill contrast, and rounded borders.
+- **Fail-Safe Global Navigation Function (`js/app.js`, `app.js`)** — Introduced `window.handlePlatform404(e, section)` with safe `e.preventDefault()`, `e.stopPropagation()`, exception-wrapped `sessionStorage` updates, and guaranteed routing to `404error.html`.
+- **Direct Mobile Touch Handlers** — Attached `touchend` delegation in both capture and DOM stages across all marked skill tree badges, explore buttons, and faculty credential links for instant 0ms touch response.
+- **Preserved Route Integrity** — Native controls (`Back to Home` & `Go Back`) and all other existing buttons throughout the platform remain completely untouched and operational.
+
 ### v1.1.12 — Mobile View Multi-Device Button Checklist Verification *(Sep 16, 2026)*
 
 - **Home Page Mobile Functionality (`index.html`)**:

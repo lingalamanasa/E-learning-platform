@@ -10,9 +10,24 @@
     if (!window.location.pathname.includes('404')) {
       sessionStorage.setItem('stackly_last_page', window.location.href);
 
-      // Listen for clicks on any link or button that navigates to 404
-      document.addEventListener('click', (e) => {
-        const target = e.target.closest('a[href*="404"], button[onclick*="404"]');
+      window.handlePlatform404 = function(e, section) {
+        if (e) {
+          try {
+            e.preventDefault();
+            e.stopPropagation();
+          } catch (err) {}
+        }
+        try {
+          if (section) sessionStorage.setItem('stackly_last_section', section);
+          sessionStorage.setItem('stackly_last_page', window.location.href);
+          sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
+        } catch (err) {}
+        window.location.href = '404error.html';
+      };
+
+      // Listen for clicks & touches on any link or button that navigates to 404
+      const handle404TargetCapture = (e) => {
+        const target = e.target.closest('a[href*="404"], button[onclick*="404"], .skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link');
         if (target) {
           try {
             const section = target.closest('section[id], div[id], [id]');
@@ -22,7 +37,21 @@
             sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
           } catch (err) {}
         }
-      }, true);
+      };
+      document.addEventListener('click', handle404TargetCapture, true);
+      document.addEventListener('touchend', handle404TargetCapture, true);
+
+      // Dedicated instant touch delegation for marked buttons
+      document.addEventListener('DOMContentLoaded', () => {
+        const markedSelectors = '.skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, #cloud-sandbox .sqs-btn-solid-white';
+        document.querySelectorAll(markedSelectors).forEach(el => {
+          el.addEventListener('touchend', (e) => {
+            const sec = el.closest('section[id]')?.id || '';
+            window.handlePlatform404(e, sec);
+          }, { passive: false });
+        });
+      });
+    }
 
       // Restore exact section / scroll position when returning from 404
       const restoreSectionPosition = () => {
