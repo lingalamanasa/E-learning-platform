@@ -94,6 +94,30 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.12 — Mobile View Multi-Device Button Checklist Verification *(Sep 16, 2026)*
+
+- **Home Page Mobile Functionality (`index.html`)**:
+  - Verified and enabled all 4 `Explore Node →` buttons and corresponding progression badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`) under *Section 6 • Dynamic Cognitive Skill Trees* with `#skill-trees` return anchor tracking to `404error.html`.
+  - Verified and enabled `Provision Your Free Sandbox ↗` under *Section 7 • Real-Time Architect Pairing* with `#cloud-sandbox` return tracking.
+- **About Page Mobile Functionality (`about.html`)**:
+  - Verified and enabled `14 Nature & NeurIPS Publications ↗` (Dr. Elena Rostova) and `ACM Fellow & Core Kubernetes Contributor ↗` (Kenji Takahashi) under *Section 6 • Global Academic & Research Fellows* with `#fellows` return tracking to `404error.html`.
+- **Blog Page Mobile Functionality (`blog.html`)**:
+  - Verified and enabled both podcast episodes (`Play Episode (44m)` & `Play Episode (38m)`) under *Section 7 • Audio Dispatches* with `#podcast` return tracking to `404error.html`.
+  - Verified and enabled both community RFC action buttons (`Join Discussion` for RFC-104 & RFC-105) under *Section 8 • Open Research Proposals* with `#rfcs` return tracking.
+- **Contact Page Mobile Functionality (`contact.html`)**:
+  - Verified and enabled all 3 Direct Access Channels & buttons (`enterprise@stackly.io`, `support@stackly.io`, `mentors@stackly.io`) with `#direct-access` return tracking to `404error.html`.
+  - Verified and enabled all 4 interactive FAQ Question accordion buttons with touch-action manipulation, smooth height expansion, and active icon rotation (`+` / `×`).
+  - Verified and enabled all 3 Regional Developer Meetup passes (`RSVP Free Pass →` for SF, London, and Tokyo) with `#meetups` return tracking to `404error.html`.
+- **Sign Up Page Mobile Functionality (`signup.html`)**:
+  - Cleaned default values from password inputs; explicit Confirm Password input field with live match verification (`✓ Passwords match`).
+  - Enabled primary `<button type="submit" ... id="btnSubmitSignup"><span>Confirm Password</span></button>` with validation and redirection to `login.html`.
+- **Learner Dashboard Mobile Functionality (`user-dashboard.html`)**:
+  - Verified and enabled `Download Certificate PDF ↗` under *Section 8.2 • Verified Badges* with `#badges-rankings` tracking to `404error.html`.
+- **Admin Dashboard Mobile Functionality (`admin-dashboard.html`)**:
+  - Verified and enabled all 3 `Rebalance Cluster` buttons under *Section 2 • Active Regions* (`US-WEST`, `EU-CENTRAL`, `AP-SOUTH`) with `#pod-clusters` tracking to `404error.html`.
+- **Zero Disturbance to Other 404 Error Page Buttons**:
+  - Native error page controls (`Back to Home` & `Go Back` on `404.html` and `404error.html`) and all other existing buttons platform-wide remain completely undisturbed, functional, and touch-responsive.
+
 ### v1.1.11 — Mobile 404 Error Page Buttons Touch Responsiveness & Fail-Safe Navigation *(Sep 16, 2026)*
 
 - **Mobile Viewport 404 Responsiveness (`404.html` & `404error.html`)** — Expanded the mobile adaptation breakpoint from `max-width: 480px` to `max-width: 768px`. This ensures all smartphones, tablets, and testing viewports (such as 502px) stack buttons cleanly with full touch targets (`max-width: 320px`, `padding: 1rem 1.8rem`).
