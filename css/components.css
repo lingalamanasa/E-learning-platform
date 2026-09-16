@@ -6234,5 +6234,60 @@ body.gsap-active .dynamic-course-card {
   }
 }
 
+/* ==========================================================================
+   INTERACTIVE ACTION BUTTONS & CARDS (Laptop & Mobile Responsive)
+   ========================================================================== */
+.faculty-badge-link {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(212, 169, 106, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease;
+}
 
+.faculty-badge-link:hover,
+.faculty-badge-link:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.2);
+}
 
+.faculty-badge-link:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.channel-card {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(212, 169, 106, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.channel-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 169, 106, 0.4) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 169, 106, 0.15) !important;
+}
+
+.channel-card:active {
+  transform: translateY(0);
+}
+
+.channel-email-link {
+  touch-action: manipulation;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.channel-card:hover .channel-email-link,
+.channel-email-link:hover {
+  color: #f4d03f !important;
+  transform: translateX(3px);
+}
+
+.explore-node-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(34, 211, 238, 0.2);
+}

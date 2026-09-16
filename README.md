@@ -94,6 +94,15 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.4 — Action Buttons & Direct Channels 404 Routing (Laptop & Mobile Responsive) *(Sep 16, 2026)*
+
+- **Home Page Skill Tree Nodes & Explore Links (`index.html`)** — All 4 skill node badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`) and all 4 `Explore Node →` action buttons are fully clickable with `z-index: 10`, touch-action manipulation, and section tracking to `404.html`.
+- **Home Page Cloud Sandbox CTA (`index.html`)** — Made the primary `Provision Your Free Sandbox ↗` action button clickable on both laptop and mobile viewports, routing to `404.html` with section tracking `#cloud-sandbox`.
+- **About Page Faculty Credential Badges (`about.html`)** — Ensured `14 Nature & NeurIPS Publications ↗`, `ACM Fellow & Core Kubernetes Contributor ↗`, and `IEEE Educational Innovation Award ↗` have relative positioning, elevated z-index, touch padding, and route to `404.html`.
+- **Blog Page Podcast & Community RFC Action Buttons (`blog.html`)** — Both `Play Episode (44m)` and `Play Episode (38m)` audio buttons, along with `RFC-104` and `RFC-105` `Join Discussion` buttons, route directly to `404.html`.
+- **Contact Page Direct Access Channels & Emails (`contact.html`)** — Both the entire interactive channel cards (`Enterprise Solutions Pod`, `Telemetry & Lab Operations`, `Mentor Faculty Admissions`) and individual email links (`enterprise@stackly.io`, `support@stackly.io`, `mentors@stackly.io`) route to `404.html` with responsive tap states and elevated z-index.
+- **Undisturbed 404 Page Controls (`404.html`)** — Native error page controls (`Back to Home` and `Go Back`) remain completely undisturbed, intact, and responsive.
+
 ### v1.1.3 — Auth Password Defaults Removed & Confirm Password Enabled *(Sep 16, 2026)*
 
 - **Default Passwords Removed** — Removed pre-filled hardcoded passwords from both `login.html` and `signup.html` password fields, replacing them with clear descriptive placeholders.
