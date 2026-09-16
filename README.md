@@ -94,6 +94,15 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.14 — Full 3D Elevation & Fail-Safe 404 Navigation for Blog & Contact Marked Buttons *(Sep 16, 2026)*
+
+- **Blog Page Audio Podcast Buttons (`blog.html`)** — Upgraded `Play Episode (44m)` (Episode #46) and `Play Episode (38m)` (Episode #47) buttons with `handlePlatform404(event, 'podcast')`, `.podcast-play-btn` class, `position: relative; z-index: 25;`, and `transform: translateZ(30px);` to eliminate 3D card perspective touch interception on mobile devices.
+- **Blog Page Community RFCs (`blog.html`)** — Upgraded `Join Discussion` buttons on RFC-104 (WebGPU Track) and RFC-105 (Cryptographic Hashes) with `handlePlatform404(event, 'rfcs')`, `.rfc-join-btn` class, `z-index: 25`, and `transform: translateZ(30px);`.
+- **Contact Page Direct Access Channels (`contact.html`)** — Upgraded all 3 direct access channel cards and email link buttons (`enterprise@stackly.io →`, `support@stackly.io →`, `mentors@stackly.io →`) with `handlePlatform404(event, 'direct-access')`, `z-index: 25`, and `transform: translateZ(30px);` for reliable mobile tap registration across card and link boundaries.
+- **Contact Page Regional Meetup Passes (`contact.html`)** — Upgraded all 3 regional meetup buttons (`RSVP Free Pass →` for San Francisco, London, and Tokyo) with `handlePlatform404(event, 'meetups')`, `.rsvp-pass-btn` class, `z-index: 25`, and `transform: translateZ(30px);`.
+- **CSS 3D Plane Elevation & Mobile Padding (`css/components.css`, `components.css`)** — Elevated `.podcast-play-btn`, `.rfc-join-btn`, `.channel-card`, `.channel-email-link`, and `.rsvp-pass-btn` with `transform: translateZ(30px) !important;` and `z-index: 25 !important;`, plus mobile hit target optimizations.
+- **Zero Disturbance to Other 404 Error Page Buttons** — All existing 404 error page navigation buttons and controls platform-wide remain completely undisturbed, active, and fully functional.
+
 ### v1.1.13 — 3D Tilt Plane Elevation & Touch Target Optimization for Marked 404 Buttons *(Sep 16, 2026)*
 
 - **GPU 3D Plane Elevation (`css/components.css`, `components.css`)** — Elevated all marked interactive buttons (`.skill-node-badge`, `.explore-node-btn`, `.faculty-badge-link`, `.sqs-btn-solid-white`) with `transform: translateZ(30px) !important;` and `z-index: 25 !important;`. This completely resolves mobile and emulator touch-hit occlusion where 3D perspective card rotations intercepted child taps.

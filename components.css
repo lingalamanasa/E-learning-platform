@@ -6207,7 +6207,12 @@ body.gsap-active .dynamic-course-card {
 .faculty-badge-link,
 .bento-card-large .sqs-btn-solid-white,
 .cluster-rebalance-btn,
-.cert-pdf-link {
+.cert-pdf-link,
+.podcast-play-btn,
+.rfc-join-btn,
+.channel-card,
+.channel-email-link,
+.rsvp-pass-btn {
   position: relative !important;
   z-index: 25 !important;
   transform: translateZ(30px) !important;
@@ -6241,6 +6246,27 @@ body.gsap-active .dynamic-course-card {
     display: inline-flex !important;
     align-items: center !important;
     gap: 0.4rem !important;
+  }
+  .podcast-play-btn {
+    padding: 0.85rem 1.2rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .rfc-join-btn {
+    padding: 0.55rem 1.1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .channel-email-link {
+    padding: 0.4rem 0.2rem !important;
+  }
+  .rsvp-pass-btn {
+    padding: 0.85rem 1.2rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
 

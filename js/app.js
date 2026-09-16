@@ -27,7 +27,7 @@
 
       // Listen for clicks & touches on any link or button that navigates to 404
       const handle404TargetCapture = (e) => {
-        const target = e.target.closest('a[href*="404"], button[onclick*="404"], .skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link');
+        const target = e.target.closest('a[href*="404"], button[onclick*="404"], .skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, .podcast-play-btn, .rfc-join-btn, .channel-card, .channel-email-link, .rsvp-pass-btn');
         if (target) {
           try {
             const section = target.closest('section[id], div[id], [id]');
@@ -43,7 +43,7 @@
 
       // Dedicated instant touch delegation for marked buttons
       document.addEventListener('DOMContentLoaded', () => {
-        const markedSelectors = '.skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, #cloud-sandbox .sqs-btn-solid-white';
+        const markedSelectors = '.skill-node-badge, .explore-node-btn, .faculty-badge-link, .cluster-rebalance-btn, .cert-pdf-link, #cloud-sandbox .sqs-btn-solid-white, .podcast-play-btn, .rfc-join-btn, .channel-card, .channel-email-link, .rsvp-pass-btn';
         document.querySelectorAll(markedSelectors).forEach(el => {
           el.addEventListener('touchend', (e) => {
             const sec = el.closest('section[id]')?.id || '';

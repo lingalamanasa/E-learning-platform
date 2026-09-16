@@ -216,30 +216,30 @@
 
             <div class="channels-grid">
               
-              <div class="channel-card tilt-interactive" onclick="sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" style="cursor: pointer; position: relative; z-index: 5; touch-action: manipulation;">
+              <div class="channel-card tilt-interactive" onclick="handlePlatform404(event, 'direct-access');" style="cursor: pointer; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); touch-action: manipulation;">
                 <div class="channel-icon"><i class="fa-solid fa-bolt"></i></div>
                 <div>
                   <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Enterprise Solutions Pod</h4>
                   <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem;">For team licensing and custom sandboxes</p>
-                  <a href="404error.html" onclick="event.stopPropagation(); sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">enterprise@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
+                  <a href="404error.html" onclick="handlePlatform404(event, 'direct-access');" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">enterprise@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
 
-              <div class="channel-card tilt-interactive" onclick="sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" style="cursor: pointer; position: relative; z-index: 5; touch-action: manipulation;">
+              <div class="channel-card tilt-interactive" onclick="handlePlatform404(event, 'direct-access');" style="cursor: pointer; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); touch-action: manipulation;">
                 <div class="channel-icon"><i class="fa-solid fa-wrench"></i></div>
                 <div>
                   <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Telemetry &amp; Lab Operations</h4>
                   <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem;">24/7 cluster status and sandbox diagnostics</p>
-                  <a href="404error.html" onclick="event.stopPropagation(); sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">support@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
+                  <a href="404error.html" onclick="handlePlatform404(event, 'direct-access');" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">support@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
 
-              <div class="channel-card tilt-interactive" onclick="sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" style="cursor: pointer; position: relative; z-index: 5; touch-action: manipulation;">
+              <div class="channel-card tilt-interactive" onclick="handlePlatform404(event, 'direct-access');" style="cursor: pointer; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); touch-action: manipulation;">
                 <div class="channel-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <div>
                   <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Mentor Faculty Admissions</h4>
                   <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem;">For Staff &amp; Principal architects</p>
-                  <a href="404error.html" onclick="event.stopPropagation(); sessionStorage.setItem('stackly_last_section', 'direct-access'); window.location.href='404error.html';" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">mentors@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
+                  <a href="404error.html" onclick="handlePlatform404(event, 'direct-access');" class="channel-email-link" style="color: #d4a96a; font-weight: 600; font-size: 0.9rem; text-decoration: none; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(212,169,106,0.2);">mentors@stackly.io <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
 
@@ -689,7 +689,7 @@
             <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
               Live CUDA benchmarking and PyTorch FSDP architecture deep-dive at the Mission Bay Hub.
             </p>
-            <a href="404error.html" onclick="sessionStorage.setItem('stackly_last_section', 'meetups'); window.location.href='404error.html';" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 10; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="404error.html" onclick="handlePlatform404(event, 'meetups');" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
           <div class="value-card tilt-interactive" style="padding: 2.2rem; position: relative;">
@@ -701,7 +701,7 @@
             <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
               Hands-on Kubernetes service mesh and WebAssembly sandbox hacking in Shoreditch.
             </p>
-            <a href="404error.html" onclick="sessionStorage.setItem('stackly_last_section', 'meetups'); window.location.href='404error.html';" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 10; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="404error.html" onclick="handlePlatform404(event, 'meetups');" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
           <div class="value-card tilt-interactive" style="padding: 2.2rem; position: relative;">
@@ -713,7 +713,7 @@
             <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;">
               3D shader architecture and compute shaders in modern browsers in Roppongi Hills.
             </p>
-            <a href="404error.html" onclick="sessionStorage.setItem('stackly_last_section', 'meetups'); window.location.href='404error.html';" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 10; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="404error.html" onclick="handlePlatform404(event, 'meetups');" class="sqs-btn-solid-white rsvp-pass-btn" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index: 25; transform: translateZ(30px); -webkit-transform: translateZ(30px); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 0.4rem;">RSVP Free Pass <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
         </div>
