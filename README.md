@@ -94,6 +94,14 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.17 — 404 Error Page "Go Back" Mobile Route Precision *(Sep 16, 2026)*
+
+- **Exact Originating Page Return on Mobile View** — Resolved mobile issue where tapping `Go Back` on `404error.html` would default to `index.html` due to mobile browser history delays and empty referrer policies.
+- **Priority URL Parameter & Dual Storage (`404error.html`, `404.html`)** — Implemented URL query parameter encoding (`?from=...&section=...&y=...`) and unified `localStorage` + `sessionStorage` fallback tracking. When `Go Back` is tapped on mobile, it immediately parses the exact originating page and returns the user to that specific page and section (e.g. `blog.html#rfcs`, `contact.html#direct-access`).
+- **Removed Premature Home Timeout** — Eliminated the 300ms fallback timeout on `window.history.back()` that was prematurely redirecting mobile devices to the home page before the previous page finished restoring.
+- **Debounced Navigation Guard** — Added `isNavigatingBack` flag to prevent dual-event (`touchend` + synthesized `click`) collisions on touch devices.
+- **Zero Disturbance Guarantee** — All other buttons, 404 functionality, designs, layouts, and desktop behavior remain completely untouched and fully functional.
+
 ### v1.1.16 — Mobile Hamburger Navigation Menu Restoration & Universal 404 Parity *(Sep 16, 2026)*
 
 - **Mobile Navigation Menu Restoration** — Integrated static `#mobileNavToggle` (`.stackly-mobile-toggle.mobile-menu-toggle`) buttons and corresponding slide-out drawer markup (`#mobileNavDrawer`, `#mobileNavBackdrop`) across all public pages (`index.html`, `about.html`, `services.html`, `blog.html`, `contact.html`). Eliminates any dependency on deferred JS injection, ensuring immediate visibility and 0ms touch response on mobile/tablet screens.

@@ -8,7 +8,10 @@
 (function() {
   try {
     if (!window.location.pathname.includes('404')) {
-      sessionStorage.setItem('stackly_last_page', window.location.href);
+      try {
+        sessionStorage.setItem('stackly_last_page', window.location.href);
+        localStorage.setItem('stackly_last_page', window.location.href);
+      } catch (err) {}
 
       window.handlePlatform404 = function(e, section) {
         if (e) {
@@ -17,12 +20,23 @@
             e.stopPropagation();
           } catch (err) {}
         }
+        const currentPage = window.location.href;
+        const currentScroll = String(window.scrollY || window.pageYOffset || 0);
         try {
-          if (section) sessionStorage.setItem('stackly_last_section', section);
-          sessionStorage.setItem('stackly_last_page', window.location.href);
-          sessionStorage.setItem('stackly_last_scroll', String(window.scrollY || window.pageYOffset || 0));
+          if (section) {
+            sessionStorage.setItem('stackly_last_section', section);
+            localStorage.setItem('stackly_last_section', section);
+          }
+          sessionStorage.setItem('stackly_last_page', currentPage);
+          sessionStorage.setItem('stackly_last_scroll', currentScroll);
+          localStorage.setItem('stackly_last_page', currentPage);
+          localStorage.setItem('stackly_last_scroll', currentScroll);
         } catch (err) {}
-        window.location.href = '404error.html';
+
+        let target404 = '404error.html?from=' + encodeURIComponent(currentPage);
+        if (section) target404 += '&section=' + encodeURIComponent(section);
+        target404 += '&y=' + encodeURIComponent(currentScroll);
+        window.location.href = target404;
       };
 
       // Touch-tracking to distinguish genuine taps from scrolls on mobile devices
@@ -66,15 +80,19 @@
       // Restore exact section / scroll position when returning from 404
       const restoreSectionPosition = () => {
         try {
-          const savedSection = sessionStorage.getItem('stackly_last_section');
-          const savedScroll = sessionStorage.getItem('stackly_last_scroll');
+          const urlParams = new URLSearchParams(window.location.search);
+          const urlSection = urlParams.get('section') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+          const savedSection = urlSection || sessionStorage.getItem('stackly_last_section') || localStorage.getItem('stackly_last_section');
+          const savedScroll = urlParams.get('y') || sessionStorage.getItem('stackly_last_scroll') || localStorage.getItem('stackly_last_scroll');
           if (savedSection) {
             const el = document.getElementById(savedSection);
             if (el) {
               el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             sessionStorage.removeItem('stackly_last_section');
+            localStorage.removeItem('stackly_last_section');
             sessionStorage.removeItem('stackly_last_scroll');
+            localStorage.removeItem('stackly_last_scroll');
             return;
           }
           if (savedScroll !== null) {
@@ -83,6 +101,7 @@
               window.scrollTo({ top: y, behavior: 'instant' });
             }
             sessionStorage.removeItem('stackly_last_scroll');
+            localStorage.removeItem('stackly_last_scroll');
           }
         } catch (err) {}
       };

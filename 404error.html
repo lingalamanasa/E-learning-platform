@@ -296,6 +296,8 @@
       }
     }
 
+    let isNavigatingBack = false;
+
     function handleBackNav(e) {
       if (e) {
         try {
@@ -303,11 +305,31 @@
           e.stopPropagation();
         } catch (err) {}
       }
+      if (isNavigatingBack) return;
+      isNavigatingBack = true;
 
-      // 1. Return immediately to the exact previous STACKLY page and section if available
+      // 1. Priority 1: Check URL query parameter '?from=...' (guaranteed across mobile webviews, file://, and http/https)
       try {
-        const lastPage = sessionStorage.getItem('stackly_last_page');
-        const lastSection = sessionStorage.getItem('stackly_last_section');
+        const urlParams = new URLSearchParams(window.location.search);
+        let fromParam = urlParams.get('from');
+        const sectionParam = urlParams.get('section');
+        if (fromParam) {
+          fromParam = decodeURIComponent(fromParam);
+          if (!fromParam.includes('404')) {
+            let target = sanitizePlatformUrl(fromParam);
+            if (sectionParam && !target.includes('#')) {
+              target += '#' + decodeURIComponent(sectionParam);
+            }
+            window.location.href = target;
+            return;
+          }
+        }
+      } catch (err) {}
+
+      // 2. Priority 2: Check sessionStorage & localStorage for last visited page
+      try {
+        const lastPage = sessionStorage.getItem('stackly_last_page') || localStorage.getItem('stackly_last_page');
+        const lastSection = sessionStorage.getItem('stackly_last_section') || localStorage.getItem('stackly_last_section');
         if (lastPage && !lastPage.includes('404')) {
           let target = sanitizePlatformUrl(lastPage);
           if (lastSection && !target.includes('#')) {
@@ -318,32 +340,26 @@
         }
       } catch (err) {}
 
-      // 2. Return to referrer if from same platform and not 404
-      if (document.referrer && !document.referrer.includes('404')) {
-        try {
-          const lastSection = sessionStorage.getItem('stackly_last_section');
+      // 3. Priority 3: Check document.referrer if not 404
+      try {
+        if (document.referrer && !document.referrer.includes('404')) {
+          const lastSection = sessionStorage.getItem('stackly_last_section') || localStorage.getItem('stackly_last_section');
           let target = sanitizePlatformUrl(document.referrer);
           if (lastSection && !target.includes('#')) {
             target += '#' + lastSection;
           }
           window.location.href = target;
           return;
-        } catch (err) {
-          window.location.href = sanitizePlatformUrl(document.referrer);
-          return;
         }
-      }
+      } catch (err) {}
 
-      // 3. Fallback to browser history back if session history exists
-      if (window.history.length > 1 && document.referrer) {
+      // 4. Priority 4: Browser History Back if history exists
+      if (window.history.length > 1) {
         window.history.back();
-        setTimeout(() => {
-          handleHomeNav();
-        }, 300);
         return;
       }
 
-      // 4. Default fallback: Navigate to Home
+      // 5. Default fallback: Only if directly opened with no previous page
       handleHomeNav();
     }
 
