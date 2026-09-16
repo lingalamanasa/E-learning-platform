@@ -237,6 +237,23 @@
         }
       } catch (err) {}
 
+      // Responsive role option labels to prevent mobile overflow
+      const roleSelect = document.getElementById('auth-role');
+      function adjustRoleLabels() {
+        if (!roleSelect) return;
+        const isMobile = window.innerWidth <= 640;
+        const optUser = roleSelect.querySelector('option[value="user"]');
+        const optAdmin = roleSelect.querySelector('option[value="admin"]');
+        if (optUser) {
+          optUser.textContent = isMobile ? 'Learner' : 'Learner (User Dashboard)';
+        }
+        if (optAdmin) {
+          optAdmin.textContent = isMobile ? 'Administrator' : 'Administrator (Admin Studio)';
+        }
+      }
+      adjustRoleLabels();
+      window.addEventListener('resize', adjustRoleLabels);
+
       // Toggle Password Visibility
       const toggleBtn = document.getElementById('toggle-password');
       const passInput = document.getElementById('auth-password');

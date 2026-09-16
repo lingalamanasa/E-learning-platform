@@ -4172,6 +4172,8 @@ body.gsap-active .dynamic-course-card {
 .auth-field-input,
 .auth-field-select {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: #f0f5fa;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
@@ -4181,6 +4183,17 @@ body.gsap-active .dynamic-course-card {
   font-family: var(--font-sans);
   outline: none;
   transition: all 0.2s ease;
+}
+
+.auth-field-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .auth-field-input:focus,

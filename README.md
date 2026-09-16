@@ -94,6 +94,12 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.8 — Role Selector Mobile View Overflow Fix *(Sep 16, 2026)*
+
+- **Role Dropdown Overflow Prevention (`login.html`)** — Resolved mobile text overflow on the account role selector (`#auth-role`). Implemented adaptive role labeling (`Learner` & `Administrator` on mobile `<= 640px`, and descriptive titles on larger desktop viewports) to eliminate container clipping and awkward line wrapping.
+- **Custom Chevron & Geometry Styling (`css/auth-modern.css`, `css/components.css`, `components.css`)** — Applied `appearance: none;`, `text-overflow: ellipsis;`, and dedicated `padding-right: 2.75rem` with an embedded SVG chevron arrow, ensuring role names never collide with the dropdown icon or push past auth card boundaries.
+- **Verified Route Integrity (`login.html`)** — Validated that selecting `Administrator` routes to `admin-dashboard.html` and `Learner` routes to `user-dashboard.html` with zero regression.
+
 ### v1.1.7 — Dashboard Accreditations & Cluster Rebalance Buttons 404 Routing (Laptop & Mobile Responsive) *(Sep 16, 2026)*
 
 - **Learner Dashboard Cryptographic Accreditations (`user-dashboard.html`)** — Made the marked `Download Certificate PDF ↗` action link under *Section 8.2 • Verified Badges* fully clickable with elevated `z-index: 10`, `touch-action: manipulation;`, cyan badge hover styling, and `#badges-rankings` section tracking to `404.html`.
