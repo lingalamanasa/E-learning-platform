@@ -4433,6 +4433,25 @@ body.gsap-active .dynamic-course-card {
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
   margin-bottom: 0.8rem;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.skill-node-badge:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.25);
+  box-shadow: 0 4px 14px var(--node-glow, rgba(255, 255, 255, 0.18));
+}
+
+.faculty-badge-link {
+  transition: all 0.2s ease;
+}
+
+.faculty-badge-link:hover {
+  filter: brightness(1.2);
+  transform: translateX(3px);
+  text-decoration: underline !important;
 }
 
 .skill-node-progress-track {

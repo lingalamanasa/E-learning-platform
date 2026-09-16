@@ -94,6 +94,13 @@ npx serve .
 
 ## 📝 Recent Changes
 
+### v1.1.1 — Interactive Badge Routing & 404 Error Page Linking *(Sep 16, 2026)*
+
+- **Skill Tree Progression Badges (Home)** — Converted skill progression badges (`FOUNDATION`, `SCALING`, `FINE-TUNING`, `AUTONOMY`) into interactive clickable links routing to `404.html` with section tracking (`#skill-trees`) and glowing hover states.
+- **Faculty Credential Badges (About)** — Enhanced research faculty publication badges (`14 Nature & NeurIPS Publications`, `ACM Fellow & Core Kubernetes Contributor`, `IEEE Educational Innovation Award`) linking to `404.html` with `#fellows` return position persistence.
+- **Community RFC Discussion Buttons (Blog)** — Connected `RFC-104` and `RFC-105` "Join Discussion" action buttons to `404.html` with `#rfcs` return position tracking.
+- **Preserved 404 Route Integrity** — Kept all existing 404 error page buttons ("Back to Home", "Go Back") and platform-wide error routes completely undisturbed and fully functional with GitHub Pages URL sanitization.
+
 ### v1.1.0 — Layout & Spacing Fixes *(Sep 10, 2026)*
 
 - **Dashboard sections** — Removed `3rem` gap between dashboard sections (`gap: 0`) so all 10 sections sit flush with no whitespace between them. Also zeroed out `margin-top`/`margin-bottom` on `.dashboard-main > section`.
