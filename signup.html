@@ -28,7 +28,7 @@
       <!-- Top Navigation: Brand Pill & Back to Home Button -->
       <div class="auth-top-nav-bar">
         <a href="index.html" class="auth-brand-pill" title="STACKLY Home">
-          <img src="images/stackly-logo.webp" alt="STACKLY Logo" class="auth-pill-logo" />
+          <img src="images/stackly-logo.webp" alt="STACKLY Logo" class="auth-pill-logo" onerror="this.src='stackly-logo.webp'" />
         </a>
 
         <a href="index.html" class="auth-home-btn" id="btnBackToHome">
@@ -109,16 +109,24 @@
           <div id="signup-password-match-error" style="display: none; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500;"></div>
         </div>
 
-        <!-- Confirm Password Button -->
+        <div class="auth-field-group">
+          <label for="signup-role" class="auth-field-label">Role</label>
+          <select id="signup-role" name="role" class="auth-field-select" required>
+            <option value="user" selected>Learner (User Dashboard)</option>
+            <option value="admin">Administrator (Admin Studio)</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
         <button type="submit" class="auth-submit-btn" id="btnSubmitSignup">
-          <span>Confirm Password</span>
+          <span>Submit</span>
         </button>
 
         <!-- Social Auth Buttons -->
         <div class="auth-social-row">
-          <a href="404.html" class="auth-social-btn" style="text-decoration: none; justify-content: center; display: inline-flex; align-items: center;">
-            <i class="fa-brands fa-apple"></i>
-            <span>Apple</span>
+          <a href="https://github.com/lingalamanasa/E-learning-platform" target="_blank" rel="noopener noreferrer" class="auth-social-btn" style="text-decoration: none; justify-content: center; display: inline-flex; align-items: center;">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
           </a>
           
           <a href="404.html" class="auth-social-btn" style="text-decoration: none; justify-content: center; display: inline-flex; align-items: center;">
@@ -132,6 +140,13 @@
       <!-- Bottom Nav Links -->
       <div class="auth-bottom-links" style="justify-content: center; text-align: center;">
         <span>Have any account? <a href="login.html">Sign in</a></span>
+      </div>
+
+      <div style="text-align: center; margin-top: 0.65rem;">
+        <a href="https://github.com/lingalamanasa/E-learning-platform" target="_blank" rel="noopener noreferrer" class="auth-github-footer" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; font-size: 0.82rem; color: #71717a; text-decoration: none;">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub Repository</span>
+        </a>
       </div>
 
     </section>
@@ -238,6 +253,23 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Responsive role option labels to prevent mobile overflow
+      const roleSelect = document.getElementById('signup-role');
+      function adjustRoleLabels() {
+        if (!roleSelect) return;
+        const isMobile = window.innerWidth <= 640;
+        const optUser = roleSelect.querySelector('option[value="user"]');
+        const optAdmin = roleSelect.querySelector('option[value="admin"]');
+        if (optUser) {
+          optUser.textContent = isMobile ? 'Learner' : 'Learner (User Dashboard)';
+        }
+        if (optAdmin) {
+          optAdmin.textContent = isMobile ? 'Administrator' : 'Administrator (Admin Studio)';
+        }
+      }
+      adjustRoleLabels();
+      window.addEventListener('resize', adjustRoleLabels);
+
       // Toggle Password Visibility
       const toggleBtn = document.getElementById('toggle-signup-password');
       const passInput = document.getElementById('signup-password');
@@ -295,6 +327,7 @@
         if (e) e.preventDefault();
         const name = document.getElementById('signup-name')?.value.trim() || '';
         const email = document.getElementById('signup-email')?.value.trim() || '';
+        const role = document.getElementById('signup-role')?.value || 'user';
         const password = passInput?.value || '';
         const confirmPassword = confirmPassInput?.value || '';
 
@@ -326,10 +359,12 @@
           if (email) {
             localStorage.setItem('stackly_auth_email', email);
           }
+          localStorage.setItem('stackly_auth_role', role);
         } catch (err) {}
 
         if (window.showToast) {
-          window.showToast(`Account created for ${name || 'user'}! Redirecting to login...`, 'success');
+          const roleDisplay = role === 'admin' ? 'Administrator' : 'Learner';
+          window.showToast(`Account created as ${roleDisplay} for ${name || 'user'}! Redirecting to login...`, 'success');
         }
 
         setTimeout(() => {
